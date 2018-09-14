@@ -153,7 +153,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * errors are presented and no actual login attempt is made.
      */
     private void backToWelcomeScreen() {
-        Intent backIntent = new Intent(getApplicationContext(), welcomeScreen.class);
+        Intent backIntent = new Intent(getApplicationContext(), M.class);
         startActivity(backIntent, 0);
     }
 
