@@ -8,17 +8,18 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:contentDescription="@string/logo"
         app:srcCompat="@mipmap/ic_launcher_round" />
 
     <Button
         android:id="@+id/loginbutton"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:text="Log In" />
+        android:text="@string/log_in" />
 
     <Button
         android:id="@+id/registerbutton"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:text="Register" />
+        android:text="@string/register" />
 </LinearLayout>
