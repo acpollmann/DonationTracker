@@ -31,6 +31,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -192,12 +193,25 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains("@");
+        //if (email.contains("@") && (email.substring(email.length() - 5, email.length()).equals(".com"))) {
+        if (email.contains("@") && (email.contains(".com"))) {
+                return true;
+        }
+        return false;
     }
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        if ((password.length() > 8)
+                && Pattern.compile( "[0-9]" ).matcher(password).find()
+                && (Pattern.compile( "[!-/]" ).matcher(password).find()
+                || password.contains("@"))) {
+                return true;
+        }
+        if () {
+
+        }
+        return false;
     }
 
     /**
