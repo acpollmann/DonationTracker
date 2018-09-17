@@ -17,5 +17,11 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="logout">Logout</string>
+<<<<<<< HEAD
+    <string name="log_in">Log In</string>
+    <string name="register">Register</string>
+    <string name="logo">logo</string>
+=======
     <string name="action_sign_in">Sign in or register</string>
+>>>>>>> 9c436b6c7f9a478dfd2fb66a3f89c44b66e5891c
 </resources>
