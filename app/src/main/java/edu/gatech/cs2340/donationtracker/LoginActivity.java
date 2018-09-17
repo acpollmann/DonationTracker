@@ -203,7 +203,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        //if (email.contains("@") && (email.substring(email.length() - 5, email.length()).equals(".com"))) {
         if (email.contains("@") && (email.contains("gmail.com"))) {
                 return true;
         }
