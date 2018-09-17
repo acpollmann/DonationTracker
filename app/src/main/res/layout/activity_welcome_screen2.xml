@@ -8,38 +8,46 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:srcCompat="@mipmap/ic_launcher_round"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:layout_width="382dp"
+        android:layout_height="194dp"
+        android:layout_marginBottom="308dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@mipmap/ic_launcher_round" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="200dp" />
+        app:layout_constraintBottom_toTopOf="@+id/loginbutton"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/loginbutton"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:text="Log In"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="240dp" />
+        app:layout_constraintBottom_toTopOf="@+id/space"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Space
+        android:id="@+id/space"
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="310dp" />
+        app:layout_constraintBottom_toTopOf="@+id/registerbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginbutton" />
 
     <Button
         android:id="@+id/registerbutton"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:layout_marginBottom="136dp"
+        android:layout_marginTop="8dp"
         android:text="Register"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="330dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/space" />
 
 </android.support.constraint.ConstraintLayout>
