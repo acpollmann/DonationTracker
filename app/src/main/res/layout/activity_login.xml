@@ -34,7 +34,7 @@
                 android:id="@+id/cancel_sign_in_button"
                 android:layout_width="47dp"
                 android:layout_height="wrap_content"
-                android:text="<" />
+                android:text="&lt;" />
 
             <Space
                 android:layout_width="match_parent"
