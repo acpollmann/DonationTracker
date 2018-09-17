@@ -21,13 +21,69 @@
 
     <Button
         android:id="@+id/logoutButton"
-        android:layout_width="91dp"
-        android:layout_height="37dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
+        style="@android:style/Widget.Material.Button.Borderless"
+        android:layout_width="85dp"
+        android:layout_height="38dp"
         android:text="@string/logout"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="299dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <ImageButton
+        android:id="@+id/map_view"
+        android:layout_width="83dp"
+        android:layout_height="81dp"
+        app:srcCompat="@android:drawable/radiobutton_off_background"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="239dp" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="149dp"
+        android:layout_height="138dp"
+        app:srcCompat="@mipmap/ic_launcher_round"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="141dp" />
+
+    <ImageButton
+        android:id="@+id/statistics"
+        android:layout_width="83dp"
+        android:layout_height="81dp"
+        app:srcCompat="@android:drawable/radiobutton_off_background"
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="318dp" />
+
+    <ImageButton
+        android:id="@+id/search_for_donation"
+        android:layout_width="83dp"
+        android:layout_height="81dp"
+        app:srcCompat="@android:drawable/radiobutton_off_background"
+        tools:layout_editor_absoluteX="267dp"
+        tools:layout_editor_absoluteY="239dp" />
+
+    <ImageButton
+        android:id="@+id/add_donation"
+        android:layout_width="83dp"
+        android:layout_height="81dp"
+        app:srcCompat="@android:drawable/radiobutton_off_background"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="103dp" />
+
+    <ImageButton
+        android:id="@+id/view_location"
+        android:layout_width="83dp"
+        android:layout_height="81dp"
+        app:srcCompat="@android:drawable/radiobutton_off_background"
+        tools:layout_editor_absoluteX="267dp"
+        tools:layout_editor_absoluteY="103dp" />
+
+    <ImageButton
+        android:id="@+id/read_location"
+        android:layout_width="83dp"
+        android:layout_height="81dp"
+        app:srcCompat="@android:drawable/radiobutton_off_background"
+        tools:layout_editor_absoluteX="151dp"
+        tools:layout_editor_absoluteY="22dp" />
 
 
 </android.support.constraint.ConstraintLayout>
