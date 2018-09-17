@@ -91,6 +91,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
+
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
@@ -136,7 +137,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         }
     }
-
 
     /**
      * Attempts to sign in or register the account specified by the login form.
