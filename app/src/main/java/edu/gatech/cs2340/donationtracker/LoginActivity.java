@@ -3,6 +3,7 @@ package edu.gatech.cs2340.donationtracker;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -96,6 +97,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mProgressView = findViewById(R.id.login_progress);
     }
 
+    public void accessWelcome(View view) {
+        Intent changeWelcome = new Intent(this, WelcomeScreenActivity.class);
+        this.startActivity(changeWelcome);
+    }
+
+    public void accessMain(View view) {
+        Intent changeMain = new Intent(this, MainActivity.class);
+        this.startActivity(changeMain);
+    }
+
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;
@@ -143,6 +154,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
+
     private void attemptLogin() {
         if (mAuthTask != null) {
             return;
@@ -161,20 +173,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         // Check for a valid password, if the user entered one.
 
-        if (TextUtils.isEmpty(password) || (password.length() < 8)) {
+        if (TextUtils.isEmpty(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
         }
-        else if (!(Pattern.compile( "[0-9]" ).matcher(password).find()
-                && (!Pattern.compile( "[!-/]" ).matcher(password).find()
-                    || !password.contains("@"))
-                && Pattern.compile( "[A-Z]" ).matcher(password).find())) {
-            mPasswordView.setError("Password must contain at least 1 digit, 1 special character," +
-                                    " and a capital letter");
+        else if (!isPasswordValid(password)) {
+            //mPasswordView.setError(getString(R.string.error_invalid_password));
+            mPasswordView.setError("Password is invalid");
             focusView = mPasswordView;
             cancel = true;
-
         }
 
         // Check for a valid email address.
@@ -203,20 +211,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        if (email.contains("@") && (email.contains("gmail.com"))) {
-                return true;
-        }
-        return false;
+       if (email.equals("user")) {
+           return true;
+       }
+       return false;
     }
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        if ((password.length() >= 8)
-                && (Pattern.compile( "[0-9]" ).matcher(password).find()
-                && (Pattern.compile( "[!-/]" ).matcher(password).find()
-                || password.contains("@"))
-                && Pattern.compile( "[A-Z]" ).matcher(password).find())) {
-                return true;
+        if (password.equals("password")) {
+            return true;
         }
         return false;
     }
