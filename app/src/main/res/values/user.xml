@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="planets_array">
+        <item>Location Employee</item>
+        <item>Admin</item>
+        <item>Manager</item>
+        <item>User</item>
+    </string-array>
+</resources>

@@ -17,7 +17,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="logout">Logout</string>
-
+    <string name="title_activity_register">RegisterActivity</string>
     <string name="log_in">Log In</string>
     <string name="register">Register</string>
     <string name="logo">logo</string>
