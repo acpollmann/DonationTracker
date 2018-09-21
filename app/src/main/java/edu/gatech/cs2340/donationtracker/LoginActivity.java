@@ -161,20 +161,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         // Check for a valid password, if the user entered one.
 
-        if (TextUtils.isEmpty(password) || (password.length() < 8)) {
+        if (TextUtils.isEmpty(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
-        }
-        else if (!(Pattern.compile( "[0-9]" ).matcher(password).find()
-                && (!Pattern.compile( "[!-/]" ).matcher(password).find()
-                    || !password.contains("@"))
-                && Pattern.compile( "[A-Z]" ).matcher(password).find())) {
-            mPasswordView.setError("Password must contain at least 1 digit, 1 special character," +
-                                    " and a capital letter");
-            focusView = mPasswordView;
-            cancel = true;
-
         }
 
         // Check for a valid email address.
@@ -203,20 +193,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        if (email.contains("@") && (email.contains("gmail.com"))) {
-                return true;
-        }
-        return false;
+       if (email.equals("user")) {
+           return true;
+       }
+       return false;
     }
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        if ((password.length() >= 8)
-                && (Pattern.compile( "[0-9]" ).matcher(password).find()
-                && (Pattern.compile( "[!-/]" ).matcher(password).find()
-                || password.contains("@"))
-                && Pattern.compile( "[A-Z]" ).matcher(password).find())) {
-                return true;
+        if (password.equals("password")) {
+            return true;
         }
         return false;
     }
