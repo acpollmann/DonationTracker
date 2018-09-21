@@ -98,14 +98,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     public void accessWelcome(View view) {
-        Intent changeWelcome = new Intent(this, MainActivity.class);
-        this.startActivity(changeWelcome);//change it to the welcome page.... interestingly it actually goes to the mainActivity page
+        Intent changeWelcome = new Intent(this, WelcomeScreenActivity.class);
+        this.startActivity(changeWelcome);
     }
 
-//    public void accessMain(View view) {
-//        Intent changeMain = new Intent(this, MainActivity.class);
-//        this.startActivity(changeMain);//goes to the welcome page???~ maybe something with the ID??
-//    }
+    public void accessMain(View view) {
+        Intent changeMain = new Intent(this, MainActivity.class);
+        this.startActivity(changeMain);
+    }
 
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {

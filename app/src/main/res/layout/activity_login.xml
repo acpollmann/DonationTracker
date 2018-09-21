@@ -34,7 +34,8 @@
                 android:id="@+id/cancel_sign_in_button"
                 android:layout_width="47dp"
                 android:layout_height="wrap_content"
-                android:text="&lt;" />
+                android:text="&lt;"
+                android:onClick="accessWelcome"/>
 
             <Space
                 android:layout_width="match_parent"
@@ -101,7 +102,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in_short"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:onClick="accessMain"/>
 
         </LinearLayout>
     </ScrollView>
