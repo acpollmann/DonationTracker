@@ -20,18 +20,18 @@
         android:visibility="gone" />
 
     <ScrollView
-        android:id="@+id/login_form"
+        android:id="@+id/login_form_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/email_login_form"
+            android:id="@+id/login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/cancel_sign_in_button"
+                android:id="@+id/cancel_login_button"
                 android:layout_width="47dp"
                 android:layout_height="wrap_content"
                 android:text="&lt;" />
@@ -41,7 +41,6 @@
                 android:layout_height="24dp" />
 
             <TextView
-                android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Email"
@@ -68,7 +67,6 @@
                 android:layout_height="24dp" />
 
             <TextView
-                android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Password"
