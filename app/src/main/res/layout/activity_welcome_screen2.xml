@@ -1,53 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_vertical|center_horizontal"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".WelcomeScreenActivity">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="382dp"
-        android:layout_height="194dp"
-        android:layout_marginBottom="308dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@mipmap/ic_launcher_round" />
+        android:layout_width="match_parent"
+        android:layout_height="214dp"
+        app:srcCompat="@mipmap/ic_launcher" />
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/loginbutton"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_height="20dp" />
 
     <Button
-        android:id="@+id/loginbutton"
+        android:id="@+id/login_button"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="Log In"
-        app:layout_constraintBottom_toTopOf="@+id/space"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <Space
-        android:id="@+id/space"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/registerbutton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginbutton" />
+        android:layout_height="wrap_content"
+        android:text="Login" />
 
     <Button
-        android:id="@+id/registerbutton"
+        android:id="@+id/register_button"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginBottom="136dp"
-        android:layout_marginTop="8dp"
-        android:text="Register"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/space" />
-
-</android.support.constraint.ConstraintLayout>
+        android:layout_height="wrap_content"
+        android:text="Register" />
+</LinearLayout>
