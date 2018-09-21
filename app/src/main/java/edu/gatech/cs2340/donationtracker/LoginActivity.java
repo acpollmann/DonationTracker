@@ -3,6 +3,7 @@ package edu.gatech.cs2340.donationtracker;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -96,6 +97,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mProgressView = findViewById(R.id.login_progress);
     }
 
+    public void accessWelcome(View view) {
+        Intent changeWelcome = new Intent(this, MainActivity.class);
+        this.startActivity(changeWelcome);//change it to the welcome page.... interestingly it actually goes to the mainActivity page
+    }
+
+//    public void accessMain(View view) {
+//        Intent changeMain = new Intent(this, MainActivity.class);
+//        this.startActivity(changeMain);//goes to the welcome page???~ maybe something with the ID??
+//    }
+
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;
@@ -143,19 +154,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
-<<<<<<< HEAD
-=======
-    private void backToWelcomeScreen() {
-        Intent backIntent = new Intent(getApplicationContext(), M.class);
-        startActivity(backIntent, 0);
-    }
 
-    /**
-     * Attempts to sign in or register the account specified by the login form.
-     * If there are form errors (invalid email, missing fields, etc.), the
-     * errors are presented and no actual login attempt is made.
-     */
->>>>>>> 6e034c95e454423496f99423b6b3738d252f6ae7
     private void attemptLogin() {
         if (mAuthTask != null) {
             return;
