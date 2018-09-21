@@ -31,7 +31,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main" />
+             android:label="@string/title_activity_main" />
         <activity android:name=".WelcomeScreenActivity" />
         <activity android:name=".RegisterActivity"></activity>
     </application>
