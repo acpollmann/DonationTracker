@@ -27,7 +27,8 @@
         android:text="@string/logout"
         android:visibility="visible"
         tools:layout_editor_absoluteX="299dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="0dp"
+        android:onClick="accessWelcome" />
 
     <ImageButton
         android:id="@+id/map_view"
