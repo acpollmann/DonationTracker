@@ -43,9 +43,8 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
-    public void accessWelcome(View view) {
-        Intent changeWelcome = new Intent(this, WelcomeScreenActivity.class);
-        this.startActivity(changeWelcome);
+    public void onLogoutPressed(View view) {
+        Intent intent = new Intent(this, WelcomeScreenActivity.class);
+        startActivity(intent);
     }
-
 }
