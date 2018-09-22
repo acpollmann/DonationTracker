@@ -24,6 +24,7 @@
         style="@android:style/Widget.Material.Button.Borderless"
         android:layout_width="85dp"
         android:layout_height="38dp"
+        android:onClick="onLogoutPressed"
         android:text="@string/logout"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,9 +34,9 @@
         android:id="@+id/map_view_bubble"
         android:layout_width="83dp"
         android:layout_height="81dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="52dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="88dp"
+        app:layout_constraintEnd_toStartOf="@+id/statistics_bubble"
         app:layout_constraintTop_toBottomOf="@+id/add_donation_bubble"
         app:srcCompat="@android:drawable/radiobutton_off_background" />
 
@@ -57,24 +58,22 @@
         android:id="@+id/statistics_bubble"
         android:layout_width="83dp"
         android:layout_height="81dp"
-        android:layout_marginBottom="116dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/navigation"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@android:drawable/radiobutton_off_background" />
 
     <ImageButton
         android:id="@+id/search_for_donation_button"
         android:layout_width="83dp"
         android:layout_height="81dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="52dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="88dp"
+        app:layout_constraintStart_toEndOf="@+id/statistics_bubble"
         app:layout_constraintTop_toBottomOf="@+id/view_location_bubble"
         app:srcCompat="@android:drawable/radiobutton_off_background" />
 
@@ -82,9 +81,9 @@
         android:id="@+id/add_donation_bubble"
         android:layout_width="83dp"
         android:layout_height="81dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginTop="100dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/read_location_bubble"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/radiobutton_off_background" />
 
@@ -92,9 +91,9 @@
         android:id="@+id/view_location_bubble"
         android:layout_width="83dp"
         android:layout_height="81dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/read_location_bubble"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/radiobutton_off_background" />
 
@@ -102,15 +101,13 @@
         android:id="@+id/read_location_bubble"
         android:layout_width="83dp"
         android:layout_height="81dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
         app:layout_constraintBottom_toTopOf="@+id/logo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.434"
         app:srcCompat="@android:drawable/radiobutton_off_background" />
 
 
