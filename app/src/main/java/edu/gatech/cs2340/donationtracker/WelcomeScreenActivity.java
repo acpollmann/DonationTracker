@@ -22,7 +22,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
     }
 
     private void configureRegistrationButton() {
-        Button registerButton = (Button) findViewById(R.id.registerbutton);
+        Button registerButton = (Button) findViewById(R.id.register_button);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
