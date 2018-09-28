@@ -40,7 +40,6 @@ public class LoginActivity extends AppCompatActivity {
             mErrorMessage.setText("Invalid email/password");
         }
     }
-
     public void onCancelPressed(View view) {
         Intent intent = new Intent(this, WelcomeScreenActivity.class);
         startActivity(intent);
