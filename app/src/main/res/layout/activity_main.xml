@@ -6,10 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="edu.gatech.cs2340.donationtracker.MainActivity">
-
+  
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/navigation" />
     <Button
         android:id="@+id/logout_button"
-        style="@android:style/Widget.Material.Button.Borderless"
         android:layout_width="85dp"
         android:layout_height="38dp"
         android:onClick="onLogoutPressed"
@@ -18,20 +26,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
+    <Button
         android:id="@+id/map_view_bubble"
         android:layout_width="83dp"
         android:layout_height="81dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.705"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="88dp"
+        android:background="@drawable/circlebuttonmv"
+        android:text="Map View"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toStartOf="@+id/statistics_bubble"
+        app:layout_constraintTop_toBottomOf="@+id/add_donation_bubble"
         app:srcCompat="@android:drawable/radiobutton_off_background" />
 
     <ImageView
@@ -47,79 +53,82 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.414"
         app:srcCompat="@mipmap/ic_launcher_round" />
 
-    <ImageButton
+    <Button
         android:id="@+id/statistics_bubble"
         android:layout_width="83dp"
         android:layout_height="81dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="364dp"
+        android:background="@drawable/circlebuttons"
+        android:text="Statistics"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.821"
         app:srcCompat="@android:drawable/radiobutton_off_background" />
 
-    <ImageButton
+    <Button
         android:id="@+id/search_for_donation_button"
         android:layout_width="83dp"
         android:layout_height="81dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.936"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.705"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="88dp"
+        android:background="@drawable/circlebuttonsfd"
+        android:text="Search For Donation"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="11sp"
+        app:layout_constraintStart_toEndOf="@+id/statistics_bubble"
+        app:layout_constraintTop_toBottomOf="@+id/view_location_bubble"
         app:srcCompat="@android:drawable/radiobutton_off_background" />
 
-    <ImageButton
+    <Button
         android:id="@+id/add_donation_bubble"
         android:layout_width="83dp"
         android:layout_height="81dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/map_view_bubble"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/map_view_bubble"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/circlebuttonad"
+        android:text="Add Donation"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toStartOf="@+id/read_location_bubble"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.258"
         app:srcCompat="@android:drawable/radiobutton_off_background" />
 
-    <ImageButton
+    <Button
         android:id="@+id/view_location_bubble"
         android:layout_width="83dp"
         android:layout_height="81dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/search_for_donation_button"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/search_for_donation_button"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/circlebuttonvl"
+        android:text="View Locatioin"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="11sp"
+        app:layout_constraintStart_toEndOf="@+id/read_location_bubble"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.258"
         app:srcCompat="@android:drawable/radiobutton_off_background" />
 
-    <ImageButton
+    <Button
         android:id="@+id/read_location_bubble"
         android:layout_width="83dp"
         android:layout_height="81dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/circlebuttonrl"
+        android:text="Read Location"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toTopOf="@+id/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
