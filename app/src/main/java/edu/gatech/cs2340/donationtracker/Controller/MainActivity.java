@@ -1,13 +1,12 @@
-package edu.gatech.cs2340.donationtracker;
+package edu.gatech.cs2340.donationtracker.Controller;
 
         import android.content.Intent;
         import android.os.Bundle;
-        import android.support.annotation.NonNull;
-        import android.support.design.widget.BottomNavigationView;
         import android.support.v7.app.AppCompatActivity;
-        import android.view.MenuItem;
         import android.view.View;
         import android.widget.TextView;
+
+        import edu.gatech.cs2340.donationtracker.R;
 
 public class MainActivity extends AppCompatActivity {
 
