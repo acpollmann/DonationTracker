@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.donationtracker;
+package edu.gatech.cs2340.donationtracker.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import edu.gatech.cs2340.donationtracker.R;
 
 /**
  * Activity which represents a login screen that offers login via email/password.

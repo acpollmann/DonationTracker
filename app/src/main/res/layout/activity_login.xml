@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.gatech.cs2340.donationtracker.LoginActivity">
+    tools:context="edu.gatech.cs2340.donationtracker.controller.LoginActivity">
 
     <!-- Login progress -->
     <ProgressBar
@@ -34,8 +34,8 @@
                 android:id="@+id/cancel_login_button"
                 android:layout_width="47dp"
                 android:layout_height="wrap_content"
-                android:onClick="onCancelPressed"
-                android:text="&lt;" />
+                android:text="&lt;"
+                android:onClick="onCancelPressed"/>
 
             <Space
                 android:layout_width="match_parent"
@@ -108,9 +108,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:onClick="onLoginPressed"
                 android:text="@string/action_sign_in_short"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:onClick="onLoginPressed"/>
 
         </LinearLayout>
     </ScrollView>
