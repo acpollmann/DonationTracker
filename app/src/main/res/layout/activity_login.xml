@@ -35,6 +35,8 @@
                 android:layout_width="47dp"
                 android:layout_height="wrap_content"
                 android:onClick="onCancelPressed"
+                android:background="@color/colorAccent"
+                android:textColor="#FFFFFF"
                 android:text="&lt;" />
 
             <Space
@@ -109,6 +111,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:onClick="onLoginPressed"
+                android:background="@color/colorAccent"
+                android:textColor="#FFFFFF"
                 android:text="@string/action_sign_in_short"
                 android:textStyle="bold" />
 
