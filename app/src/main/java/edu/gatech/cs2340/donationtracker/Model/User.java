@@ -67,4 +67,5 @@ public class User {
         User u = (User)obj;
         return this._username.equals(u.getUsername());
     }
+
 }
