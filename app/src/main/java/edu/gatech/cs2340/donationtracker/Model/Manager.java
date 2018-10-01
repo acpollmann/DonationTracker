@@ -6,7 +6,7 @@ package edu.gatech.cs2340.donationtracker.Model;
  */
 
 public class Manager extends User{
-    public Manager(String username, String password, String email) {
-        super(username, password, email);
+    public Manager(String password, String email) {
+        super(password, email);
     }
 }

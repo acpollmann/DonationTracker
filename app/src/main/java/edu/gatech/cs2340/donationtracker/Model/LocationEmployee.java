@@ -10,8 +10,8 @@ import android.location.Location;
 public class LocationEmployee extends User {
     private Location _location;
 
-    public LocationEmployee(String username, String password, String email, Location location) {
-        super(username, password, email);
+    public LocationEmployee(String password, String email, Location location) {
+        super(password, email);
         this._location = location;
     }
 
