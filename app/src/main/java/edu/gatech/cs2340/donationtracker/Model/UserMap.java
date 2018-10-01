@@ -15,9 +15,11 @@ public class UserMap {
         String password = null;
         String email = null;
         User user = new User(username, password, email);
-        HashMap<String, String> listOfUsers = new HashMap<>();
-        listOfUsers.put(user.getUsername(), user.getPassword());
 
+        /*Hashmap stores users by email and password key-value pairs so
+        * system can check if user is in database.*/
+        HashMap<String, String> UsersByEmail = new HashMap<>();
+        UsersByEmail.put(user.getEmail(), user.getPassword());
     }
 
 }
