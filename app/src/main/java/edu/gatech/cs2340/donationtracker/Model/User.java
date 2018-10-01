@@ -59,7 +59,7 @@ public class User {
             return false;
         }
         User u = (User)obj;
-        return this._email.equals(u.getEmail());
+        return this._email.equals(u.getEmail()) && this._password.equals(u.getPassword());
     }
 
     @Override

@@ -85,7 +85,7 @@ public class RegisterActivity extends AppCompatActivity {
         boolean found = false;
 
         for (User u : userSet.getUsers()) {
-            if (u.equals(newUser)) {
+            if (u.getEmail().equals(newUser.getEmail())) {
                 found = true;
                 mEmailField.setText("");
                 mPasswordField.setText("");
