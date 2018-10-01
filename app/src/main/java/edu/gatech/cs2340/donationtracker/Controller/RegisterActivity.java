@@ -3,6 +3,7 @@ package edu.gatech.cs2340.donationtracker.Controller;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -48,7 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         mEmailField = findViewById(R.id.email_field);
         mPasswordField = findViewById(R.id.password_field);
-        mErrorMessage = findViewById(R.id.error_message);
+        mErrorMessage = findViewById(R.id.error_message_register);
 
         userSet = UserSet.getInstance();
     }
@@ -74,7 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
         if (type.equals("User")) {
             newUser = new User(password, email);
         } else if (type.equals("Location Employee")) {
-            newUser = new LocationEmployee(password, email, null);
+            newUser = new LocationEmployee(password, email);
         } else if (type.equals("Admin")) {
             newUser = new Admin(password, email);
         } else {

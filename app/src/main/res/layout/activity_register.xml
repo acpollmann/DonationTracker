@@ -8,7 +8,7 @@
     tools:layout_editor_absoluteY="81dp">
 
     <TextView
-        android:id="@+id/error_message2"
+        android:id="@+id/error_message_register"
         android:layout_width="393dp"
         android:layout_height="18dp"
         android:layout_marginTop="1dp"
@@ -30,7 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/error_message2"
+        app:layout_constraintTop_toBottomOf="@+id/error_message_register"
         app:layout_constraintVertical_bias="0.028" />
 
     <android.support.design.widget.TextInputLayout
@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/password_field"
             android:layout_width="220dp"
             android:layout_height="47dp"
             android:layout_marginBottom="12dp"
@@ -71,7 +71,7 @@
         android:text="Register Here"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textSize="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/error_message2"
+        app:layout_constraintBottom_toTopOf="@+id/error_message_register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/backButton"
         app:layout_constraintTop_toTopOf="parent" />
@@ -90,7 +90,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/email_field"
             android:layout_width="216dp"
             android:layout_height="50dp"
             android:layout_marginLeft="20dp"
@@ -159,7 +159,7 @@
         android:background="@color/colorAccent"
         android:text="&lt;"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/error_message2"
+        app:layout_constraintBottom_toTopOf="@+id/error_message_register"
         app:layout_constraintEnd_toStartOf="@+id/registerTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

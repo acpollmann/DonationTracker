@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.donationtracker.Model;
 
+import android.util.Log;
+
 /**
  * User Class
  * Created by amypollmann on 9/30/18.
@@ -57,7 +59,11 @@ public class User {
             return false;
         }
         User u = (User)obj;
-        return this._email.equals(u.getEmail());
+        return this._email.equals(u.getEmail()) && this._password.equals(u.getPassword());
     }
 
+    @Override
+    public String toString() {
+        return this._email;
+    }
 }

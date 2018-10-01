@@ -8,20 +8,20 @@ import android.location.Location;
  */
 
 public class LocationEmployee extends User {
-    private Location _location;
+    // private Location _location;
 
-    public LocationEmployee(String password, String email, Location location) {
+    public LocationEmployee(String password, String email) {
         super(password, email);
-        this._location = location;
+        // this._location = location;
     }
 
     /* **********************
     * Getters and setters
     */
-    public Location getLocation() {
-        return _location;
-    }
-    public void setLocation(Location location) {
-        this._location = location;
-    }
+//    public Location getLocation() {
+//        return _location;
+//    }
+//    public void setLocation(Location location) {
+//        this._location = location;
+//    }
 }

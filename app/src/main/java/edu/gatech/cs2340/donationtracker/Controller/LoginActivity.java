@@ -3,6 +3,7 @@ package edu.gatech.cs2340.donationtracker.Controller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -45,10 +46,16 @@ public class LoginActivity extends AppCompatActivity {
 
         User user = new User(password, email);
 
-        if(userSet.getUsers().contains(user)) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        } else {
+        boolean found = false;
+        for (User u : userSet.getUsers()) {
+            if (u.equals(user)) {
+                found = true;
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            }
+        }
+
+        if (!found) {
             mEmailField.setText("");
             mPasswordField.setText("");
             mErrorMessage.setText("Invalid email/password");
