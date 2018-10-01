@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.donationtracker.Model;
 
+import android.util.Log;
+
 /**
  * User Class
  * Created by amypollmann on 9/30/18.
@@ -11,9 +13,6 @@ public class User {
 
     /** this user's id number */
     private int _id;
-
-    /** this user's username */
-    private String _username;
 
     /** this user's password */
     private String _password;
@@ -27,9 +26,6 @@ public class User {
     /* **********************
      * Getters and setters
      */
-    public String getUsername() { return _username; }
-    public void setUsername(String name) { this._username = name; }
-
     //no setter for this.  id is a read only field
     public int getId() { return _id; }
 
@@ -44,12 +40,10 @@ public class User {
 
     /**
      * User constructor
-     * @param username  the user's username
      * @param password the user's password
      * @param email the user's email
      */
-    public User(String username, String password, String email) {
-        this._username = username;
+    public User(String password, String email) {
         this._password = password;
         this._email = email;
         this._accountLocked = false;
@@ -65,7 +59,11 @@ public class User {
             return false;
         }
         User u = (User)obj;
-        return this._username.equals(u.getUsername());
+        return this._email.equals(u.getEmail()) && this._password.equals(u.getPassword());
     }
 
+    @Override
+    public String toString() {
+        return this._email;
+    }
 }

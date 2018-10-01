@@ -12,11 +12,7 @@ import edu.gatech.cs2340.donationtracker.Controller.RegisterActivity;
 
 public class UserMap {
 
-    public static Map<String, String> usersByEmail(String username, String email, String password) {
-        HashMap<String, String> UsersByEmail = new HashMap<>();
-        UsersByEmail.put(email, password);
-        return UsersByEmail;
-    }
+
 
     public static Map<String, String> usersByName(String username, String email, String password) {
         HashMap<String, String> UsersByName = new HashMap<>();
