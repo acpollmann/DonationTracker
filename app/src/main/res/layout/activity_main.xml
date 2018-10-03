@@ -17,7 +17,7 @@
         android:layout_marginTop="16dp"
         android:background="@color/colorAccent"
         android:onClick="onLogoutPressed"
-        android:text="@string/logout"
+        android:text="Logout"
         android:textColor="#FFFFFF"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/view_location_bubble"
@@ -127,9 +127,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/circlebuttonvl"
-        android:text="View Locations"
+        android:text="Read Locations"
         android:textColor="#FFFFFF"
         android:textSize="11sp"
+        android:onClick="onViewLocationButtonPressed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/search_for_donation_button"
         app:layout_constraintHorizontal_bias="1.0"
@@ -139,7 +140,7 @@
         app:srcCompat="@android:drawable/radiobutton_off_background" />
 
     <Button
-        android:id="@+id/read_location_bubble"
+        android:id="@+id/edit_location_bubble"
         android:layout_width="83dp"
         android:layout_height="81dp"
         android:layout_marginBottom="8dp"
@@ -147,7 +148,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/circlebuttonrl"
-        android:text="Read Location"
+        android:text="Edit Location"
         android:textColor="#FFFFFF"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
