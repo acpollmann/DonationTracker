@@ -9,9 +9,9 @@
 
     <TextView
         android:id="@+id/error_message_register"
-        android:layout_width="393dp"
+        android:layout_width="339dp"
         android:layout_height="18dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginStart="21dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerTitle" />

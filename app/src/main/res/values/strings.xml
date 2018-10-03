@@ -13,6 +13,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="action_settings">Setting</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -23,4 +24,5 @@
     <string name="register">Register</string>
     <string name="logo">logo</string>
     <string name="action_sign_in">Sign in or register</string>
+    <string name="title_activity_read_location">ReadLocation</string>
 </resources>
