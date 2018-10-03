@@ -82,11 +82,18 @@ public class RegisterActivity extends AppCompatActivity {
             newUser = new Manager(password, email);
         }
 
-        if (userSet.getUsers().contains(newUser)) {
-            mEmailField.setText("");
-            mPasswordField.setText("");
-            mErrorMessage.setText("User already exists.");
-        } else {
+        boolean found = false;
+
+        for (User u : userSet.getUsers()) {
+            if (u.getEmail().equals(newUser.getEmail())) {
+                found = true;
+                mEmailField.setText("");
+                mPasswordField.setText("");
+                mErrorMessage.setText("User already exists.");
+            }
+        }
+
+        if (!found) {
             userSet.addUser(newUser);
             Intent intent = new Intent(this, WelcomeScreenActivity.class);
             startActivity(intent);
