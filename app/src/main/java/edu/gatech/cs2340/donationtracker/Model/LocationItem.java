@@ -38,9 +38,9 @@ public class LocationItem {
     private String _website;
 
 
-    public LocationItem(String _locationName,
-                        String _locationAddress,
-                        int _zipCode, String _locationType) {
+    public LocationItem(int key, String _locationName, double latitude, double longitude,
+                        String _locationAddress, String _locationCity, String _locationState,
+                        int _zipCode, String _locationType, String _phoneNumber, String _website) {
         this.key = key;
         this._locationName = _locationName;
         this.latitude = latitude;

@@ -41,7 +41,7 @@ public class ViewLocationActivity extends AppCompatActivity {
     public void onLoadButtonPressed(View view) {
         Log.v(MainActivity.TAG, "Pressed the load button");
         readSDFile();
-        Intent intent = new Intent(this, ViewLocationActivity.class);
+        Intent intent = new Intent();
         startActivity(intent);
     }
 
@@ -62,8 +62,13 @@ public class ViewLocationActivity extends AppCompatActivity {
             while ((line = br.readLine()) != null) {
                 Log.d(MainActivity.TAG, line);
                 String[] tokens = line.split(",");
-                int id = Integer.parseInt(tokens[1]);
-                model.addItem(new LocationItem(tokens[NAME_POSITION], tokens[2], id, tokens[3]));
+                int key = Integer.parseInt(tokens[0]);
+                double latitude = Integer.parseInt(tokens[2]);
+                double longitude = Integer.parseInt(tokens[3]);
+                int zip = Integer.parseInt(tokens[7]);
+                model.addItem(new LocationItem(key, tokens[1], latitude, longitude,
+                                               tokens[4], tokens[5], tokens[6],zip,
+                                               tokens[8], tokens[9], tokens[10]));
             }
             br.close();
         } catch (IOException e) {
