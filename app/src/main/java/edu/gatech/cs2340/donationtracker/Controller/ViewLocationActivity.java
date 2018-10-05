@@ -63,8 +63,8 @@ public class ViewLocationActivity extends AppCompatActivity {
                 Log.d(MainActivity.TAG, line);
                 String[] tokens = line.split(",");
                 int key = Integer.parseInt(tokens[0]);
-                double latitude = Integer.parseInt(tokens[2]);
-                double longitude = Integer.parseInt(tokens[3]);
+                double latitude = Double.parseDouble(tokens[2]);
+                double longitude = Double.parseDouble(tokens[3]);
                 int zip = Integer.parseInt(tokens[7]);
                 model.addItem(new LocationItem(key, tokens[1], latitude, longitude,
                                                tokens[4], tokens[5], tokens[6],zip,
