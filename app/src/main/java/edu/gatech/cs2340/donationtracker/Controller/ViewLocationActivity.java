@@ -31,6 +31,17 @@ public class ViewLocationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_location);
+        View recyclerView = findViewById(R.id.locationitem_list);
+        assert recyclerView != null;
+        setupRecyclerView((RecyclerView) recyclerView);
+
+//        if (findViewById(R.id.locationitem_details) != null) {
+//            // The detail container view will be present only in the
+//            // large-screen layouts (res/values-w900dp).
+//            // If this view is present, then the
+//            // activity should be in two-pane mode.
+//            mTwoPane = true;
+//        }
     }
     Intent intent = getIntent();
 //    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
