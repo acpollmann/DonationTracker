@@ -30,6 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/simpleExpandableListView"
         app:layout_constraintTop_toBottomOf="@+id/searchView" />
+    <include layout="@layout/locationitem_list_content" />
 
     <SearchView
         android:id="@+id/searchView"
