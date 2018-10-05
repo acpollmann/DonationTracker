@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.donationtracker.Controller;
+package edu.gatech.cs2340.donationtracker.controller;
 
         import android.content.Intent;
         import android.os.Bundle;

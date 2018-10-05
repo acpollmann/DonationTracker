@@ -1,6 +1,4 @@
-package edu.gatech.cs2340.donationtracker.Model;
-
-import android.location.Location;
+package edu.gatech.cs2340.donationtracker.model;
 
 /**
  * Location Employee Class
