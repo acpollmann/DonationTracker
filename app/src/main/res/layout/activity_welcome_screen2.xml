@@ -7,7 +7,7 @@
     android:gravity="center_vertical|center_horizontal"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".Controller.WelcomeScreenActivity">
+    tools:context=".controller.WelcomeScreenActivity">
 
     <ImageView
         android:layout_width="match_parent"

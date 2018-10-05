@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.donationtracker.Controller;
+package edu.gatech.cs2340.donationtracker.controller;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

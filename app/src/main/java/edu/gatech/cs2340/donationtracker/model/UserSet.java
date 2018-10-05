@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.donationtracker.Model;
+package edu.gatech.cs2340.donationtracker.model;
 
 import java.util.HashSet;
 import java.util.Set;

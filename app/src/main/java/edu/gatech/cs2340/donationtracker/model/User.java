@@ -1,6 +1,4 @@
-package edu.gatech.cs2340.donationtracker.Model;
-
-import android.util.Log;
+package edu.gatech.cs2340.donationtracker.model;
 
 /**
  * User Class
