@@ -20,16 +20,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher_round" />
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/location_list"
         android:layout_width="259dp"
         android:layout_height="832dp"
         android:divider="@color/colorPrimaryDark"
         android:dividerHeight="1dp"
+        android:listSelector="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/simpleExpandableListView"
-        app:layout_constraintTop_toBottomOf="@+id/searchView"
-        android:listSelector="@color/colorAccent"/>
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
     <SearchView
         android:id="@+id/searchView"
@@ -53,5 +53,12 @@
         app:layout_constraintEnd_toStartOf="@+id/location_list"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="Button"
+        android:onClick="onLoadButtonPressed"/>
 
 </android.support.constraint.ConstraintLayout>
