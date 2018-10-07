@@ -37,7 +37,11 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".Controller.LocationDetailActivity"></activity>
+        <activity android:name=".Controller.LocationDetailActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Controller.ViewLocationActivity" />
+        </activity>
     </application>
 
 </manifest>

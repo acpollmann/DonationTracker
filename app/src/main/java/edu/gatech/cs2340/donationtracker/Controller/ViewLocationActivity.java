@@ -51,9 +51,15 @@ public class ViewLocationActivity extends AppCompatActivity {
 
     public void onLoadButtonPressed(View view) {
         Log.v(MainActivity.TAG, "Pressed the load button");
-        readSDFile();
-        Intent intent = new Intent();
-        startActivity(intent);
+        try {
+            readSDFile();
+            Intent intent = new Intent();
+            startActivity(intent);
+        }
+        catch (Exception e)
+        {
+            String data = e.getMessage();
+        }
     }
 
     public static final int NAME_POSITION = 0;
