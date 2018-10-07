@@ -78,7 +78,7 @@ public class ViewLocationActivity extends AppCompatActivity {
                 double longitude = Double.parseDouble(tokens[3]);
                 int zip = Integer.parseInt(tokens[7]);
                 model.addItem(new LocationItem(key, tokens[1], latitude, longitude,
-                                               tokens[4], tokens[5], tokens[6],zip,
+                                               tokens[4], tokens[5], tokens[6], zip,
                                                tokens[8], tokens[9], tokens[10]));
             }
             br.close();

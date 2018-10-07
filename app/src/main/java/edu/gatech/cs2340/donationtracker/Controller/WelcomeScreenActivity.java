@@ -15,6 +15,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen2);
         configureRegistrationButton();
+        configureSkipButton();
     }
     public void login(View view) {
         Intent changeLogin = new Intent(this, LoginActivity.class);
@@ -26,6 +27,15 @@ public class WelcomeScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(WelcomeScreenActivity.this, RegisterActivity.class));
+            }
+        });
+    }
+    private void configureSkipButton() {
+        Button registerButton = (Button) findViewById(R.id.skipLogin);
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(WelcomeScreenActivity.this, MainActivity.class));
             }
         });
     }
