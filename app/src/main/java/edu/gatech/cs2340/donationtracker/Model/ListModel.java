@@ -24,7 +24,6 @@ public class ListModel {
 
     public LocationItem findItemById(int key) {
 
-
         for (LocationItem l : items) {
             if (l.getKey() == key) return l;
         }

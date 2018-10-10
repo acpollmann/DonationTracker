@@ -34,6 +34,7 @@ public class ViewLocationActivity extends AppCompatActivity {
         View recyclerView = findViewById(R.id.locationitem_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
+        readSDFile();
 
 //        if (findViewById(R.id.locationitem_details) != null) {
 //            // The detail container view will be present only in the
@@ -44,23 +45,17 @@ public class ViewLocationActivity extends AppCompatActivity {
 //        }
     }
     Intent intent = getIntent();
-//    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-//        String query = intent.getStringExtra(SearchManager.QUERY);
-//        doMySearch(query);
-//    }
 
-    public void onLoadButtonPressed(View view) {
-        Log.v(MainActivity.TAG, "Pressed the load button");
-        try {
-            readSDFile();
-            Intent intent = new Intent();
-            startActivity(intent);
-        }
-        catch (Exception e)
-        {
-            String data = e.getMessage();
-        }
-    }
+//    public void onLoadButtonPressed(View view) {
+//        Log.v(MainActivity.TAG, "Pressed the load button");
+//        try {
+//            readSDFile();
+//            Intent intent = new Intent();
+//            startActivity(intent);
+//        } catch (Exception e) {
+//            String data = e.getMessage();
+//        }
+//    }
 
     public static final int NAME_POSITION = 0;
 

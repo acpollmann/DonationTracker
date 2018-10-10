@@ -66,6 +66,4 @@ public class LocationItem {
     public String _getPhone() {return _phoneNumber;}
     public String _getWebsite() {return _website;}
 
-
-
 }
