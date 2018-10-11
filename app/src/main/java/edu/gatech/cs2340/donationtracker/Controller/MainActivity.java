@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         viewLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //startActivity(new Intent(MainActivity.this, ViewLocationActivity.class));
                 startActivity(new Intent(MainActivity.this, ViewLocationActivity.class));
             }
         });

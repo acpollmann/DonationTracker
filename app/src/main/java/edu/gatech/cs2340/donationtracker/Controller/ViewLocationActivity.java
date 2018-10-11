@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,6 +27,7 @@ import edu.gatech.cs2340.donationtracker.Model.LocationItem;
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
 
 public class ViewLocationActivity extends AppCompatActivity {
+    ListModel model = ListModel.INSTANCE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +62,7 @@ public class ViewLocationActivity extends AppCompatActivity {
     public static final int NAME_POSITION = 0;
 
     private void readSDFile() {
-        ListModel model = ListModel.INSTANCE;
+        //ListModel model = ListModel.INSTANCE;
 
         try {
             //Open a stream on the raw file
@@ -78,18 +80,20 @@ public class ViewLocationActivity extends AppCompatActivity {
                 double latitude = Double.parseDouble(tokens[2]);
                 double longitude = Double.parseDouble(tokens[3]);
                 int zip = Integer.parseInt(tokens[7]);
-                model.addItem(new LocationItem(key, tokens[1], latitude, longitude,
-                                               tokens[4], tokens[5], tokens[6], zip,
-                                               tokens[8], tokens[9], tokens[10]));
+                if (model.findItemById(key) == null) {
+                    model.addItem(new LocationItem(key, tokens[1], latitude, longitude,
+                            tokens[4], tokens[5], tokens[6], zip,
+                            tokens[8], tokens[9], tokens[10]));
+                }
             }
             br.close();
         } catch (IOException e) {
             Log.e(MainActivity.TAG, "error reading assets", e);
         }
-
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
+
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(ListModel.INSTANCE.getItems()));
     }
 
@@ -118,12 +122,14 @@ public class ViewLocationActivity extends AppCompatActivity {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                        Context context = v.getContext();
-//                        Intent intent = new Intent(context, LocationDetailActivity.class);
-//                        Log.d("MYAPP", "Switch to detailed view for item: " + holder.mItem.getKey());
-//                        //intent.putExtra(DataItemDetailFragment.ARG_ITEM_ID, holder.mItem.getId());
-//
-//                        context.startActivity(intent);
+                    //Log.d("Was clicked", "Switch to detailed view for item: " + holder.mItem.getKey());
+                    Toast.makeText(getApplication(), "here", Toast.LENGTH_SHORT).show();
+                        Context context = v.getContext();
+                        Intent intent = new Intent(context, LocationDetailActivity.class);
+                        Log.d("MYAPP", "Switch to detailed view for item: " + holder.mItem.getKey());
+                       //intent.putExtra(DataItemDetailFragment.ARG_ITEM_ID, holder.mItem.getId());
+
+                        context.startActivity(intent);
                 }
             });
         }
