@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -121,12 +122,14 @@ public class ViewLocationActivity extends AppCompatActivity {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                        Context context = v.getContext();
-//                        Intent intent = new Intent(context, LocationDetailActivity.class);
-//                        Log.d("MYAPP", "Switch to detailed view for item: " + holder.mItem.getKey());
-//                        //intent.putExtra(DataItemDetailFragment.ARG_ITEM_ID, holder.mItem.getId());
-//
-//                        context.startActivity(intent);
+                    //Log.d("Was clicked", "Switch to detailed view for item: " + holder.mItem.getKey());
+                    Toast.makeText(getApplication(), "here", Toast.LENGTH_SHORT).show();
+                        Context context = v.getContext();
+                        Intent intent = new Intent(context, LocationDetailActivity.class);
+                        Log.d("MYAPP", "Switch to detailed view for item: " + holder.mItem.getKey());
+                       //intent.putExtra(DataItemDetailFragment.ARG_ITEM_ID, holder.mItem.getId());
+
+                        context.startActivity(intent);
                 }
             });
         }
