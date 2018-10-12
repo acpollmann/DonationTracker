@@ -10,11 +10,12 @@
         android:id="@+id/imageView"
         android:layout_width="152dp"
         android:layout_height="107dp"
+        android:layout_marginBottom="26dp"
         android:layout_marginEnd="225dp"
         android:layout_marginStart="224dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:contentDescription="Logo"
-        app:layout_constraintBottom_toTopOf="@+id/searchView"
+        app:layout_constraintBottom_toTopOf="@+id/include"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -37,40 +38,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="301dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/search_location"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+    <!--<SearchView-->
+        <!--android:id="@+id/searchView"-->
+        <!--android:layout_width="301dp"-->
+        <!--android:layout_height="42dp"-->
+        <!--android:layout_marginEnd="20dp"-->
+        <!--android:layout_marginStart="40dp"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/search_location"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/imageView" />-->
 
     <ExpandableListView
         android:id="@+id/simpleExpandableListView"
         android:layout_width="106dp"
         android:layout_height="347dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginBottom="36dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
         android:divider="@color/colorPrimaryDark"
         android:dividerHeight="1dp"
         android:listSelector="@color/colorHighlight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/expandlocation_list"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
-
-    <include
-        layout="@layout/locationitem_list"
-        android:layout_width="252dp"
-        android:layout_height="352dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.962"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/locationitem_list"
+        android:layout_width="252dp"
+        android:layout_height="352dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.888" />
 
 </android.support.constraint.ConstraintLayout>
