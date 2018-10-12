@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,14 +35,14 @@ import edu.gatech.cs2340.donationtracker.R;
 import edu.gatech.cs2340.donationtracker.Model.LocationItem;
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
 
-public class ViewLocationActivity extends AppCompatActivity {
+public class ViewLocationActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     ListModel model = ListModel.INSTANCE;
     private LinkedHashMap<String, GroupInfo> subjects = new LinkedHashMap<String, GroupInfo>();
     private ArrayList<GroupInfo> deptList = new ArrayList<GroupInfo>();
     private CustomAdapter listAdapter;
     private SearchAdapter searchAdapter;
     private ExpandableListView simpleExpandableListView;
-    private SearchView editsearch;
+    public SearchView editsearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +72,7 @@ public class ViewLocationActivity extends AppCompatActivity {
                 //get the group header
                 GroupInfo headerInfo = deptList.get(groupPosition);
                 //get the child info
-                ChildInfo detailInfo =  headerInfo.getProductList().get(childPosition);
+                ChildInfo detailInfo = headerInfo.getProductList().get(childPosition);
                 //display it or do something with it
                 Toast.makeText(getBaseContext(), " Clicked on :: " + headerInfo.getName()
                         + "/" + detailInfo.getName(), Toast.LENGTH_LONG).show();
@@ -91,10 +92,10 @@ public class ViewLocationActivity extends AppCompatActivity {
                 return false;
             }
         });
-        // Locate the EditText in listview_main.xml
-        //editsearch = (SearchView) findViewById(R.id.searchView);
-//        //editsearch.setOnQueryTextListener(this);
         searchAdapter = new SearchAdapter(ViewLocationActivity.this, deptList);
+        // Locate the EditText in listview_main.xml
+//        editsearch = (SearchView) findViewById(R.id.searchView);
+//        editsearch.setOnQueryTextListener(this);
 
 //        if (findViewById(R.id.locationitem_details) != null) {
 //            // The detail container view will be present only in the
@@ -104,14 +105,19 @@ public class ViewLocationActivity extends AppCompatActivity {
 //            mTwoPane = true;
 //        }
     }
+    @Override
     public boolean onQueryTextSubmit(String query) {
 
         return false;
     }
+    @Override
     public boolean onQueryTextChange(String newText) {
-        String text = newText;
-        searchAdapter.filter(text);
+        searchAdapter.filter(newText);
         return false;
+    }
+    public void onCancelLocationPressed(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
     Intent intent = getIntent();
 

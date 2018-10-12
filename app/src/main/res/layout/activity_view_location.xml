@@ -20,6 +20,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher_round" />
 
+    <Button
+        android:id="@+id/cancel_login_button"
+        android:layout_width="47dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="53dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorAccent"
+        android:onClick="onCancelLocationPressed"
+        android:text="&lt;"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/searchView"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <SearchView
         android:id="@+id/searchView"
         android:layout_width="301dp"
@@ -35,6 +52,7 @@
         android:id="@+id/simpleExpandableListView"
         android:layout_width="106dp"
         android:layout_height="347dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginStart="16dp"
         android:divider="@color/colorPrimaryDark"
         android:dividerHeight="1dp"
@@ -42,8 +60,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/expandlocation_list"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
     <include
         layout="@layout/locationitem_list"
