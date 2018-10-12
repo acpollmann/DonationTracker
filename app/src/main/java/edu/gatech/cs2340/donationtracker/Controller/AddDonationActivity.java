@@ -2,11 +2,15 @@ package edu.gatech.cs2340.donationtracker.Controller;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+
+import java.util.List;
 
 import edu.gatech.cs2340.donationtracker.R;
 import edu.gatech.cs2340.donationtracker.Model.LocationItem;
@@ -44,6 +48,19 @@ public class AddDonationActivity extends AppCompatActivity {
         uploadImageButton = findViewById(R.id.uploadImageButton);
         imageToUpload = findViewById(R.id.imageToUpload);
         addDonationButton = findViewById(R.id.addDonationButton);
+
+
+
+         /*
+          Set up the adapter to display the allowable locations in the spinner
+         */
+         Log.d("Hello:", ListModel.INSTANCE.getItems().toString());
+        ArrayAdapter<LocationItem> adapter = new ArrayAdapter(this,
+                android.R.layout.simple_spinner_item, ListModel.INSTANCE.getItems());
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        locationSpinner.setAdapter(adapter);
+
+
     }
 
     private void configureBackButton() {
@@ -55,4 +72,6 @@ public class AddDonationActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }
