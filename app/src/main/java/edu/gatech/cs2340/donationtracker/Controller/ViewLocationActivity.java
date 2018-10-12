@@ -43,6 +43,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
     private SearchAdapter searchAdapter;
     private ExpandableListView simpleExpandableListView;
     public SearchView editsearch;
+    private TextView mTextMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -289,6 +290,14 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
                     } else {
                         newString= extras.getString("All the extras");
                     }
+                    mTextMessage = (TextView) findViewById(R.id.address);
+                    mTextMessage.setText(address);
+                    mTextMessage = (TextView) findViewById(R.id.latitute_longitude);
+                    mTextMessage.setText(latitudeLongitude);
+                    mTextMessage = (TextView) findViewById(R.id.phone_number);
+                    mTextMessage.setText(phoneNumber);
+                    mTextMessage = (TextView) findViewById(R.id.website);
+                    mTextMessage.setText(website);
                     context.startActivity(intent);
                 }
             });
