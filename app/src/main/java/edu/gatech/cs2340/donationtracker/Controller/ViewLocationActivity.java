@@ -122,14 +122,11 @@ public class ViewLocationActivity extends AppCompatActivity {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Log.d("Was clicked", "Switch to detailed view for item: " + holder.mItem.getKey());
-                    Toast.makeText(getApplication(), "here", Toast.LENGTH_SHORT).show();
-                        Context context = v.getContext();
-                        Intent intent = new Intent(context, LocationDetailActivity.class);
-                        Log.d("MYAPP", "Switch to detailed view for item: " + holder.mItem.getKey());
-                       //intent.putExtra(DataItemDetailFragment.ARG_ITEM_ID, holder.mItem.getId());
-
-                        context.startActivity(intent);
+                    Toast.makeText(getApplication(), "Location Info", Toast.LENGTH_SHORT).show();
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, LocationDetailActivity.class);
+                    Log.d("MYAPP", "Switch to detailed view for item: " + holder.mItem.getKey());
+                    context.startActivity(intent);
                 }
             });
         }
