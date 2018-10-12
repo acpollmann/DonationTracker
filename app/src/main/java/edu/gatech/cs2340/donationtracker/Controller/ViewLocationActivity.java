@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ import java.util.List;
 import edu.gatech.cs2340.donationtracker.Model.ChildInfo;
 import edu.gatech.cs2340.donationtracker.Model.CustomAdapter;
 import edu.gatech.cs2340.donationtracker.Model.GroupInfo;
+import edu.gatech.cs2340.donationtracker.Model.SearchAdapter;
 import edu.gatech.cs2340.donationtracker.R;
 import edu.gatech.cs2340.donationtracker.Model.LocationItem;
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
@@ -37,7 +39,9 @@ public class ViewLocationActivity extends AppCompatActivity {
     private LinkedHashMap<String, GroupInfo> subjects = new LinkedHashMap<String, GroupInfo>();
     private ArrayList<GroupInfo> deptList = new ArrayList<GroupInfo>();
     private CustomAdapter listAdapter;
+    private SearchAdapter searchAdapter;
     private ExpandableListView simpleExpandableListView;
+    private SearchView editsearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +91,10 @@ public class ViewLocationActivity extends AppCompatActivity {
                 return false;
             }
         });
+        // Locate the EditText in listview_main.xml
+        //editsearch = (SearchView) findViewById(R.id.searchView);
+//        //editsearch.setOnQueryTextListener(this);
+        searchAdapter = new SearchAdapter(ViewLocationActivity.this, deptList);
 
 //        if (findViewById(R.id.locationitem_details) != null) {
 //            // The detail container view will be present only in the
@@ -95,6 +103,15 @@ public class ViewLocationActivity extends AppCompatActivity {
 //            // activity should be in two-pane mode.
 //            mTwoPane = true;
 //        }
+    }
+    public boolean onQueryTextSubmit(String query) {
+
+        return false;
+    }
+    public boolean onQueryTextChange(String newText) {
+        String text = newText;
+        searchAdapter.filter(text);
+        return false;
     }
     Intent intent = getIntent();
 
