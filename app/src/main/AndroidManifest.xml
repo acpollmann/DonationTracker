@@ -42,6 +42,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Controller.ViewLocationActivity" />
         </activity>
+        <activity android:name=".Controller.ViewDonationsActivity" />
+        <activity android:name=".Controller.AddDonationActivity" />
+        <activity android:name=".Controller.DonationDetailActivity"></activity>
     </application>
 
 </manifest>

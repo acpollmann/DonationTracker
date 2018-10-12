@@ -23,14 +23,10 @@ public class MainActivity extends AppCompatActivity {
 
     public static String TAG = "Donation_TrackerAPP";
 
-    private TextView mTextMessage;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mTextMessage = (TextView) findViewById(R.id.message);
     }
 
     public void onLogoutPressed(View view) {
@@ -39,13 +35,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onViewLocationButtonPressed(View view) {
-        Button viewLocationButton = (Button) findViewById(R.id.view_location_bubble);
-        viewLocationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //startActivity(new Intent(MainActivity.this, ViewLocationActivity.class));
-                startActivity(new Intent(MainActivity.this, ViewLocationActivity.class));
-            }
-        });
+        Intent intent = new Intent(this, ViewLocationActivity.class);
+        startActivity(intent);
+    }
+
+    public void onAddDonationButtonPressed(View view) {
+        Intent intent = new Intent(this, AddDonationActivity.class);
+        startActivity(intent);
     }
 }
