@@ -255,22 +255,35 @@ public class ViewLocationActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.mItem = mValues.get(position);
             holder.mIdView.setText("" + mValues.get(position).getKey());
             holder.mContentView.setText(mValues.get(position)._getLocationName());
+            readSDFile();
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Log.d("Was clicked", "Switch to detailed view for item: " + holder.mItem.getKey());
-                    Toast.makeText(getApplication(), "here", Toast.LENGTH_SHORT).show();
-                        Context context = v.getContext();
-                        Intent intent = new Intent(context, LocationDetailActivity.class);
-                        Log.d("MYAPP", "Switch to detailed view for item: " + holder.mItem.getKey());
-                       //intent.putExtra(DataItemDetailFragment.ARG_ITEM_ID, holder.mItem.getId());
-
-                        context.startActivity(intent);
+                    Toast.makeText(getApplication(), "Location Info", Toast.LENGTH_SHORT).show();
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, LocationDetailActivity.class);
+                    String address = "" + mValues.get(position)._getAddress();
+                    String latitudeLongitude = "" + mValues.get(position)._getLatitude() + "/"
+                            + "" + mValues.get(position)._getLongitude();
+                    String phoneNumber = "" + mValues.get(position)._getPhone();
+                    String website = mValues.get(position)._getWebsite();
+                    intent.putExtra("Address: ", address);
+                    intent.putExtra("latitude/longitude: ", latitudeLongitude);
+                    intent.putExtra("phoneNumber: ", phoneNumber);
+                    intent.putExtra("website: ", website);
+                    String newString;
+                    Bundle extras = getIntent().getExtras();
+                    if(extras == null) {
+                        newString= null;
+                    } else {
+                        newString= extras.getString("All the extras");
+                    }
+                    context.startActivity(intent);
                 }
             });
         }
