@@ -1,14 +1,10 @@
 package edu.gatech.cs2340.donationtracker.Controller;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,11 +23,11 @@ public class ViewDonationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_donations);
 
-        //Step 1.  Setup the recycler view by getting it from our layout in the main window
         View recyclerView = findViewById(R.id.donation_list);
         assert recyclerView != null;
-        //Step 2.  Hook up the adapter to the view
         setupRecyclerView((RecyclerView) recyclerView);
+
+
     }
 
     /**
@@ -74,7 +70,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
               If you look at the example file, you will see it currently just 2 TextView elements
              */
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.donation_list_content, parent, false);
+                    .inflate(R.layout.donation_list, parent, false);
             return new ViewHolder(view);
         }
 
@@ -92,32 +88,33 @@ public class ViewDonationsActivity extends AppCompatActivity {
               Now we bind the data to the widgets.  In this case, pretty simple, put the id in one
               textview and the string rep of a course in the other.
              */
-            holder.mIdView.setText("" + mDonations.get(position).getKey());
-            holder.mContentView.setText(mDonations.get(position).toString());
+            Log.d("mDonations; ", mDonations.get(position).getName());
+            holder.mIdView.setText(mDonations.get(position).getKey());
+            holder.mContentView.setText(mDonations.get(position).getName());
 
-            /*
-             * set up a listener to handle if the user clicks on this list item, what should happen?
-             */
-            holder.mView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                        //on a phone, we need to change windows to the detail view
-                        Context context = v.getContext();
-                        //create our new intent with the new screen (activity)
-                        Intent intent = new Intent(context, DonationDetailActivity.class);
-                        /*
-                            pass along the id of the course so we can retrieve the correct data in
-                            the next window
-                         */
-                        intent.putExtra(DonationDetailFragment.ARG_DONATION_ID, holder.mDonation.getKey());
-
-                        model.setCurrentDonation(holder.mDonation);
-
-                        //now just display the new window
-                        context.startActivity(intent);
-                    }
-                }
-            });
+//            /*
+//             * set up a listener to handle if the user clicks on this list item, what should happen?
+//             */
+//            holder.mView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                        //on a phone, we need to change windows to the detail view
+//                        Context context = v.getContext();
+//                        //create our new intent with the new screen (activity)
+//                        Intent intent = new Intent(context, DonationDetailActivity.class);
+//                        /*
+//                            pass along the id of the course so we can retrieve the correct data in
+//                            the next window
+//                         */
+//                        intent.putExtra(DonationDetailFragment.ARG_COURSE_ID, holder.mDonation.getKey());
+//
+//                        model.setCurrentDonation(holder.mDonation);
+//
+//                        //now just display the new window
+//                        context.startActivity(intent);
+//                    }
+//                }
+//            });
         }
 
         @Override
@@ -151,4 +148,3 @@ public class ViewDonationsActivity extends AppCompatActivity {
         }
     }
 }
-

@@ -46,7 +46,6 @@
         <activity android:name=".Controller.ViewDonationsActivity" />
         <activity android:name=".Controller.AddDonationActivity" />
         <activity android:name=".Controller.DonationDetailActivity" />
-        <activity android:name=".Controller.DonationDetailFragment"></activity>
     </application>
 
 </manifest>
