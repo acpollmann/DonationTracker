@@ -2,6 +2,9 @@ package edu.gatech.cs2340.donationtracker.Model;
 
 import android.media.Image;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by amypollmann on 10/11/18.
  */
@@ -10,6 +13,7 @@ public class Donation {
     /** allow user to assign number to specific donations */
     private static int Next_key = 0;
     private int key;
+    private String name;
     private String timeStamp;
     private LocationItem location;
     private String shortDescription;
@@ -20,10 +24,13 @@ public class Donation {
     private String comments;
     private Image picture;
 
-    public Donation(LocationItem location, String timeStamp,
+    public static List<String> legalCategories = Arrays.asList("Clothing", "Hat",
+            "Kitchen", "Electronics", "Household", "Other");
+
+    public Donation(String name, LocationItem location, String timeStamp,
                     String shortDescription, String fullDescription,
                     String value, String category, String comments) {
-        this.key = key;
+        this.name = name;
         this.timeStamp = timeStamp;
         this.location = location;
         this.shortDescription = shortDescription;
@@ -32,7 +39,18 @@ public class Donation {
         this.category = category;
         this.comments = comments;
         this.picture = null;
+        this.key = Donation.Next_key++;
 
+    }
+
+    public int getKey() {return key;}
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getTimeStamp() {
@@ -98,4 +116,5 @@ public class Donation {
     public void setPicture(Image picture) {
         this.picture = picture;
     }
+
 }
