@@ -70,7 +70,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
               If you look at the example file, you will see it currently just 2 TextView elements
              */
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.donation_list, parent, false);
+                    .inflate(R.layout.donation_list_content, parent, false);
             return new ViewHolder(view);
         }
 
@@ -89,7 +89,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
               textview and the string rep of a course in the other.
              */
             Log.d("mDonations; ", mDonations.get(position).getName());
-            holder.mIdView.setText(mDonations.get(position).getKey());
+            holder.mIdView.setText("" + mDonations.get(position).getKey());
             holder.mContentView.setText(mDonations.get(position).getName());
 
 //            /*
