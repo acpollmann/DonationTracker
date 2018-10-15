@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.donationtracker.Controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -26,8 +28,11 @@ public class ViewDonationsActivity extends AppCompatActivity {
         View recyclerView = findViewById(R.id.donation_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
+    }
 
-
+    public void onBackButtonPressed(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     /**
@@ -88,8 +93,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
               Now we bind the data to the widgets.  In this case, pretty simple, put the id in one
               textview and the string rep of a course in the other.
              */
-            Log.d("mDonations; ", mDonations.get(position).getName());
-            holder.mIdView.setText("" + mDonations.get(position).getKey());
             holder.mContentView.setText(mDonations.get(position).getName());
 
 //            /*
@@ -130,14 +133,12 @@ public class ViewDonationsActivity extends AppCompatActivity {
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
-            public final TextView mIdView;
             public final TextView mContentView;
             public Donation mDonation;
 
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = (TextView) view.findViewById(R.id.id);
                 mContentView = (TextView) view.findViewById(R.id.content);
             }
 
