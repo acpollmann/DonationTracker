@@ -265,31 +265,47 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
             holder.mItem = mValues.get(position);
             holder.mIdView.setText("" + mValues.get(position).getKey());
             holder.mContentView.setText(mValues.get(position)._getLocationName());
-//            readSDFile();
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(getApplication(), "Location Info", Toast.LENGTH_SHORT).show();
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, LocationDetailActivity.class);
+                    String locationName= "" + mValues.get(position)._getLocationName();
                     String address = "" + mValues.get(position)._getAddress();
                     String latitudeLongitude = "" + mValues.get(position)._getLatitude() + "/"
                             + "" + mValues.get(position)._getLongitude();
                     String phoneNumber = "" + mValues.get(position)._getPhone();
                     String website = mValues.get(position)._getWebsite();
-                    intent.putExtra("Address: ", address);
-                    intent.putExtra("latitude/longitude: ", latitudeLongitude);
-                    intent.putExtra("phoneNumber: ", phoneNumber);
-                    intent.putExtra("website: ", website);
-                    String newString;
+
+                    Intent intent = new Intent(getApplicationContext(), LocationDetailActivity.class);
+                    intent.putExtra("name", locationName);
+                    startActivity(intent);
+
+                    //Intent(context, LocationDetailActivity.class);
                     Bundle extras = getIntent().getExtras();
+                    String newString;
                     if(extras == null) {
                         newString= null;
                     } else {
-                        newString= extras.getString("All the extras");
+                        newString = extras.getString("All the extras");
                     }
-                    context.startActivity(intent);
+                    TextView name = (TextView) findViewById(R.id.name);
+                    name.setText(newString);
+                    //extras.putString("name", locationName);
+//                    intent.putExtra("Address: ", address);
+//                    intent.putExtra("latitude/longitude: ", latitudeLongitude);
+//                    intent.putExtra("phoneNumber: ", phoneNumber);
+//                    intent.putExtra("website: ", website);
+//                    context.startActivity(intent);
+//                    TextView add = (TextView) findViewById(R.id.address);
+//                    add.setText(address);
+//                    TextView lad_long = (TextView) findViewById(R.id.latitute_longitude);
+//                    lad_long.setText(latitudeLongitude);
+//                    TextView phone = (TextView) findViewById(R.id.phone_number);
+//                    phone.setText(phoneNumber);
+//                    TextView web = (TextView) findViewById(R.id.website);
+//                    web.setText(website);
                 }
             });
         }
