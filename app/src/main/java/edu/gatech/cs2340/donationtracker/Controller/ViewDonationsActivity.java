@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.donationtracker.Controller;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -32,7 +34,8 @@ public class ViewDonationsActivity extends AppCompatActivity {
 
     /**
      * Set up an adapter and hook it to the provided view
-     * @param recyclerView  the view that needs this adapter
+     *
+     * @param recyclerView the view that needs this adapter
      */
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         ListModel model = ListModel.INSTANCE;
@@ -42,7 +45,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
     /**
      * This inner class is our custom adapter.  It takes our basic model information and
      * converts it to the correct layout for this view.
-     *
+     * <p>
      * In this case, we are just mapping the toString of the Course object to a text field.
      */
     public class SimpleDonationRecyclerViewAdapter
@@ -55,6 +58,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
 
         /**
          * set the items to be used by the adapter
+         *
          * @param items the list of items to be displayed in the recycler view
          */
         public SimpleDonationRecyclerViewAdapter(List<Donation> items) {
@@ -92,29 +96,28 @@ public class ViewDonationsActivity extends AppCompatActivity {
             holder.mIdView.setText("" + mDonations.get(position).getKey());
             holder.mContentView.setText(mDonations.get(position).getName());
 
-//            /*
-//             * set up a listener to handle if the user clicks on this list item, what should happen?
-//             */
-//            holder.mView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                        //on a phone, we need to change windows to the detail view
-//                        Context context = v.getContext();
-//                        //create our new intent with the new screen (activity)
-//                        Intent intent = new Intent(context, DonationDetailActivity.class);
-//                        /*
-//                            pass along the id of the course so we can retrieve the correct data in
-//                            the next window
-//                         */
-//                        intent.putExtra(DonationDetailFragment.ARG_COURSE_ID, holder.mDonation.getKey());
-//
-//                        model.setCurrentDonation(holder.mDonation);
-//
-//                        //now just display the new window
-//                        context.startActivity(intent);
-//                    }
-//                }
-//            });
+            /*
+             * set up a listener to handle if the user clicks on this list item, what should happen?
+             */
+            holder.mView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //on a phone, we need to change windows to the detail view
+                    Context context = v.getContext();
+                    //create our new intent with the new screen (activity)
+                    Intent intent = new Intent(context, DonationDetailActivity.class);
+                        /*
+                            pass along the id of the course so we can retrieve the correct data in
+                            the next window
+                         */
+                    intent.putExtra(DonationDetailFragment.ARG_DONATION_ID, holder.mDonation.getKey());
+
+                    model.setCurrentDonation(holder.mDonation);
+
+                    //now just display the new window
+                    context.startActivity(intent);
+                }
+            });
         }
 
         @Override

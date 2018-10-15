@@ -12,6 +12,9 @@ public class ListModel {
 
     private List<Donation> donations;
 
+    /** the currently selected course, defaults to first course */
+    private Donation _currentDonation;
+
     private ListModel() {
         items = new ArrayList<>();
         donations = new ArrayList<>();
@@ -45,6 +48,15 @@ public class ListModel {
         Log.d("MYAPP", "Warning - Failed to find key: " + key);
         return null;
     }
+
+    /**
+     *
+     * @return  the currently selected course
+     */
+    public Donation getCurrentDonation() { return _currentDonation;}
+
+    public void setCurrentDonation(Donation donation) { _currentDonation = donation; }
+
 }
 
 
