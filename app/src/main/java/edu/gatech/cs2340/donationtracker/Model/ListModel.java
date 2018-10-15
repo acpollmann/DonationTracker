@@ -10,17 +10,27 @@ public class ListModel {
 
     private List<LocationItem> items;
 
+    private List<Donation> donations;
+
+    /** the currently selected course, defaults to first course */
+    private Donation _currentDonation;
+
     private ListModel() {
         items = new ArrayList<>();
+        donations = new ArrayList<>();
     }
 
     public void addItem(LocationItem item) {
         items.add(item);
     }
 
+    public void addDonationItem(Donation donation) { donations.add(donation); }
+
     public List<LocationItem> getItems() {
         return items;
     }
+
+    public List<Donation> getDonations() { return donations; }
 
     public LocationItem findItemById(int key) {
 
@@ -30,6 +40,23 @@ public class ListModel {
         Log.d("MYAPP", "Warning - Failed to find key: " + key);
         return null;
     }
+    public Donation findDonationById(int key) {
+
+        for (Donation d : donations) {
+            if (d.getKey() == key) return d;
+        }
+        Log.d("MYAPP", "Warning - Failed to find key: " + key);
+        return null;
+    }
+
+    /**
+     *
+     * @return  the currently selected course
+     */
+    public Donation getCurrentDonation() { return _currentDonation;}
+
+    public void setCurrentDonation(Donation donation) { _currentDonation = donation; }
+
 }
 
 
