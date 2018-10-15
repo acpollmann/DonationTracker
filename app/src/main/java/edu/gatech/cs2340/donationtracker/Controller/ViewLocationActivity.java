@@ -273,22 +273,22 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
                     Toast.makeText(getApplication(), "Location Info", Toast.LENGTH_SHORT).show();
                     Context context = v.getContext();
                     Intent intent = new Intent(context, LocationDetailActivity.class);
+
+                    Bundle b = new Bundle();
+
+                    String name = "" + mValues.get(position)._getLocationName();
                     String address = "" + mValues.get(position)._getAddress();
                     String latitudeLongitude = "" + mValues.get(position)._getLatitude() + "/"
                             + "" + mValues.get(position)._getLongitude();
                     String phoneNumber = "" + mValues.get(position)._getPhone();
                     String website = mValues.get(position)._getWebsite();
-                    intent.putExtra("Address: ", address);
-                    intent.putExtra("latitude/longitude: ", latitudeLongitude);
-                    intent.putExtra("phoneNumber: ", phoneNumber);
-                    intent.putExtra("website: ", website);
-                    String newString;
-                    Bundle extras = getIntent().getExtras();
-                    if(extras == null) {
-                        newString= null;
-                    } else {
-                        newString= extras.getString("All the extras");
-                    }
+                    b.putString("name", name);
+                    b.putString("address", address);
+                    b.putString("latitudeLongitude", latitudeLongitude);
+                    b.putString("phoneNumber", phoneNumber);
+                    b.putString("website", website);
+
+                    intent.putExtras(b);
                     context.startActivity(intent);
                 }
             });
