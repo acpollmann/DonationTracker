@@ -266,7 +266,6 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
             holder.mItem = mValues.get(position);
             holder.mIdView.setText("" + mValues.get(position).getKey());
             holder.mContentView.setText(mValues.get(position)._getLocationName());
-//            readSDFile();
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override

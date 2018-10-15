@@ -3,7 +3,7 @@ package edu.gatech.cs2340.donationtracker.Controller;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+//import support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -26,6 +26,9 @@ public class ViewDonationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_donations);
 
+        //View recyclerView = findViewById(R.id.donation_list);
+        // assert recyclerView != null;
+        //setupRecyclerView((RecyclerView) recyclerView);
         View recyclerView = findViewById(R.id.donation_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
@@ -41,7 +44,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
      *
      * @param recyclerView the view that needs this adapter
      */
-    private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
+    private void setupRecyclerView(RecyclerView recyclerView) {
         ListModel model = ListModel.INSTANCE;
         recyclerView.setAdapter(new SimpleDonationRecyclerViewAdapter(model.getDonations()));
     }

@@ -34,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5">
+        app:layout_constraintTop_toBottomOf="@+id/type">
 
         <TableRow
             android:layout_width="50dp"
@@ -73,7 +73,7 @@
     </TableLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/name"
         android:layout_width="105dp"
         android:layout_height="37dp"
         android:layout_marginBottom="28dp"
@@ -81,12 +81,12 @@
         android:layout_marginStart="128dp"
         android:layout_marginTop="2dp"
         android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintBottom_toTopOf="@+id/type"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo6" />
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/type"
         android:layout_width="71dp"
         android:layout_height="31dp"
         android:layout_marginEnd="144dp"
@@ -95,7 +95,7 @@
         android:text="Type"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <ImageView
         android:id="@+id/logo6"
@@ -105,7 +105,7 @@
         android:layout_marginEnd="144dp"
         android:layout_marginStart="144dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
