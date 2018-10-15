@@ -14,7 +14,6 @@
         android:layout_marginStart="224dp"
         android:layout_marginTop="10dp"
         android:contentDescription="Logo"
-        app:layout_constraintBottom_toTopOf="@+id/searchView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -32,21 +31,9 @@
         android:onClick="onCancelLocationPressed"
         android:text="&lt;"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/searchView"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Searc
-        android:id="@+id/searchView"
-        android:layout_width="301dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/search_location"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ExpandableListView
         android:id="@+id/simpleExpandableListView"
@@ -58,9 +45,7 @@
         android:dividerHeight="1dp"
         android:listSelector="@color/colorHighlight"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/expandlocation_list"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <include
         layout="@layout/locationitem_list"

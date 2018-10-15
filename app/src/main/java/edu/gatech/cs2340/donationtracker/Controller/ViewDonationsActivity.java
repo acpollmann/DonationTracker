@@ -115,7 +115,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
                             pass along the id of the course so we can retrieve the correct data in
                             the next window
                          */
-                    intent.putExtra(DonationDetailFragment.ARG_DONATION_ID, holder.mDonation.getKey());
+//                    intent.putExtra(DonationDetailFragment.ARG_DONATION_ID, holder.mDonation.getKey());
 
                     model.setCurrentDonation(holder.mDonation);
 

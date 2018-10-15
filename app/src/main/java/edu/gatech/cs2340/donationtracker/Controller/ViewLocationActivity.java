@@ -1,3 +1,14 @@
+//<Searc
+//        android:id="@+id/searchView"
+//        android:layout_width="301dp"
+//        android:layout_height="42dp"
+//        android:layout_marginEnd="20dp"
+//        android:layout_marginStart="40dp"
+//        app:layout_constraintBottom_toTopOf="@+id/search_location"
+//        app:layout_constraintEnd_toEndOf="parent"
+//        app:layout_constraintStart_toStartOf="parent"
+//        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
 package edu.gatech.cs2340.donationtracker.Controller;
 
 import android.app.SearchManager;
