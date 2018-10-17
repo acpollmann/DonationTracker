@@ -4,12 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -24,11 +26,15 @@ public class ViewDonationsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_donations);
-        View recyclerView = findViewById(R.id.donation_list);
-        assert recyclerView != null;
-        setupRecyclerView((RecyclerView) recyclerView);
 
+        //View recyclerView = findViewById(R.id.donation_list);
+        // assert recyclerView != null;
+        //setupRecyclerView((RecyclerView) recyclerView);
+    }
 
+    public void onBackButtonPressed(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     /**
@@ -36,7 +42,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
      *
      * @param recyclerView the view that needs this adapter
      */
-    private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
+    private void setupRecyclerView(RecyclerView recyclerView) {
         ListModel model = ListModel.INSTANCE;
         recyclerView.setAdapter(new SimpleDonationRecyclerViewAdapter(model.getDonations()));
     }
@@ -91,8 +97,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
               Now we bind the data to the widgets.  In this case, pretty simple, put the id in one
               textview and the string rep of a course in the other.
              */
-            Log.d("mDonations; ", mDonations.get(position).getName());
-            holder.mIdView.setText("" + mDonations.get(position).getKey());
             holder.mContentView.setText(mDonations.get(position).getName());
 
             /*
@@ -109,7 +113,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
                             pass along the id of the course so we can retrieve the correct data in
                             the next window
                          */
-                    intent.putExtra(DonationDetailFragment.ARG_DONATION_ID, holder.mDonation.getKey());
+//                    intent.putExtra(DonationDetailFragment.ARG_DONATION_ID, holder.mDonation.getKey());
 
                     model.setCurrentDonation(holder.mDonation);
 
@@ -132,14 +136,12 @@ public class ViewDonationsActivity extends AppCompatActivity {
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
-            public final TextView mIdView;
             public final TextView mContentView;
             public Donation mDonation;
 
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = (TextView) view.findViewById(R.id.id);
                 mContentView = (TextView) view.findViewById(R.id.content);
             }
 

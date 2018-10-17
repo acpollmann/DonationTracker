@@ -1,28 +1,30 @@
+//<Searc
+//        android:id="@+id/searchView"
+//        android:layout_width="301dp"
+//        android:layout_height="42dp"
+//        android:layout_marginEnd="20dp"
+//        android:layout_marginStart="40dp"
+//        app:layout_constraintBottom_toTopOf="@+id/search_location"
+//        app:layout_constraintEnd_toEndOf="parent"
+//        app:layout_constraintStart_toStartOf="parent"
+//        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
 package edu.gatech.cs2340.donationtracker.Controller;
 
-import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -30,10 +32,10 @@ import java.util.List;
 import edu.gatech.cs2340.donationtracker.Model.ChildInfo;
 import edu.gatech.cs2340.donationtracker.Model.CustomAdapter;
 import edu.gatech.cs2340.donationtracker.Model.GroupInfo;
+import edu.gatech.cs2340.donationtracker.Model.ListModel;
+import edu.gatech.cs2340.donationtracker.Model.LocationItem;
 import edu.gatech.cs2340.donationtracker.Model.SearchAdapter;
 import edu.gatech.cs2340.donationtracker.R;
-import edu.gatech.cs2340.donationtracker.Model.LocationItem;
-import edu.gatech.cs2340.donationtracker.Model.ListModel;
 
 public class ViewLocationActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     ListModel model = ListModel.INSTANCE;
@@ -43,6 +45,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
     private SearchAdapter searchAdapter;
     private ExpandableListView simpleExpandableListView;
     public SearchView editsearch;
+    private TextView mTextMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,20 +124,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
     }
     Intent intent = getIntent();
 
-//    public void onLoadButtonPressed(View view) {
-//        Log.v(MainActivity.TAG, "Pressed the load button");
-//        try {
-//            readSDFile();
-//            Intent intent = new Intent();
-//            startActivity(intent);
-//        } catch (Exception e) {
-//            String data = e.getMessage();
-//        }
-//    }
-
     public static final int NAME_POSITION = 0;
-
-
 
     //method to expand all groups
     private void expandAll() {
@@ -172,8 +162,6 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
 
     }
 
-
-
     //here we maintain our products in various departments
     private int addProduct(String department, String product){
 
@@ -208,37 +196,6 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
         return groupPosition;
     }
 
-//    private void readSDFile() {
-//        //ListModel model = ListModel.INSTANCE;
-//
-//        try {
-//            //Open a stream on the raw file
-//            InputStream is = getResources().openRawResource(R.raw.locationdata);
-//            //From here we probably should call a model method and pass the InputStream
-//            //Wrap it in a BufferedReader so that we get the readLine() method
-//            BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
-//
-//            String line;
-//            br.readLine(); //get rid of header line
-//            while ((line = br.readLine()) != null) {
-//                Log.d(MainActivity.TAG, line);
-//                String[] tokens = line.split(",");
-//                int key = Integer.parseInt(tokens[0]);
-//                double latitude = Double.parseDouble(tokens[2]);
-//                double longitude = Double.parseDouble(tokens[3]);
-//                int zip = Integer.parseInt(tokens[7]);
-//                if (model.findItemById(key) == null) {
-//                    model.addItem(new LocationItem(key, tokens[1], latitude, longitude,
-//                            tokens[4], tokens[5], tokens[6], zip,
-//                            tokens[8], tokens[9], tokens[10]));
-//                }
-//            }
-//            br.close();
-//        } catch (IOException e) {
-//            Log.e(MainActivity.TAG, "error reading assets", e);
-//        }
-//    }
-
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
 
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(ListModel.INSTANCE.getItems()));
@@ -271,41 +228,26 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
                 public void onClick(View v) {
                     Toast.makeText(getApplication(), "Location Info", Toast.LENGTH_SHORT).show();
                     Context context = v.getContext();
-                    String locationName= "" + mValues.get(position)._getLocationName();
-                    String address = "" + mValues.get(position)._getAddress();
-                    String latitudeLongitude = "" + mValues.get(position)._getLatitude() + "/"
+                    Intent intent = new Intent(context, LocationDetailActivity.class);
+
+                    Bundle b = new Bundle();
+
+                    String name = "" + mValues.get(position)._getLocationName();
+                    String type = "" + mValues.get(position)._getType();
+                    String address = mValues.get(position)._getAddress();
+                    String latitudeLongitude = mValues.get(position)._getLatitude() + "/"
                             + "" + mValues.get(position)._getLongitude();
-                    String phoneNumber = "" + mValues.get(position)._getPhone();
+                    String phoneNumber = mValues.get(position)._getPhone();
                     String website = mValues.get(position)._getWebsite();
+                    b.putString("name", name);
+                    b.putString("type", type);
+                    b.putString("address", address);
+                    b.putString("latitudeLongitude", latitudeLongitude);
+                    b.putString("phoneNumber", phoneNumber);
+                    b.putString("website", website);
 
-                    Intent intent = new Intent(getApplicationContext(), LocationDetailActivity.class);
-                    intent.putExtra("name", locationName);
-                    startActivity(intent);
-
-                    //Intent(context, LocationDetailActivity.class);
-                    Bundle extras = getIntent().getExtras();
-                    String newString;
-                    if(extras == null) {
-                        newString= null;
-                    } else {
-                        newString = extras.getString("All the extras");
-                    }
-                    TextView name = (TextView) findViewById(R.id.name);
-                    name.setText(newString);
-                    //extras.putString("name", locationName);
-//                    intent.putExtra("Address: ", address);
-//                    intent.putExtra("latitude/longitude: ", latitudeLongitude);
-//                    intent.putExtra("phoneNumber: ", phoneNumber);
-//                    intent.putExtra("website: ", website);
-//                    context.startActivity(intent);
-//                    TextView add = (TextView) findViewById(R.id.address);
-//                    add.setText(address);
-//                    TextView lad_long = (TextView) findViewById(R.id.latitute_longitude);
-//                    lad_long.setText(latitudeLongitude);
-//                    TextView phone = (TextView) findViewById(R.id.phone_number);
-//                    phone.setText(phoneNumber);
-//                    TextView web = (TextView) findViewById(R.id.website);
-//                    web.setText(website);
+                    intent.putExtras(b);
+                    context.startActivity(intent);
                 }
             });
         }
