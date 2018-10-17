@@ -3,7 +3,6 @@ package edu.gatech.cs2340.donationtracker.Controller;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-<<<<<<< HEAD
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -11,8 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-=======
->>>>>>> 538ce4d22ab0d98169bb7c838e8e0787576fc644
 import android.widget.TextView;
 
 import java.util.List;
