@@ -3,15 +3,11 @@ package edu.gatech.cs2340.donationtracker.Controller;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -27,9 +23,9 @@ public class ViewDonationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_donations);
 
-        //View recyclerView = findViewById(R.id.donation_list);
-        // assert recyclerView != null;
-        //setupRecyclerView((RecyclerView) recyclerView);
+        View recyclerView = findViewById(R.id.donation_list);
+         assert recyclerView != null;
+        setupRecyclerView((RecyclerView) recyclerView);
     }
 
     public void onBackButtonPressed(View view) {
@@ -84,9 +80,10 @@ public class ViewDonationsActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
 
             final ListModel model = ListModel.INSTANCE;
+
             /*
             This is where we have to bind each data element in the list (given by position parameter)
             to an element in the view (which is one of our two TextView widgets
@@ -106,19 +103,43 @@ public class ViewDonationsActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     //on a phone, we need to change windows to the detail view
-                    Context context = v.getContext();
+//                    Context context = v.getContext();
                     //create our new intent with the new screen (activity)
-                    Intent intent = new Intent(context, DonationDetailActivity.class);
+ //                   Intent intent = new Intent(context, DonationDetailActivity.class);
                         /*
                             pass along the id of the course so we can retrieve the correct data in
                             the next window
                          */
 //                    intent.putExtra(DonationDetailFragment.ARG_DONATION_ID, holder.mDonation.getKey());
 
-                    model.setCurrentDonation(holder.mDonation);
+//                    model.setCurrentDonation(holder.mDonation);
 
-                    //now just display the new window
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, DonationDetailActivity.class);
+
+                    Bundle b = new Bundle();
+
+                    String name = "" + mDonations.get(position).getName();
+                    String location = mDonations.get(position).getLocation().toString();
+                    String timeStamp = mDonations.get(position).getTimeStamp();
+                    String value = mDonations.get(position).getValue();
+                    String category = "" + mDonations.get(position).getCategory();
+                    String shortDescription = mDonations.get(position).getShortDescription();
+                    String fullDescription = mDonations.get(position).getFullDescription();
+                    String comments = mDonations.get(position).getComments();
+
+                    b.putString("name", name);
+                    b.putString("location", location);
+                    b.putString("timestamp", timeStamp);
+                    b.putString("value", value);
+                    b.putString("category", category);
+                    b.putString("shortDescription", shortDescription);
+                    b.putString("longDescription", fullDescription);
+                    b.putString("comments", comments);
+
+                    intent.putExtras(b);
                     context.startActivity(intent);
+
                 }
             });
         }
