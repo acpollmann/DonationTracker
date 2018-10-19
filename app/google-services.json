@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "542631335429-3m8jagl3vtbfctgmk6c7dag4gajs0up5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.gatech.cs2340.donationtracker",
+            "certificate_hash": "07ad41090cda9a30a3b40517865fe50db08ff86d"
+          }
+        },
+        {
           "client_id": "542631335429-8u2a2n64t743l3ie2n1gi1e6hs1nseq9.apps.googleusercontent.com",
           "client_type": 3
         }
