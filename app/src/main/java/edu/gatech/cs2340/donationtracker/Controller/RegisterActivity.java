@@ -12,10 +12,14 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashSet;
 import java.util.Map;
@@ -56,31 +60,6 @@ public class RegisterActivity extends AppCompatActivity {
         mEmailField = findViewById(R.id.email_field);
         mPasswordField = findViewById(R.id.password_field);
         mErrorMessage = findViewById(R.id.error_message_register);
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        // Create a new user with a first and last name
-        Map<String, Object> user = new HashMap<>();
-        user.put("first", "Ada");
-        user.put("last", "Lovelace");
-        user.put("born", 1815);
-
-        // Add a new document with a generated ID
-        db.collection("users")
-                .add(user)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d("info", "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("info2", "Error adding document", e);
-                    }
-                });
-
     }
 
     private void configureBackButton() {
@@ -99,33 +78,70 @@ public class RegisterActivity extends AppCompatActivity {
         String type = spinner.getSelectedItem().toString();
         mErrorMessage.setText("");
 
-        User newUser;
+//        User newUser;
+//
+//        if (type.equals("User")) {
+//            newUser = new User(password, email);
+//        } else if (type.equals("Location Employee")) {
+//            newUser = new LocationEmployee(password, email);
+//        } else if (type.equals("Admin")) {
+//            newUser = new Admin(password, email);
+//        } else {
+//            newUser = new Manager(password, email);
+//        }
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        if (type.equals("User")) {
-            newUser = new User(password, email);
-        } else if (type.equals("Location Employee")) {
-            newUser = new LocationEmployee(password, email);
-        } else if (type.equals("Admin")) {
-            newUser = new Admin(password, email);
-        } else {
-            newUser = new Manager(password, email);
-        }
+        // Create a new user with a first and last name
+        Map<String, Object> user = new HashMap<>();
+        user.put("email", email);
+        user.put("password", password);
+        user.put("type", type);
 
-        boolean found = false;
+//        boolean found = false;
+//
+//        for (User u : userSet.getUsers()) {
+//                if (u.getEmail().equals(newUser.getEmail())) {
+//                found = true;
+//                mEmailField.setText("");
+//                mPasswordField.setText("");
+//                mErrorMessage.setText("User already exists.");
+//            }
+//        }
 
-        for (User u : userSet.getUsers()) {
-            if (u.getEmail().equals(newUser.getEmail())) {
-                found = true;
-                mEmailField.setText("");
-                mPasswordField.setText("");
-                mErrorMessage.setText("User already exists.");
-            }
-        }
+//        if (!found) {
+//            userSet.addUser(newUser);
+            // Add a new document with a generated ID
+        db.collection("users")
+                .add(user)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("info", "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("info2", "Error adding document", e);
+                    }
+                });
+        Intent intent = new Intent(this, WelcomeScreenActivity.class);
+        startActivity(intent);
+//        }
 
-        if (!found) {
-            userSet.addUser(newUser);
-            Intent intent = new Intent(this, WelcomeScreenActivity.class);
-            startActivity(intent);
-        }
+        db.collection("users")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("doc", document.getId() + " => " + document.getData());
+                            }
+                        } else {
+                            Log.d("docError", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
     }
 }
