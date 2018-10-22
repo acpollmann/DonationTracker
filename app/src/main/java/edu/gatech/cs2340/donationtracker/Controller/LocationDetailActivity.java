@@ -25,7 +25,7 @@ public class LocationDetailActivity extends AppCompatActivity {
         mName = findViewById(R.id.name);
         mType = findViewById(R.id.type);
         mAddress = findViewById(R.id.address);
-        latitudeLongitude = findViewById(R.id.latitute_longitude);
+        latitudeLongitude = findViewById(R.id.latitude_longitude);
         mPhoneNumber = findViewById(R.id.phone_number);
         mWebSite = findViewById(R.id.website);
 

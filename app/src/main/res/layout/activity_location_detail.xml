@@ -10,25 +10,29 @@
         android:id="@+id/cancel_login_button"
         android:layout_width="47dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="178dp"
-        android:layout_marginEnd="89dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="@color/colorAccent"
         android:onClick="onBackButtonPressed"
         android:text="&lt;"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
-        app:layout_constraintEnd_toStartOf="@+id/logo6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="100dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:stretchColumns="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,14 +46,14 @@
 
             <TextView
                 android:id="@+id/address"
-                android:layout_width="120dp"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:padding="3dip"
                 android:text="Address" />
 
             <TextView
-                android:id="@+id/latitute_longitude"
-                android:layout_height="100dp"
+                android:id="@+id/latitude_longitude"
+                android:layout_height="wrap_content"
                 android:gravity="right"
                 android:padding="3dip"
                 android:text="Latitude/Longitude" />
@@ -59,13 +63,15 @@
 
             <TextView
                 android:id="@+id/phone_number"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:padding="3dip"
                 android:text="Phone Number" />
 
             <TextView
                 android:id="@+id/website"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:gravity="right"
                 android:padding="3dip"
                 android:text="Website" />
@@ -74,41 +80,40 @@
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="105dp"
-        android:layout_height="37dp"
-        android:layout_marginBottom="28dp"
-        android:layout_marginEnd="127dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/type"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/logo6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/logo6"
         app:layout_constraintTop_toBottomOf="@+id/logo6" />
+
     <TextView
         android:id="@+id/type"
-        android:layout_width="71dp"
-        android:layout_height="31dp"
-        android:layout_marginEnd="144dp"
-        android:layout_marginStart="145dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Type"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/name"
+        app:layout_constraintStart_toStartOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <ImageView
         android:id="@+id/logo6"
-        android:layout_width="wrap_content"
-        android:layout_height="64dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginEnd="144dp"
-        android:layout_marginStart="144dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/name"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.255"
         app:srcCompat="@mipmap/ic_launcher_round" />
 
 </android.support.constraint.ConstraintLayout>
