@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Controller.AddLocationActivity">
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorAccent"
+        android:text="&lt;"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/addLocationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Add Location"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/backButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="402dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="88dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="250dp">
+
+            <EditText
+                android:id="@+id/phoneField"
+                android:layout_width="292dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:hint="Phone Number"
+                android:inputType="text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/websiteField" />
+
+            <EditText
+                android:id="@+id/addressField"
+                android:layout_width="288dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="7dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:hint="Street Address"
+                android:inputType="text"
+                app:layout_constraintBottom_toTopOf="@+id/CityField"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.492"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LongField" />
+
+            <EditText
+                android:id="@+id/CityField"
+                android:layout_width="289dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="9dp"
+                android:ems="10"
+                android:hint="City"
+                android:inputType="text"
+                app:layout_constraintBottom_toTopOf="@+id/StateSpinner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addressField" />
+
+            <Spinner
+                android:id="@+id/StateSpinner"
+                android:layout_width="291dp"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toTopOf="@+id/ZipField"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/CityField" />
+
+            <EditText
+                android:id="@+id/ZipField"
+                android:layout_width="289dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="9dp"
+                android:ems="10"
+                android:hint="Zipcode"
+                android:inputType="number"
+                app:layout_constraintBottom_toTopOf="@+id/websiteField"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/StateSpinner" />
+
+
+            <EditText
+                android:id="@+id/LatField"
+                android:layout_width="289dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:hint="Latitude"
+                android:inputType="numberDecimal"
+                app:layout_constraintBottom_toTopOf="@+id/LongField"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameField" />
+
+            <EditText
+                android:id="@+id/LongField"
+                android:layout_width="289dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:hint="Long"
+                android:inputType="numberDecimal"
+                app:layout_constraintBottom_toTopOf="@+id/addressField"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LatField" />
+
+            <EditText
+                android:id="@+id/websiteField"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:hint="Website"
+                android:inputType="text"
+                app:layout_constraintBottom_toTopOf="@+id/phoneField"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ZipField" />
+
+            <EditText
+                android:id="@+id/nameField"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:hint="Location Name"
+                android:inputType="text"
+                app:layout_constraintBottom_toTopOf="@+id/LatField"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

@@ -51,4 +51,3 @@ public class LocationDetailActivity extends AppCompatActivity {
         startActivity(intent);
     }
 }
-
