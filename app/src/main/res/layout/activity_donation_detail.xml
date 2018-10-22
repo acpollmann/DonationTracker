@@ -78,18 +78,17 @@
 
             <TextView
                 android:id="@+id/category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="Category"
                 android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="end"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="Location"
-                android:textSize="18sp" />
+                android:textSize="10sp" />
         </TableRow>
 
         <TableRow
@@ -107,7 +106,6 @@
                 android:id="@+id/timestamp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="end"
                 android:text="Timestamp"
                 android:textSize="18sp" />
 

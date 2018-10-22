@@ -134,7 +134,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
                     b.putString("value", value);
                     b.putString("category", category);
                     b.putString("shortDescription", shortDescription);
-                    b.putString("longDescription", fullDescription);
+                    b.putString("fullDescription", fullDescription);
                     b.putString("comments", comments);
 
                     intent.putExtras(b);
