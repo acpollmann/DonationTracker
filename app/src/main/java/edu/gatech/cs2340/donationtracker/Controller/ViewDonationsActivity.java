@@ -26,9 +26,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_donations);
 
-        //View recyclerView = findViewById(R.id.donation_list);
-        // assert recyclerView != null;
-        //setupRecyclerView((RecyclerView) recyclerView);
         View recyclerView = findViewById(R.id.donation_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);

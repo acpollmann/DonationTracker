@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "542631335429",
+    "firebase_url": "https://donationtracker-38f7b.firebaseio.com",
+    "project_id": "donationtracker-38f7b",
+    "storage_bucket": "donationtracker-38f7b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542631335429:android:94ddfe19f9ec717a",
+        "android_client_info": {
+          "package_name": "edu.gatech.cs2340.donationtracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542631335429-0aba0ajpm8rm464hhlhqg50th4dd95ld.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.gatech.cs2340.donationtracker",
+            "certificate_hash": "b5198cf09a8dfae48bb803817e005d0e577bd947"
+          }
+        },
+        {
+          "client_id": "542631335429-3m8jagl3vtbfctgmk6c7dag4gajs0up5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.gatech.cs2340.donationtracker",
+            "certificate_hash": "07ad41090cda9a30a3b40517865fe50db08ff86d"
+          }
+        },
+        {
+          "client_id": "542631335429-8u2a2n64t743l3ie2n1gi1e6hs1nseq9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRtrJLElFXXoBYIyABpYqEaCtpfu3sIuk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "542631335429-8u2a2n64t743l3ie2n1gi1e6hs1nseq9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
