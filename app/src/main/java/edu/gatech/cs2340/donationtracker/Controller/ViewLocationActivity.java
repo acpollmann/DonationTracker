@@ -285,4 +285,8 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
             }
         }
     }
+    public void onAddLocationPressed(View view) {
+        Intent intent = new Intent(this, AddLocationActivity.class);
+        startActivity(intent);
+    }
 }
