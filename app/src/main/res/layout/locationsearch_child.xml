@@ -9,6 +9,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:paddingLeft="35sp"
+        android:textColor="@color/colorPrimary"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="12dp"/>
 
@@ -18,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/sequence"
+        android:textColor="@color/colorPrimary"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="12dp"/>
 
