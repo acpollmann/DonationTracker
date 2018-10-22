@@ -8,13 +8,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.Set;
 
+import edu.gatech.cs2340.donationtracker.Model.FirestoreManager;
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
 import edu.gatech.cs2340.donationtracker.Model.LocationItem;
+import edu.gatech.cs2340.donationtracker.Model.User;
+import edu.gatech.cs2340.donationtracker.Model.UserSet;
 import edu.gatech.cs2340.donationtracker.R;
 
 public class ReadFile extends Application {
     private ListModel model;
+    private FirestoreManager firestoreManager;
 
     @Override
     public void onCreate() {
@@ -22,6 +27,10 @@ public class ReadFile extends Application {
 
         model = ListModel.INSTANCE;
         readSDFile();
+
+        firestoreManager = new FirestoreManager();
+        Set<User> users = firestoreManager.loadUsers();
+        UserSet.getInstance().setUsers(users);
     }
 
     private void readSDFile() {
