@@ -30,7 +30,6 @@ public class AddDonationActivity extends AppCompatActivity {
     private ImageView imageToUpload;
     private Button addDonationButton;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
