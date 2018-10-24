@@ -11,29 +11,20 @@
 
 package edu.gatech.cs2340.donationtracker.Controller;
 
-import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -41,10 +32,10 @@ import java.util.List;
 import edu.gatech.cs2340.donationtracker.Model.ChildInfo;
 import edu.gatech.cs2340.donationtracker.Model.CustomAdapter;
 import edu.gatech.cs2340.donationtracker.Model.GroupInfo;
+import edu.gatech.cs2340.donationtracker.Model.ListModel;
+import edu.gatech.cs2340.donationtracker.Model.LocationItem;
 import edu.gatech.cs2340.donationtracker.Model.SearchAdapter;
 import edu.gatech.cs2340.donationtracker.R;
-import edu.gatech.cs2340.donationtracker.Model.LocationItem;
-import edu.gatech.cs2340.donationtracker.Model.ListModel;
 
 public class ViewLocationActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     ListModel model = ListModel.INSTANCE;
