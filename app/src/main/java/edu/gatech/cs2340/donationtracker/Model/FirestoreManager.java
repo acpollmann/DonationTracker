@@ -210,14 +210,15 @@ public class FirestoreManager {
                                 Map<String, Object> locationMap =
                                         (Map<String, Object>) userDoc.get("location");
 
-                                long keyl = (long) userDoc.get("key");
+                                long keyl = (long) locationMap.get("key");
                                 int key  = (int) keyl;
 
-                                long latl = (long) userDoc.get("latitude");
-                                double latitude = (double) latl;
+                                double latitude = (double) locationMap.get("latitude");
 
-                                long longl = (long) userDoc.get("longitude");
-                                double longitude = (double) longl;
+                                double longitude = (double) locationMap.get("longitude");
+
+                                long zipl = (long) locationMap.get("zipCode");
+                                int zipCode  = (int) zipl;
 
 
                                 LocationItem location = new LocationItem(
@@ -228,7 +229,7 @@ public class FirestoreManager {
                                         (String) locationMap.get("locationAddress"),
                                         (String) locationMap.get("locationCity"),
                                         (String) locationMap.get("locationState"),
-                                        (int) locationMap.get("zipCode"),
+                                        zipCode,
                                         (String) locationMap.get("locationType"),
                                         (String) locationMap.get("phoneNumber"),
                                         (String) locationMap.get("website")
