@@ -10,4 +10,4 @@
     android:layout_marginRight="16dp"
     app:layoutManager="android.support.v7.widget.LinearLayoutManager"
     tools:context="edu.gatech.cs2340.donationtracker.Controller.ViewDonationsActivity"
-    tools:listitem="@layout/locationitem_list_content" />
+    tools:listitem="@layout/donation_list_content" />
