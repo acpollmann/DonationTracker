@@ -37,6 +37,7 @@
         android:text="Map View"
         android:textColor="#FFFFFF"
         android:textSize="11sp"
+        android:onClick="onMapViewButtonPressed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.063"
