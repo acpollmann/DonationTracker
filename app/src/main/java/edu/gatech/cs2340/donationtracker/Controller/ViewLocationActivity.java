@@ -64,10 +64,6 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
         listAdapter = new CustomAdapter(ViewLocationActivity.this, deptList);
         // attach the adapter to the expandable list view
         simpleExpandableListView.setAdapter(listAdapter);
-
-        //expand all the Groups
-        expandAll();
-
         // setOnChildClickListener listener for child row click
         simpleExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
@@ -80,6 +76,16 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
                 Toast.makeText(getBaseContext(), " Clicked on :: " + headerInfo.getName()
                         + "/" + detailInfo.getName(), Toast.LENGTH_LONG).show();
                 return false;
+            }
+        });
+        final int[] prevExpandPosition = {-1};
+        simpleExpandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                if (prevExpandPosition[0] >= 0 && prevExpandPosition[0] != groupPosition) {
+                    simpleExpandableListView.collapseGroup(prevExpandPosition[0]);
+                }
+                prevExpandPosition[0] = groupPosition;
             }
         });
         // setOnGroupClickListener listener for group heading click
@@ -275,5 +281,9 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
                 return super.toString() + " '" + mContentView.getText() + "'";
             }
         }
+    }
+    public void onAddLocationPressed(View view) {
+        Intent intent = new Intent(this, AddLocationActivity.class);
+        startActivity(intent);
     }
 }
