@@ -221,7 +221,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.mItem = mValues.get(position);
             holder.mIdView.setText("" + mValues.get(position).getKey());
-            holder.mContentView.setText(mValues.get(position)._getLocationName());
+            holder.mContentView.setText(mValues.get(position).getLocationName());
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -232,13 +232,13 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
 
                     Bundle b = new Bundle();
 
-                    String name = "" + mValues.get(position)._getLocationName();
-                    String type = "" + mValues.get(position)._getType();
-                    String address = mValues.get(position)._getAddress();
-                    String latitudeLongitude = mValues.get(position)._getLatitude() + "/"
-                            + "" + mValues.get(position)._getLongitude();
-                    String phoneNumber = mValues.get(position)._getPhone();
-                    String website = mValues.get(position)._getWebsite();
+                    String name = "" + mValues.get(position).getLocationName();
+                    String type = "" + mValues.get(position).getType();
+                    String address = mValues.get(position).getAddress();
+                    String latitudeLongitude = mValues.get(position).getLatitude() + "/"
+                            + "" + mValues.get(position).getLongitude();
+                    String phoneNumber = mValues.get(position).getPhone();
+                    String website = mValues.get(position).getWebsite();
                     b.putString("name", name);
                     b.putString("type", type);
                     b.putString("address", address);

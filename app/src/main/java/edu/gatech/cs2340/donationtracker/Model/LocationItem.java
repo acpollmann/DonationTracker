@@ -8,7 +8,7 @@ public class LocationItem {
     private int key;
 
     /** this location name */
-    private String _locationName;
+    private String locationName;
 
     /** this locations latitude */
     private double latitude;
@@ -17,58 +17,61 @@ public class LocationItem {
     private double longitude;
 
     /** this location address */
-    private String _locationAddress;
+    private String locationAddress;
 
     /** this location city */
-    private String _locationCity;
+    private String locationCity;
 
     /** this location state */
-    private String _locationState;
+    private String locationState;
 
     /** this location zipCode*/
-    private int _zipCode;
+    private int zipCode;
 
     /** this location type*/
-    private String _locationType;
+    private String locationType;
 
     /** this location phoneNumber*/
-    private String _phoneNumber;
+    private String phoneNumber;
 
     /** this location website*/
-    private String _website;
+    private String website;
 
 
-    public LocationItem(int key, String _locationName, double latitude, double longitude,
-                        String _locationAddress, String _locationCity, String _locationState,
-                        int _zipCode, String _locationType, String _phoneNumber, String _website) {
+    public LocationItem(int key, String locationName, double latitude, double longitude,
+                        String locationAddress, String locationCity, String locationState,
+                        int zipCode, String locationType, String phoneNumber, String website) {
         this.key = key;
-        this._locationName = _locationName;
+        this.locationName = locationName;
         this.latitude = latitude;
         this.longitude = longitude;
-        this._locationAddress = _locationAddress;
-        this._locationCity = _locationCity;
-        this._locationState = _locationState;
-        this._zipCode = _zipCode;
-        this._locationType = _locationType;
-        this._phoneNumber = _phoneNumber;
-        this._website = _website;
+        this.locationAddress = locationAddress;
+        this.locationCity = locationCity;
+        this.locationState = locationState;
+        this.zipCode = zipCode;
+        this.locationType = locationType;
+        this.phoneNumber = phoneNumber;
+        this.website = website;
     }
 
     public int getKey() {return key;}
-    public String _getLocationName() {return _locationName;}
-    public double _getLatitude() {return latitude;}
-    public double _getLongitude() {return longitude;}
-    public String _getAddress() {return _locationAddress;}
-    public String _getCity() {return _locationCity;}
-    public String _getState() {return _locationState;}
-    public int _getZipCode() {return _zipCode;}
-    public String _getType() {return _locationType;}
-    public String _getPhone() {return _phoneNumber;}
-    public String _getWebsite() {return _website;}
+    public String getLocationName() {return locationName;}
+//    public void setLocationName(String name) {
+//        this.locationName = name;
+//    }
+    public double getLatitude() {return latitude;}
+    public double getLongitude() {return longitude;}
+    public String getAddress() {return locationAddress;}
+    public String getCity() {return locationCity;}
+    public String getState() {return locationState;}
+    public int getZipCode() {return zipCode;}
+    public String getType() {return locationType;}
+    public String getPhone() {return phoneNumber;}
+    public String getWebsite() {return website;}
 
     @Override
     public String toString() {
-        return _locationName;
+        return locationName;
     }
 
 }
