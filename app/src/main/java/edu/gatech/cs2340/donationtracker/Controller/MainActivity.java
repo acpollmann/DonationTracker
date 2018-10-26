@@ -34,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onMapViewButtonPressed(View view) {
+
+        Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
+    }
+
     public void onViewLocationButtonPressed(View view) {
         Intent intent = new Intent(this, ViewLocationActivity.class);
         startActivity(intent);
