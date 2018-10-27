@@ -49,5 +49,6 @@ public class LocationDetailActivity extends AppCompatActivity {
     public void onBackButtonPressed(View view) {
         Intent intent = new Intent(this, ViewLocationActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
 }
