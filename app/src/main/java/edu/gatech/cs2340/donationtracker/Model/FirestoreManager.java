@@ -128,32 +128,32 @@ public class FirestoreManager {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("doc", document.getId() + " => " + document.getData());
 
-                                Map<String, Object> userDoc = document.getData();
+                                Map<String, Object> locationMap = document.getData();
 
-                                long keyl = (long) userDoc.get("key");
+
+                                long keyl = (long) locationMap.get("key");
                                 int key  = (int) keyl;
 
-//                                long latl = (long) userDoc.get("latitude");
-//                                double latitude = (double) latl;
-//
-//                                long longl = (long) userDoc.get("longitude");
-//                                double longitude = (double) longl;
-                                long zipCodel = (long) userDoc.get("zipCode");
-                                int zipCode  = (int) zipCodel;
+                                double latitude = (double) locationMap.get("latitude");
 
-                                LocationItem locationItem =
-                                        new LocationItem(key,
-                                                (String) userDoc.get("locationName"),
-                                                (double) userDoc.get("latitude"),
-                                                (double) userDoc.get("latitude"),
-                                                (String) userDoc.get("locationAddress"),
-                                                (String) userDoc.get("locationCity"),
-                                                (String) userDoc.get("locationState"),
-                                                zipCode,
-                                                (String) userDoc.get("locationType"),
-                                                (String) userDoc.get("phoneNumber"),
-                                                (String) userDoc.get("website")
-                                        );
+                                double longitude = (double) locationMap.get("longitude");
+
+                                long zipl = (long) locationMap.get("zipCode");
+                                int zipCode  = (int) zipl;
+
+                                LocationItem locationItem = new LocationItem(
+                                        key,
+                                        (String) locationMap.get("locationName"),
+                                        latitude,
+                                        longitude,
+                                        (String) locationMap.get("locationAddress"),
+                                        (String) locationMap.get("locationCity"),
+                                        (String) locationMap.get("locationState"),
+                                        zipCode,
+                                        (String) locationMap.get("locationType"),
+                                        (String) locationMap.get("phoneNumber"),
+                                        (String) locationMap.get("website")
+                                );
 //                                int key, String _locationName, double latitude, double longitude,
 //                                String _locationAddress, String _locationCity, String _locationState,
 //                                int _zipCode, String _locationType, String _phoneNumber, String _website
@@ -163,6 +163,7 @@ public class FirestoreManager {
                         } else {
                             Log.d("docError", "Error getting documents: ", task.getException());
                         }
+
                     }
                 });
 
@@ -205,49 +206,50 @@ public class FirestoreManager {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("doc", document.getId() + " => " + document.getData());
 
-                                Map<String, Object> userDoc = document.getData();
+                                Map<String, Object> donationDoc = document.getData();
 
                                 Map<String, Object> locationMap =
-                                        (Map<String, Object>) userDoc.get("location");
+                                        (Map<String, Object>) donationDoc.get("location");
 
                                 long keyl = (long) locationMap.get("key");
                                 int key  = (int) keyl;
+                                LocationItem location = ListModel.INSTANCE.findItemById(key);
 
-                                double latitude = (double) locationMap.get("latitude");
+//                                double latitude = (double) locationMap.get("latitude");
+//
+//                                double longitude = (double) locationMap.get("longitude");
+//
+//                                long zipl = (long) locationMap.get("zipCode");
+//                                int zipCode  = (int) zipl;
 
-                                double longitude = (double) locationMap.get("longitude");
 
-                                long zipl = (long) locationMap.get("zipCode");
-                                int zipCode  = (int) zipl;
-
-
-                                LocationItem location = new LocationItem(
-                                        key,
-                                        (String) locationMap.get("locationName"),
-                                        latitude,
-                                        longitude,
-                                        (String) locationMap.get("locationAddress"),
-                                        (String) locationMap.get("locationCity"),
-                                        (String) locationMap.get("locationState"),
-                                        zipCode,
-                                        (String) locationMap.get("locationType"),
-                                        (String) locationMap.get("phoneNumber"),
-                                        (String) locationMap.get("website")
-                                );
+//                                LocationItem location = new LocationItem(
+//                                        key,
+//                                        (String) locationMap.get("locationName"),
+//                                        latitude,
+//                                        longitude,
+//                                        (String) locationMap.get("locationAddress"),
+//                                        (String) locationMap.get("locationCity"),
+//                                        (String) locationMap.get("locationState"),
+//                                        zipCode,
+//                                        (String) locationMap.get("locationType"),
+//                                        (String) locationMap.get("phoneNumber"),
+//                                        (String) locationMap.get("website")
+//                                );
 
 //                                int key, String locationName, double latitude, double longitude,
 //                                String locationAddress, String locationCity, String locationState,
 //                                int zipCode, String locationType, String phoneNumber, String website
 
                                         Donation newDonation =
-                                        new Donation((String) userDoc.get("name"),
+                                        new Donation((String) donationDoc.get("name"),
                                                 location,
-                                                (String) userDoc.get("timeStamp"),
-                                                (String) userDoc.get("shortDescription"),
-                                                (String) userDoc.get("fullDescription"),
-                                                (String) userDoc.get("value"),
-                                                (String) userDoc.get("category"),
-                                                (String) userDoc.get("comments")
+                                                (String) donationDoc.get("timeStamp"),
+                                                (String) donationDoc.get("shortDescription"),
+                                                (String) donationDoc.get("fullDescription"),
+                                                (String) donationDoc.get("value"),
+                                                (String) donationDoc.get("category"),
+                                                (String) donationDoc.get("comments")
                                         );
 
 

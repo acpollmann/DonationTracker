@@ -28,7 +28,7 @@ public class AppStartup extends Application {
         super.onCreate();
 
         model = ListModel.INSTANCE;
-        readSDFile();
+
 
         firestoreManager = new FirestoreManager();
         Set<User> users = firestoreManager.loadUsers();
@@ -37,8 +37,11 @@ public class AppStartup extends Application {
 
         List<LocationItem> locations = firestoreManager.loadLocations();
         model.setLocations(locations);
+
         List<Donation> donations = firestoreManager.loadDonations();
         model.setDonations(donations);
+
+//        readSDFile();
 
     }
 
