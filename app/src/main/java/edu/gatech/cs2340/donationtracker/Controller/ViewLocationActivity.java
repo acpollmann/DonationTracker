@@ -127,6 +127,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
     public void onCancelLocationPressed(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
     Intent intent = getIntent();
 
@@ -254,6 +255,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
 
                     intent.putExtras(b);
                     context.startActivity(intent);
+                    overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                 }
             });
         }
@@ -285,5 +287,6 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
     public void onAddLocationPressed(View view) {
         Intent intent = new Intent(this, AddLocationActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slideleft, R.anim.slideright);
     }
 }
