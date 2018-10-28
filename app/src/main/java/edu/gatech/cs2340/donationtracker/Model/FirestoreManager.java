@@ -146,12 +146,12 @@ public class FirestoreManager {
                                         (String) locationMap.get("locationName"),
                                         latitude,
                                         longitude,
-                                        (String) locationMap.get("locationAddress"),
-                                        (String) locationMap.get("locationCity"),
-                                        (String) locationMap.get("locationState"),
+                                        (String) locationMap.get("address"),
+                                        (String) locationMap.get("city"),
+                                        (String) locationMap.get("state"),
                                         zipCode,
-                                        (String) locationMap.get("locationType"),
-                                        (String) locationMap.get("phoneNumber"),
+                                        (String) locationMap.get("type"),
+                                        (String) locationMap.get("phone"),
                                         (String) locationMap.get("website")
                                 );
 //                                int key, String _locationName, double latitude, double longitude,
