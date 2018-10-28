@@ -58,5 +58,6 @@ public class DonationDetailActivity extends AppCompatActivity {
     public void onBackButtonPressed(View view) {
         Intent intent = new Intent(this, ViewDonationsActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
 }
