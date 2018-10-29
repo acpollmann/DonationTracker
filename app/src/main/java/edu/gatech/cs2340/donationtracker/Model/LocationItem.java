@@ -35,6 +35,15 @@ public class LocationItem {
     /** this location website*/
     private String website;
 
+    /**
+     * Creates a new Location
+     * @param lat  the latitude
+     * @param longit  the longitude
+     */
+    public LocationItem(double lat, double longit) {
+        latitude = lat;
+        longitude = longit;
+    }
 
     public LocationItem(int key, String locationName, double latitude, double longitude,
                         String locationAddress, String locationCity, String locationState,
