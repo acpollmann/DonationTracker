@@ -3,16 +3,11 @@ package edu.gatech.cs2340.donationtracker.Controller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.Map;
-import java.util.Set;
-
 import edu.gatech.cs2340.donationtracker.Model.User;
-import edu.gatech.cs2340.donationtracker.Model.UserMap;
 import edu.gatech.cs2340.donationtracker.Model.UserSet;
 import edu.gatech.cs2340.donationtracker.R;
 

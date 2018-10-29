@@ -18,6 +18,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,10 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Log.d("model. ",model.getItems().toString());
+
+
         setContentView(R.layout.activity_view_location);
         View recyclerView = findViewById(R.id.locationitem_list);
         assert recyclerView != null;
@@ -205,7 +210,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
 
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(ListModel.INSTANCE.getItems()));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(model.getItems()));
     }
 
     public class SimpleItemRecyclerViewAdapter
