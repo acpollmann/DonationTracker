@@ -1,12 +1,12 @@
 package edu.gatech.cs2340.donationtracker.Controller;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import edu.gatech.cs2340.donationtracker.Model.LocationItem;
 import edu.gatech.cs2340.donationtracker.R;
 
 public class LocationDetailActivity extends AppCompatActivity {
@@ -31,8 +31,11 @@ public class LocationDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
+        Log.d("bundle: ", intent.getExtras().toString());
+
         String name = b.getString("name");
         String type = b.getString("type");
+        Log.d("Type: ", type);
         String address = b.getString("address");
         String lat_long = b.getString("latitudeLongitude");
         String phone_number = b.getString("phoneNumber");
@@ -49,5 +52,6 @@ public class LocationDetailActivity extends AppCompatActivity {
     public void onBackButtonPressed(View view) {
         Intent intent = new Intent(this, ViewLocationActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
 }

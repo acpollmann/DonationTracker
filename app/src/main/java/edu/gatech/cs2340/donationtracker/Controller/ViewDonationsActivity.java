@@ -3,11 +3,14 @@ package edu.gatech.cs2340.donationtracker.Controller;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+//import support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -31,6 +34,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
     public void onBackButtonPressed(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
 
     /**
@@ -83,7 +87,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
         public void onBindViewHolder(final ViewHolder holder, final int position) {
 
             final ListModel model = ListModel.INSTANCE;
-
             /*
             This is where we have to bind each data element in the list (given by position parameter)
             to an element in the view (which is one of our two TextView widgets
@@ -139,7 +142,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
 
                     intent.putExtras(b);
                     context.startActivity(intent);
-
                 }
             });
         }

@@ -6,25 +6,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListModel {
-    public static final ListModel INSTANCE = new ListModel();
+
+    public static final ListModel INSTANCE = new ListModel(new FirestoreManager());
 
     private List<LocationItem> items;
 
     private List<Donation> donations;
 
+    /** The FirestoreManager responsible for saving Locations to and loading Locations from Firestore. */
+    private FirestoreManager firestoreManager;
+
     /** the currently selected course, defaults to first course */
     private Donation _currentDonation;
 
-    private ListModel() {
+    private ListModel(FirestoreManager firestoreManager) {
         items = new ArrayList<>();
         donations = new ArrayList<>();
+        this.firestoreManager = firestoreManager;
     }
 
     public void addItem(LocationItem item) {
         items.add(item);
+        firestoreManager.addLocation(item);
     }
 
-    public void addDonationItem(Donation donation) { donations.add(donation); }
+    public void addDonationItem(Donation donation) {
+        donations.add(donation);
+        firestoreManager.addDonation(donation);
+    }
 
     public List<LocationItem> getItems() {
         return items;
@@ -49,9 +58,18 @@ public class ListModel {
         return null;
     }
 
+    public void setLocations(List<LocationItem> locations) {
+        this.items = locations;
+    }
+
+    public void setDonations(List<Donation> donations) {
+        this.donations = donations;
+    }
+
+
     /**
      *
-     * @return  the currently selected course
+     * @return  the currently selected donation
      */
     public Donation getCurrentDonation() { return _currentDonation;}
 
