@@ -3,7 +3,6 @@ package edu.gatech.cs2340.donationtracker.Controller;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -11,15 +10,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.util.HashSet;
-import java.util.Map;
-import java.util.HashMap;
-
 import edu.gatech.cs2340.donationtracker.Model.Admin;
 import edu.gatech.cs2340.donationtracker.Model.LocationEmployee;
 import edu.gatech.cs2340.donationtracker.Model.Manager;
 import edu.gatech.cs2340.donationtracker.Model.User;
-import edu.gatech.cs2340.donationtracker.Model.UserMap;
 import edu.gatech.cs2340.donationtracker.Model.UserSet;
 import edu.gatech.cs2340.donationtracker.R;
 

@@ -17,6 +17,7 @@ import android.widget.Button;
 
 import edu.gatech.cs2340.donationtracker.R;
 
+
 public class MainActivity extends AppCompatActivity {
 
     public static String TAG = "Donation_TrackerAPP";

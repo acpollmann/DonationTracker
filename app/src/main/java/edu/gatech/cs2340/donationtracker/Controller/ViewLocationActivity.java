@@ -18,6 +18,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,10 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Log.d("model. ",model.getItems().toString());
+
+
         setContentView(R.layout.activity_view_location);
         View recyclerView = findViewById(R.id.locationitem_list);
         assert recyclerView != null;
@@ -205,7 +210,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
 
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(ListModel.INSTANCE.getItems()));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(model.getItems()));
     }
 
     public class SimpleItemRecyclerViewAdapter
@@ -228,7 +233,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.mItem = mValues.get(position);
             holder.mIdView.setText("" + mValues.get(position).getKey());
-            holder.mContentView.setText(mValues.get(position)._getLocationName());
+            holder.mContentView.setText(mValues.get(position).getLocationName());
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -239,13 +244,13 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
 
                     Bundle b = new Bundle();
 
-                    String name = "" + mValues.get(position)._getLocationName();
-                    String type = "" + mValues.get(position)._getType();
-                    String address = mValues.get(position)._getAddress();
-                    String latitudeLongitude = mValues.get(position)._getLatitude() + "/"
-                            + "" + mValues.get(position)._getLongitude();
-                    String phoneNumber = mValues.get(position)._getPhone();
-                    String website = mValues.get(position)._getWebsite();
+                    String name = "" + mValues.get(position).getLocationName();
+                    String type = "" + mValues.get(position).getType();
+                    String address = mValues.get(position).getAddress();
+                    String latitudeLongitude = mValues.get(position).getLatitude() + "/"
+                            + "" + mValues.get(position).getLongitude();
+                    String phoneNumber = mValues.get(position).getPhone();
+                    String website = mValues.get(position).getWebsite();
                     b.putString("name", name);
                     b.putString("type", type);
                     b.putString("address", address);
