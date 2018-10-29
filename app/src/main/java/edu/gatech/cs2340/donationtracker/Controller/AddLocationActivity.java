@@ -1,8 +1,11 @@
 package edu.gatech.cs2340.donationtracker.Controller;
 
-import android.os.Bundle;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.util.StateSet;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -62,5 +65,27 @@ public class AddLocationActivity extends AppCompatActivity {
                 finish();
             }
         });
+        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
+    }
+    public void onAddLocationButtonPressed(View view) {
+
+        String name = mNameField.getText().toString();
+        String lati = mLatField.getText().toString();
+        String longi = mLongField.getText().toString();
+        String street = mStreetAddressField.getText().toString();
+        String city = mCityField.getText().toString();
+        //StateList state = (StateList) stateSpinner.getSelectedItem();
+        String zip = mZipField.getText().toString();
+        String web = mWebField.getText().toString();
+        String phone = mPhoneField.getText().toString();
+
+        //LocationItem newLocation = new LocationItem(name, lati, longi, street,
+        //        city, state, category, comment);
+
+        //ListModel.INSTANCE.addDonationItem(newLocation);
+
+        Intent intent = new Intent(this, ViewDonationsActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
 }
