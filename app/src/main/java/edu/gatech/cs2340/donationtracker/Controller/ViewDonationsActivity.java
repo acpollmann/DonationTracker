@@ -101,7 +101,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
             if (filter == null) {
                 filter = new SearchFilter(this, model.getDonations());
             }
-            return (Filter)filter;
+            return filter;
         }
 
         private class SearchFilter extends Filter {
@@ -139,8 +139,8 @@ public class ViewDonationsActivity extends AppCompatActivity {
             @SuppressWarnings("unchecked")
             @Override
             public void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                Object additions = (Object)filterResults.values;
-                mDonations = filteredList;
+                List additions = (List<Donation>)filterResults.values;
+                mDonations = additions;
                 adapter.notifyDataSetChanged();
             }
         }
