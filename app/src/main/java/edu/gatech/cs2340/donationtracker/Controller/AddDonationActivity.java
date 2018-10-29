@@ -79,6 +79,7 @@ public class AddDonationActivity extends AppCompatActivity {
                 finish();
             }
         });
+        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
 
     public void onAddDonationButtonPressed(View view) {
@@ -100,6 +101,7 @@ public class AddDonationActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, ViewDonationsActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
 
 }
