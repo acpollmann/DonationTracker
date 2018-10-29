@@ -27,6 +27,9 @@ public class Donation {
     public static List<String> legalCategories = Arrays.asList("Clothing", "Hat",
             "Kitchen", "Electronics", "Household", "Other");
 
+    public static List<String> searchLegalCategories = Arrays.asList("All", "Clothing", "Hat",
+            "Kitchen", "Electronics", "Household", "Other");
+
     public Donation(String name, LocationItem location, String timeStamp,
                     String shortDescription, String fullDescription,
                     String value, String category, String comments) {
