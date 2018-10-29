@@ -49,6 +49,10 @@ public class ViewDonationsActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, Donation.searchLegalCategories);
         categorySearchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySearchSpinner.setAdapter(categorySearchAdapter);
+
+        SimpleDonationRecyclerViewAdapter adapter = new SimpleDonationRecyclerViewAdapter(ListModel.INSTANCE.getDonations());
+        adapter.getFilter().filter(categorySearchSpinner.getSelectedItem().toString());
+
     }
 
     public void onBackButtonPressed(View view) {
@@ -65,8 +69,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
     private void setupRecyclerView(RecyclerView recyclerView) {
         ListModel model = ListModel.INSTANCE;
         recyclerView.setAdapter(new SimpleDonationRecyclerViewAdapter(model.getDonations()));
-//        SimpleDonationRecyclerViewAdapter adapter = new SimpleDonationRecyclerViewAdapter(model.getDonations());
-//        adapter.getFilter().filter(categorySearchSpinner.getSelectedItem().toString());
     }
 
     /**
