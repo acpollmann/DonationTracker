@@ -10,25 +10,87 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.Filter;
 import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.Filterable;
+import android.widget.Spinner;
+import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import edu.gatech.cs2340.donationtracker.Model.Donation;
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
+import edu.gatech.cs2340.donationtracker.Model.LocationItem;
 import edu.gatech.cs2340.donationtracker.R;
 
 public class ViewDonationsActivity extends AppCompatActivity {
+
+    private Spinner categorySearchSpinner;
+    private Spinner locationSearchSpinner;
+    private ListModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_donations);
 
-        View recyclerView = findViewById(R.id.donation_list);
-         assert recyclerView != null;
-        setupRecyclerView((RecyclerView) recyclerView);
+        categorySearchSpinner = findViewById(R.id.categorySpinner);
+        locationSearchSpinner = findViewById(R.id.locationSpinner);
+        model = ListModel.INSTANCE;
+
+        /*
+          Set up the adapter to display the allowable categories in the spinner
+         */
+        final ArrayAdapter<LocationItem> categorySearchAdapter = new ArrayAdapter(this,
+                android.R.layout.simple_spinner_item, Donation.searchLegalCategories);
+        categorySearchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySearchSpinner.setAdapter(categorySearchAdapter);
+        categorySearchSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            View recyclerView = findViewById(R.id.donation_list);
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                assert recyclerView != null;
+                setupRecyclerView((RecyclerView) recyclerView);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        /*
+          Set up the adapter to display the locations in the spinner
+         */
+        List<String> selectableLocations = new ArrayList<>();
+        selectableLocations.add("All");
+        for (LocationItem location : model.getItems()) {
+            selectableLocations.add(Objects.toString(location));
+        }
+
+        final ArrayAdapter<LocationItem> locationSearchAdapter = new ArrayAdapter(this,
+                android.R.layout.simple_spinner_item, selectableLocations);
+        locationSearchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        locationSearchSpinner.setAdapter(locationSearchAdapter);
+        locationSearchSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            View recyclerView = findViewById(R.id.donation_list);
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                assert recyclerView != null;
+                setupRecyclerView((RecyclerView) recyclerView);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
 
     public void onBackButtonPressed(View view) {
@@ -37,14 +99,50 @@ public class ViewDonationsActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
 
+    private List<Donation> filterByCategory(List<Donation> donations, String filter) {
+        if (filter.equals("All")) {
+            return donations;
+        }
+
+        List<Donation> filteredByCategory = new ArrayList<>();
+        for (Donation donation : donations) {
+            if (donation.getCategory().equals(filter)) {
+                filteredByCategory.add(donation);
+            }
+        }
+
+        return filteredByCategory;
+    }
+
+    private List<Donation> filterByLocation(List<Donation> donations, String filter) {
+        if (filter.equals("All")) {
+            return donations;
+        }
+
+        List<Donation> filteredByLocation = new ArrayList<>();
+        for (Donation donation : donations) {
+            if (donation.getLocation().toString().equals(filter)) {
+                filteredByLocation.add(donation);
+            }
+        }
+
+        return filteredByLocation;
+    }
+
     /**
      * Set up an adapter and hook it to the provided view
      *
      * @param recyclerView the view that needs this adapter
      */
     private void setupRecyclerView(RecyclerView recyclerView) {
-        ListModel model = ListModel.INSTANCE;
-        recyclerView.setAdapter(new SimpleDonationRecyclerViewAdapter(model.getDonations()));
+        List<Donation> filteredDonations = model.getDonations();
+        filteredDonations = filterByCategory(filteredDonations, (String) categorySearchSpinner.getSelectedItem());
+        filteredDonations = filterByLocation(filteredDonations, (String) locationSearchSpinner.getSelectedItem());
+        if (filteredDonations.isEmpty()) {
+            Toast.makeText(ViewDonationsActivity.this, "Selected filter doesn't have donations.", Toast.LENGTH_SHORT).show();
+        }
+
+        recyclerView.setAdapter(new SimpleDonationRecyclerViewAdapter(filteredDonations));
     }
 
     /**
@@ -59,7 +157,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         /**
          * Collection of the items to be shown in this list.
          */
-        private final List<Donation> mDonations;
+        private List<Donation> mDonations;
 
         /**
          * set the items to be used by the adapter
@@ -173,5 +271,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
                 return super.toString() + " '" + mContentView.getText() + "'";
             }
         }
+
     }
 }
