@@ -45,8 +45,6 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
     private CustomAdapter listAdapter;
     private SearchAdapter searchAdapter;
     private ExpandableListView simpleExpandableListView;
-    public SearchView editsearch;
-    private TextView mTextMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +57,11 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
         View recyclerView = findViewById(R.id.locationitem_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
-//        readSDFile();
         // add data for displaying in expandable list view
         loadData();
 
         //get reference of the ExpandableListView
-        simpleExpandableListView = (ExpandableListView) findViewById(R.id.simpleExpandableListView);
+        simpleExpandableListView = findViewById(R.id.simpleExpandableListView);
         // create the adapter by passing your ArrayList data
         listAdapter = new CustomAdapter(ViewLocationActivity.this, deptList);
         // attach the adapter to the expandable list view
@@ -107,17 +104,6 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
             }
         });
         searchAdapter = new SearchAdapter(ViewLocationActivity.this, deptList);
-        // Locate the EditText in listview_main.xml
-//        editsearch = (SearchView) findViewById(R.id.searchView);
-//        editsearch.setOnQueryTextListener(this);
-
-//        if (findViewById(R.id.locationitem_details) != null) {
-//            // The detail container view will be present only in the
-//            // large-screen layouts (res/values-w900dp).
-//            // If this view is present, then the
-//            // activity should be in two-pane mode.
-//            mTwoPane = true;
-//        }
     }
     @Override
     public boolean onQueryTextSubmit(String query) {
@@ -133,25 +119,6 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slideright, R.anim.slideleft);
-    }
-    Intent intent = getIntent();
-
-    public static final int NAME_POSITION = 0;
-
-    //method to expand all groups
-    private void expandAll() {
-        int count = listAdapter.getGroupCount();
-        for (int i = 0; i < count; i++){
-            simpleExpandableListView.expandGroup(i);
-        }
-    }
-
-    //method to collapse all groups
-    private void collapseAll() {
-        int count = listAdapter.getGroupCount();
-        for (int i = 0; i < count; i++){
-            simpleExpandableListView.collapseGroup(i);
-        }
     }
 
     //load some initial data into out list
@@ -279,8 +246,8 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = (TextView) view.findViewById(R.id.id);
-                mContentView = (TextView) view.findViewById(R.id.content);
+                mIdView = view.findViewById(R.id.id);
+                mContentView = view.findViewById(R.id.content);
             }
 
             @Override

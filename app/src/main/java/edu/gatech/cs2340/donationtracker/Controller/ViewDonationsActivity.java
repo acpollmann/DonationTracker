@@ -3,26 +3,20 @@ package edu.gatech.cs2340.donationtracker.Controller;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-//import support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Filter;
 import android.widget.TextView;
 import android.widget.ArrayAdapter;
-import android.widget.Filterable;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 import edu.gatech.cs2340.donationtracker.Model.Donation;
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
@@ -183,8 +177,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
-
-            final ListModel model = ListModel.INSTANCE;
             /*
             This is where we have to bind each data element in the list (given by position parameter)
             to an element in the view (which is one of our two TextView widgets

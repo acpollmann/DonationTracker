@@ -43,10 +43,6 @@ public class FirestoreManager {
     /** Stores a User to Firestore.
      * @param user*/
     public void add(User user) {
-//        Map<String, Object> userDoc = new HashMap<>();
-//        userDoc.put("email", user.getEmail());
-//        userDoc.put("password", user.getPassword());
-//        userDoc.put("id", user.getId());
 
         // Add a new document with a generated ID
         db.collection("users")
@@ -154,9 +150,6 @@ public class FirestoreManager {
                                         (String) locationMap.get("phone"),
                                         (String) locationMap.get("website")
                                 );
-//                                int key, String _locationName, double latitude, double longitude,
-//                                String _locationAddress, String _locationCity, String _locationState,
-//                                int _zipCode, String _locationType, String _phoneNumber, String _website
 
                                 locations.add(locationItem);
                             }
@@ -214,33 +207,6 @@ public class FirestoreManager {
                                 long keyl = (long) locationMap.get("key");
                                 int key  = (int) keyl;
                                 LocationItem location = ListModel.INSTANCE.findItemById(key);
-
-//                                double latitude = (double) locationMap.get("latitude");
-//
-//                                double longitude = (double) locationMap.get("longitude");
-//
-//                                long zipl = (long) locationMap.get("zipCode");
-//                                int zipCode  = (int) zipl;
-
-
-//                                LocationItem location = new LocationItem(
-//                                        key,
-//                                        (String) locationMap.get("locationName"),
-//                                        latitude,
-//                                        longitude,
-//                                        (String) locationMap.get("locationAddress"),
-//                                        (String) locationMap.get("locationCity"),
-//                                        (String) locationMap.get("locationState"),
-//                                        zipCode,
-//                                        (String) locationMap.get("locationType"),
-//                                        (String) locationMap.get("phoneNumber"),
-//                                        (String) locationMap.get("website")
-//                                );
-
-//                                int key, String locationName, double latitude, double longitude,
-//                                String locationAddress, String locationCity, String locationState,
-//                                int zipCode, String locationType, String phoneNumber, String website
-
                                         Donation newDonation =
                                         new Donation((String) donationDoc.get("name"),
                                                 location,
@@ -251,11 +217,6 @@ public class FirestoreManager {
                                                 (String) donationDoc.get("category"),
                                                 (String) donationDoc.get("comments")
                                         );
-
-
-//                                String name, LocationItem location, String timeStamp,
-//                                        String shortDescription, String fullDescription,
-//                                        String value, String category, String comments
                                 donations.add(newDonation);
                             }
                         } else {
