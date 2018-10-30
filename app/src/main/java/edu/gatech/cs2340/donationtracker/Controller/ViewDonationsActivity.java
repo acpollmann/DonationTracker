@@ -323,6 +323,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
             }
         };
 
+
         /**
          * This inner class represents a ViewHolder which provides us a way to cache information
          * about the binding between the model element (in this case a Course) and the widgets in
