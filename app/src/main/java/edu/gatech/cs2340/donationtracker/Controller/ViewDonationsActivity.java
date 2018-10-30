@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -20,10 +22,11 @@ import java.util.Objects;
 
 import edu.gatech.cs2340.donationtracker.Model.Donation;
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
-import edu.gatech.cs2340.donationtracker.Model.LocationItem;
 import edu.gatech.cs2340.donationtracker.R;
 
 public class ViewDonationsActivity extends AppCompatActivity {
+    private SearchAdapter adapter;
+    private List<Donation> mDonations;
 
     private Spinner categorySearchSpinner;
     private Spinner locationSearchSpinner;
@@ -33,58 +36,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_donations);
-
-        categorySearchSpinner = findViewById(R.id.categorySpinner);
-        locationSearchSpinner = findViewById(R.id.locationSpinner);
-        model = ListModel.INSTANCE;
-
-        /*
-          Set up the adapter to display the allowable categories in the spinner
-         */
-        final ArrayAdapter<LocationItem> categorySearchAdapter = new ArrayAdapter(this,
-                android.R.layout.simple_spinner_item, Donation.searchLegalCategories);
-        categorySearchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        categorySearchSpinner.setAdapter(categorySearchAdapter);
-        categorySearchSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            View recyclerView = findViewById(R.id.donation_list);
-
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                assert recyclerView != null;
-                setupRecyclerView((RecyclerView) recyclerView);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-        /*
-          Set up the adapter to display the locations in the spinner
-         */
-        List<String> selectableLocations = new ArrayList<>();
-        selectableLocations.add("All");
-        for (LocationItem location : model.getItems()) {
-            selectableLocations.add(Objects.toString(location));
-        }
-
-        final ArrayAdapter<LocationItem> locationSearchAdapter = new ArrayAdapter(this,
-                android.R.layout.simple_spinner_item, selectableLocations);
-        locationSearchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        locationSearchSpinner.setAdapter(locationSearchAdapter);
-        locationSearchSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            View recyclerView = findViewById(R.id.donation_list);
-
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                assert recyclerView != null;
-                setupRecyclerView((RecyclerView) recyclerView);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
     }
 
     public void onBackButtonPressed(View view) {
@@ -140,6 +91,157 @@ public class ViewDonationsActivity extends AppCompatActivity {
     }
 
     /**
+     * Set up an adapter and hook it to the provided view
+     *
+     * @param searchBar_recyclerView the view that needs this adapter
+     */
+    private void setup_searchRecyclerView(RecyclerView searchBar_recyclerView) {
+        ListModel model = ListModel.INSTANCE;
+        Context context = searchBar_recyclerView.getContext();
+        adapter = new SearchAdapter(context, model.getDonations());
+        searchBar_recyclerView.setAdapter(new SearchBarRecyclerViewAdapter(model.getDonations()));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.donation_search_menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                //searchBar_recyclerView.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return true;
+    }
+
+
+    /*-----------------------------------------------------------------------------*/
+    /**
+     * This inner class is our custom adapter for the search bar. It takes our basic model information and
+     * converts it to the correct layout for this view.
+     * <p>
+     * In this case, we are adding all donations to the drop down list for the search bar.
+     */
+    public class SearchBarRecyclerViewAdapter
+            extends RecyclerView.Adapter<SearchBarRecyclerViewAdapter.ViewHolder> implements Filterable{
+
+        @Override
+        public SearchBarRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            /*
+              This sets up the view for each individual item in the recycler display
+              To edit the actual layout, we would look at: res/layout/course_list_content.xml
+              If you look at the example file, you will see it currently just 2 TextView elements
+             */
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.donation_list_content, parent, false);
+            return new SearchBarRecyclerViewAdapter.ViewHolder(view);
+        }
+
+
+        /**
+         * Collection of the items to be shown in this list.
+         */
+        private List<Donation> mDonations;
+        private List<Donation> donationListFull;
+
+      class DListViewHolder extends RecyclerView.ViewHolder {
+          public View mView;
+          public TextView mContentView;
+
+          public DListViewHolder(View view) {
+              super(view);
+              mView = view;
+              mContentView = (TextView) view.findViewById(R.id.content);
+          }
+
+      }
+
+      SearchBarRecyclerViewAdapter(List<Donation> mDonations) {
+          this.mDonations = mDonations;
+          donationListFull = new ArrayList<>(mDonations);
+      }
+
+      @Override
+      public void onBindViewHolder(final ViewHolder holder, final int position) {
+
+      }
+
+      @Override
+      public int getItemCount() {
+        return mDonations.size();
+      }
+
+      @Override
+      public Filter getFilter() {
+          return donationFilter;
+      }
+
+      private Filter donationFilter = new Filter() {
+          @Override
+          protected FilterResults performFiltering(CharSequence constraint) {
+              List<Donation> filteredList = new ArrayList<>();
+
+              if (constraint == null || constraint.length() == 0) {
+                  filteredList.addAll(donationListFull);
+              } else {
+                  String filterPattern = constraint.toString().toLowerCase().trim();
+
+                  for (Donation donation: donationListFull) {
+                      if (donation.getName().toLowerCase().startsWith(filterPattern)) {
+                            filteredList.add(donation);
+                      }
+                  }
+              }
+              FilterResults results = new FilterResults();
+              results.values = filteredList;
+
+              return results;
+          }
+
+          @Override
+          protected void publishResults(CharSequence constraint, FilterResults results) {
+              mDonations.clear();
+              mDonations.addAll((List) results.values);
+              notifyDataSetChanged();
+          }
+      };
+
+      /**
+       * This inner class represents a ViewHolder which provides us a way to cache information
+       * about the binding between the model element (in this case a Course) and the widgets in
+       * the list view (in this case the two TextView)
+       */
+        public class ViewHolder extends RecyclerView.ViewHolder {
+            public final View mView;
+            public final TextView mContentView;
+            public Donation mDonation;
+
+            public ViewHolder(View view) {
+                super(view);
+                mView = view;
+                mContentView = (TextView) view.findViewById(R.id.content);
+            }
+
+            @Override
+            public String toString() {
+                return super.toString() + " '" + mContentView.getText() + "'";
+            }
+       }
+    }
+
+
+    /**
      * This inner class is our custom adapter.  It takes our basic model information and
      * converts it to the correct layout for this view.
      * <p>
@@ -165,7 +267,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             /*
-
               This sets up the view for each individual item in the recycler display
               To edit the actual layout, we would look at: res/layout/course_list_content.xml
               If you look at the example file, you will see it currently just 2 TextView elements
@@ -195,18 +296,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //on a phone, we need to change windows to the detail view
-//                    Context context = v.getContext();
-                    //create our new intent with the new screen (activity)
- //                   Intent intent = new Intent(context, DonationDetailActivity.class);
-                        /*
-                            pass along the id of the course so we can retrieve the correct data in
-                            the next window
-                         */
-//                    intent.putExtra(DonationDetailFragment.ARG_DONATION_ID, holder.mDonation.getKey());
-
-//                    model.setCurrentDonation(holder.mDonation);
-
                     Context context = v.getContext();
                     Intent intent = new Intent(context, DonationDetailActivity.class);
 
@@ -246,7 +335,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
          * about the binding between the model element (in this case a Course) and the widgets in
          * the list view (in this case the two TextView)
          */
-
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             public final TextView mContentView;

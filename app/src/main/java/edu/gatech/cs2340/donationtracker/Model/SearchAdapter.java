@@ -17,14 +17,14 @@ public class SearchAdapter extends BaseAdapter {
 
     Context mContext;
     LayoutInflater inflater;
-    private List<GroupInfo> locationList = null;
-    private ArrayList<GroupInfo> arraylist;
+    private List<Donation> locationList = null;
+    private ArrayList<Donation> arraylist;
 
-    public SearchAdapter(Context context, List<GroupInfo> namesList) {
+    public SearchAdapter(Context context, List<Donation> namesList) {
         mContext = context;
         this.locationList = namesList;
         inflater = LayoutInflater.from(mContext);
-        this.arraylist = new ArrayList<GroupInfo>();
+        this.arraylist = new ArrayList<Donation>();
         this.arraylist.addAll(namesList);
     }
 
@@ -38,7 +38,7 @@ public class SearchAdapter extends BaseAdapter {
     }
 
     @Override
-    public GroupInfo getItem(int position) {
+    public Donation getItem(int position) {
         return locationList.get(position);
     }
 
@@ -70,7 +70,7 @@ public class SearchAdapter extends BaseAdapter {
         if (charText.length() == 0) {
             locationList.addAll(arraylist);
         } else {
-            for (GroupInfo wp : arraylist) {
+            for (Donation wp : arraylist) {
                 if (wp.getName().contains(charText)) {
                     locationList.add(wp);
                 }

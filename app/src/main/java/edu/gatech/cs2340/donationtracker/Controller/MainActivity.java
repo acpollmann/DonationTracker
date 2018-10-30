@@ -13,9 +13,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-
 import edu.gatech.cs2340.donationtracker.R;
-
 
 public class MainActivity extends AppCompatActivity {
 
