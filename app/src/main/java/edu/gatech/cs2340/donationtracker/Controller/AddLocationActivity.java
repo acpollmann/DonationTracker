@@ -1,14 +1,7 @@
 package edu.gatech.cs2340.donationtracker.Controller;
 
-<<<<<<< HEAD
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-=======
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
->>>>>>> 9160492d9c1b4a60abda0a841486f1b09876e7fd
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
