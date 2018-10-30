@@ -11,13 +11,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-<<<<<<< HEAD
 import android.widget.Filterable;
 import android.widget.Filter;
 import android.widget.SearchView;
-=======
 import android.widget.AdapterView;
->>>>>>> 7f6e11c4803cd4482d383f3bfed6e846dd53232e
 import android.widget.TextView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -29,11 +26,8 @@ import java.util.Objects;
 
 import edu.gatech.cs2340.donationtracker.Model.Donation;
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
-<<<<<<< HEAD
 import edu.gatech.cs2340.donationtracker.Model.SearchAdapter;
-=======
 import edu.gatech.cs2340.donationtracker.Model.LocationItem;
->>>>>>> 7f6e11c4803cd4482d383f3bfed6e846dd53232e
 import edu.gatech.cs2340.donationtracker.R;
 
 public class ViewDonationsActivity extends AppCompatActivity {
@@ -49,7 +43,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_donations);
 
-<<<<<<< HEAD
         /*Recycler View to get the details of a donation item*/
         View recyclerView = findViewById(R.id.donation_list);
         assert recyclerView != null;
@@ -59,7 +52,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
         View searchBar_recyclerView = findViewById(R.id.donation_list);
         assert searchBar_recyclerView != null;
         setup_searchRecyclerView((RecyclerView) searchBar_recyclerView);
-=======
         categorySearchSpinner = findViewById(R.id.categorySpinner);
         locationSearchSpinner = findViewById(R.id.locationSpinner);
         model = ListModel.INSTANCE;
@@ -111,7 +103,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
->>>>>>> 7f6e11c4803cd4482d383f3bfed6e846dd53232e
     }
 
     public void onBackButtonPressed(View view) {
@@ -183,21 +174,21 @@ public class ViewDonationsActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.donation_search_menu, menu);
 
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) searchItem.getActionView();
+        //MenuItem searchItem = menu.findItem(R.id.action_search);
+        //SearchView searchView = (SearchView) searchItem.getActionView();
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                //searchBar_recyclerView.getFilter().filter(newText);
-                return false;
-            }
-        });
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String s) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String s) {
+//                //searchBar_recyclerView.getFilter().filter(newText);
+//                return false;
+//            }
+//        });
         return true;
     }
 
