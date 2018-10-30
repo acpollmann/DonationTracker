@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.donationtracker.Controller;
 
+import android.support.v7.app.AppCompatActivity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
@@ -8,11 +9,11 @@ import android.graphics.Path;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+
 import edu.gatech.cs2340.donationtracker.R;
 
 public class MainActivity extends AppCompatActivity {

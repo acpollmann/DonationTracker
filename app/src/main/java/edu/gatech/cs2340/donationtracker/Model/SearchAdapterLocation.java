@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.donationtracker.Model;
 import android.content.Context;
+import android.location.Location;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,22 +10,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import edu.gatech.cs2340.donationtracker.R;
 
-public class SearchAdapter extends BaseAdapter {
+import edu.gatech.cs2340.donationtracker.R;
+public class SearchAdapterLocation extends BaseAdapter {
 
     // Declare Variables
 
     Context mContext;
     LayoutInflater inflater;
-    private List<Donation> locationList = null;
-    private ArrayList<Donation> arraylist;
+    private List<LocationItem> locationList = null;
+    private ArrayList<LocationItem> arraylist;
 
-    public SearchAdapter(Context context, List<Donation> namesList) {
+    public SearchAdapterLocation(Context context, List<LocationItem> namesList) {
         mContext = context;
         this.locationList = namesList;
         inflater = LayoutInflater.from(mContext);
-        this.arraylist = new ArrayList<Donation>();
+        this.arraylist = new ArrayList<LocationItem>();
         this.arraylist.addAll(namesList);
     }
 
@@ -38,7 +39,7 @@ public class SearchAdapter extends BaseAdapter {
     }
 
     @Override
-    public Donation getItem(int position) {
+    public LocationItem getItem(int position) {
         return locationList.get(position);
     }
 
@@ -59,7 +60,7 @@ public class SearchAdapter extends BaseAdapter {
             holder = (ViewHolder) view.getTag();
         }
         // Set the results into TextViews
-        holder.name.setText(locationList.get(position).getName());
+        holder.name.setText(locationList.get(position).getLocationName());
         return view;
     }
 
@@ -70,8 +71,8 @@ public class SearchAdapter extends BaseAdapter {
         if (charText.length() == 0) {
             locationList.addAll(arraylist);
         } else {
-            for (Donation wp : arraylist) {
-                if (wp.getName().contains(charText)) {
+            for (LocationItem wp : arraylist) {
+                if (wp.getLocationName().contains(charText)) {
                     locationList.add(wp);
                 }
             }
