@@ -103,7 +103,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
                 return false;
             }
         });
-        searchAdapter = new SearchAdapter(ViewLocationActivity.this, deptList);
+        //searchAdapter = new SearchAdapter(ViewLocationActivity.this, deptList);
     }
     @Override
     public boolean onQueryTextSubmit(String query) {
