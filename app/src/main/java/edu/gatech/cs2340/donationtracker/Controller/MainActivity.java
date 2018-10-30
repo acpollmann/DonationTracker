@@ -3,7 +3,6 @@ package edu.gatech.cs2340.donationtracker.Controller;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.graphics.Path;
 import android.os.Build;
@@ -14,6 +13,11 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+<<<<<<< HEAD
+=======
+
+import edu.gatech.cs2340.donationtracker.R;
+>>>>>>> 7f6e11c4803cd4482d383f3bfed6e846dd53232e
 
 import edu.gatech.cs2340.donationtracker.R;
 

@@ -28,8 +28,6 @@ public class AddDonationActivity extends AppCompatActivity {
     private EditText mCommentField;
     private Button uploadImageButton;
     private ImageView imageToUpload;
-    private Button addDonationButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -38,13 +38,13 @@ public class CustomAdapter extends BaseExpandableListAdapter {
 
         ChildInfo detailInfo = (ChildInfo) getChild(groupPosition, childPosition);
         if (view == null) {
-            LayoutInflater infalInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = infalInflater.inflate(R.layout.locationsearch_child, null);
+            LayoutInflater detailInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = detailInflater.inflate(R.layout.locationsearch_child, null);
         }
 
-        TextView sequence = (TextView) view.findViewById(R.id.sequence);
+        TextView sequence = view.findViewById(R.id.sequence);
         sequence.setText(detailInfo.getSequence().trim() + ". ");
-        TextView childItem = (TextView) view.findViewById(R.id.childItem);
+        TextView childItem = view.findViewById(R.id.childItem);
         childItem.setText(detailInfo.getName().trim());
 
         return view;
@@ -83,7 +83,7 @@ public class CustomAdapter extends BaseExpandableListAdapter {
             view = inf.inflate(R.layout.locationsearch_subject, null);
         }
 
-        TextView heading = (TextView) view.findViewById(R.id.heading);
+        TextView heading = view.findViewById(R.id.heading);
         heading.setText(headerInfo.getName().trim());
 
         return view;
