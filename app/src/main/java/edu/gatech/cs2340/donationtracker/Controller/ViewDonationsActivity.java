@@ -53,7 +53,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
         categorySearchSpinner = findViewById(R.id.categorySpinner);
-        databaseDonations = FirebaseFirestore.getInstance().getReference("shelters");
+        //databaseDonations = FirebaseFirestore.getInstance().getReference("shelters");
         locationSearchSpinner = findViewById(R.id.locationSpinner);
         model = ListModel.INSTANCE;
 
@@ -80,13 +80,13 @@ public class ViewDonationsActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                searchName(query);
+                //searchName(query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                searchName(newText);
+                //searchName(newText);
                 return false;
             }
         });
@@ -118,33 +118,32 @@ public class ViewDonationsActivity extends AppCompatActivity {
             }
         });
     }
-    private void searchName() {
-        // literally anything
-        databaseDonations.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String shelterName = editTextSearchShelterName.getText().toString().trim();
-                mDonations.clear();
-                List<Donation> allShelters = new ArrayList<>();
-                for (DocumentSnapshot snapshot : dataSnapshot.getChildren()) {
-                    //Shelter shelter = snapshot.getValue(Shelter.class);
-                    // shelter.restrictions
-                    //if (shelter.getShelterName().contains(shelterName)) {
-                    // do whatever you wanna do
-                    //shelterList.add(shelter);
-                    allShelters.add(snapshot.getValue(Shelter.class));
-
-                }
-                mDonations.addAll(Shelter.searchShelterName(allShelters, shelterName));
-                ListModel adapter = new SearchAdapterDonation(ViewDonationsActivity.this, mDonations);
-                listViewShelterSearch.setAdapter(adapter);
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-
-    }
+//    private void searchName() {
+//        // literally anything
+//        databaseDonations.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                String shelterName = editTextSearchShelterName.getText().toString().trim();
+//                mDonations.clear();
+//                List<Donation> allShelters = new ArrayList<>();
+//                for (DocumentSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    //Shelter shelter = snapshot.getValue(Shelter.class);
+//                    // shelter.restrictions
+//                    //if (shelter.getShelterName().contains(shelterName)) {
+//                    // do whatever you wanna do
+//                    //shelterList.add(shelter);
+//                    allShelters.add(snapshot.getValue(Shelter.class));
+//
+//                }
+//                mDonations.addAll(Shelter.searchShelterName(allShelters, shelterName));
+//                ListModel adapter = new SearchAdapterDonation(ViewDonationsActivity.this, mDonations);
+//                listViewShelterSearch.setAdapter(adapter);
+//            }
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//            }
+//        });
+//    }
 
     public void onBackButtonPressed(View view) {
         Intent intent = new Intent(this, MainActivity.class);
