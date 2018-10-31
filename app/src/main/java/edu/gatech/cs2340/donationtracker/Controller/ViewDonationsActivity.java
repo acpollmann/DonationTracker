@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
+import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +27,12 @@ import edu.gatech.cs2340.donationtracker.Model.LocationItem;
 import edu.gatech.cs2340.donationtracker.Model.SearchAdapterDonation;
 import edu.gatech.cs2340.donationtracker.R;
 
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+
 public class ViewDonationsActivity extends AppCompatActivity {
     private SearchAdapterDonation adapter;
     private List<Donation> mDonations;
@@ -32,6 +40,8 @@ public class ViewDonationsActivity extends AppCompatActivity {
     private Spinner categorySearchSpinner;
     private Spinner locationSearchSpinner;
     private ListModel model;
+    private SearchView searchView;
+    DocumentReference databaseDonations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +53,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
         categorySearchSpinner = findViewById(R.id.categorySpinner);
+        databaseDonations = FirebaseFirestore.getInstance().getReference("shelters");
         locationSearchSpinner = findViewById(R.id.locationSpinner);
         model = ListModel.INSTANCE;
 
@@ -64,6 +75,19 @@ public class ViewDonationsActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchName(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchName(newText);
+                return false;
             }
         });
 
@@ -93,6 +117,33 @@ public class ViewDonationsActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+    }
+    private void searchName() {
+        // literally anything
+        databaseDonations.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String shelterName = editTextSearchShelterName.getText().toString().trim();
+                mDonations.clear();
+                List<Donation> allShelters = new ArrayList<>();
+                for (DocumentSnapshot snapshot : dataSnapshot.getChildren()) {
+                    //Shelter shelter = snapshot.getValue(Shelter.class);
+                    // shelter.restrictions
+                    //if (shelter.getShelterName().contains(shelterName)) {
+                    // do whatever you wanna do
+                    //shelterList.add(shelter);
+                    allShelters.add(snapshot.getValue(Shelter.class));
+
+                }
+                mDonations.addAll(Shelter.searchShelterName(allShelters, shelterName));
+                ListModel adapter = new SearchAdapterDonation(ViewDonationsActivity.this, mDonations);
+                listViewShelterSearch.setAdapter(adapter);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
     }
 
     public void onBackButtonPressed(View view) {
