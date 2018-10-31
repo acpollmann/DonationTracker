@@ -1,4 +1,4 @@
-//<Searc
+//<Search
 //        android:id="@+id/searchView"
 //        android:layout_width="301dp"
 //        android:layout_height="42dp"
@@ -35,15 +35,17 @@ import edu.gatech.cs2340.donationtracker.Model.CustomAdapter;
 import edu.gatech.cs2340.donationtracker.Model.GroupInfo;
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
 import edu.gatech.cs2340.donationtracker.Model.LocationItem;
-import edu.gatech.cs2340.donationtracker.Model.SearchAdapter;
+import edu.gatech.cs2340.donationtracker.Model.SearchAdapterLocation;
 import edu.gatech.cs2340.donationtracker.R;
 
 public class ViewLocationActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     ListModel model = ListModel.INSTANCE;
     private LinkedHashMap<String, GroupInfo> subjects = new LinkedHashMap<String, GroupInfo>();
-    private ArrayList<GroupInfo> deptList = new ArrayList<GroupInfo>();
+    private ArrayList<GroupInfo> expandableListList = new ArrayList<GroupInfo>();
     private CustomAdapter listAdapter;
-    private SearchAdapter searchAdapter;
+    private SearchAdapterLocation searchAdapter;
+    SearchView editsearch;
+    ArrayList<LocationItem> arraylist = new ArrayList<>();
     private ExpandableListView simpleExpandableListView;
 
     @Override
@@ -63,7 +65,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
         //get reference of the ExpandableListView
         simpleExpandableListView = findViewById(R.id.simpleExpandableListView);
         // create the adapter by passing your ArrayList data
-        listAdapter = new CustomAdapter(ViewLocationActivity.this, deptList);
+        listAdapter = new CustomAdapter(ViewLocationActivity.this, expandableListList);
         // attach the adapter to the expandable list view
         simpleExpandableListView.setAdapter(listAdapter);
         // setOnChildClickListener listener for child row click
@@ -71,7 +73,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 //get the group header
-                GroupInfo headerInfo = deptList.get(groupPosition);
+                GroupInfo headerInfo = expandableListList.get(groupPosition);
                 //get the child info
                 ChildInfo detailInfo = headerInfo.getProductList().get(childPosition);
                 //display it or do something with it
@@ -95,7 +97,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
                 //get the group header
-                GroupInfo headerInfo = deptList.get(groupPosition);
+                GroupInfo headerInfo = expandableListList.get(groupPosition);
                 //display it or do something with it
                 Toast.makeText(getBaseContext(), " Header is :: " + headerInfo.getName(),
                         Toast.LENGTH_LONG).show();
@@ -104,6 +106,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
             }
         });
         //searchAdapter = new SearchAdapter(ViewLocationActivity.this, deptList);
+        searchAdapter = new SearchAdapterLocation(ViewLocationActivity.this, arraylist);
     }
     @Override
     public boolean onQueryTextSubmit(String query) {
@@ -118,7 +121,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
     public void onCancelLocationPressed(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
+        //overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
 
     //load some initial data into out list
@@ -153,7 +156,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
             headerInfo = new GroupInfo();
             headerInfo.setName(department);
             subjects.put(department, headerInfo);
-            deptList.add(headerInfo);
+            expandableListList.add(headerInfo);
         }
 
         //get the children for the group
@@ -171,13 +174,16 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
         headerInfo.setProductList(productList);
 
         //find the group position inside the list
-        groupPosition = deptList.indexOf(headerInfo);
+        groupPosition = expandableListList.indexOf(headerInfo);
         return groupPosition;
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(model.getItems()));
+        List<LocationItem> filteredLocations = model.getItems();
+        if (filteredLocations.isEmpty()) {
+            Toast.makeText(ViewLocationActivity.this, "Selected filter doesn't have donations.", Toast.LENGTH_SHORT).show();
+        }
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(filteredLocations));
     }
 
     public class SimpleItemRecyclerViewAdapter
@@ -227,7 +233,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
 
                     intent.putExtras(b);
                     context.startActivity(intent);
-                    overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                    //overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                 }
             });
         }
@@ -259,6 +265,6 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
     public void onAddLocationPressed(View view) {
         Intent intent = new Intent(this, AddLocationActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.slideleft, R.anim.slideright);
+        //overridePendingTransition(R.anim.slideleft, R.anim.slideright);
     }
 }
