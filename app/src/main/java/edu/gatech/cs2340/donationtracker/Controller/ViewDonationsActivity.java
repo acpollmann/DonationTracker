@@ -8,14 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filterable;
-import android.widget.Filter;
-import android.widget.SearchView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Filter;
 import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -27,8 +24,8 @@ import java.util.Objects;
 
 import edu.gatech.cs2340.donationtracker.Model.Donation;
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
-import edu.gatech.cs2340.donationtracker.Model.SearchAdapterDonation;
 import edu.gatech.cs2340.donationtracker.Model.LocationItem;
+import edu.gatech.cs2340.donationtracker.Model.SearchAdapterDonation;
 import edu.gatech.cs2340.donationtracker.R;
 
 public class ViewDonationsActivity extends AppCompatActivity {
@@ -44,15 +41,15 @@ public class ViewDonationsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_donations);
+        model = ListModel.INSTANCE;
 
         /*Recycler View to get the details of a donation item*/
         View recyclerView = findViewById(R.id.donation_list);
         assert recyclerView != null;
-        setupRecyclerView((RecyclerView) recyclerView);
+
         categorySearchSpinner = findViewById(R.id.categorySpinner);
         locationSearchSpinner = findViewById(R.id.locationSpinner);
         searchNameView = findViewById(R.id.searchView);
-        model = ListModel.INSTANCE;
 
         /*
           Set up the adapter to display the allowable categories in the spinner
