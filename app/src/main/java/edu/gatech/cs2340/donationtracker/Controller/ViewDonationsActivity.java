@@ -139,6 +139,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         recyclerView.setAdapter(new SimpleDonationRecyclerViewAdapter(filteredDonations));
     }
 
+
     /**
      * This inner class is our custom adapter.  It takes our basic model information and
      * converts it to the correct layout for this view.

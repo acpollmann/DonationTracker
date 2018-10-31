@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
+    buildToolsVersion '25.0.2'
     defaultConfig {
         applicationId "edu.gatech.cs2340.donationtracker"
         minSdkVersion 19
