@@ -9,9 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.TextView;
 import android.widget.ArrayAdapter;
+import android.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
 
     private Spinner categorySearchSpinner;
     private Spinner locationSearchSpinner;
+    private SearchView searchNameView;
     private ListModel model;
 
     @Override
@@ -36,6 +38,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
 
         categorySearchSpinner = findViewById(R.id.categorySpinner);
         locationSearchSpinner = findViewById(R.id.locationSpinner);
+        searchNameView = findViewById(R.id.searchView);
         model = ListModel.INSTANCE;
 
         /*
@@ -85,6 +88,21 @@ public class ViewDonationsActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+        searchNameView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            View recyclerView = findViewById(R.id.donation_list);
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                setupRecyclerView((RecyclerView) recyclerView);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                setupRecyclerView((RecyclerView) recyclerView);
+                return false;
+            }
+        });
+
     }
 
     public void onBackButtonPressed(View view) {
@@ -123,6 +141,21 @@ public class ViewDonationsActivity extends AppCompatActivity {
         return filteredByLocation;
     }
 
+    private List<Donation> searchForDonation (List<Donation> donations, String search) {
+        if (search == null) {
+            return donations;
+        }
+
+        List<Donation> searchedDonations = new ArrayList<>();
+        for (Donation donation : donations) {
+            if (donation.getName().toString().toLowerCase().contains(search.toLowerCase())) {
+                searchedDonations.add(donation);
+            }
+        }
+
+        return searchedDonations;
+    }
+
     /**
      * Set up an adapter and hook it to the provided view
      *
@@ -132,6 +165,9 @@ public class ViewDonationsActivity extends AppCompatActivity {
         List<Donation> filteredDonations = model.getDonations();
         filteredDonations = filterByCategory(filteredDonations, (String) categorySearchSpinner.getSelectedItem());
         filteredDonations = filterByLocation(filteredDonations, (String) locationSearchSpinner.getSelectedItem());
+        filteredDonations = searchForDonation(filteredDonations, (String) searchNameView.getQuery().toString());
+
+
         if (filteredDonations.isEmpty()) {
             Toast.makeText(ViewDonationsActivity.this, "Selected filter doesn't have donations.", Toast.LENGTH_SHORT).show();
         }
