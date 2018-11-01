@@ -6,10 +6,7 @@
     android:layout_height="match_parent"
     tools:ignore="missingPrefix"
     tools:context="edu.gatech.cs2340.donationtracker.Controller.ViewDonationsActivity">
-    <donation android:id ="@+id/action_search"
-        android:title="Search"
-        app:showAsAction="ifRoom|collapseActionView"
-        app:actionViewClass="android.support.v7.widget.SearchView"/>
+
     <Button
         android:id="@+id/backButton"
         android:layout_width="47dp"
