@@ -6,18 +6,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filterable;
-import android.widget.Filter;
-import android.widget.SearchView;
 import android.widget.AdapterView;
-import android.widget.TextView;
 import android.widget.ArrayAdapter;
+import android.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -26,30 +21,31 @@ import java.util.Objects;
 
 import edu.gatech.cs2340.donationtracker.Model.Donation;
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
-import edu.gatech.cs2340.donationtracker.Model.SearchAdapterDonation;
 import edu.gatech.cs2340.donationtracker.Model.LocationItem;
 import edu.gatech.cs2340.donationtracker.R;
 
+
 public class ViewDonationsActivity extends AppCompatActivity {
-    private SearchAdapterDonation adapter;
-    private List<Donation> mDonations;
 
     private Spinner categorySearchSpinner;
     private Spinner locationSearchSpinner;
+    private SearchView searchNameView;
     private ListModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_donations);
+        model = ListModel.INSTANCE;
 
         /*Recycler View to get the details of a donation item*/
         View recyclerView = findViewById(R.id.donation_list);
         assert recyclerView != null;
-        setupRecyclerView((RecyclerView) recyclerView);
+
         categorySearchSpinner = findViewById(R.id.categorySpinner);
+        //databaseDonations = FirebaseFirestore.getInstance().getReference("shelters");
         locationSearchSpinner = findViewById(R.id.locationSpinner);
-        model = ListModel.INSTANCE;
+        searchNameView = findViewById(R.id.searchView);
 
         /*
           Set up the adapter to display the allowable categories in the spinner
@@ -78,7 +74,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         List<String> selectableLocations = new ArrayList<>();
         selectableLocations.add("All");
         for (LocationItem location : model.getItems()) {
-            selectableLocations.add(Objects.toString(location));
+           selectableLocations.add(Objects.toString(location));
         }
 
         final ArrayAdapter<LocationItem> locationSearchAdapter = new ArrayAdapter(this,
@@ -98,6 +94,21 @@ public class ViewDonationsActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+        searchNameView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            View recyclerView = findViewById(R.id.donation_list);
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                setupRecyclerView((RecyclerView) recyclerView);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                setupRecyclerView((RecyclerView) recyclerView);
+                return false;
+            }
+        });
+
     }
 
     public void onBackButtonPressed(View view) {
@@ -117,7 +128,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
                 filteredByCategory.add(donation);
             }
         }
-
         return filteredByCategory;
     }
 
@@ -136,6 +146,21 @@ public class ViewDonationsActivity extends AppCompatActivity {
         return filteredByLocation;
     }
 
+    private List<Donation> searchForDonation (List<Donation> donations, String search) {
+        if (search == null) {
+            return donations;
+        }
+
+        List<Donation> searchedDonations = new ArrayList<>();
+        for (Donation donation : donations) {
+            if (donation.getName().toString().toLowerCase().contains(search.toLowerCase())) {
+                searchedDonations.add(donation);
+            }
+        }
+
+        return searchedDonations;
+    }
+
     /**
      * Set up an adapter and hook it to the provided view
      *
@@ -143,49 +168,17 @@ public class ViewDonationsActivity extends AppCompatActivity {
      */
     private void setupRecyclerView(RecyclerView recyclerView) {
         List<Donation> filteredDonations = model.getDonations();
-        Context context = recyclerView.getContext();
-        adapter = new SearchAdapterDonation(context, filteredDonations);
+
         filteredDonations = filterByCategory(filteredDonations, (String) categorySearchSpinner.getSelectedItem());
         filteredDonations = filterByLocation(filteredDonations, (String) locationSearchSpinner.getSelectedItem());
+        filteredDonations = searchForDonation(filteredDonations, (String) searchNameView.getQuery().toString());
+
+
         if (filteredDonations.isEmpty()) {
             Toast.makeText(ViewDonationsActivity.this, "Selected filter doesn't have donations.", Toast.LENGTH_SHORT).show();
         }
 
         recyclerView.setAdapter(new SimpleDonationRecyclerViewAdapter(filteredDonations));
-    }
-
-//    /**
-//     * Set up an adapter and hook it to the provided view
-//     *
-//     * @param searchBar_recyclerView the view that needs this adapter
-//     */
-//    private void setup_searchRecyclerView(RecyclerView searchBar_recyclerView) {
-//        ListModel model = ListModel.INSTANCE;
-//
-//        searchBar_recyclerView.setAdapter(new SearchBarRecyclerViewAdapter(model.getDonations()));
-//    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.donation_search_menu, menu);
-
-        //MenuItem searchItem = menu.findItem(R.id.action_search);
-        //SearchView searchView = (SearchView) searchItem.getActionView();
-
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String s) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String s) {
-//                //searchBar_recyclerView.getFilter().filter(newText);
-//                return false;
-//            }
-//        });
-        return true;
     }
 
     /**
@@ -201,17 +194,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
          * Collection of the items to be shown in this list.
          */
         private List<Donation> mDonations;
-        private List<Donation> donationListFull;
-        class DListViewHolder extends RecyclerView.ViewHolder {
-            public View mView;
-            public TextView mContentView;
-
-            public DListViewHolder(View view) {
-                super(view);
-                mView = view;
-                mContentView = (TextView) view.findViewById(R.id.content);
-            }
-        }
 
 
         /**
@@ -221,7 +203,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
          */
         public SimpleDonationRecyclerViewAdapter(List<Donation> items) {
             mDonations = items;
-            donationListFull = new ArrayList<>(mDonations);
         }
 
         @Override
@@ -289,40 +270,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
         public int getItemCount() {
             return mDonations.size();
         }
-        public Filter getFilter() {
-            return donationFilter;
-        }
-
-        private Filter donationFilter = new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
-                List<Donation> filteredList = new ArrayList<>();
-
-                if (constraint == null || constraint.length() == 0) {
-                    filteredList.addAll(donationListFull);
-                } else {
-                    String filterPattern = constraint.toString().toLowerCase().trim();
-
-                    for (Donation donation: donationListFull) {
-                        if (donation.getName().toLowerCase().startsWith(filterPattern)) {
-                            filteredList.add(donation);
-                        }
-                    }
-                }
-                FilterResults results = new FilterResults();
-                results.values = filteredList;
-
-                return results;
-            }
-
-            @Override
-            protected void publishResults(CharSequence constraint, FilterResults results) {
-                mDonations.clear();
-                mDonations.addAll((List) results.values);
-                notifyDataSetChanged();
-            }
-        };
-
 
         /**
          * This inner class represents a ViewHolder which provides us a way to cache information
