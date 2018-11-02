@@ -1,4 +1,4 @@
-//<Searc
+//<Search
 //        android:id="@+id/searchView"
 //        android:layout_width="301dp"
 //        android:layout_height="42dp"
@@ -13,7 +13,6 @@ package edu.gatech.cs2340.donationtracker.Controller;
 
 import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -33,7 +32,6 @@ import java.util.List;
 
 import edu.gatech.cs2340.donationtracker.Model.ChildInfo;
 import edu.gatech.cs2340.donationtracker.Model.CustomAdapter;
-import edu.gatech.cs2340.donationtracker.Model.Donation;
 import edu.gatech.cs2340.donationtracker.Model.GroupInfo;
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
 import edu.gatech.cs2340.donationtracker.Model.LocationItem;
@@ -107,6 +105,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
                 return false;
             }
         });
+        //searchAdapter = new SearchAdapter(ViewLocationActivity.this, deptList);
         searchAdapter = new SearchAdapterLocation(ViewLocationActivity.this, arraylist);
     }
     @Override
@@ -122,7 +121,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
     public void onCancelLocationPressed(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
+        //overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
 
     //load some initial data into out list
@@ -234,7 +233,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
 
                     intent.putExtras(b);
                     context.startActivity(intent);
-                    overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                    //overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                 }
             });
         }
@@ -266,6 +265,6 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
     public void onAddLocationPressed(View view) {
         Intent intent = new Intent(this, AddLocationActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.slideleft, R.anim.slideright);
+        //overridePendingTransition(R.anim.slideleft, R.anim.slideright);
     }
 }
