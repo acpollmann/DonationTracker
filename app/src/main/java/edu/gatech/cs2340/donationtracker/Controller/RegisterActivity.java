@@ -66,11 +66,11 @@ public class RegisterActivity extends AppCompatActivity {
 
         User newUser;
 
-        if (type.equals("User")) {
+        if ("User".equals(type)) {
             newUser = new User(password, email);
-        } else if (type.equals("Location Employee")) {
+        } else if ("Location Employee".equals(type)) {
             newUser = new LocationEmployee(password, email);
-        } else if (type.equals("Admin")) {
+        } else if ("Admin".equals(type)) {
             newUser = new Admin(password, email);
         } else {
             newUser = new Manager(password, email);
@@ -79,6 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
         boolean found = false;
 
         for (User u : userSet.getUsers()) {
+            // implement u1.compareByEmail(u2)
             if (u.getEmail().equals(newUser.getEmail())) {
                 found = true;
                 mEmailField.setText("");

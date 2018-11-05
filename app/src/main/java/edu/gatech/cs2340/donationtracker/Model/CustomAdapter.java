@@ -13,8 +13,8 @@ import edu.gatech.cs2340.donationtracker.R;
 
 public class CustomAdapter extends BaseExpandableListAdapter {
 
-    private Context context;
-    private ArrayList<GroupInfo> deptList;
+    private final Context context;
+    private final ArrayList<GroupInfo> deptList;
 
     public CustomAdapter(Context context, ArrayList<GroupInfo> deptList) {
         this.context = context;

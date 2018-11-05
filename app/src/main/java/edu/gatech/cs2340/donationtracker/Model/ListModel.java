@@ -14,7 +14,7 @@ public class ListModel {
     private List<Donation> donations;
 
     /** The FirestoreManager responsible for saving Locations to and loading Locations from Firestore. */
-    private FirestoreManager firestoreManager;
+    private final FirestoreManager firestoreManager;
 
     /** the currently selected course, defaults to first course */
     private Donation _currentDonation;
@@ -65,17 +65,18 @@ public class ListModel {
     public void setDonations(List<Donation> donations) {
         this.donations = donations;
     }
+    public int getLocationListSize() {
+        return items.size();
+    }
 
+    public LocationItem findItemById(int key) {
 
-    /**
-     *
-     * @return  the currently selected donation
-     */
-    public Donation getCurrentDonation() { return _currentDonation;}
-
-    public void setCurrentDonation(Donation donation) { _currentDonation = donation; }
-
+        for (LocationItem l : items) {
+            if (l.getKey() == key) {
+                return l;
+            }
+        }
+        Log.d("MYAPP", "Warning - Failed to find key: " + key);
+        return null;
+    }
 }
-
-
-

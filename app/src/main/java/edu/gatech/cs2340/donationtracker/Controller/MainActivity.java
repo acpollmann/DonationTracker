@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         int millisDelay = 1000;
         handler.postDelayed(task, millisDelay);
     }
-    private Runnable task = new Runnable() {
+    private final Runnable task = new Runnable() {
         public void run() {
             recreate();
         }
