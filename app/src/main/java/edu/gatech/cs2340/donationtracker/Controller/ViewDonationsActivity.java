@@ -3,6 +3,7 @@ package edu.gatech.cs2340.donationtracker.Controller;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -38,12 +39,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_donations);
         model = ListModel.INSTANCE;
 
-        /*Recycler View to get the details of a donation item*/
-        View recyclerView = findViewById(R.id.donation_list);
-        assert recyclerView != null;
-
         categorySearchSpinner = findViewById(R.id.categorySpinner);
-        //databaseDonations = FirebaseFirestore.getInstance().getReference("shelters");
         locationSearchSpinner = findViewById(R.id.locationSpinner);
         searchNameView = findViewById(R.id.searchView);
 
@@ -94,6 +90,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+
         searchNameView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             View recyclerView = findViewById(R.id.donation_list);
             @Override
@@ -153,7 +150,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
 
         List<Donation> searchedDonations = new ArrayList<>();
         for (Donation donation : donations) {
-            if (donation.getName().toString().toLowerCase().contains(search.toLowerCase())) {
+            if (donation.getName().toLowerCase().contains(search.toLowerCase())) {
                 searchedDonations.add(donation);
             }
         }
@@ -171,7 +168,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
 
         filteredDonations = filterByCategory(filteredDonations, (String) categorySearchSpinner.getSelectedItem());
         filteredDonations = filterByLocation(filteredDonations, (String) locationSearchSpinner.getSelectedItem());
-        filteredDonations = searchForDonation(filteredDonations, (String) searchNameView.getQuery().toString());
+        filteredDonations = searchForDonation(filteredDonations, searchNameView.getQuery().toString());
 
 
         if (filteredDonations.isEmpty()) {
@@ -187,13 +184,13 @@ public class ViewDonationsActivity extends AppCompatActivity {
      * <p>
      * In this case, we are just mapping the toString of the Course object to a text field.
      */
-    public class SimpleDonationRecyclerViewAdapter
+    private class SimpleDonationRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleDonationRecyclerViewAdapter.ViewHolder> {
 
         /**
          * Collection of the items to be shown in this list.
          */
-        private List<Donation> mDonations;
+        private List<Donation> mDonationList;
 
 
         /**
@@ -201,12 +198,12 @@ public class ViewDonationsActivity extends AppCompatActivity {
          *
          * @param items the list of items to be displayed in the recycler view
          */
-        public SimpleDonationRecyclerViewAdapter(List<Donation> items) {
-            mDonations = items;
+        private SimpleDonationRecyclerViewAdapter(List<Donation> items) {
+            mDonationList = items;
         }
 
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        @Override @NonNull
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         /*
           This sets up the view for each individual item in the recycler display
           To edit the actual layout, we would look at: res/layout/course_list_content.xml
@@ -218,18 +215,18 @@ public class ViewDonationsActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final ViewHolder holder, final int position) {
+        public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         /*
         This is where we have to bind each data element in the list (given by position parameter)
         to an element in the view (which is one of our two TextView widgets
          */
             //start by getting the element at the correct position
-            holder.mDonation = mDonations.get(position);
+            holder.mDonation = mDonationList.get(position);
         /*
           Now we bind the data to the widgets.  In this case, pretty simple, put the id in one
           textview and the string rep of a course in the other.
          */
-            holder.mContentView.setText(mDonations.get(position).getName());
+            holder.mContentView.setText(mDonationList.get(position).getName());
 
             /*
              * set up a listener to handle if the user clicks on this list item, what should happen?
@@ -242,14 +239,14 @@ public class ViewDonationsActivity extends AppCompatActivity {
 
                     Bundle b = new Bundle();
 
-                    String name = "" + mDonations.get(position).getName();
-                    String location = mDonations.get(position).getLocation().toString();
-                    String timeStamp = mDonations.get(position).getTimeStamp();
-                    String value = mDonations.get(position).getValue();
-                    String category = "" + mDonations.get(position).getCategory();
-                    String shortDescription = mDonations.get(position).getShortDescription();
-                    String fullDescription = mDonations.get(position).getFullDescription();
-                    String comments = mDonations.get(position).getComments();
+                    String name = "" + mDonationList.get(position).getName();
+                    String location = mDonationList.get(position).getLocation().toString();
+                    String timeStamp = mDonationList.get(position).getTimeStamp();
+                    String value = mDonationList.get(position).getValue();
+                    String category = "" + mDonationList.get(position).getCategory();
+                    String shortDescription = mDonationList.get(position).getShortDescription();
+                    String fullDescription = mDonationList.get(position).getFullDescription();
+                    String comments = mDonationList.get(position).getComments();
 
                     b.putString("name", name);
                     b.putString("location", location);
@@ -268,7 +265,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return mDonations.size();
+            return mDonationList.size();
         }
 
         /**
@@ -277,14 +274,14 @@ public class ViewDonationsActivity extends AppCompatActivity {
          * the list view (in this case the two TextView)
          */
         public class ViewHolder extends RecyclerView.ViewHolder {
-            public final View mView;
-            public final TextView mContentView;
+            private final View mView;
+            private final TextView mContentView;
             public Donation mDonation;
 
-            public ViewHolder(View view) {
+            private ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mContentView = (TextView) view.findViewById(R.id.content);
+                mContentView = view.findViewById(R.id.content);
             }
 
             @Override
