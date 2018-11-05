@@ -19,7 +19,8 @@ import edu.gatech.cs2340.donationtracker.Model.LocationItem;
 import edu.gatech.cs2340.donationtracker.R;
 
 /**
- * Implementation that will initiate the ADD LOCATION page.
+ * Implementation that will initiate the ADD LOCATION page, collect
+ * information, create a new location, and update the listModel and display.
  *
  * @author Group 71B
  * @version 1.0
