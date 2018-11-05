@@ -11,6 +11,7 @@ import edu.gatech.cs2340.donationtracker.Model.User;
 import edu.gatech.cs2340.donationtracker.Model.UserSet;
 import edu.gatech.cs2340.donationtracker.R;
 
+
 /**
  * Activity which represents a login screen that offers login via email/password.
  */

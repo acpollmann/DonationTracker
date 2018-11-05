@@ -17,6 +17,7 @@ import edu.gatech.cs2340.donationtracker.Model.User;
 import edu.gatech.cs2340.donationtracker.Model.UserSet;
 import edu.gatech.cs2340.donationtracker.R;
 
+
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText mEmailField;

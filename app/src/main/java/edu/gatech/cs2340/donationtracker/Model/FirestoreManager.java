@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.donationtracker.Model;
 
+
 import android.support.annotation.NonNull;
 import android.util.Log;
 

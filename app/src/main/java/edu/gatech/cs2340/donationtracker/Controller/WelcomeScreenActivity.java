@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import edu.gatech.cs2340.donationtracker.R;
 
+
 public class WelcomeScreenActivity extends AppCompatActivity {
 
     @Override
