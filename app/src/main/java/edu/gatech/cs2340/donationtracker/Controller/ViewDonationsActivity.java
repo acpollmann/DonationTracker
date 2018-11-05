@@ -156,7 +156,8 @@ public class ViewDonationsActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Allows text in search bar to create a list from donations
+     * that contains the text typed into the bar
      * @param donations list of donations
      * @param search string fragment used to search donations
      * @return the list of searched donations
@@ -172,7 +173,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
                 searchedDonations.add(donation);
             }
         }
-
         return searchedDonations;
     }
 
@@ -283,7 +283,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
 
         /**
          * Returns the number of elements in mDonationList
-         * @return mDonationList.size() the num of elements
+         * @return mDonationList.size() the bu
          */
         @Override
         public int getItemCount() {
