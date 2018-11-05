@@ -18,8 +18,8 @@ public class SearchAdapterLocation extends BaseAdapter {
 
     Context mContext;
     LayoutInflater inflater;
-    private List<LocationItem> locationList = null;
-    private ArrayList<LocationItem> arraylist;
+    private List<LocationItem> locationList;
+    private final ArrayList<LocationItem> arraylist;
 
     public SearchAdapterLocation(Context context, List<LocationItem> namesList) {
         mContext = context;
@@ -68,7 +68,7 @@ public class SearchAdapterLocation extends BaseAdapter {
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
         locationList.clear();
-        if (charText.length() == 0) {
+        if (charText.isEmpty()) {
             locationList.addAll(arraylist);
         } else {
             for (LocationItem wp : arraylist) {

@@ -68,7 +68,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
         simpleExpandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
             @Override
             public void onGroupExpand(int groupPosition) {
-                if (prevExpandPosition[0] >= 0 && prevExpandPosition[0] != groupPosition) {
+                if ((prevExpandPosition[0] >= 0) && (prevExpandPosition[0] != groupPosition)) {
                     simpleExpandableListView.collapseGroup(prevExpandPosition[0]);
                 }
                 prevExpandPosition[0] = groupPosition;
