@@ -18,6 +18,13 @@ import edu.gatech.cs2340.donationtracker.Model.ListModel;
 import edu.gatech.cs2340.donationtracker.Model.LocationItem;
 import edu.gatech.cs2340.donationtracker.R;
 
+/**
+ * Implementation that will initiate the ADD LOCATION page.
+ *
+ * @author Group 71B
+ * @version 1.0
+ */
+
 public class AddLocationActivity extends AppCompatActivity {
 
     private EditText mNameField;
@@ -42,6 +49,14 @@ public class AddLocationActivity extends AppCompatActivity {
             "Drop Off", "Store", "Warehouse"
     };
 
+
+    /**
+     * On the creation of the ADD LOCATION page, it will
+     * change the display of the device, sets the information collected
+     * from the page to fields. It also creates adapters for the spinners
+     * which will be used to get information on the state and type.
+     * @param savedInstanceState a bundle of information from widgets
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +95,10 @@ public class AddLocationActivity extends AppCompatActivity {
         typeSpinner.setAdapter(typeAdapter);
     }
 
+    /**
+     * Configures the back button by creating a button instance,
+     * then it creates a listener for the back button, and a transition.
+     */
     private void configureBackButton() {
         Button backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +109,13 @@ public class AddLocationActivity extends AppCompatActivity {
         });
         overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
+
+    /**
+     * Once the ADD LOCATION button is pressed, it collects the information from
+     * the page and set's them to variables before creating a new location
+     * object and updating the list model and page.
+     * @param view the current view of the ADD LOCATION page
+     */
     public void onAddLocationButtonPressed(View view) {
 
         String name = mNameField.getText().toString();
