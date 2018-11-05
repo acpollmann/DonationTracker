@@ -30,8 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-        spinner = findViewById(R.id.user_spinner);
+        spinner = (Spinner) findViewById(R.id.user_spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.user_array, android.R.layout.simple_spinner_item);
@@ -67,11 +66,11 @@ public class RegisterActivity extends AppCompatActivity {
 
         User newUser;
 
-        if (type.equals("User")) {
+        if ("User".equals(type)) {
             newUser = new User(password, email);
-        } else if (type.equals("Location Employee")) {
+        } else if ("Location Employee".equals(type)) {
             newUser = new LocationEmployee(password, email);
-        } else if (type.equals("Admin")) {
+        } else if ("Admin".equals(type)) {
             newUser = new Admin(password, email);
         } else {
             newUser = new Manager(password, email);
@@ -80,6 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
         boolean found = false;
 
         for (User u : userSet.getUsers()) {
+            // implement u1.compareByEmail(u2)
             if (u.getEmail().equals(newUser.getEmail())) {
                 found = true;
                 mEmailField.setText("");

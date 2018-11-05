@@ -122,12 +122,6 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
         //overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
 
-//    public void onBackButtonPressed(View view) {
-//        Intent intent = new Intent(this, MainActivity.class);
-//        startActivity(intent);
-//        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
-//    }
-
     //load some initial data into out list
     private void loadData(){
 

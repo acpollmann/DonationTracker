@@ -11,8 +11,8 @@ import java.util.List;
 
 public class Donation {
     /** allow user to assign number to specific donations */
-    private static int Next_key = 0;
-    private int key;
+    private static int Next_key;
+    private final int key;
     private String name;
     private String timeStamp;
     private LocationItem location;

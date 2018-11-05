@@ -1,32 +1,30 @@
 package edu.gatech.cs2340.donationtracker.Model;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import edu.gatech.cs2340.donationtracker.R;
 
-public class SearchAdapterDonation extends BaseAdapter {
+public class SearchAdapter extends BaseAdapter {
 
     // Declare Variables
 
     Context mContext;
     LayoutInflater inflater;
-    private List<Donation> locationList = null;
-    private ArrayList<Donation> arraylist;
+    private List<GroupInfo> locationList = null;
+    private ArrayList<GroupInfo> arraylist;
 
-    public SearchAdapterDonation(Context context, List<Donation> namesList) {
+    public SearchAdapter(Context context, List<GroupInfo> namesList) {
         mContext = context;
         this.locationList = namesList;
         inflater = LayoutInflater.from(mContext);
-        this.arraylist = new ArrayList<Donation>();
+        this.arraylist = new ArrayList<GroupInfo>();
         this.arraylist.addAll(namesList);
     }
 
@@ -40,7 +38,7 @@ public class SearchAdapterDonation extends BaseAdapter {
     }
 
     @Override
-    public Donation getItem(int position) {
+    public GroupInfo getItem(int position) {
         return locationList.get(position);
     }
 
@@ -72,7 +70,7 @@ public class SearchAdapterDonation extends BaseAdapter {
         if (charText.length() == 0) {
             locationList.addAll(arraylist);
         } else {
-            for (Donation wp : arraylist) {
+            for (GroupInfo wp : arraylist) {
                 if (wp.getName().contains(charText)) {
                     locationList.add(wp);
                 }
