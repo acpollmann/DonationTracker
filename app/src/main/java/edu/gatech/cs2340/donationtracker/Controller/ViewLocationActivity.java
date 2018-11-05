@@ -1,3 +1,14 @@
+//<Searc
+//        android:id="@+id/searchView"
+//        android:layout_width="301dp"
+//        android:layout_height="42dp"
+//        android:layout_marginEnd="20dp"
+//        android:layout_marginStart="40dp"
+//        app:layout_constraintBottom_toTopOf="@+id/search_location"
+//        app:layout_constraintEnd_toEndOf="parent"
+//        app:layout_constraintStart_toStartOf="parent"
+//        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
 package edu.gatech.cs2340.donationtracker.Controller;
 
 import android.content.Context;
@@ -7,6 +18,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +35,7 @@ import edu.gatech.cs2340.donationtracker.Model.CustomAdapter;
 import edu.gatech.cs2340.donationtracker.Model.GroupInfo;
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
 import edu.gatech.cs2340.donationtracker.Model.LocationItem;
-import edu.gatech.cs2340.donationtracker.Model.SearchAdapterLocation;
+import edu.gatech.cs2340.donationtracker.Model.SearchAdapter;
 import edu.gatech.cs2340.donationtracker.R;
 
 public class ViewLocationActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
@@ -31,12 +43,16 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
     private final LinkedHashMap<String, GroupInfo> filteredBy = new LinkedHashMap<>();
     private final ArrayList<GroupInfo> expandableListList = new ArrayList<>();
     private CustomAdapter listAdapter;
-    private SearchAdapterLocation searchAdapter;
+    private SearchAdapter searchAdapter;
     private ExpandableListView simpleExpandableListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Log.d("model. ",model.getItems().toString());
+
+
         setContentView(R.layout.activity_view_location);
         View recyclerView = findViewById(R.id.locationitem_list);
         assert recyclerView != null;
@@ -47,7 +63,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
         //get reference of the ExpandableListView
         simpleExpandableListView = findViewById(R.id.simpleExpandableListView);
         // create the adapter by passing your ArrayList data
-        listAdapter = new CustomAdapter(ViewLocationActivity.this, expandableListList);
+        listAdapter = new CustomAdapter(ViewLocationActivity.this, deptList);
         // attach the adapter to the expandable list view
         simpleExpandableListView.setAdapter(listAdapter);
         // setOnChildClickListener listener for child row click
@@ -55,7 +71,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 //get the group header
-                GroupInfo headerInfo = expandableListList.get(groupPosition);
+                GroupInfo headerInfo = deptList.get(groupPosition);
                 //get the child info
                 ChildInfo detailInfo = headerInfo.getProductList().get(childPosition);
                 //display it or do something with it
@@ -79,7 +95,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
                 //get the group header
-                GroupInfo headerInfo = expandableListList.get(groupPosition);
+                GroupInfo headerInfo = deptList.get(groupPosition);
                 //display it or do something with it
                 Toast.makeText(getBaseContext(), " Header is :: " + headerInfo.getName(),
                         Toast.LENGTH_LONG).show();
@@ -87,6 +103,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
                 return false;
             }
         });
+        searchAdapter = new SearchAdapter(ViewLocationActivity.this, deptList);
     }
     @Override
     public boolean onQueryTextSubmit(String query) {
@@ -98,42 +115,45 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
         searchAdapter.filter(newText);
         return false;
     }
-    public void onCancelLocationPressed(View view) {
+    public void onBackButtonPressed(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        //overridePendingTransition(R.anim.slideright, R.anim.slideleft);
+        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
 
     //load some initial data into out list
     private void loadData(){
 
-        addFilter("Location Latitude and Longitude","Sort By Latitude");
-        addFilter("Location Latitude and Longitude","Sort By Longitude");
+        addProduct("Location Latitude and Longitude","Sort By Latitude");
+        addProduct("Location Latitude and Longitude","Sort By Longitude");
 
-        addFilter("Location Name","Sort Alphabetically");
+        addProduct("Location Name","Sort Alphabetically");
 
-        addFilter("Location Type","Sort By Drop-Off");
-        addFilter("Location Type","Sort By Store");
-        addFilter("Location Type","Sort By Warehouse");
+        addProduct("Location Type","Sort By Drop-Off");
+        addProduct("Location Type","Sort By Store");
+        addProduct("Location Type","Sort By Warehouse");
 
-        addFilter("Location Address","Sort Alphabetically");
-        addFilter("Location Address","Sort By Closeness");
+        addProduct("Location Address","Sort Alphabetically");
+        addProduct("Location Address","Sort By Closeness");
 
-        addFilter("Location Phone Number","Sort Numerically");
-        addFilter("Location Phone Number","Sort By Area Code");
+        addProduct("Location Phone Number","Sort Numerically");
+        addProduct("Location Phone Number","Sort By Area Code");
 
     }
 
     //here we maintain our products in various departments
-    private void addFilter(String information, String sortBy) {
+    private int addProduct(String department, String product){
+
+        int groupPosition = 0;
+
         //check the hash map if the group already exists
-        GroupInfo headerInfo = filteredBy.get(information);
+        GroupInfo headerInfo = subjects.get(department);
         //add the group if doesn't exists
         if(headerInfo == null){
             headerInfo = new GroupInfo();
-            headerInfo.setName(information);
-            filteredBy.put(information, headerInfo);
-            expandableListList.add(headerInfo);
+            headerInfo.setName(department);
+            subjects.put(department, headerInfo);
+            deptList.add(headerInfo);
         }
 
         //get the children for the group
@@ -146,38 +166,41 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
         //create a new child and add that to the group
         ChildInfo detailInfo = new ChildInfo();
         detailInfo.setSequence(String.valueOf(listSize));
-        detailInfo.setName(sortBy);
+        detailInfo.setName(product);
         productList.add(detailInfo);
         headerInfo.setProductList(productList);
+
+        //find the group position inside the list
+        groupPosition = deptList.indexOf(headerInfo);
+        return groupPosition;
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        List<LocationItem> filteredLocations = model.getItems();
-        if (filteredLocations.isEmpty()) {
-            Toast.makeText(ViewLocationActivity.this, "Selected filter doesn't have donations.", Toast.LENGTH_SHORT).show();
-        }
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(filteredLocations));
+
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(model.getItems()));
     }
 
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<LocationItem> mLocationList;
+        private final List<LocationItem> mValues;
 
-        private SimpleItemRecyclerViewAdapter(List<LocationItem> items) {
-            mLocationList = items;
+        public SimpleItemRecyclerViewAdapter(List<LocationItem> items) {
+            mValues = items;
         }
 
-        @Override @NonNull
-        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        @Override
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.locationitem_list_content, parent, false);
             return new ViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-            holder.mContentView.setText(mLocationList.get(position).getLocationName());
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
+            holder.mItem = mValues.get(position);
+            holder.mIdView.setText("" + mValues.get(position).getKey());
+            holder.mContentView.setText(mValues.get(position).getLocationName());
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -188,13 +211,13 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
 
                     Bundle b = new Bundle();
 
-                    String name = "" + mLocationList.get(position).getLocationName();
-                    String type = "" + mLocationList.get(position).getType();
-                    String address = mLocationList.get(position).getAddress();
-                    String latitudeLongitude = mLocationList.get(position).getLatitude() + "/"
-                            + "" + mLocationList.get(position).getLongitude();
-                    String phoneNumber = mLocationList.get(position).getPhone();
-                    String website = mLocationList.get(position).getWebsite();
+                    String name = "" + mValues.get(position).getLocationName();
+                    String type = "" + mValues.get(position).getType();
+                    String address = mValues.get(position).getAddress();
+                    String latitudeLongitude = mValues.get(position).getLatitude() + "/"
+                            + "" + mValues.get(position).getLongitude();
+                    String phoneNumber = mValues.get(position).getPhone();
+                    String website = mValues.get(position).getWebsite();
                     b.putString("name", name);
                     b.putString("type", type);
                     b.putString("address", address);
@@ -204,22 +227,26 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
 
                     intent.putExtras(b);
                     context.startActivity(intent);
+                    overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                 }
             });
         }
 
         @Override
         public int getItemCount() {
-            return mLocationList.size();
+            return mValues.size();
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            private final View mView;
-            private final TextView mContentView;
+            public final View mView;
+            public final TextView mIdView;
+            public final TextView mContentView;
+            public LocationItem mItem;
 
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
+                mIdView = view.findViewById(R.id.id);
                 mContentView = view.findViewById(R.id.content);
             }
 
