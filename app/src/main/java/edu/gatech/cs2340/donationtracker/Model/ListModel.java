@@ -14,7 +14,7 @@ public class ListModel {
     private List<Donation> donations;
 
     /** The FirestoreManager responsible for saving Locations to and loading Locations from Firestore. */
-    private FirestoreManager firestoreManager;
+    private final FirestoreManager firestoreManager;
 
     private ListModel(FirestoreManager firestoreManager) {
         items = new ArrayList<>();
@@ -46,15 +46,18 @@ public class ListModel {
         this.donations = donations;
     }
 
+    public int getLocationListSize() {
+        return items.size();
+    }
+
     public LocationItem findItemById(int key) {
 
         for (LocationItem l : items) {
-            if (l.getKey() == key) return l;
+            if (l.getKey() == key) {
+                return l;
+            }
         }
         Log.d("MYAPP", "Warning - Failed to find key: " + key);
         return null;
     }
 }
-
-
-

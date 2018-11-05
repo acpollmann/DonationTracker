@@ -28,8 +28,8 @@ import edu.gatech.cs2340.donationtracker.R;
 
 public class ViewLocationActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     ListModel model = ListModel.INSTANCE;
-    private LinkedHashMap<String, GroupInfo> filteredBy = new LinkedHashMap<>();
-    private ArrayList<GroupInfo> expandableListList = new ArrayList<>();
+    private final LinkedHashMap<String, GroupInfo> filteredBy = new LinkedHashMap<>();
+    private final ArrayList<GroupInfo> expandableListList = new ArrayList<>();
     private CustomAdapter listAdapter;
     private SearchAdapterLocation searchAdapter;
     private ExpandableListView simpleExpandableListView;
@@ -68,7 +68,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
         simpleExpandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
             @Override
             public void onGroupExpand(int groupPosition) {
-                if (prevExpandPosition[0] >= 0 && prevExpandPosition[0] != groupPosition) {
+                if ((prevExpandPosition[0] >= 0) && (prevExpandPosition[0] != groupPosition)) {
                     simpleExpandableListView.collapseGroup(prevExpandPosition[0]);
                 }
                 prevExpandPosition[0] = groupPosition;

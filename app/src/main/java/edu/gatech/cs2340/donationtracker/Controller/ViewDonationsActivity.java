@@ -115,7 +115,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
     }
 
     private List<Donation> filterByCategory(List<Donation> donations, String filter) {
-        if (filter.equals("All")) {
+        if ("All".equals(filter)) {
             return donations;
         }
 
@@ -129,7 +129,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
     }
 
     private List<Donation> filterByLocation(List<Donation> donations, String filter) {
-        if (filter.equals("All")) {
+        if ("All".equals(filter)) {
             return donations;
         }
 
@@ -190,7 +190,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         /**
          * Collection of the items to be shown in this list.
          */
-        private List<Donation> mDonationList;
+        private final List<Donation> mDonationList;
 
 
         /**
