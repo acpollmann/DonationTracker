@@ -114,6 +114,12 @@ public class ViewDonationsActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
 
+    /**
+     * Filter by the
+     * @param donations the list of available donations
+     * @param filter the filter that allows only donations fit in a certain catagory to be included.
+     * @return filtered list
+     */
     private List<Donation> filterByCategory(List<Donation> donations, String filter) {
         if (filter.equals("All")) {
             return donations;
@@ -128,6 +134,12 @@ public class ViewDonationsActivity extends AppCompatActivity {
         return filteredByCategory;
     }
 
+    /**
+     * Filter by the
+     * @param donations the list of available donations
+     * @param filter the filter that allows only donations from a particular location to be included.
+     * @return filtered list
+     */
     private List<Donation> filterByLocation(List<Donation> donations, String filter) {
         if (filter.equals("All")) {
             return donations;
@@ -143,6 +155,12 @@ public class ViewDonationsActivity extends AppCompatActivity {
         return filteredByLocation;
     }
 
+    /**
+     *
+     * @param donations list of donations
+     * @param search string fragment used to search donations
+     * @return the list of searched donations
+     */
     private List<Donation> searchForDonation (List<Donation> donations, String search) {
         if (search == null) {
             return donations;
@@ -263,6 +281,10 @@ public class ViewDonationsActivity extends AppCompatActivity {
             });
         }
 
+        /**
+         * Returns the number of elements in mDonationList
+         * @return mDonationList.size() the num of elements
+         */
         @Override
         public int getItemCount() {
             return mDonationList.size();

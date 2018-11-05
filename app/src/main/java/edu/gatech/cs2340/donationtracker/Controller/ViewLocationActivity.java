@@ -33,6 +33,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
     private CustomAdapter listAdapter;
     private SearchAdapterLocation searchAdapter;
     private ExpandableListView simpleExpandableListView;
+    private android.widget.SearchView searchNameView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
         View recyclerView = findViewById(R.id.locationitem_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
+        searchNameView = findViewById(R.id.searchView);
         // add data for displaying in expandable list view
         loadData();
 
@@ -87,10 +89,26 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
                 return false;
             }
         });
+
+
+//        searchNameView.setOnQueryTextListener(new android.widget.SearchView.OnQueryTextListener() {
+//            View recyclerView = findViewById(R.id.locationitem_list);
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                setupRecyclerView((RecyclerView) recyclerView);
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                setupRecyclerView((RecyclerView) recyclerView);
+//                return false;
+//            }
+//        });
     }
+
     @Override
     public boolean onQueryTextSubmit(String query) {
-
         return false;
     }
     @Override
@@ -98,10 +116,11 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
         searchAdapter.filter(newText);
         return false;
     }
-    public void onCancelLocationPressed(View view) {
+
+    public void onBackButtonPressed(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        //overridePendingTransition(R.anim.slideright, R.anim.slideleft);
+        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
 
     //load some initial data into out list
@@ -208,6 +227,10 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
             });
         }
 
+        /**
+         * Returns the number of elements in mLocationList
+         * @return mLocationList.size() the num of elements
+         */
         @Override
         public int getItemCount() {
             return mLocationList.size();
