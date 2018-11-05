@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.donationtracker.Model;
 
+
 public class ChildInfo {
 
     private String sequence = "";

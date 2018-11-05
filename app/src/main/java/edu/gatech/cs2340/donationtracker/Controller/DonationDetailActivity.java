@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import edu.gatech.cs2340.donationtracker.R;
 
+
 public class DonationDetailActivity extends AppCompatActivity {
     private TextView mName;
     private TextView mLocation;

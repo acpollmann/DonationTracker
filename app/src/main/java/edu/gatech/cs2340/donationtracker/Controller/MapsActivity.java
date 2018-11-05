@@ -22,6 +22,7 @@ import edu.gatech.cs2340.donationtracker.R;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+
     /** holds the map object returned from Google */
     private GoogleMap mMap;
 

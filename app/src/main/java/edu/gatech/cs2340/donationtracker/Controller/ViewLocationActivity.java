@@ -26,6 +26,7 @@ import edu.gatech.cs2340.donationtracker.Model.LocationItem;
 import edu.gatech.cs2340.donationtracker.Model.SearchAdapterLocation;
 import edu.gatech.cs2340.donationtracker.R;
 
+
 public class ViewLocationActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     ListModel model = ListModel.INSTANCE;
     private final LinkedHashMap<String, GroupInfo> filteredBy = new LinkedHashMap<>();
