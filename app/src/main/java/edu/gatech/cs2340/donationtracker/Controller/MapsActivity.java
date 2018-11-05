@@ -59,7 +59,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         for (LocationItem location : locationList) {
             Log.d("Location added", location.getLatitude() + ", "  + location.getLongitude());
             LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(loc).title(location.getLocationName()).snippet(location.getPhone()));
+            mMap.addMarker(new MarkerOptions().position(loc).title(location.getLocationName())
+                    .snippet(location.getPhone()));
         }
 
         LatLng gatech = new LatLng(33.7756, -84.3963);

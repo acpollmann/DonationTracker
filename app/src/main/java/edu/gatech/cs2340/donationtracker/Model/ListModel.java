@@ -13,7 +13,8 @@ public class ListModel {
 
     private List<Donation> donations;
 
-    /** The FirestoreManager responsible for saving Locations to and loading Locations from Firestore. */
+    /** The FirestoreManager responsible for saving Locations to and loading Locations
+     * from Firestore. */
     private final FirestoreManager firestoreManager;
 
     private ListModel(FirestoreManager firestoreManager) {

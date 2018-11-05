@@ -26,7 +26,8 @@ import edu.gatech.cs2340.donationtracker.Model.LocationItem;
 import edu.gatech.cs2340.donationtracker.Model.SearchAdapterLocation;
 import edu.gatech.cs2340.donationtracker.R;
 
-public class ViewLocationActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class ViewLocationActivity extends AppCompatActivity
+        implements SearchView.OnQueryTextListener {
     ListModel model = ListModel.INSTANCE;
     private final LinkedHashMap<String, GroupInfo> filteredBy = new LinkedHashMap<>();
     private final ArrayList<GroupInfo> expandableListList = new ArrayList<>();
@@ -51,9 +52,11 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
         // attach the adapter to the expandable list view
         simpleExpandableListView.setAdapter(listAdapter);
         // setOnChildClickListener listener for child row click
-        simpleExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+        simpleExpandableListView
+                .setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,
+                                        int childPosition, long id) {
                 //get the group header
                 GroupInfo headerInfo = expandableListList.get(groupPosition);
                 //get the child info
@@ -65,7 +68,8 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
             }
         });
         final int[] prevExpandPosition = {-1};
-        simpleExpandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+        simpleExpandableListView
+                .setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
             @Override
             public void onGroupExpand(int groupPosition) {
                 if ((prevExpandPosition[0] >= 0) && (prevExpandPosition[0] != groupPosition)) {
@@ -75,9 +79,11 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
             }
         });
         // setOnGroupClickListener listener for group heading click
-        simpleExpandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+        simpleExpandableListView
+                .setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
-            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+            public boolean onGroupClick(ExpandableListView parent, View v,
+                                        int groupPosition, long id) {
                 //get the group header
                 GroupInfo headerInfo = expandableListList.get(groupPosition);
                 //display it or do something with it
@@ -154,7 +160,8 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         List<LocationItem> filteredLocations = model.getItems();
         if (filteredLocations.isEmpty()) {
-            Toast.makeText(ViewLocationActivity.this, "Selected filter doesn't have donations.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ViewLocationActivity.this,
+                    "Selected filter doesn't have donations.", Toast.LENGTH_SHORT).show();
         }
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(filteredLocations));
     }
