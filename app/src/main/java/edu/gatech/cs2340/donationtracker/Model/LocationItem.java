@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.donationtracker.Model;
 
+import java.util.List;
+
 public class LocationItem {
 
     /** this locations key */
@@ -9,10 +11,10 @@ public class LocationItem {
     private String locationName;
 
     /** this locations latitude */
-    private double latitude;
+    private final double latitude;
 
     /** this locations longitude */
-    private double longitude;
+    private final double longitude;
 
     /** this location address */
     private String locationAddress;
@@ -78,7 +80,7 @@ public class LocationItem {
 
     public int getKey() {return key;}
     public int getNext_key() {
-        return ListModel.INSTANCE.getItems().size() + 1;
+        return ListModel.INSTANCE.getLocationListSize() + 1;
     }
     public String getLocationName() {return locationName;}
     public double getLatitude() {return latitude;}

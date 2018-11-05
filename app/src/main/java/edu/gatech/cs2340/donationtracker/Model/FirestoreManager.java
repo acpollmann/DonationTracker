@@ -25,13 +25,13 @@ import java.util.Set;
 public class FirestoreManager {
 
     /** Provides direct access to the Firestore database. */
-    private FirebaseFirestore db;
+    private final FirebaseFirestore db;
 
-    private Set<User> users;
+    private final Set<User> users;
 
-    private List<Donation> donations;
+    private final List<Donation> donations;
 
-    private List<LocationItem> locations;
+    private final List<LocationItem> locations;
 
     public FirestoreManager() {
         db = FirebaseFirestore.getInstance();

@@ -10,7 +10,7 @@ public class User {
     private static int Next_Id = 0;
 
     /** this user's id number */
-    private int _id;
+    private final int _id;
 
     /** this user's password */
     private String _password;
