@@ -2,6 +2,7 @@ package edu.gatech.cs2340.donationtracker.Controller;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -15,8 +16,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
 
-import edu.gatech.cs2340.donationtracker.Model.DataElement;
-import edu.gatech.cs2340.donationtracker.Model.DataServiceFacade;
+import edu.gatech.cs2340.donationtracker.Model.ListModel;
 import edu.gatech.cs2340.donationtracker.Model.LocationItem;
 import edu.gatech.cs2340.donationtracker.R;
 
@@ -52,48 +52,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
-
-        //reference to our GRASP Controller interface to the model
-        final DataServiceFacade dataService = DataServiceFacade.getInstance();
-
-        // Setting a click event handler for the map
-        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-
-            @Override
-            public void onMapClick(LatLng latLng) {
-
-                // Creating a marker
-                MarkerOptions markerOptions = new MarkerOptions();
-
-                // Setting the position for the marker
-                markerOptions.position(latLng);
-
-                //add a new item where the touch happened, for non-hardcoded data, we would need
-                //to launch an activity with a form to enter the data.
-                dataService.addDataElement("newly added", "Bobs Place", new LocationItem(latLng.latitude, latLng.longitude));
-
-                // Setting the title for the marker.
-                // This will be displayed on taping the marker
-                markerOptions.title(dataService.getLastElementAdded().getName());
-                markerOptions.snippet(dataService.getLastElementAdded().getDescription());
-
-                // Animating to the touched position
-                mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-
-                // Placing a marker on the touched position
-                mMap.addMarker(markerOptions);
-            }
-        });
-
         //get the data to display
-        List<DataElement> dataList = dataService.getData();
+        List<LocationItem> locationList = ListModel.INSTANCE.getItems();
 
         //iterate through the list and add a pin for each element in the model
-        for (DataElement de : dataList) {
-            LatLng loc = new LatLng(de.getLatitude(), de.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(loc).title(de.getName()).snippet(de.getDescription()));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+        for (LocationItem location : locationList) {
+            Log.d("Location added", location.getLatitude() + ", "  + location.getLongitude());
+            LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
+            mMap.addMarker(new MarkerOptions().position(loc).title(location.getLocationName()).snippet(location.getPhone()));
         }
+
+        LatLng gatech = new LatLng(33.7756, -84.3963);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(gatech, 10.0f));
 
         //Use a custom layout for the pin data
         mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
