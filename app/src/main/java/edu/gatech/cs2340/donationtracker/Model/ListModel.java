@@ -14,7 +14,10 @@ public class ListModel {
     private List<Donation> donations;
 
     /** The FirestoreManager responsible for saving Locations to and loading Locations from Firestore. */
-    private FirestoreManager firestoreManager;
+    private final FirestoreManager firestoreManager;
+
+    /** the currently selected course, defaults to first course */
+    private Donation _currentDonation;
 
     private ListModel(FirestoreManager firestoreManager) {
         items = new ArrayList<>();
@@ -38,14 +41,6 @@ public class ListModel {
 
     public List<Donation> getDonations() { return donations; }
 
-    public void setLocations(List<LocationItem> locations) {
-        this.items = locations;
-    }
-
-    public void setDonations(List<Donation> donations) {
-        this.donations = donations;
-    }
-
     public LocationItem findItemById(int key) {
 
         for (LocationItem l : items) {
@@ -54,7 +49,34 @@ public class ListModel {
         Log.d("MYAPP", "Warning - Failed to find key: " + key);
         return null;
     }
+    public Donation findDonationById(int key) {
+
+        for (Donation d : donations) {
+            if (d.getKey() == key) return d;
+        }
+        Log.d("MYAPP", "Warning - Failed to find key: " + key);
+        return null;
+    }
+
+    public void setLocations(List<LocationItem> locations) {
+        this.items = locations;
+    }
+
+    public void setDonations(List<Donation> donations) {
+        this.donations = donations;
+    }
+    public int getLocationListSize() {
+        return items.size();
+    }
+
+    public LocationItem findItemById(int key) {
+
+        for (LocationItem l : items) {
+            if (l.getKey() == key) {
+                return l;
+            }
+        }
+        Log.d("MYAPP", "Warning - Failed to find key: " + key);
+        return null;
+    }
 }
-
-
-

@@ -12,7 +12,7 @@ public class UserSet {
     private Set<User> _users;
 
     /** The FirestoreManager responsible for saving Users to and loading Users from Firestore. */
-    private FirestoreManager firestoreManager;
+    private final FirestoreManager firestoreManager;
 
     /**
      * make a new model
