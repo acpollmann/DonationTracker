@@ -1,5 +1,4 @@
 package edu.gatech.cs2340.donationtracker.Model;
-
 import android.location.Location;
 
 /**

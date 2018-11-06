@@ -5,6 +5,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class ListModel {
 
     public static final ListModel INSTANCE = new ListModel(new FirestoreManager());

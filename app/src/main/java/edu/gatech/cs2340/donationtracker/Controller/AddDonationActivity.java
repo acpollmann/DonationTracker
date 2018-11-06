@@ -15,7 +15,6 @@ import edu.gatech.cs2340.donationtracker.Model.ListModel;
 import edu.gatech.cs2340.donationtracker.Model.LocationItem;
 import edu.gatech.cs2340.donationtracker.R;
 
-
 public class AddDonationActivity extends AppCompatActivity {
 
     private EditText mNameField;
