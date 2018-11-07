@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                 found = true;
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }
         }
 
@@ -65,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+                overridePendingTransition(R.anim.slideright, R.anim.slideleft);
             }
         });
     }

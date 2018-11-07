@@ -75,9 +75,9 @@ public class AddDonationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+                overridePendingTransition(R.anim.slideright, R.anim.slideleft);
             }
         });
-        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
 
     public void onAddDonationButtonPressed(View view) {
@@ -99,7 +99,7 @@ public class AddDonationActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, ViewDonationsActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 
 }
