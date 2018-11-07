@@ -98,7 +98,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
         searchAdapter.filter(newText);
         return false;
     }
-    public void onCancelLocationPressed(View view) {
+    public void onBackButtonPressed(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         //overridePendingTransition(R.anim.slideright, R.anim.slideleft);

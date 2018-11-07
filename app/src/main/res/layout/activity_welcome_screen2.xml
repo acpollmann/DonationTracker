@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:gravity="center_vertical|center_horizontal"
     android:orientation="vertical"
+    android:background="@drawable/background"
     android:padding="16dp"
+    android:id="@+id/welcomeScreen"
     tools:context=".Controller.WelcomeScreenActivity">
 
     <Button

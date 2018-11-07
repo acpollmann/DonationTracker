@@ -63,9 +63,9 @@ public class AddLocationActivity extends AppCompatActivity {
          /*
           Set up the adapter to display the allowable state abbreviations in the spinner
          */
-         for (String state: states) {
-             Log.d("states spin", state);
-         }
+        for (String state: states) {
+            Log.d("states spin", state);
+        }
         ArrayAdapter<String> statesAdapter = new ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, states);
         statesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
