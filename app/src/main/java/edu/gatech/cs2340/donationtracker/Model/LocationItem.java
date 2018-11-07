@@ -1,4 +1,5 @@
 package edu.gatech.cs2340.donationtracker.Model;
+
 import java.util.List;
 
 public class LocationItem {

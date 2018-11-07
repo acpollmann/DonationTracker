@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.donationtracker.Model;
 
-
 /**
  * Admin Class
  * Created by amypollmann on 9/30/18.

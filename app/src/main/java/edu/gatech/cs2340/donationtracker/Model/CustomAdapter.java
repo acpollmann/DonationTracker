@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.donationtracker.Model;
 
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

@@ -17,7 +17,6 @@ import edu.gatech.cs2340.donationtracker.Model.User;
 import edu.gatech.cs2340.donationtracker.Model.UserSet;
 import edu.gatech.cs2340.donationtracker.R;
 
-
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText mEmailField;
@@ -31,7 +30,8 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        spinner = (Spinner) findViewById(R.id.user_spinner);
+
+        spinner = findViewById(R.id.user_spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.user_array, android.R.layout.simple_spinner_item);

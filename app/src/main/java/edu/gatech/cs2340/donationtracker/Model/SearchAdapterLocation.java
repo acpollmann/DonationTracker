@@ -12,7 +12,6 @@ import java.util.Locale;
 
 
 import edu.gatech.cs2340.donationtracker.R;
-
 public class SearchAdapterLocation extends BaseAdapter {
 
     // Declare Variables

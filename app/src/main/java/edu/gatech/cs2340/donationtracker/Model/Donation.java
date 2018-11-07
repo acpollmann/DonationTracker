@@ -5,7 +5,6 @@ import android.media.Image;
 import java.util.Arrays;
 import java.util.List;
 
-
 /**
  * Created by amypollmann on 10/11/18.
  */
