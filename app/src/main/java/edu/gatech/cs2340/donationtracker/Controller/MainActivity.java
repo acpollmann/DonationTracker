@@ -1,7 +1,5 @@
 package edu.gatech.cs2340.donationtracker.Controller;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Path;
@@ -20,12 +18,12 @@ import edu.gatech.cs2340.donationtracker.R;
 public class MainActivity extends AppCompatActivity {
 
     public static String TAG = "Donation_TrackerAPP";
-    ObjectAnimator animator;
-    ObjectAnimator animator2;
-    ObjectAnimator animator3;
-    ObjectAnimator animator4;
-    ObjectAnimator animator5;
-    ObjectAnimator animator6;
+    ObjectAnimator viewanimator;
+    ObjectAnimator addanimator;
+    ObjectAnimator statanimator;
+    ObjectAnimator mananimator;
+    ObjectAnimator mapanimator;
+    ObjectAnimator searchanimator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,37 +89,38 @@ public class MainActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Path path = new Path();
             path.arcTo(0f, 0f, 800f, 1100f, -24f, 14000f, false);
-            animator = ObjectAnimator.ofFloat(viewLocationTarget, view.X, view.Y, path);
-            animator.setDuration(500);
-            animator.start();
+            viewanimator = ObjectAnimator.ofFloat(viewLocationTarget, view.X, view.Y, path);
+            viewanimator.setDuration(500);
+            viewanimator.start();
             Path path2 = new Path();
             path2.arcTo(0f, 0f, 700f, 1700f, -145f, 14000f, false);
-            animator2 = ObjectAnimator.ofFloat(addDonationTarget, view.X, view.Y, path2);
-            animator2.setDuration(500);
-            animator2.start();
+            addanimator = ObjectAnimator.ofFloat(addDonationTarget, view.X, view.Y, path2);
+            addanimator.setDuration(500);
+            addanimator.start();
             Path path3 = new Path();
             path3.arcTo(0f, 0f, 400f, 2300f, -5f, 14000f, false);
-            animator3 = ObjectAnimator.ofFloat(statsTarget, view.X, view.Y, path3);
-            animator3.setDuration(500);
-            animator3.start();
+            statanimator = ObjectAnimator.ofFloat(statsTarget, view.X, view.Y, path3);
+            statanimator.setDuration(500);
+            statanimator.start();
             Path path4 = new Path();
             path4.arcTo(0f, 0f, 500f, 1170f, -50f, 12000f, false);
-            animator4 = ObjectAnimator.ofFloat(manageTarget, manageTarget.X, manageTarget.Y, path4);
-            animator4.setDuration(500);
-            animator4.start();
+            mananimator = ObjectAnimator.ofFloat(manageTarget, manageTarget.X, manageTarget.Y, path4);
+            mananimator.setDuration(500);
+            mananimator.start();
             Path path5 = new Path();
             path5.arcTo(0f, 0f, 110f, 1450f, 20f, 14000f, false);
-            animator5 = ObjectAnimator.ofFloat(mapTarget, mapTarget.X, mapTarget.Y, path5);
-            animator5.setDuration(500);
-            animator5.start();
+            mapanimator = ObjectAnimator.ofFloat(mapTarget, mapTarget.X, mapTarget.Y, path5);
+            mapanimator.setDuration(500);
+            mapanimator.start();
             Path path6 = new Path();
             path6.arcTo(0f, 0f, 770f, 1150f, 40f, 14000f, false);
-            animator6 = ObjectAnimator.ofFloat(searchTarget, searchTarget.X, searchTarget.Y, path6);
-            animator6.setDuration(500);
-            animator6.start();
+            searchanimator = ObjectAnimator.ofFloat(searchTarget, searchTarget.X, searchTarget.Y, path6);
+            searchanimator.setDuration(500);
+            searchanimator.start();
         } else {
-            Animation animationnext = AnimationUtils.loadAnimation(this, R.anim.rotateleft);
-            viewLocationTarget.startAnimation(animationnext);
+            Animation ifoldanimation = AnimationUtils.loadAnimation(this, R.anim.rotateleft);
+            viewLocationTarget.startAnimation(ifoldanimation);
         }
     }
 }
+

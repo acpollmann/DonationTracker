@@ -38,7 +38,8 @@ public class CustomAdapter extends BaseExpandableListAdapter {
 
         ChildInfo detailInfo = (ChildInfo) getChild(groupPosition, childPosition);
         if (view == null) {
-            LayoutInflater detailInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater detailInflater =
+                    (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = detailInflater.inflate(R.layout.locationsearch_child, null);
         }
 
@@ -79,7 +80,8 @@ public class CustomAdapter extends BaseExpandableListAdapter {
 
         GroupInfo headerInfo = (GroupInfo) getGroup(groupPosition);
         if (view == null) {
-            LayoutInflater inf = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inf =
+                    (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inf.inflate(R.layout.locationsearch_subject, null);
         }
 

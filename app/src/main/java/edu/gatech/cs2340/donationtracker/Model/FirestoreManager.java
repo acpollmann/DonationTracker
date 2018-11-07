@@ -46,19 +46,19 @@ public class FirestoreManager {
 
         // Add a new document with a generated ID
         db.collection("users")
-            .add(user)
-            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                @Override
-                public void onSuccess(DocumentReference documentReference) {
-                    Log.d("SUCCESS", "DocumentSnapshot added with ID: " + documentReference.getId());
-                }
-            })
-            .addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.w("FAILURE", "Error adding document", e);
-                }
-            });
+                .add(user)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("SUCCESS", "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("FAILURE", "Error adding document", e);
+                    }
+                });
     }
 
     /**
@@ -68,23 +68,23 @@ public class FirestoreManager {
 
 
         db.collection("users")
-            .get()
-            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful()) {
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            Log.d("doc", document.getId() + " => " + document.getData());
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("doc", document.getId() + " => " + document.getData());
 
-                            Map<String, Object> userDoc = document.getData();
-                            User user = new User((String) userDoc.get("password"), (String) userDoc.get("email"));
-                            users.add(user);
+                                Map<String, Object> userDoc = document.getData();
+                                User user = new User((String) userDoc.get("password"), (String) userDoc.get("email"));
+                                users.add(user);
+                            }
+                        } else {
+                            Log.d("docError", "Error getting documents: ", task.getException());
                         }
-                    } else {
-                        Log.d("docError", "Error getting documents: ", task.getException());
                     }
-                }
-            });
+                });
 
         return users;
     }
@@ -207,7 +207,7 @@ public class FirestoreManager {
                                 long keyl = (long) locationMap.get("key");
                                 int key  = (int) keyl;
                                 LocationItem location = ListModel.INSTANCE.findItemById(key);
-                                        Donation newDonation =
+                                Donation newDonation =
                                         new Donation((String) donationDoc.get("name"),
                                                 location,
                                                 (String) donationDoc.get("timeStamp"),

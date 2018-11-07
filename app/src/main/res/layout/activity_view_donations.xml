@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,45 +8,44 @@
     tools:ignore="missingPrefix"
     tools:context="edu.gatech.cs2340.donationtracker.Controller.ViewDonationsActivity">
 
-    <donation android:id ="@+id/action_search"
-        android:title="Search"
-        app:showAsAction="ifRoom|collapseActionView"
-        app:actionViewClass="android.support.v7.widget.SearchView"
-        />
-
     <Button
         android:id="@+id/backButton"
         android:layout_width="47dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:background="@color/colorAccent"
         android:onClick="onBackButtonPressed"
         android:text="&lt;"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/searchView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
 
     <SearchView
         android:id="@+id/searchView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="24dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.572" />
+        app:layout_constraintVertical_bias="0.572">
+
+        <requestFocus />
+    </SearchView>
+
 
     <Spinner
         android:id="@+id/categorySpinner"
@@ -61,8 +61,8 @@
         android:id="@+id/locationSpinner"
         android:layout_width="173dp"
         android:layout_height="23dp"
-        android:layout_marginEnd="15dp"
         android:layout_marginStart="196dp"
+        android:layout_marginEnd="15dp"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,9 +72,9 @@
         android:id="@+id/locationText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="118dp"
         android:layout_marginStart="196dp"
         android:layout_marginTop="110dp"
+        android:layout_marginEnd="118dp"
         android:text="Location"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
@@ -88,9 +88,9 @@
         android:id="@+id/categoryText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="107dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="47dp"
+        android:layout_marginEnd="107dp"
         android:text="Category"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
@@ -104,15 +104,16 @@
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="160dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -121,7 +122,7 @@
             <include
                 layout="@layout/donation_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content" />
 
         </FrameLayout>
     </ScrollView>

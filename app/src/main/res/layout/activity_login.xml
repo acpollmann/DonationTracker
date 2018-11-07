@@ -35,7 +35,6 @@
                 android:id="@+id/cancel_login_button"
                 android:layout_width="47dp"
                 android:layout_height="wrap_content"
-                android:onClick="onCancelPressed"
                 android:background="@color/colorAccent"
                 android:textColor="#FFFFFF"
                 android:text="&lt;" />

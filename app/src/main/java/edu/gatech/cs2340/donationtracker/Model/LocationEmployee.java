@@ -16,8 +16,8 @@ public class LocationEmployee extends User {
     }
 
     /* **********************
-    * Getters and setters
-    */
+     * Getters and setters
+     */
 //    public Location getLocation() {
 //        return _location;
 //    }
