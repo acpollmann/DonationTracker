@@ -72,7 +72,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         List<String> selectableLocations = new ArrayList<>();
         selectableLocations.add("All");
         for (LocationItem location : model.getItems()) {
-           selectableLocations.add(Objects.toString(location));
+            selectableLocations.add(Objects.toString(location));
         }
 
         final ArrayAdapter<LocationItem> locationSearchAdapter = new ArrayAdapter(this,
@@ -305,4 +305,3 @@ public class ViewDonationsActivity extends AppCompatActivity {
 
     }
 }
-

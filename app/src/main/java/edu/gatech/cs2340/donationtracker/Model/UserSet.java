@@ -46,11 +46,11 @@ public class UserSet {
      * @return true if added, false if a duplicate
      */
     public boolean addUser(User user) {
-       if (_users.contains(user)) {
-           return false;
-       }
-       _users.add(user);
-       firestoreManager.add(user);
-       return true;
+        if (_users.contains(user)) {
+            return false;
+        }
+        _users.add(user);
+        firestoreManager.add(user);
+        return true;
     }
 }
