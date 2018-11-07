@@ -1,7 +1,6 @@
 package edu.gatech.cs2340.donationtracker.Model;
 import java.util.ArrayList;
 
-
 public class GroupInfo {
 
     private String name;

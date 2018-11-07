@@ -1,4 +1,5 @@
 package edu.gatech.cs2340.donationtracker.Model;
+
 import android.location.Location;
 
 /**
@@ -15,8 +16,8 @@ public class LocationEmployee extends User {
     }
 
     /* **********************
-    * Getters and setters
-    */
+     * Getters and setters
+     */
 //    public Location getLocation() {
 //        return _location;
 //    }

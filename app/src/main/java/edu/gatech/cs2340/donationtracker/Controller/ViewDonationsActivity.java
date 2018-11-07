@@ -25,6 +25,7 @@ import edu.gatech.cs2340.donationtracker.Model.ListModel;
 import edu.gatech.cs2340.donationtracker.Model.LocationItem;
 import edu.gatech.cs2340.donationtracker.R;
 
+
 public class ViewDonationsActivity extends AppCompatActivity {
 
     private Spinner categorySearchSpinner;
@@ -47,7 +48,9 @@ public class ViewDonationsActivity extends AppCompatActivity {
          */
         final ArrayAdapter<LocationItem> categorySearchAdapter = new ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, Donation.searchLegalCategories);
-        categorySearchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySearchAdapter.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item
+        );
         categorySearchSpinner.setAdapter(categorySearchAdapter);
         categorySearchSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             View recyclerView = findViewById(R.id.donation_list);
@@ -74,7 +77,9 @@ public class ViewDonationsActivity extends AppCompatActivity {
 
         final ArrayAdapter<LocationItem> locationSearchAdapter = new ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, selectableLocations);
-        locationSearchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        locationSearchAdapter.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item
+        );
         locationSearchSpinner.setAdapter(locationSearchAdapter);
         locationSearchSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             View recyclerView = findViewById(R.id.donation_list);
@@ -154,6 +159,21 @@ public class ViewDonationsActivity extends AppCompatActivity {
         return filteredByLocation;
     }
 
+    private List<Donation> searchForDonation (List<Donation> donations, String search) {
+        if (search == null) {
+            return donations;
+        }
+
+        List<Donation> searchedDonations = new ArrayList<>();
+        for (Donation donation : donations) {
+            if (donation.getName().toLowerCase().contains(search.toLowerCase())) {
+                searchedDonations.add(donation);
+            }
+        }
+
+        return searchedDonations;
+    }
+
     /**
      * Allows text in search bar to create a list from donations
      * that contains the text typed into the bar
@@ -183,13 +203,28 @@ public class ViewDonationsActivity extends AppCompatActivity {
     private void setupRecyclerView(RecyclerView recyclerView) {
         List<Donation> filteredDonations = model.getDonations();
 
+<<<<<<< HEAD
         filteredDonations = filterByCategory(filteredDonations, (String) categorySearchSpinner.getSelectedItem());
         filteredDonations = filterByLocation(filteredDonations, (String) locationSearchSpinner.getSelectedItem());
         filteredDonations = searchForDonation(filteredDonations, searchNameView.getQuery().toString());
+=======
+        filteredDonations = filterByCategory(
+                filteredDonations, (String) categorySearchSpinner.getSelectedItem()
+        );
+        filteredDonations = filterByLocation(
+                filteredDonations, (String) locationSearchSpinner.getSelectedItem()
+        );
+        filteredDonations = searchForDonation(
+                filteredDonations, searchNameView.getQuery().toString()
+        );
+>>>>>>> 843b0be058543698ee7d20b87b5d5e628d875365
 
 
         if (filteredDonations.isEmpty()) {
-            Toast.makeText(ViewDonationsActivity.this, "Selected filter doesn't have donations.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(
+                    ViewDonationsActivity.this,
+                    "Selected filter doesn't have donations.",
+                    Toast.LENGTH_SHORT).show();
         }
 
         recyclerView.setAdapter(new SimpleDonationRecyclerViewAdapter(filteredDonations));

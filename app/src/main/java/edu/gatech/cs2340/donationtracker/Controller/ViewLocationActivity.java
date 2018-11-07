@@ -6,7 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+<<<<<<< HEAD
 import android.widget.SearchView;
+=======
+import android.support.v7.widget.SearchView;
+>>>>>>> 843b0be058543698ee7d20b87b5d5e628d875365
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,8 +30,13 @@ import edu.gatech.cs2340.donationtracker.Model.LocationItem;
 import edu.gatech.cs2340.donationtracker.Model.SearchAdapterLocation;
 import edu.gatech.cs2340.donationtracker.R;
 
+<<<<<<< HEAD
 public class ViewLocationActivity extends AppCompatActivity {
 //public class ViewLocationActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+=======
+public class ViewLocationActivity extends AppCompatActivity
+        implements SearchView.OnQueryTextListener {
+>>>>>>> 843b0be058543698ee7d20b87b5d5e628d875365
     ListModel model = ListModel.INSTANCE;
     private LinkedHashMap<String, GroupInfo> filteredBy = new LinkedHashMap<>();
     private ArrayList<GroupInfo> expandableListList = new ArrayList<>();
@@ -54,9 +63,11 @@ public class ViewLocationActivity extends AppCompatActivity {
         // attach the adapter to the expandable list view
         simpleExpandableListView.setAdapter(listAdapter);
         // setOnChildClickListener listener for child row click
-        simpleExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+        simpleExpandableListView
+                .setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,
+                                        int childPosition, long id) {
                 //get the group header
                 GroupInfo headerInfo = expandableListList.get(groupPosition);
                 //get the child info
@@ -68,7 +79,8 @@ public class ViewLocationActivity extends AppCompatActivity {
             }
         });
         final int[] prevExpandPosition = {-1};
-        simpleExpandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+        simpleExpandableListView
+                .setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
             @Override
             public void onGroupExpand(int groupPosition) {
                 if (prevExpandPosition[0] >= 0 && prevExpandPosition[0] != groupPosition) {
@@ -78,9 +90,11 @@ public class ViewLocationActivity extends AppCompatActivity {
             }
         });
         // setOnGroupClickListener listener for group heading click
-        simpleExpandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+        simpleExpandableListView
+                .setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
-            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+            public boolean onGroupClick(ExpandableListView parent, View v,
+                                        int groupPosition, long id) {
                 //get the group header
                 GroupInfo headerInfo = expandableListList.get(groupPosition);
                 //display it or do something with it
@@ -90,6 +104,12 @@ public class ViewLocationActivity extends AppCompatActivity {
                 return false;
             }
         });
+<<<<<<< HEAD
+=======
+    }
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+>>>>>>> 843b0be058543698ee7d20b87b5d5e628d875365
 
 
         searchNameView.setOnQueryTextListener(new android.widget.SearchView.OnQueryTextListener() {
@@ -128,6 +148,17 @@ public class ViewLocationActivity extends AppCompatActivity {
 
         addFilter("Location Latitude and Longitude","Sort By Latitude");
         addFilter("Location Latitude and Longitude","Sort By Longitude");
+<<<<<<< HEAD
+
+        addFilter("Location Name","Sort Alphabetically");
+
+        addFilter("Location Type","Sort By Drop-Off");
+        addFilter("Location Type","Sort By Store");
+        addFilter("Location Type","Sort By Warehouse");
+
+        addFilter("Location Address","Sort Alphabetically");
+        addFilter("Location Address","Sort By Closeness");
+=======
 
         addFilter("Location Name","Sort Alphabetically");
 
@@ -140,8 +171,13 @@ public class ViewLocationActivity extends AppCompatActivity {
 
         addFilter("Location Phone Number","Sort Numerically");
         addFilter("Location Phone Number","Sort By Area Code");
+>>>>>>> 843b0be058543698ee7d20b87b5d5e628d875365
+
+        addFilter("Location Phone Number","Sort Numerically");
+        addFilter("Location Phone Number","Sort By Area Code");
     }
 
+<<<<<<< HEAD
     /**
      * Allows text in search bar to create a list from donations
      * that contains the text typed into the bar
@@ -163,6 +199,8 @@ public class ViewLocationActivity extends AppCompatActivity {
         return searchedLocations;
     }
 
+=======
+>>>>>>> 843b0be058543698ee7d20b87b5d5e628d875365
     //here we maintain our products in various departments
     private void addFilter(String information, String sortBy) {
         //check the hash map if the group already exists
@@ -192,11 +230,17 @@ public class ViewLocationActivity extends AppCompatActivity {
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         List<LocationItem> filteredLocations = model.getItems();
+<<<<<<< HEAD
 
         filteredLocations = searchForLocation(filteredLocations, searchNameView.getQuery().toString());
 
         if (filteredLocations.isEmpty()) {
             Toast.makeText(ViewLocationActivity.this, "Selected filter doesn't have donations.", Toast.LENGTH_SHORT).show();
+=======
+        if (filteredLocations.isEmpty()) {
+            Toast.makeText(ViewLocationActivity.this,
+                    "Selected filter doesn't have donations.", Toast.LENGTH_SHORT).show();
+>>>>>>> 843b0be058543698ee7d20b87b5d5e628d875365
         }
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(filteredLocations));
     }
@@ -219,6 +263,7 @@ public class ViewLocationActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
+<<<<<<< HEAD
 
             /*
         This is where we have to bind each data element in the list (given by position parameter)
@@ -230,6 +275,8 @@ public class ViewLocationActivity extends AppCompatActivity {
           Now we bind the data to the widgets.  In this case, pretty simple, put the id in one
           textview and the string rep of a course in the other.
          */
+=======
+>>>>>>> 843b0be058543698ee7d20b87b5d5e628d875365
             holder.mContentView.setText(mLocationList.get(position).getLocationName());
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -273,7 +320,10 @@ public class ViewLocationActivity extends AppCompatActivity {
         public class ViewHolder extends RecyclerView.ViewHolder {
             private final View mView;
             private final TextView mContentView;
+<<<<<<< HEAD
             public LocationItem mLocation;
+=======
+>>>>>>> 843b0be058543698ee7d20b87b5d5e628d875365
 
             public ViewHolder(View view) {
                 super(view);
@@ -290,6 +340,6 @@ public class ViewLocationActivity extends AppCompatActivity {
     public void onAddLocationPressed(View view) {
         Intent intent = new Intent(this, AddLocationActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.slideleft, R.anim.slideright);
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 }

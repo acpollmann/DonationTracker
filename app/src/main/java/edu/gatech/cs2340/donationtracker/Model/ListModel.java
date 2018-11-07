@@ -5,7 +5,6 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class ListModel {
 
     public static final ListModel INSTANCE = new ListModel(new FirestoreManager());
@@ -14,11 +13,9 @@ public class ListModel {
 
     private List<Donation> donations;
 
-    /** The FirestoreManager responsible for saving Locations to and loading Locations from Firestore. */
+    /** The FirestoreManager responsible for saving Locations to and loading Locations
+     * from Firestore. */
     private final FirestoreManager firestoreManager;
-
-    /** the currently selected course, defaults to first course */
-    private Donation _currentDonation;
 
     private ListModel(FirestoreManager firestoreManager) {
         items = new ArrayList<>();
@@ -42,6 +39,7 @@ public class ListModel {
 
     public List<Donation> getDonations() { return donations; }
 
+<<<<<<< HEAD
     public Donation findDonationById(int key) {
 
         for (Donation d : donations) {
@@ -51,6 +49,8 @@ public class ListModel {
         return null;
     }
 
+=======
+>>>>>>> 843b0be058543698ee7d20b87b5d5e628d875365
     public void setLocations(List<LocationItem> locations) {
         this.items = locations;
     }
@@ -58,6 +58,7 @@ public class ListModel {
     public void setDonations(List<Donation> donations) {
         this.donations = donations;
     }
+
     public int getLocationListSize() {
         return items.size();
     }

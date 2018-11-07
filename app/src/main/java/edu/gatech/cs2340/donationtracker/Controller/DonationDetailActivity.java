@@ -1,3 +1,4 @@
+
 package edu.gatech.cs2340.donationtracker.Controller;
 
 import android.content.Intent;
@@ -7,7 +8,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import edu.gatech.cs2340.donationtracker.R;
-
 
 public class DonationDetailActivity extends AppCompatActivity {
     private TextView mName;
