@@ -50,7 +50,8 @@ public class FirestoreManager {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d("SUCCESS", "DocumentSnapshot added with ID: " + documentReference.getId());
+                        Log.d("SUCCESS", "DocumentSnapshot added with ID: "
+                                + documentReference.getId());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -77,7 +78,10 @@ public class FirestoreManager {
                                 Log.d("doc", document.getId() + " => " + document.getData());
 
                                 Map<String, Object> userDoc = document.getData();
-                                User user = new User((String) userDoc.get("password"), (String) userDoc.get("email"));
+                                User user = new User(
+                                        (String) userDoc.get("password"),
+                                        (String) userDoc.get("email")
+                                );
                                 users.add(user);
                             }
                         } else {
@@ -99,7 +103,8 @@ public class FirestoreManager {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d("SUCCESS", "DocumentSnapshot added with ID: " + documentReference.getId());
+                        Log.d("SUCCESS", "DocumentSnapshot added with ID: "
+                                + documentReference.getId());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -174,7 +179,8 @@ public class FirestoreManager {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d("SUCCESS", "DocumentSnapshot added with ID: " + documentReference.getId());
+                        Log.d("SUCCESS", "DocumentSnapshot added with ID: "
+                                + documentReference.getId());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
