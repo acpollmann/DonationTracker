@@ -42,14 +42,6 @@ public class ListModel {
 
     public List<Donation> getDonations() { return donations; }
 
-    public LocationItem findItemById(int key) {
-
-        for (LocationItem l : items) {
-            if (l.getKey() == key) return l;
-        }
-        Log.d("MYAPP", "Warning - Failed to find key: " + key);
-        return null;
-    }
     public Donation findDonationById(int key) {
 
         for (Donation d : donations) {

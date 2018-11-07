@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
+import android.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,23 +26,23 @@ import edu.gatech.cs2340.donationtracker.Model.LocationItem;
 import edu.gatech.cs2340.donationtracker.Model.SearchAdapterLocation;
 import edu.gatech.cs2340.donationtracker.R;
 
-
-public class ViewLocationActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class ViewLocationActivity extends AppCompatActivity {
+//public class ViewLocationActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     ListModel model = ListModel.INSTANCE;
     private LinkedHashMap<String, GroupInfo> filteredBy = new LinkedHashMap<>();
     private ArrayList<GroupInfo> expandableListList = new ArrayList<>();
     private CustomAdapter listAdapter;
     private SearchAdapterLocation searchAdapter;
     private ExpandableListView simpleExpandableListView;
-    private android.widget.SearchView searchNameView;
+    private SearchView searchNameView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_location);
-        View recyclerView = findViewById(R.id.locationitem_list);
-        assert recyclerView != null;
-        setupRecyclerView((RecyclerView) recyclerView);
+        //View recyclerView = findViewById(R.id.locationitem_list);
+        //assert recyclerView != null;
+        //setupRecyclerView((RecyclerView) recyclerView);
         searchNameView = findViewById(R.id.searchView);
         // add data for displaying in expandable list view
         loadData();
@@ -92,36 +92,36 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
         });
 
 
-//        searchNameView.setOnQueryTextListener(new android.widget.SearchView.OnQueryTextListener() {
-//            View recyclerView = findViewById(R.id.locationitem_list);
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                setupRecyclerView((RecyclerView) recyclerView);
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                setupRecyclerView((RecyclerView) recyclerView);
-//                return false;
-//            }
-//        });
+        searchNameView.setOnQueryTextListener(new android.widget.SearchView.OnQueryTextListener() {
+            View recyclerView = findViewById(R.id.locationitem_list);
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                setupRecyclerView((RecyclerView) recyclerView);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                setupRecyclerView((RecyclerView) recyclerView);
+                return false;
+            }
+        });
     }
 
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
-    }
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        searchAdapter.filter(newText);
-        return false;
-    }
-    public void onCancelLocationPressed(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        //overridePendingTransition(R.anim.slideright, R.anim.slideleft);
-    }
+//    @Override
+//    public boolean onQueryTextSubmit(String query) {
+//        return false;
+//    }
+//    @Override
+//    public boolean onQueryTextChange(String newText) {
+//        searchAdapter.filter(newText);
+//        return false;
+//    }
+//    public void onCancelLocationPressed(View view) {
+//        Intent intent = new Intent(this, MainActivity.class);
+//        startActivity(intent);
+//        //overridePendingTransition(R.anim.slideright, R.anim.slideleft);
+//    }
 
     //load some initial data into out list
     private void loadData(){
@@ -140,7 +140,27 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
 
         addFilter("Location Phone Number","Sort Numerically");
         addFilter("Location Phone Number","Sort By Area Code");
+    }
 
+    /**
+     * Allows text in search bar to create a list from donations
+     * that contains the text typed into the bar
+     * @param locations list of donations
+     * @param search string fragment used to search donations
+     * @return the list of searched donations
+     */
+    private List<LocationItem> searchForLocation (List<LocationItem> locations, String search) {
+        if (search == null) {
+            return locations;
+        }
+
+        List<LocationItem> searchedLocations = new ArrayList<>();
+        for (LocationItem location : locations) {
+            if (location.getLocationName().toLowerCase().contains(search.toLowerCase())) {
+                searchedLocations.add(location);
+            }
+        }
+        return searchedLocations;
     }
 
     //here we maintain our products in various departments
@@ -172,6 +192,9 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         List<LocationItem> filteredLocations = model.getItems();
+
+        filteredLocations = searchForLocation(filteredLocations, searchNameView.getQuery().toString());
+
         if (filteredLocations.isEmpty()) {
             Toast.makeText(ViewLocationActivity.this, "Selected filter doesn't have donations.", Toast.LENGTH_SHORT).show();
         }
@@ -196,12 +219,23 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
 
         @Override
         public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
+
+            /*
+        This is where we have to bind each data element in the list (given by position parameter)
+        to an element in the view (which is one of our two TextView widgets
+         */
+            //start by getting the element at the correct position
+            holder.mLocation = mLocationList.get(position);
+        /*
+          Now we bind the data to the widgets.  In this case, pretty simple, put the id in one
+          textview and the string rep of a course in the other.
+         */
             holder.mContentView.setText(mLocationList.get(position).getLocationName());
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getApplication(), "Location Info", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplication(), "Location Info", Toast.LENGTH_SHORT).show();
                     Context context = v.getContext();
                     Intent intent = new Intent(context, LocationDetailActivity.class);
 
@@ -239,6 +273,7 @@ public class ViewLocationActivity extends AppCompatActivity implements SearchVie
         public class ViewHolder extends RecyclerView.ViewHolder {
             private final View mView;
             private final TextView mContentView;
+            public LocationItem mLocation;
 
             public ViewHolder(View view) {
                 super(view);

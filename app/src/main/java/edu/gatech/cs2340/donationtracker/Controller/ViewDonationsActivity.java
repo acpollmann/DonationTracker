@@ -207,7 +207,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         /**
          * Collection of the items to be shown in this list.
          */
-        private List<Donation> mDonationList;
+        private final List<Donation> mDonationList;
 
 
         /**
