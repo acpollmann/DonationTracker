@@ -55,6 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+                overridePendingTransition(R.anim.slideright, R.anim.slideleft);
             }
         });
     }
@@ -93,6 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
             userSet.addUser(newUser);
             Intent intent = new Intent(this, WelcomeScreenActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         }
     }
 }

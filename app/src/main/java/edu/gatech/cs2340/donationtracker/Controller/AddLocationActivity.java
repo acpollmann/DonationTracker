@@ -86,9 +86,9 @@ public class AddLocationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+                overridePendingTransition(R.anim.slideright, R.anim.slideleft);
             }
         });
-        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
     public void onAddLocationButtonPressed(View view) {
 
