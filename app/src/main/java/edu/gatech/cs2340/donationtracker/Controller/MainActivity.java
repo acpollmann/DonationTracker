@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     public void onLogoutPressed(View view) {
         Intent intent = new Intent(this, WelcomeScreenActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 
     public void onMapViewButtonPressed(View view) {
