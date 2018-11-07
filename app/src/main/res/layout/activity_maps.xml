@@ -23,7 +23,7 @@
         android:layout_marginTop="16dp"
         android:background="@color/colorAccent"
         android:onClick="onBackButtonPressed"
-        android:text="&lt;"
+        android:text="@string/backButton"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

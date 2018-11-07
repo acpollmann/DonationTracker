@@ -6,7 +6,7 @@
     tools:ignore="missingPrefix"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <donation android:id ="@+id/action_search"
-        android:title="Search"
+        android:title="@string/search"
         app:showAsAction="ifRoom|collapseActionView"
         app:actionViewClass="android.support.v7.widget.SearchView"/>
 </menu>

@@ -39,6 +39,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onBackButtonPressed(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
 
     /**
