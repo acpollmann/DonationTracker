@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.widget.SearchView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,8 +26,6 @@ import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.Model.SearchAdapterLocation;
 import edu.gatech.cs2340.donationtracker.R;
 
-//public class ViewLocationActivity extends AppCompatActivity {
-//public class ViewLocationActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 public class ViewLocationActivity extends AppCompatActivity
         implements SearchView.OnQueryTextListener {
 
@@ -43,6 +41,9 @@ public class ViewLocationActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_location);
+        View recyclerView = findViewById(R.id.locationitem_list);
+        assert recyclerView != null;
+        setupRecyclerView((RecyclerView) recyclerView);
         searchNameView = findViewById(R.id.searchView);
         loadData();
 
@@ -73,7 +74,7 @@ public class ViewLocationActivity extends AppCompatActivity
                 .setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
             @Override
             public void onGroupExpand(int groupPosition) {
-                if (prevExpandPosition[0] >= 0 && prevExpandPosition[0] != groupPosition) {
+                if ((prevExpandPosition[0] >= 0) && (prevExpandPosition[0] != groupPosition)) {
                     simpleExpandableListView.collapseGroup(prevExpandPosition[0]);
                 }
                 prevExpandPosition[0] = groupPosition;
@@ -97,14 +98,13 @@ public class ViewLocationActivity extends AppCompatActivity
     }
     @Override
     public boolean onQueryTextSubmit(String query) {
-        searchNameView.setOnQueryTextListener(new android.widget.SearchView.OnQueryTextListener() {
+        searchNameView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             View recyclerView = findViewById(R.id.locationitem_list);
             @Override
             public boolean onQueryTextSubmit(String query) {
                 setupRecyclerView((RecyclerView) recyclerView);
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                 setupRecyclerView((RecyclerView) recyclerView);
@@ -209,6 +209,7 @@ public class ViewLocationActivity extends AppCompatActivity
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
+
         List<Location> filteredLocations = model.getLocations();
 
         filteredLocations = searchForLocation(filteredLocations, searchNameView.getQuery().toString());

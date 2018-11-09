@@ -50,7 +50,6 @@ public class ListModel {
 
     public List<Donation> getDonations() { return donations; }
 
-<<<<<<< HEAD
     public Donation findDonationById(int key) {
 
         for (Donation d : donations) {
@@ -60,12 +59,9 @@ public class ListModel {
         return null;
     }
 
-    public void setLocations(List<LocationItem> locations) {
-        this.items = locations;
-=======
+
     public void setLocations(List<Location> locations) {
-        this.locations = locations;
->>>>>>> 2aa432a175711ecdc19d6dd0ad49d2a74bcc4405
+            this.locations = locations;
     }
 
     public void setDonations(List<Donation> donations) {
