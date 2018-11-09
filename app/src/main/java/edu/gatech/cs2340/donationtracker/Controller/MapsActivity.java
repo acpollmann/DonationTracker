@@ -68,9 +68,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.addMarker(new MarkerOptions().position(loc).title(location.getLocationName())
                     .snippet(location.getPhone()));
         }
-
-        LatLng gatech = new LatLng(33.7756, -84.3963);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(gatech, 10.0f));
+        Double gatechLat = 33.7756;
+        Double gatechLong = -84.3963;
+        Float initialZoom = 10.0f;
+        LatLng gatech = new LatLng(gatechLat, gatechLong);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(gatech, initialZoom));
 
         //Use a custom layout for the pin data
         mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
