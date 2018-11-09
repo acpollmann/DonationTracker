@@ -30,9 +30,14 @@ public class ListModel {
         this.firestoreManager = firestoreManager;
     }
 
-    public void addLocation(Location item) {
-        locations.add(item);
-        firestoreManager.addLocation(item);
+    public void addLocation(String name, String latitude, String longitude,
+                            String street, String city, String state, String zip, String type,
+                            String phone, String web) {
+        Location newLocation = new Location(name, Double.parseDouble(latitude),
+                Double.parseDouble(longitude), street, city, state, Integer.parseInt(zip),
+                type, phone, web);
+        locations.add(newLocation);
+        firestoreManager.addLocation(newLocation);
     }
 
     public void addDonation(String name, Location location, String timeStamp,
