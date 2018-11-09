@@ -7,23 +7,23 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import edu.gatech.cs2340.donationtracker.R;
 
 public class CustomAdapter extends BaseExpandableListAdapter {
 
     private final Context context;
-    private final ArrayList<GroupInfo> deptList;
+    private final List<GroupInfo> deptList;
 
-    public CustomAdapter(Context context, ArrayList<GroupInfo> deptList) {
+    public CustomAdapter(Context context, List<GroupInfo> deptList) {
         this.context = context;
         this.deptList = deptList;
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        ArrayList<ChildInfo> productList = deptList.get(groupPosition).getProductList();
+        List<ChildInfo> productList = deptList.get(groupPosition).getProductList();
         return productList.get(childPosition);
     }
 
@@ -54,7 +54,7 @@ public class CustomAdapter extends BaseExpandableListAdapter {
     @Override
     public int getChildrenCount(int groupPosition) {
 
-        ArrayList<ChildInfo> productList = deptList.get(groupPosition).getProductList();
+        List<ChildInfo> productList = deptList.get(groupPosition).getProductList();
         return productList.size();
 
     }

@@ -24,8 +24,9 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         welcomeScreen = (LinearLayout) findViewById(R.id.welcomeScreen);
         welcomeScreen.setBackgroundResource(R.drawable.background_anim);
         anim = (AnimationDrawable) welcomeScreen.getBackground();
-        anim.setEnterFadeDuration(4500);
-        anim.setExitFadeDuration(4500);
+        int fadeDuration = 4500;
+        anim.setEnterFadeDuration(fadeDuration);
+        anim.setExitFadeDuration(fadeDuration);
         Button registerButton = findViewById(R.id.register_button);
         Animation fromTop = AnimationUtils.loadAnimation(this, R.anim.frombottom);
         registerButton.startAnimation(fromTop);
