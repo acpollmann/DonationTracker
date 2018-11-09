@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     public void onLogoutPressed(View view) {
         Intent intent = new Intent(this, WelcomeScreenActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 
     public void onMapViewButtonPressed(View view) {
@@ -104,7 +104,8 @@ public class MainActivity extends AppCompatActivity {
             statanimator.start();
             Path path4 = new Path();
             path4.arcTo(0f, 0f, 500f, 1170f, -50f, 12000f, false);
-            mananimator = ObjectAnimator.ofFloat(manageTarget, manageTarget.X, manageTarget.Y, path4);
+            mananimator =
+                    ObjectAnimator.ofFloat(manageTarget, manageTarget.X, manageTarget.Y, path4);
             mananimator.setDuration(500);
             mananimator.start();
             Path path5 = new Path();
@@ -114,7 +115,8 @@ public class MainActivity extends AppCompatActivity {
             mapanimator.start();
             Path path6 = new Path();
             path6.arcTo(0f, 0f, 770f, 1150f, 40f, 14000f, false);
-            searchanimator = ObjectAnimator.ofFloat(searchTarget, searchTarget.X, searchTarget.Y, path6);
+            searchanimator =
+                    ObjectAnimator.ofFloat(searchTarget, searchTarget.X, searchTarget.Y, path6);
             searchanimator.setDuration(500);
             searchanimator.start();
         } else {
