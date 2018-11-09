@@ -22,7 +22,7 @@ import java.util.Objects;
 
 import edu.gatech.cs2340.donationtracker.Model.Donation;
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
-import edu.gatech.cs2340.donationtracker.Model.LocationItem;
+import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.R;
 
 
@@ -37,7 +37,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_donations);
-        model = ListModel.INSTANCE;
+        model = ListModel.getInstance();
 
         categorySearchSpinner = findViewById(R.id.categorySpinner);
         locationSearchSpinner = findViewById(R.id.locationSpinner);
@@ -46,7 +46,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         /*
           Set up the adapter to display the allowable categories in the spinner
          */
-        final ArrayAdapter<LocationItem> categorySearchAdapter = new ArrayAdapter(this,
+        final ArrayAdapter<Location> categorySearchAdapter = new ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, Donation.searchLegalCategories);
         categorySearchAdapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item
@@ -71,11 +71,12 @@ public class ViewDonationsActivity extends AppCompatActivity {
          */
         List<String> selectableLocations = new ArrayList<>();
         selectableLocations.add("All");
-        for (LocationItem location : model.getItems()) {
-           selectableLocations.add(Objects.toString(location));
+
+        for (Location location : model.getLocations()) {
+            selectableLocations.add(Objects.toString(location));
         }
 
-        final ArrayAdapter<LocationItem> locationSearchAdapter = new ArrayAdapter(this,
+        final ArrayAdapter<Location> locationSearchAdapter = new ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, selectableLocations);
         locationSearchAdapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item
