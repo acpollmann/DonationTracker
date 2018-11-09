@@ -38,19 +38,36 @@ public class UserSet {
     }
 
     /**
-     * add a user to the app.  checks if the user is already entered
+     * add a user to the app
      *
-     * uses O(n) linear search for user
-     *
-     * @param user  the user to be added
-     * @return true if added, false if a duplicate
+     * @param email the registering user's email
+     * @param password the registering user's password
+     * @param type the registering user's type
      */
-    public boolean addUser(User user) {
-        if (_users.contains(user)) {
-            return false;
+    public void addUser(String email, String password, String type) {
+        User newUser = new User(email, password, type);
+        _users.add(newUser);
+        firestoreManager.add(newUser);
+    }
+
+    /**
+     * Searches through the set of users in O(n) time, checking if a user with the given email
+     * already exists in the set.
+     *
+     * @param email the registering user's email
+     * @return true if a user with the given email already exists, false otherwise
+     */
+    public boolean userExists(String email) {
+        for (User u : _users) {
+            if (u.getEmail().equals(email)) {
+                return true;
+            }
         }
-        _users.add(user);
-        firestoreManager.add(user);
-        return true;
+
+        return false;
+    }
+
+    public boolean doLogin(String email, String password) {
+        return _users.contains(new User(email, password));
     }
 }
