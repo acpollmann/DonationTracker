@@ -3,19 +3,16 @@ package edu.gatech.cs2340.donationtracker.Controller;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
-import edu.gatech.cs2340.donationtracker.Model.LocationItem;
+import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.R;
 
 /**
@@ -28,6 +25,8 @@ import edu.gatech.cs2340.donationtracker.R;
 
 public class AddLocationActivity extends AppCompatActivity {
 
+    private TextView mErrorMessage;
+
     private EditText mNameField;
     private EditText mStreetAddressField;
     private Spinner stateSpinner;
@@ -38,6 +37,8 @@ public class AddLocationActivity extends AppCompatActivity {
     private Spinner typeSpinner;
     private EditText mWebField;
     private EditText mPhoneField;
+
+    private ListModel model;
 
     String[] states = {
             "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "IA", "ID", "IL",
@@ -64,6 +65,8 @@ public class AddLocationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_location);
 
         configureBackButton();
+
+        mErrorMessage = findViewById(R.id.error_message);
 
         mNameField = findViewById(R.id.nameField);
         mLatField = findViewById(R.id.LatField);
@@ -94,6 +97,8 @@ public class AddLocationActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, locationTypes);
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         typeSpinner.setAdapter(typeAdapter);
+
+        model = ListModel.getInstance();
     }
 
     /**
@@ -120,23 +125,25 @@ public class AddLocationActivity extends AppCompatActivity {
     public void onAddLocationButtonPressed(View view) {
 
         String name = mNameField.getText().toString();
-        double lati = Double.parseDouble(mLatField.getText().toString());
-        double longi = Double.parseDouble(mLongField.getText().toString());
+        String latitude = mLatField.getText().toString();
+        String longitude = mLongField.getText().toString();
         String street = mStreetAddressField.getText().toString();
         String city = mCityField.getText().toString();
         String state = (String) stateSpinner.getSelectedItem();
-        int zip = Integer.parseInt(mZipField.getText().toString());
+        String zip = mZipField.getText().toString();
         String type = (String) typeSpinner.getSelectedItem();
         String web = mWebField.getText().toString();
         String phone = mPhoneField.getText().toString();
 
-        LocationItem newLocation = new LocationItem(name, lati, longi, street,
-                city, state, zip, type, phone, web);
-
-        ListModel.INSTANCE.addItem(newLocation);
-
-        Intent intent = new Intent(this, ViewDonationsActivity.class);
-        startActivity(intent);
-        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
+        if ("".equals(name) || "".equals(latitude) || "".equals(longitude) || "".equals(street)
+                || "".equals(city) || "".equals(zip) || "".equals(web) || "".equals(phone)) {
+            mErrorMessage.setText("All fields must be filled in.");
+        } else {
+            model.addLocation(name, latitude, longitude, street,
+                    city, state, zip, type, phone, web);
+            Intent intent = new Intent(this, ViewLocationActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slideright, R.anim.slideleft);
+        }
     }
 }

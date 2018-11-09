@@ -1,23 +1,16 @@
 package edu.gatech.cs2340.donationtracker.Controller;
 
 import android.app.Application;
-import android.util.Log;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Set;
 
 import edu.gatech.cs2340.donationtracker.Model.Donation;
 import edu.gatech.cs2340.donationtracker.Model.FirestoreManager;
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
-import edu.gatech.cs2340.donationtracker.Model.LocationItem;
+import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.Model.User;
 import edu.gatech.cs2340.donationtracker.Model.UserSet;
-import edu.gatech.cs2340.donationtracker.R;
 
 /**
  * Implementation that will initiate ListModel and FireStore.
@@ -39,7 +32,7 @@ public class AppStartup extends Application {
     public void onCreate() {
         super.onCreate();
 
-        model = ListModel.INSTANCE;
+        model = ListModel.getInstance();
 
 
         firestoreManager = new FirestoreManager();
@@ -47,7 +40,7 @@ public class AppStartup extends Application {
         UserSet.getInstance().setUsers(users);
 
 
-        List<LocationItem> locations = firestoreManager.loadLocations();
+        List<Location> locations = firestoreManager.loadLocations();
         model.setLocations(locations);
 
         List<Donation> donations = firestoreManager.loadDonations();

@@ -5,8 +5,14 @@ import java.util.Set;
 
 public class UserSet {
     /** Singleton instance */
-    private static final UserSet _instance = new UserSet(new FirestoreManager());
-    public static UserSet getInstance() { return _instance; }
+    private static UserSet instance;
+    public static UserSet getInstance() {
+        if (instance == null) {
+            instance = new UserSet(new FirestoreManager());
+        }
+
+        return instance;
+    }
 
     /** Set of users known to the application. */
     private Set<User> _users;
@@ -67,7 +73,13 @@ public class UserSet {
         return false;
     }
 
-    public boolean doLogin(String email, String password) {
+    /**
+     * Called on login, checks if the given email and password matches with a registered user
+     * @param email the user's email
+     * @param password the user's password
+     * @return true if this is a valid user (exists in the user set), false otherwise
+     */
+    public boolean validUser(String email, String password) {
         return _users.contains(new User(email, password));
     }
 }

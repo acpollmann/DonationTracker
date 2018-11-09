@@ -7,9 +7,16 @@ import java.util.List;
 
 public class ListModel {
 
-    public static final ListModel INSTANCE = new ListModel(new FirestoreManager());
+    private static ListModel instance;
+    public static ListModel getInstance() {
+        if (instance == null) {
+            instance = new ListModel(new FirestoreManager());
+        }
 
-    private List<LocationItem> items;
+        return instance;
+    }
+
+    private List<Location> locations;
 
     private List<Donation> donations;
 
@@ -18,29 +25,38 @@ public class ListModel {
     private final FirestoreManager firestoreManager;
 
     private ListModel(FirestoreManager firestoreManager) {
-        items = new ArrayList<>();
+        locations = new ArrayList<>();
         donations = new ArrayList<>();
         this.firestoreManager = firestoreManager;
     }
 
-    public void addItem(LocationItem item) {
-        items.add(item);
-        firestoreManager.addLocation(item);
+    public void addLocation(String name, String latitude, String longitude,
+                            String street, String city, String state, String zip, String type,
+                            String phone, String web) {
+        Location newLocation = new Location(name, Double.parseDouble(latitude),
+                Double.parseDouble(longitude), street, city, state, Integer.parseInt(zip),
+                type, phone, web);
+        locations.add(newLocation);
+        firestoreManager.addLocation(newLocation);
     }
 
-    public void addDonationItem(Donation donation) {
-        donations.add(donation);
-        firestoreManager.addDonation(donation);
+    public void addDonation(String name, Location location, String timeStamp,
+                            String shortDescription, String fullDescription, String value,
+                            String category, String comment) {
+        Donation newDonation = new Donation(name, location, timeStamp, shortDescription,
+                fullDescription, value, category, comment);
+        donations.add(newDonation);
+        firestoreManager.addDonation(newDonation);
     }
 
-    public List<LocationItem> getItems() {
-        return items;
+    public List<Location> getLocations() {
+        return locations;
     }
 
     public List<Donation> getDonations() { return donations; }
 
-    public void setLocations(List<LocationItem> locations) {
-        this.items = locations;
+    public void setLocations(List<Location> locations) {
+        this.locations = locations;
     }
 
     public void setDonations(List<Donation> donations) {
@@ -48,12 +64,12 @@ public class ListModel {
     }
 
     public int getLocationListSize() {
-        return items.size();
+        return locations.size();
     }
 
-    public LocationItem findItemById(int key) {
+    public Location findItemById(int key) {
 
-        for (LocationItem l : items) {
+        for (Location l : locations) {
             if (l.getKey() == key) {
                 return l;
             }

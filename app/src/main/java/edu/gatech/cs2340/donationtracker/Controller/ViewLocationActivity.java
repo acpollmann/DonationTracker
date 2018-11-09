@@ -22,13 +22,13 @@ import edu.gatech.cs2340.donationtracker.Model.ChildInfo;
 import edu.gatech.cs2340.donationtracker.Model.CustomAdapter;
 import edu.gatech.cs2340.donationtracker.Model.GroupInfo;
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
-import edu.gatech.cs2340.donationtracker.Model.LocationItem;
+import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.Model.SearchAdapterLocation;
 import edu.gatech.cs2340.donationtracker.R;
 
 public class ViewLocationActivity extends AppCompatActivity
         implements SearchView.OnQueryTextListener {
-    ListModel model = ListModel.INSTANCE;
+    ListModel model = ListModel.getInstance();
     private final LinkedHashMap<String, GroupInfo> filteredBy = new LinkedHashMap<>();
     private final ArrayList<GroupInfo> expandableListList = new ArrayList<>();
     private CustomAdapter listAdapter;
@@ -157,7 +157,7 @@ public class ViewLocationActivity extends AppCompatActivity
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        List<LocationItem> filteredLocations = model.getItems();
+        List<Location> filteredLocations = model.getLocations();
         if (filteredLocations.isEmpty()) {
             Toast.makeText(ViewLocationActivity.this,
                     "Selected filter doesn't have donations.", Toast.LENGTH_SHORT).show();
@@ -168,9 +168,9 @@ public class ViewLocationActivity extends AppCompatActivity
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<LocationItem> mLocationList;
+        private final List<Location> mLocationList;
 
-        private SimpleItemRecyclerViewAdapter(List<LocationItem> items) {
+        private SimpleItemRecyclerViewAdapter(List<Location> items) {
             mLocationList = items;
         }
 
