@@ -10,9 +10,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import edu.gatech.cs2340.donationtracker.Model.Admin;
-import edu.gatech.cs2340.donationtracker.Model.LocationEmployee;
-import edu.gatech.cs2340.donationtracker.Model.Manager;
 import edu.gatech.cs2340.donationtracker.Model.User;
 import edu.gatech.cs2340.donationtracker.Model.UserSet;
 import edu.gatech.cs2340.donationtracker.R;
@@ -66,32 +63,16 @@ public class RegisterActivity extends AppCompatActivity {
         String type = spinner.getSelectedItem().toString();
         mErrorMessage.setText("");
 
-        User newUser;
-
-        if ("User".equals(type)) {
-            newUser = new User(password, email);
-        } else if ("Location Employee".equals(type)) {
-            newUser = new LocationEmployee(password, email);
-        } else if ("Admin".equals(type)) {
-            newUser = new Admin(password, email);
+        if ("".equals(email) || "".equals(password)) {
+            mEmailField.setText("");
+            mPasswordField.setText("");
+            mErrorMessage.setText("Email and password are required.");
+        } else if (userSet.userExists(email)) {
+            mEmailField.setText("");
+            mPasswordField.setText("");
+            mErrorMessage.setText("User already exists.");
         } else {
-            newUser = new Manager(password, email);
-        }
-
-        boolean found = false;
-
-        for (User u : userSet.getUsers()) {
-            // implement u1.compareByEmail(u2)
-            if (u.getEmail().equals(newUser.getEmail())) {
-                found = true;
-                mEmailField.setText("");
-                mPasswordField.setText("");
-                mErrorMessage.setText("User already exists.");
-            }
-        }
-
-        if (!found) {
-            userSet.addUser(newUser);
+            userSet.addUser(email, password, type);
             Intent intent = new Intent(this, WelcomeScreenActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);

@@ -17,7 +17,7 @@
         android:layout_marginTop="16dp"
         android:background="@color/colorAccent"
         android:onClick="onBackButtonPressed"
-        android:text="&lt;"
+        android:text="@string/backButton"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +43,7 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
+        android:text="@string/name_donation"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +71,7 @@
                 android:id="@+id/shortDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Short Description"
+                android:text="@string/shortdescription_donation"
                 android:textAlignment="center"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +89,7 @@
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Category:"
+                android:text="@string/tablecategory_donation"
                 android:textSize="18sp" />
 
             <TextView
@@ -97,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Category"
+                android:text="@string/category_donation"
                 android:textSize="18sp"
                 tools:layout_editor_absoluteX="81dp"
                 tools:layout_editor_absoluteY="205dp" />
@@ -112,7 +112,7 @@
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Location:"
+                android:text="@string/tableloc_donation"
                 android:textSize="18sp" />
 
             <TextView
@@ -120,7 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Location"
+                android:text="@string/location_donation"
                 android:textSize="18sp"
                 tools:layout_editor_absoluteX="83dp"
                 tools:layout_editor_absoluteY="255dp" />
@@ -136,7 +136,7 @@
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Value:"
+                android:text="@string/tableval_donation"
                 android:textSize="18sp" />
 
             <TextView
@@ -144,7 +144,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Value"
+                android:text="@string/value_donation"
                 android:textSize="18sp"
                 tools:layout_editor_absoluteX="108dp"
                 tools:layout_editor_absoluteY="230dp" />
@@ -160,7 +160,7 @@
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Timestamp:"
+                android:text="@string/tabletimestamp_donation"
                 android:textSize="18sp" />
 
             <TextView
@@ -168,7 +168,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Timestamp"
+                android:text="@string/timestamp_donation"
                 android:textSize="18sp"
                 tools:layout_editor_absoluteX="147dp"
                 tools:layout_editor_absoluteY="312dp" />
@@ -198,7 +198,7 @@
                 android:id="@+id/fullDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Full Description" />
+                android:text="@string/fulldescription_donation" />
 
             <Space
                 android:layout_width="match_parent"
@@ -208,7 +208,7 @@
                 android:id="@+id/comments"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Comments" />
+                android:text="@string/tablecomments_donation" />
 
         </LinearLayout>
     </ScrollView>

@@ -120,15 +120,17 @@ public class ViewLocationActivity extends AppCompatActivity
 
     //load some initial data into out list
     private void loadData(){
+        addFilter(getString(R.string.filterlat_location), getString(R.string.searchlat_location) );
+        addFilter(getString(R.string.filterlat_location), getString(R.string.searchlong_location) );
 
-        addFilter("Location Latitude and Longitude","Sort By Latitude");
-        addFilter("Location Latitude and Longitude","Sort By Longitude");
+        addFilter(getString(R.string.locationname_location), getString(R.string.searchalpha_location) );
 
-        addFilter("Location Name","Sort Alphabetically");
+        addFilter(getString(R.string.locationtype_location), getString(R.string.searchdrop_location) );
+        addFilter(getString(R.string.locationtype_location), getString(R.string.searchstore_location) );
+        addFilter(getString(R.string.locationtype_location), getString(R.string.searchware_location) );
 
-        addFilter("Location Type","Sort By Drop-Off");
-        addFilter("Location Type","Sort By Store");
-        addFilter("Location Type","Sort By Warehouse");
+        addFilter(getString(R.string.locationaddress_location), getString(R.string.searchalpha_location) );
+        addFilter(getString(R.string.locationaddress_location), getString(R.string.searchclose_location) );
 
         addFilter("Location Address","Sort Alphabetically");
         addFilter("Location Address","Sort By Closeness");
@@ -143,6 +145,10 @@ public class ViewLocationActivity extends AppCompatActivity
 
         addFilter("Location Phone Number","Sort Numerically");
         addFilter("Location Phone Number","Sort By Area Code");
+
+        addFilter(getString(R.string.locationphone_location), getString(R.string.searchnum_location) );
+        addFilter(getString(R.string.locationphone_location), getString(R.string.searcharea_location) );
+
 
         addFilter("Location Phone Number","Sort Numerically");
         addFilter("Location Phone Number","Sort By Area Code");

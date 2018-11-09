@@ -12,11 +12,14 @@ public class User {
     /** this user's id number */
     private final int _id;
 
+    /** this user's email */
+    private String _email;
+
     /** this user's password */
     private String _password;
 
-    /** this user's email */
-    private String _email;
+    /** this user's type (for now, it's a string) */
+    private String _type;
 
     /** true if account locked false otherwise */
     private boolean _accountLocked;
@@ -33,17 +36,31 @@ public class User {
     public String getEmail() { return _email; }
     public void setEmail(String email) { this._email = email; }
 
+    public String getType() { return _type; }
+    public void setType(String type) { this._type = type; }
+
     public boolean isAccountLocked() { return _accountLocked; }
     public void setAccountLocked(boolean locked) { this._accountLocked = locked; }
 
     /**
-     * User constructor
-     * @param password the user's password
+     * Constructs user given only an email and password
      * @param email the user's email
+     * @param password the user's password
      */
-    public User(String password, String email) {
-        this._password = password;
+    public User(String email, String password) {
+        this(email, password, "");
+    }
+
+    /**
+     * Main user constructor
+     * @param email the user's email
+     * @param password the user's password
+     * @param type the user's type
+     */
+    public User(String email, String password, String type) {
         this._email = email;
+        this._password = password;
+        this._type = type;
         this._accountLocked = false;
         this._id = User.Next_Id++;
     }
@@ -58,6 +75,14 @@ public class User {
         }
         User u = (User)obj;
         return this._email.equals(u.getEmail()) && this._password.equals(u.getPassword());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 37 * result + (_email == null ? 0 : _email.hashCode());
+        result = 37 * result + (_password == null ? 0 : _password.hashCode());
+        return result;
     }
 
     @Override
