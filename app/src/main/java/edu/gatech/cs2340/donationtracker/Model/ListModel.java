@@ -61,7 +61,8 @@ public class ListModel {
 
 
     public void setLocations(List<Location> locations) {
-            this.locations = locations;
+        this.locations = locations;
+        this.locations = locations;
     }
 
     public void setDonations(List<Donation> donations) {
