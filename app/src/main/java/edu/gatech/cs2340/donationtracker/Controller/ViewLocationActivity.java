@@ -44,6 +44,7 @@ public class ViewLocationActivity extends AppCompatActivity
         View recyclerView = findViewById(R.id.locationitem_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
+        // add data for displaying in expandable list view
         searchNameView = findViewById(R.id.searchView);
         loadData();
 
@@ -98,6 +99,7 @@ public class ViewLocationActivity extends AppCompatActivity
     }
     @Override
     public boolean onQueryTextSubmit(String query) {
+
         searchNameView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             View recyclerView = findViewById(R.id.locationitem_list);
             @Override
@@ -115,7 +117,8 @@ public class ViewLocationActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onQueryTextChange(String s) {
+    public boolean onQueryTextChange(String newText) {
+        searchAdapter.filter(newText);
         return false;
     }
 
@@ -215,7 +218,8 @@ public class ViewLocationActivity extends AppCompatActivity
         filteredLocations = searchForLocation(filteredLocations, searchNameView.getQuery().toString());
 
         if (filteredLocations.isEmpty()) {
-            Toast.makeText(ViewLocationActivity.this, "Selected filter doesn't have donations.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ViewLocationActivity.this,
+                    "Selected filter doesn't have donations.", Toast.LENGTH_SHORT).show();
             if (filteredLocations.isEmpty()) {
                 Toast.makeText(ViewLocationActivity.this,
                         "Selected filter doesn't have donations.", Toast.LENGTH_SHORT).show();

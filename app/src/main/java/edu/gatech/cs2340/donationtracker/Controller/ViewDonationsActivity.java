@@ -146,7 +146,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
      * @return filtered list
      */
     private List<Donation> filterByLocation(List<Donation> donations, String filter) {
-        if (filter.equals("All")) {
+        if ("All".equals(filter)) {
             return donations;
         }
 
