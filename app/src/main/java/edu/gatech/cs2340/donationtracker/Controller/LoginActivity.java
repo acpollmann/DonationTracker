@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import edu.gatech.cs2340.donationtracker.Model.User;
 import edu.gatech.cs2340.donationtracker.Model.UserSet;
 import edu.gatech.cs2340.donationtracker.R;
 
@@ -42,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         String password = mPasswordField.getText().toString();
         mErrorMessage.setText("");
 
-        if (userSet.doLogin(email, password)) {
+        if (userSet.validUser(email, password)) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
