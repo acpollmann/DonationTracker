@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ListModel {
 
-    public static ListModel instance;
+    private static ListModel instance;
     public static ListModel getInstance() {
         if (instance == null) {
             instance = new ListModel(new FirestoreManager());
@@ -16,7 +16,7 @@ public class ListModel {
         return instance;
     }
 
-    private List<Location> items;
+    private List<Location> locations;
 
     private List<Donation> donations;
 
@@ -25,29 +25,33 @@ public class ListModel {
     private final FirestoreManager firestoreManager;
 
     private ListModel(FirestoreManager firestoreManager) {
-        items = new ArrayList<>();
+        locations = new ArrayList<>();
         donations = new ArrayList<>();
         this.firestoreManager = firestoreManager;
     }
 
-    public void addItem(Location item) {
-        items.add(item);
+    public void addLocation(Location item) {
+        locations.add(item);
         firestoreManager.addLocation(item);
     }
 
-    public void addDonationItem(Donation donation) {
-        donations.add(donation);
-        firestoreManager.addDonation(donation);
+    public void addDonation(String name, Location location, String timeStamp,
+                            String shortDescription, String fullDescription, String value,
+                            String category, String comment) {
+        Donation newDonation = new Donation(name, location, timeStamp, shortDescription,
+                fullDescription, value, category, comment);
+        donations.add(newDonation);
+        firestoreManager.addDonation(newDonation);
     }
 
-    public List<Location> getItems() {
-        return items;
+    public List<Location> getLocations() {
+        return locations;
     }
 
     public List<Donation> getDonations() { return donations; }
 
     public void setLocations(List<Location> locations) {
-        this.items = locations;
+        this.locations = locations;
     }
 
     public void setDonations(List<Donation> donations) {
@@ -55,12 +59,12 @@ public class ListModel {
     }
 
     public int getLocationListSize() {
-        return items.size();
+        return locations.size();
     }
 
     public Location findItemById(int key) {
 
-        for (Location l : items) {
+        for (Location l : locations) {
             if (l.getKey() == key) {
                 return l;
             }

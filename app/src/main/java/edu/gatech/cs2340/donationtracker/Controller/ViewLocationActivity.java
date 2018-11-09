@@ -157,7 +157,7 @@ public class ViewLocationActivity extends AppCompatActivity
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        List<Location> filteredLocations = model.getItems();
+        List<Location> filteredLocations = model.getLocations();
         if (filteredLocations.isEmpty()) {
             Toast.makeText(ViewLocationActivity.this,
                     "Selected filter doesn't have donations.", Toast.LENGTH_SHORT).show();

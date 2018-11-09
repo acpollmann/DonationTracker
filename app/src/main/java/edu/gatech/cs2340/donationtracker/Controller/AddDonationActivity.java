@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import edu.gatech.cs2340.donationtracker.Model.Donation;
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
@@ -17,6 +18,8 @@ import edu.gatech.cs2340.donationtracker.R;
 
 
 public class AddDonationActivity extends AppCompatActivity {
+
+    private TextView mErrorMessage;
 
     private EditText mNameField;
     private EditText mTimestampField;
@@ -29,12 +32,16 @@ public class AddDonationActivity extends AppCompatActivity {
     private Button uploadImageButton;
     private ImageView imageToUpload;
 
+    private ListModel model;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_donation);
 
         configureBackButton();
+
+        mErrorMessage = findViewById(R.id.error_message);
 
         mNameField = findViewById(R.id.nameField);
         mTimestampField = findViewById(R.id.timestampField);
@@ -53,7 +60,7 @@ public class AddDonationActivity extends AppCompatActivity {
           Set up the adapter to display the allowable locations in the spinner
          */
         ArrayAdapter<Location> locationAdapter = new ArrayAdapter(this,
-                android.R.layout.simple_spinner_item, ListModel.getInstance().getItems());
+                android.R.layout.simple_spinner_item, ListModel.getInstance().getLocations());
         locationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         locationSpinner.setAdapter(locationAdapter);
 
@@ -66,7 +73,7 @@ public class AddDonationActivity extends AppCompatActivity {
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(categoryAdapter);
 
-
+        model = ListModel.getInstance();
     }
 
     private void configureBackButton() {
@@ -91,14 +98,16 @@ public class AddDonationActivity extends AppCompatActivity {
         String category = (String) categorySpinner.getSelectedItem();
         String comment = mCommentField.getText().toString();
 
-        Donation newDonation = new Donation(name, location, timeStamp, shortDescription,
-                fullDescription, value, category, comment);
-
-        ListModel.getInstance().addDonationItem(newDonation);
-
-        Intent intent = new Intent(this, ViewDonationsActivity.class);
-        startActivity(intent);
-        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        if ("".equals(name) || "".equals(timeStamp) || "".equals(shortDescription)
+                || "".equals(fullDescription) || "".equals(value)) {
+            mErrorMessage.setText("All fields except Comments must be filled in.");
+        } else {
+            model.addDonation(name, location, timeStamp, shortDescription,
+                    fullDescription, value, category, comment);
+            Intent intent = new Intent(this, ViewDonationsActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        }
     }
 
 }

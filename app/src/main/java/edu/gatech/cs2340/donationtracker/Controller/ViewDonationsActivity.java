@@ -71,7 +71,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
          */
         List<String> selectableLocations = new ArrayList<>();
         selectableLocations.add("All");
-        for (Location location : model.getItems()) {
+        for (Location location : model.getLocations()) {
             selectableLocations.add(Objects.toString(location));
         }
 
