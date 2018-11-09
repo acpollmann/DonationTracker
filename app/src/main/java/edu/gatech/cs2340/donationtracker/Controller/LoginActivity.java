@@ -11,10 +11,15 @@ import android.widget.TextView;
 import edu.gatech.cs2340.donationtracker.Model.UserSet;
 import edu.gatech.cs2340.donationtracker.R;
 
-
 /**
- * Activity which represents a login screen that offers login via email/password.
+ * Implementation that will initiate the LOGIN page which
+ * represents a login screen that offers login via
+ * email/password.
+ *
+ * @author Group 71B
+ * @version 1.0
  */
+
 public class LoginActivity extends AppCompatActivity {
 
 

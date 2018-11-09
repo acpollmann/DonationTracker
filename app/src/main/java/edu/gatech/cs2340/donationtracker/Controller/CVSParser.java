@@ -4,7 +4,20 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * Implementation for the location csv file.
+ *
+ * @author Group 71B
+ * @version 1.0
+ */
+
+
 public class CVSParser {
+    /**
+     * Method will parse through the file and collect the information
+     * on the different locations
+     * @param args a string array-
+     */
     public static void main(String[] args)
     {
         //Input file which needs to be parsed
