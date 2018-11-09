@@ -31,7 +31,7 @@ public class FirestoreManager {
 
     private final List<Donation> donations;
 
-    private final List<LocationItem> locations;
+    private final List<Location> locations;
 
     public FirestoreManager() {
         db = FirebaseFirestore.getInstance();
@@ -94,7 +94,7 @@ public class FirestoreManager {
 
     /** Stores a Location to Firestore.
      * @param location*/
-    public void addLocation(LocationItem location) {
+    public void addLocation(Location location) {
 
         // Add a new document with a generated ID
         db.collection("locations")
@@ -117,7 +117,7 @@ public class FirestoreManager {
     /**
      * @return a set of Locations stored in Firestore
      */
-    public List<LocationItem> loadLocations() {
+    public List<Location> loadLocations() {
 
         db.collection("locations")
                 .get()
@@ -141,7 +141,7 @@ public class FirestoreManager {
                                 long zipl = (long) locationMap.get("zipCode");
                                 int zipCode  = (int) zipl;
 
-                                LocationItem locationItem = new LocationItem(
+                                Location location = new Location(
                                         key,
                                         (String) locationMap.get("locationName"),
                                         latitude,
@@ -155,7 +155,7 @@ public class FirestoreManager {
                                         (String) locationMap.get("website")
                                 );
 
-                                locations.add(locationItem);
+                                locations.add(location);
                             }
                         } else {
                             Log.d("docError", "Error getting documents: ", task.getException());
@@ -211,7 +211,7 @@ public class FirestoreManager {
 
                                 long keyl = (long) locationMap.get("key");
                                 int key  = (int) keyl;
-                                LocationItem location = ListModel.INSTANCE.findItemById(key);
+                                Location location = ListModel.getInstance().findItemById(key);
                                 Donation newDonation =
                                         new Donation((String) donationDoc.get("name"),
                                                 location,

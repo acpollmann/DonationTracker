@@ -22,7 +22,7 @@ import edu.gatech.cs2340.donationtracker.Model.ChildInfo;
 import edu.gatech.cs2340.donationtracker.Model.CustomAdapter;
 import edu.gatech.cs2340.donationtracker.Model.GroupInfo;
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
-import edu.gatech.cs2340.donationtracker.Model.LocationItem;
+import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.Model.SearchAdapterLocation;
 import edu.gatech.cs2340.donationtracker.R;
 
@@ -30,9 +30,10 @@ import edu.gatech.cs2340.donationtracker.R;
 //public class ViewLocationActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 public class ViewLocationActivity extends AppCompatActivity
         implements SearchView.OnQueryTextListener {
-    ListModel model = ListModel.INSTANCE;
-    private LinkedHashMap<String, GroupInfo> filteredBy = new LinkedHashMap<>();
-    private ArrayList<GroupInfo> expandableListList = new ArrayList<>();
+
+    ListModel model = ListModel.getInstance();
+    private final LinkedHashMap<String, GroupInfo> filteredBy = new LinkedHashMap<>();
+    private final ArrayList<GroupInfo> expandableListList = new ArrayList<>();
     private CustomAdapter listAdapter;
     private SearchAdapterLocation searchAdapter;
     private ExpandableListView simpleExpandableListView;
@@ -166,13 +167,13 @@ public class ViewLocationActivity extends AppCompatActivity
      * @param search string fragment used to search donations
      * @return the list of searched donations
      */
-    private List<LocationItem> searchForLocation (List<LocationItem> locations, String search) {
+    private List<Location> searchForLocation (List<Location> locations, String search) {
         if (search == null) {
             return locations;
         }
 
-        List<LocationItem> searchedLocations = new ArrayList<>();
-        for (LocationItem location : locations) {
+        List<Location> searchedLocations = new ArrayList<>();
+        for (Location location : locations) {
             if (location.getLocationName().toLowerCase().contains(search.toLowerCase())) {
                 searchedLocations.add(location);
             }
@@ -208,7 +209,7 @@ public class ViewLocationActivity extends AppCompatActivity
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        List<LocationItem> filteredLocations = model.getItems();
+        List<Location> filteredLocations = model.getLocations();
 
         filteredLocations = searchForLocation(filteredLocations, searchNameView.getQuery().toString());
 
@@ -225,9 +226,9 @@ public class ViewLocationActivity extends AppCompatActivity
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<LocationItem> mLocationList;
+        private final List<Location> mLocationList;
 
-        private SimpleItemRecyclerViewAdapter(List<LocationItem> items) {
+        private SimpleItemRecyclerViewAdapter(List<Location> items) {
             mLocationList = items;
         }
 
@@ -294,7 +295,7 @@ public class ViewLocationActivity extends AppCompatActivity
         public class ViewHolder extends RecyclerView.ViewHolder {
             private final View mView;
             private final TextView mContentView;
-            public LocationItem mLocation;
+            public Location mLocation;
 
             public ViewHolder(View view) {
                 super(view);
