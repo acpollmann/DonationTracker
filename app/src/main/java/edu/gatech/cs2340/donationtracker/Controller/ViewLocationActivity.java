@@ -17,6 +17,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import edu.gatech.cs2340.donationtracker.Model.ChildInfo;
 import edu.gatech.cs2340.donationtracker.Model.CustomAdapter;
@@ -29,7 +30,7 @@ import edu.gatech.cs2340.donationtracker.R;
 public class ViewLocationActivity extends AppCompatActivity
         implements SearchView.OnQueryTextListener {
     ListModel model = ListModel.getInstance();
-    private final LinkedHashMap<String, GroupInfo> filteredBy = new LinkedHashMap<>();
+    private final Map<String, GroupInfo> filteredBy = new LinkedHashMap<>();
     private final ArrayList<GroupInfo> expandableListList = new ArrayList<>();
     private CustomAdapter listAdapter;
     private SearchAdapterLocation searchAdapter;

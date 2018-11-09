@@ -18,7 +18,7 @@ public class SearchAdapterLocation extends BaseAdapter {
     Context mContext;
     LayoutInflater inflater;
     private final List<Location> locationList;
-    private final ArrayList<Location> arraylist;
+    private final List<Location> arraylist;
 
     public SearchAdapterLocation(Context context, List<Location> namesList) {
         mContext = context;
