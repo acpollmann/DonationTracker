@@ -40,11 +40,14 @@ public class UserSet {
     /**
      * add a user to the app
      *
-     * @param user the user to be added
+     * @param email the registering user's email
+     * @param password the registering user's password
+     * @param type the registering user's type
      */
-    public void addUser(User user) {
-        _users.add(user);
-        firestoreManager.add(user);
+    public void addUser(String email, String password, String type) {
+        User newUser = new User(email, password, type);
+        _users.add(newUser);
+        firestoreManager.add(newUser);
     }
 
     /**

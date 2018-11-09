@@ -68,8 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
             mPasswordField.setText("");
             mErrorMessage.setText("User already exists.");
         } else {
-            User newUser = new User(email, password, type);
-            userSet.addUser(newUser);
+            userSet.addUser(email, password, type);
             Intent intent = new Intent(this, WelcomeScreenActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
