@@ -75,6 +75,14 @@ public class User {
     }
 
     @Override
+    public int hashCode() {
+        int result = 17;
+        result = 37 * result + (_email == null ? 0 : _email.hashCode());
+        result = 37 * result + (_password == null ? 0 : _password.hashCode());
+        return result;
+    }
+
+    @Override
     public String toString() {
         return this._email;
     }
