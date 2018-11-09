@@ -63,7 +63,11 @@ public class RegisterActivity extends AppCompatActivity {
         String type = spinner.getSelectedItem().toString();
         mErrorMessage.setText("");
 
-        if (userSet.userExists(email)) {
+        if ("".equals(email) || "".equals(password)) {
+            mEmailField.setText("");
+            mPasswordField.setText("");
+            mErrorMessage.setText("Email and password are required.");
+        } else if (userSet.userExists(email)) {
             mEmailField.setText("");
             mPasswordField.setText("");
             mErrorMessage.setText("User already exists.");
