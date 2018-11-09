@@ -36,6 +36,9 @@ public class User {
     public String getEmail() { return _email; }
     public void setEmail(String email) { this._email = email; }
 
+    public String getType() { return _type; }
+    public void setType(String type) { this._type = type; }
+
     public boolean isAccountLocked() { return _accountLocked; }
     public void setAccountLocked(boolean locked) { this._accountLocked = locked; }
 
