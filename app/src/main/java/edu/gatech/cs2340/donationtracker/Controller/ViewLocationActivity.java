@@ -6,11 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-<<<<<<< HEAD
 import android.widget.SearchView;
-=======
-import android.support.v7.widget.SearchView;
->>>>>>> 843b0be058543698ee7d20b87b5d5e628d875365
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,13 +26,10 @@ import edu.gatech.cs2340.donationtracker.Model.LocationItem;
 import edu.gatech.cs2340.donationtracker.Model.SearchAdapterLocation;
 import edu.gatech.cs2340.donationtracker.R;
 
-<<<<<<< HEAD
-public class ViewLocationActivity extends AppCompatActivity {
+//public class ViewLocationActivity extends AppCompatActivity {
 //public class ViewLocationActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
-=======
 public class ViewLocationActivity extends AppCompatActivity
         implements SearchView.OnQueryTextListener {
->>>>>>> 843b0be058543698ee7d20b87b5d5e628d875365
     ListModel model = ListModel.INSTANCE;
     private LinkedHashMap<String, GroupInfo> filteredBy = new LinkedHashMap<>();
     private ArrayList<GroupInfo> expandableListList = new ArrayList<>();
@@ -49,11 +42,7 @@ public class ViewLocationActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_location);
-        //View recyclerView = findViewById(R.id.locationitem_list);
-        //assert recyclerView != null;
-        //setupRecyclerView((RecyclerView) recyclerView);
         searchNameView = findViewById(R.id.searchView);
-        // add data for displaying in expandable list view
         loadData();
 
         //get reference of the ExpandableListView
@@ -104,14 +93,9 @@ public class ViewLocationActivity extends AppCompatActivity
                 return false;
             }
         });
-<<<<<<< HEAD
-=======
     }
     @Override
     public boolean onQueryTextSubmit(String query) {
->>>>>>> 843b0be058543698ee7d20b87b5d5e628d875365
-
-
         searchNameView.setOnQueryTextListener(new android.widget.SearchView.OnQueryTextListener() {
             View recyclerView = findViewById(R.id.locationitem_list);
             @Override
@@ -126,29 +110,19 @@ public class ViewLocationActivity extends AppCompatActivity
                 return false;
             }
         });
+        return true;
     }
 
-//    @Override
-//    public boolean onQueryTextSubmit(String query) {
-//        return false;
-//    }
-//    @Override
-//    public boolean onQueryTextChange(String newText) {
-//        searchAdapter.filter(newText);
-//        return false;
-//    }
-//    public void onCancelLocationPressed(View view) {
-//        Intent intent = new Intent(this, MainActivity.class);
-//        startActivity(intent);
-//        //overridePendingTransition(R.anim.slideright, R.anim.slideleft);
-//    }
+    @Override
+    public boolean onQueryTextChange(String s) {
+        return false;
+    }
 
     //load some initial data into out list
     private void loadData(){
 
         addFilter("Location Latitude and Longitude","Sort By Latitude");
         addFilter("Location Latitude and Longitude","Sort By Longitude");
-<<<<<<< HEAD
 
         addFilter("Location Name","Sort Alphabetically");
 
@@ -158,8 +132,6 @@ public class ViewLocationActivity extends AppCompatActivity
 
         addFilter("Location Address","Sort Alphabetically");
         addFilter("Location Address","Sort By Closeness");
-=======
-
         addFilter("Location Name","Sort Alphabetically");
 
         addFilter("Location Type","Sort By Drop-Off");
@@ -171,13 +143,11 @@ public class ViewLocationActivity extends AppCompatActivity
 
         addFilter("Location Phone Number","Sort Numerically");
         addFilter("Location Phone Number","Sort By Area Code");
->>>>>>> 843b0be058543698ee7d20b87b5d5e628d875365
 
         addFilter("Location Phone Number","Sort Numerically");
         addFilter("Location Phone Number","Sort By Area Code");
     }
 
-<<<<<<< HEAD
     /**
      * Allows text in search bar to create a list from donations
      * that contains the text typed into the bar
@@ -199,8 +169,6 @@ public class ViewLocationActivity extends AppCompatActivity
         return searchedLocations;
     }
 
-=======
->>>>>>> 843b0be058543698ee7d20b87b5d5e628d875365
     //here we maintain our products in various departments
     private void addFilter(String information, String sortBy) {
         //check the hash map if the group already exists
@@ -230,19 +198,17 @@ public class ViewLocationActivity extends AppCompatActivity
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         List<LocationItem> filteredLocations = model.getItems();
-<<<<<<< HEAD
 
         filteredLocations = searchForLocation(filteredLocations, searchNameView.getQuery().toString());
 
         if (filteredLocations.isEmpty()) {
             Toast.makeText(ViewLocationActivity.this, "Selected filter doesn't have donations.", Toast.LENGTH_SHORT).show();
-=======
-        if (filteredLocations.isEmpty()) {
-            Toast.makeText(ViewLocationActivity.this,
-                    "Selected filter doesn't have donations.", Toast.LENGTH_SHORT).show();
->>>>>>> 843b0be058543698ee7d20b87b5d5e628d875365
+            if (filteredLocations.isEmpty()) {
+                Toast.makeText(ViewLocationActivity.this,
+                        "Selected filter doesn't have donations.", Toast.LENGTH_SHORT).show();
+            }
+            recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(filteredLocations));
         }
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(filteredLocations));
     }
 
     public class SimpleItemRecyclerViewAdapter
@@ -263,7 +229,6 @@ public class ViewLocationActivity extends AppCompatActivity
 
         @Override
         public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-<<<<<<< HEAD
 
             /*
         This is where we have to bind each data element in the list (given by position parameter)
@@ -275,8 +240,6 @@ public class ViewLocationActivity extends AppCompatActivity
           Now we bind the data to the widgets.  In this case, pretty simple, put the id in one
           textview and the string rep of a course in the other.
          */
-=======
->>>>>>> 843b0be058543698ee7d20b87b5d5e628d875365
             holder.mContentView.setText(mLocationList.get(position).getLocationName());
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -320,10 +283,7 @@ public class ViewLocationActivity extends AppCompatActivity
         public class ViewHolder extends RecyclerView.ViewHolder {
             private final View mView;
             private final TextView mContentView;
-<<<<<<< HEAD
             public LocationItem mLocation;
-=======
->>>>>>> 843b0be058543698ee7d20b87b5d5e628d875365
 
             public ViewHolder(View view) {
                 super(view);

@@ -39,7 +39,6 @@ public class ListModel {
 
     public List<Donation> getDonations() { return donations; }
 
-<<<<<<< HEAD
     public Donation findDonationById(int key) {
 
         for (Donation d : donations) {
@@ -49,8 +48,6 @@ public class ListModel {
         return null;
     }
 
-=======
->>>>>>> 843b0be058543698ee7d20b87b5d5e628d875365
     public void setLocations(List<LocationItem> locations) {
         this.items = locations;
     }
