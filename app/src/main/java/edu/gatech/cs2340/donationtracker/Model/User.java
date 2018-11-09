@@ -12,11 +12,14 @@ public class User {
     /** this user's id number */
     private final int _id;
 
+    /** this user's email */
+    private String _email;
+
     /** this user's password */
     private String _password;
 
-    /** this user's email */
-    private String _email;
+    /** this user's type (for now, it's a string) */
+    private String _type;
 
     /** true if account locked false otherwise */
     private boolean _accountLocked;
@@ -37,13 +40,24 @@ public class User {
     public void setAccountLocked(boolean locked) { this._accountLocked = locked; }
 
     /**
-     * User constructor
-     * @param password the user's password
+     * Constructs user given only an email and password
      * @param email the user's email
+     * @param password the user's password
      */
-    public User(String password, String email) {
-        this._password = password;
+    public User(String email, String password) {
+        this(email, password, "");
+    }
+
+    /**
+     * Main user constructor
+     * @param email the user's email
+     * @param password the user's password
+     * @param type the user's type
+     */
+    public User(String email, String password, String type) {
         this._email = email;
+        this._password = password;
+        this._type = type;
         this._accountLocked = false;
         this._id = User.Next_Id++;
     }

@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         String password = mPasswordField.getText().toString();
         mErrorMessage.setText("");
 
-        User user = new User(password, email);
+        User user = new User(email, password);
 
         boolean found = false;
         for (User u : userSet.getUsers()) {
