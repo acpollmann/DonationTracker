@@ -113,12 +113,11 @@ public class ViewDonationsActivity extends AppCompatActivity {
 
     }
 
-//    public void onBackButtonPressed(View view) {
-//        Intent intent = new Intent(this, MainActivity.class);
-//        startActivity(intent);
-//        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
-//    }
-
+    public void onBackButtonPressed(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slideright, R.anim.slideleft);
+    }
     /**
      * Filter by the
      * @param donations the list of available donations
