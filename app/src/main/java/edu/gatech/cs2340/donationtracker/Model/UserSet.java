@@ -66,4 +66,8 @@ public class UserSet {
 
         return false;
     }
+
+    public boolean doLogin(String email, String password) {
+        return _users.contains(new User(email, password));
+    }
 }

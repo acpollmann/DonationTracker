@@ -42,19 +42,11 @@ public class LoginActivity extends AppCompatActivity {
         String password = mPasswordField.getText().toString();
         mErrorMessage.setText("");
 
-        User user = new User(email, password);
-
-        boolean found = false;
-        for (User u : userSet.getUsers()) {
-            if (u.equals(user)) {
-                found = true;
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
-            }
-        }
-
-        if (!found) {
+        if (userSet.doLogin(email, password)) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        } else {
             mEmailField.setText("");
             mPasswordField.setText("");
             mErrorMessage.setText("Invalid email/password");
