@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.donationtracker.Model;
 import android.content.Context;
-import android.location.Location;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,14 +17,14 @@ public class SearchAdapterLocation extends BaseAdapter {
 
     Context mContext;
     LayoutInflater inflater;
-    private final List<LocationItem> locationList;
-    private final ArrayList<LocationItem> arraylist;
+    private final List<Location> locationList;
+    private final ArrayList<Location> arraylist;
 
-    public SearchAdapterLocation(Context context, List<LocationItem> namesList) {
+    public SearchAdapterLocation(Context context, List<Location> namesList) {
         mContext = context;
         this.locationList = namesList;
         inflater = LayoutInflater.from(mContext);
-        this.arraylist = new ArrayList<LocationItem>();
+        this.arraylist = new ArrayList<Location>();
         this.arraylist.addAll(namesList);
     }
 
@@ -39,7 +38,7 @@ public class SearchAdapterLocation extends BaseAdapter {
     }
 
     @Override
-    public LocationItem getItem(int position) {
+    public Location getItem(int position) {
         return locationList.get(position);
     }
 
@@ -71,7 +70,7 @@ public class SearchAdapterLocation extends BaseAdapter {
         if (charText.isEmpty()) {
             locationList.addAll(arraylist);
         } else {
-            for (LocationItem wp : arraylist) {
+            for (Location wp : arraylist) {
                 if (wp.getLocationName().contains(charText)) {
                     locationList.add(wp);
                 }
