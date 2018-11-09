@@ -59,7 +59,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
         //get the data to display
-        List<Location> locationList = ListModel.INSTANCE.getItems();
+        List<Location> locationList = ListModel.getInstance().getItems();
 
         //iterate through the list and add a pin for each element in the model
         for (Location location : locationList) {

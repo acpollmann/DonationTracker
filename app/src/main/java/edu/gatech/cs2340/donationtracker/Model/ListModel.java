@@ -7,7 +7,14 @@ import java.util.List;
 
 public class ListModel {
 
-    public static final ListModel INSTANCE = new ListModel(new FirestoreManager());
+    public static ListModel instance;
+    public static ListModel getInstance() {
+        if (instance == null) {
+            instance = new ListModel(new FirestoreManager());
+        }
+
+        return instance;
+    }
 
     private List<Location> items;
 

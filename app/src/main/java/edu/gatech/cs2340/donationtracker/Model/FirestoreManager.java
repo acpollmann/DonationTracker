@@ -211,7 +211,7 @@ public class FirestoreManager {
 
                                 long keyl = (long) locationMap.get("key");
                                 int key  = (int) keyl;
-                                Location location = ListModel.INSTANCE.findItemById(key);
+                                Location location = ListModel.getInstance().findItemById(key);
                                 Donation newDonation =
                                         new Donation((String) donationDoc.get("name"),
                                                 location,

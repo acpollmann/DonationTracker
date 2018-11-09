@@ -20,7 +20,7 @@ public class AppStartup extends Application {
     public void onCreate() {
         super.onCreate();
 
-        model = ListModel.INSTANCE;
+        model = ListModel.getInstance();
 
 
         firestoreManager = new FirestoreManager();

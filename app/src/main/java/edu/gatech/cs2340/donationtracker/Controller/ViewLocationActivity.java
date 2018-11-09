@@ -28,7 +28,7 @@ import edu.gatech.cs2340.donationtracker.R;
 
 public class ViewLocationActivity extends AppCompatActivity
         implements SearchView.OnQueryTextListener {
-    ListModel model = ListModel.INSTANCE;
+    ListModel model = ListModel.getInstance();
     private final LinkedHashMap<String, GroupInfo> filteredBy = new LinkedHashMap<>();
     private final ArrayList<GroupInfo> expandableListList = new ArrayList<>();
     private CustomAdapter listAdapter;

@@ -80,7 +80,7 @@ public class Location {
 
     public int getKey() {return key;}
     public int getNext_key() {
-        return ListModel.INSTANCE.getLocationListSize() + 1;
+        return ListModel.getInstance().getLocationListSize() + 1;
     }
     public String getLocationName() {return locationName;}
     public double getLatitude() {return latitude;}

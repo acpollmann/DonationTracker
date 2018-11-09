@@ -102,7 +102,7 @@ public class AddLocationActivity extends AppCompatActivity {
         Location newLocation = new Location(name, lati, longi, street,
                 city, state, zip, type, phone, web);
 
-        ListModel.INSTANCE.addItem(newLocation);
+        ListModel.getInstance().addItem(newLocation);
 
         Intent intent = new Intent(this, ViewDonationsActivity.class);
         startActivity(intent);

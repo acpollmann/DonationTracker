@@ -53,7 +53,7 @@ public class AddDonationActivity extends AppCompatActivity {
           Set up the adapter to display the allowable locations in the spinner
          */
         ArrayAdapter<Location> locationAdapter = new ArrayAdapter(this,
-                android.R.layout.simple_spinner_item, ListModel.INSTANCE.getItems());
+                android.R.layout.simple_spinner_item, ListModel.getInstance().getItems());
         locationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         locationSpinner.setAdapter(locationAdapter);
 
@@ -94,7 +94,7 @@ public class AddDonationActivity extends AppCompatActivity {
         Donation newDonation = new Donation(name, location, timeStamp, shortDescription,
                 fullDescription, value, category, comment);
 
-        ListModel.INSTANCE.addDonationItem(newDonation);
+        ListModel.getInstance().addDonationItem(newDonation);
 
         Intent intent = new Intent(this, ViewDonationsActivity.class);
         startActivity(intent);
