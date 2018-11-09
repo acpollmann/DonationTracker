@@ -9,7 +9,7 @@ public class ListModel {
 
     public static final ListModel INSTANCE = new ListModel(new FirestoreManager());
 
-    private List<LocationItem> items;
+    private List<Location> items;
 
     private List<Donation> donations;
 
@@ -23,7 +23,7 @@ public class ListModel {
         this.firestoreManager = firestoreManager;
     }
 
-    public void addItem(LocationItem item) {
+    public void addItem(Location item) {
         items.add(item);
         firestoreManager.addLocation(item);
     }
@@ -33,13 +33,13 @@ public class ListModel {
         firestoreManager.addDonation(donation);
     }
 
-    public List<LocationItem> getItems() {
+    public List<Location> getItems() {
         return items;
     }
 
     public List<Donation> getDonations() { return donations; }
 
-    public void setLocations(List<LocationItem> locations) {
+    public void setLocations(List<Location> locations) {
         this.items = locations;
     }
 
@@ -51,9 +51,9 @@ public class ListModel {
         return items.size();
     }
 
-    public LocationItem findItemById(int key) {
+    public Location findItemById(int key) {
 
-        for (LocationItem l : items) {
+        for (Location l : items) {
             if (l.getKey() == key) {
                 return l;
             }

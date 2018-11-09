@@ -3,10 +3,6 @@ package edu.gatech.cs2340.donationtracker.Controller;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -15,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
-import edu.gatech.cs2340.donationtracker.Model.LocationItem;
+import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.R;
 
 public class AddLocationActivity extends AppCompatActivity {
@@ -103,7 +99,7 @@ public class AddLocationActivity extends AppCompatActivity {
         String web = mWebField.getText().toString();
         String phone = mPhoneField.getText().toString();
 
-        LocationItem newLocation = new LocationItem(name, lati, longi, street,
+        Location newLocation = new Location(name, lati, longi, street,
                 city, state, zip, type, phone, web);
 
         ListModel.INSTANCE.addItem(newLocation);

@@ -15,7 +15,7 @@ public class Donation {
     private final int key;
     private String name;
     private String timeStamp;
-    private LocationItem location;
+    private Location location;
     private String shortDescription;
     private String fullDescription;
     /** donation's value in dollars */
@@ -30,7 +30,7 @@ public class Donation {
     public static List<String> searchLegalCategories = Arrays.asList("All", "Clothing", "Hat",
             "Kitchen", "Electronics", "Household", "Other");
 
-    public Donation(String name, LocationItem location, String timeStamp,
+    public Donation(String name, Location location, String timeStamp,
                     String shortDescription, String fullDescription,
                     String value, String category, String comments) {
         this.name = name;
@@ -64,11 +64,11 @@ public class Donation {
         this.timeStamp = timeStamp;
     }
 
-    public LocationItem getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public void setLocation(LocationItem location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
 

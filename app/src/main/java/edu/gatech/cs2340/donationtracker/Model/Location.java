@@ -2,7 +2,7 @@ package edu.gatech.cs2340.donationtracker.Model;
 
 import java.util.List;
 
-public class LocationItem {
+public class Location {
 
     /** this locations key */
     private int key;
@@ -42,14 +42,14 @@ public class LocationItem {
      * @param lat  the latitude
      * @param longit  the longitude
      */
-    public LocationItem(double lat, double longit) {
+    public Location(double lat, double longit) {
         latitude = lat;
         longitude = longit;
     }
 
-    public LocationItem(int key, String locationName, double latitude, double longitude,
-                        String locationAddress, String locationCity, String locationState,
-                        int zipCode, String locationType, String phoneNumber, String website) {
+    public Location(int key, String locationName, double latitude, double longitude,
+                    String locationAddress, String locationCity, String locationState,
+                    int zipCode, String locationType, String phoneNumber, String website) {
         this.key = key;
         this.locationName = locationName;
         this.latitude = latitude;
@@ -62,9 +62,9 @@ public class LocationItem {
         this.phoneNumber = phoneNumber;
         this.website = website;
     }
-    public LocationItem(String locationName, double latitude, double longitude,
-                        String locationAddress, String locationCity, String locationState,
-                        int zipCode, String locationType, String phoneNumber, String website) {
+    public Location(String locationName, double latitude, double longitude,
+                    String locationAddress, String locationCity, String locationState,
+                    int zipCode, String locationType, String phoneNumber, String website) {
         this.key = getNext_key();
         this.locationName = locationName;
         this.latitude = latitude;

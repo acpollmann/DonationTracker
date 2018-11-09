@@ -18,7 +18,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.List;
 
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
-import edu.gatech.cs2340.donationtracker.Model.LocationItem;
+import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.R;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -59,10 +59,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
         //get the data to display
-        List<LocationItem> locationList = ListModel.INSTANCE.getItems();
+        List<Location> locationList = ListModel.INSTANCE.getItems();
 
         //iterate through the list and add a pin for each element in the model
-        for (LocationItem location : locationList) {
+        for (Location location : locationList) {
             Log.d("Location added", location.getLatitude() + ", "  + location.getLongitude());
             LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
             mMap.addMarker(new MarkerOptions().position(loc).title(location.getLocationName())
