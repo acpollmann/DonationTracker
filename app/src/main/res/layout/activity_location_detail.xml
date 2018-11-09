@@ -17,7 +17,7 @@
         android:layout_marginTop="16dp"
         android:background="@color/colorAccent"
         android:onClick="onBackButtonPressed"
-        android:text="&lt;"
+        android:text="@string/backButton"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,14 +50,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="3dip"
-                android:text="Address" />
+                android:text="@string/streetaddress_location" />
 
             <TextView
                 android:id="@+id/latitude_longitude"
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:padding="3dip"
-                android:text="Latitude/Longitude" />
+                android:text="@string/latlong_location" />
         </TableRow>
 
         <TableRow>
@@ -67,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="3dip"
-                android:text="Phone Number" />
+                android:text="@string/phonenumber_location" />
 
             <TextView
                 android:id="@+id/website"
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:padding="3dip"
-                android:text="Website" />
+                android:text="@string/website_location" />
         </TableRow>
     </TableLayout>
 
@@ -83,7 +83,7 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
+        android:text="@string/name_donation"
         android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -96,7 +96,7 @@
         android:id="@+id/type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Type"
+        android:text="@string/type_location"
         app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintStart_toStartOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/name" />
@@ -126,7 +126,7 @@
         android:layout_marginStart="38dp"
         android:layout_marginTop="21dp"
         android:background="@color/colorAccent"
-        android:text="Search for Donation at this Location"
+        android:text="@string/search_at_location"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
