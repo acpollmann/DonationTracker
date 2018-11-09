@@ -67,7 +67,13 @@ public class UserSet {
         return false;
     }
 
-    public boolean doLogin(String email, String password) {
+    /**
+     * Called on login, checks if the given email and password matches with a registered user
+     * @param email the user's email
+     * @param password the user's password
+     * @return true if this is a valid user (exists in the user set), false otherwise
+     */
+    public boolean validUser(String email, String password) {
         return _users.contains(new User(email, password));
     }
 }
