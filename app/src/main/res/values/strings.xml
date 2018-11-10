@@ -10,8 +10,8 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale" translatable="false">"Contacts permissions are needed for providing email
-        completions."
+    <string name="permission_rationale" translatable="false">Contacts permissions are
+        needed for providing email completions.
     </string>
     <string name="loginErrorM">Invalid email/password</string>
     <string name="registerErrorM">Email and password are required.</string>
@@ -28,13 +28,10 @@
     <string name="action_sign_in">Sign in or register</string>
     <string name="title_activity_read_location">ReadLocation</string>
     <string name="title_activity_maps">Map</string>
-<<<<<<< HEAD
-    <string name="backButton">&lt;</string>
+    <string name="backButton" translatable="false">&lt;</string>
+
     <!-- Strings related to Donation -->
     <string name="add_donation">Add Donation</string>
-=======
-    <string name="backButton" translatable="false">&lt;</string>
->>>>>>> 88a40981792fb99365e0566677fbb2f060c294fb
     <string name="name_donation">Name</string>
     <string name="timestamp_donation">Time Stamp</string>
     <string name="tabletimestamp_donation">Time Stamp: </string>

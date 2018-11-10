@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(task, millisDelay);
     }
     private final Runnable task = new Runnable() {
+        @Override
         public void run() {
             recreate();
         }
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void animateButtons(View view) {
-        Button viewLocationTarget = (Button) this.findViewById(R.id.view_location_bubble);
+        Button viewLocationTarget = this.findViewById(R.id.view_location_bubble);
         Button addDonationTarget = (Button) this.findViewById(R.id.add_donation_bubble);
         Button statsTarget = (Button) this.findViewById(R.id.statistics_bubble);
         Button manageTarget = (Button) this.findViewById(R.id.manage_accounts_bubble);

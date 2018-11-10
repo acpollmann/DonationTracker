@@ -5,8 +5,6 @@ import android.media.Image;
 import java.util.Arrays;
 import java.util.List;
 
-import edu.gatech.cs2340.donationtracker.R;
-
 /**
  * User creates the donation using the different requirements.
  * User is later able to access the donation object formed here.
@@ -45,13 +43,13 @@ public class Donation {
         this.value = value;
         this.category = category;
         this.comments = comments;
-        this.picture = null;
         this.key = Donation.Next_key++;
 
     }
 
     /**
      * Gets the key from donation form for the activity pages
+     * @return key of the donation item
      */
     public int getKey() {return key;}
 

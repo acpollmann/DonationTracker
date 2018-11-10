@@ -32,7 +32,6 @@ public class ViewLocationActivity extends AppCompatActivity
     ListModel model = ListModel.getInstance();
     private final Map<String, GroupInfo> filteredBy = new LinkedHashMap<>();
     private final ArrayList<GroupInfo> expandableListList = new ArrayList<>();
-    private CustomAdapter listAdapter;
     private SearchAdapterLocation searchAdapter;
     private ExpandableListView simpleExpandableListView;
 
@@ -49,7 +48,8 @@ public class ViewLocationActivity extends AppCompatActivity
         //get reference of the ExpandableListView
         simpleExpandableListView = findViewById(R.id.simpleExpandableListView);
         // create the adapter by passing your ArrayList data
-        listAdapter = new CustomAdapter(ViewLocationActivity.this, expandableListList);
+        CustomAdapter listAdapter = new CustomAdapter(ViewLocationActivity.this,
+                expandableListList);
         // attach the adapter to the expandable list view
         simpleExpandableListView.setAdapter(listAdapter);
         // setOnChildClickListener listener for child row click
@@ -116,17 +116,25 @@ public class ViewLocationActivity extends AppCompatActivity
         addFilter(getString(R.string.filterlat_location), getString(R.string.searchlat_location) );
         addFilter(getString(R.string.filterlat_location), getString(R.string.searchlong_location) );
 
-        addFilter(getString(R.string.locationname_location), getString(R.string.searchalpha_location) );
+        addFilter(getString(R.string.locationname_location),
+                getString(R.string.searchalpha_location) );
 
-        addFilter(getString(R.string.locationtype_location), getString(R.string.searchdrop_location) );
-        addFilter(getString(R.string.locationtype_location), getString(R.string.searchstore_location) );
-        addFilter(getString(R.string.locationtype_location), getString(R.string.searchware_location) );
+        addFilter(getString(R.string.locationtype_location),
+                getString(R.string.searchdrop_location) );
+        addFilter(getString(R.string.locationtype_location),
+                getString(R.string.searchstore_location) );
+        addFilter(getString(R.string.locationtype_location),
+                getString(R.string.searchware_location) );
 
-        addFilter(getString(R.string.locationaddress_location), getString(R.string.searchalpha_location) );
-        addFilter(getString(R.string.locationaddress_location), getString(R.string.searchclose_location) );
+        addFilter(getString(R.string.locationaddress_location),
+                getString(R.string.searchalpha_location) );
+        addFilter(getString(R.string.locationaddress_location),
+                getString(R.string.searchclose_location) );
 
-        addFilter(getString(R.string.locationphone_location), getString(R.string.searchnum_location) );
-        addFilter(getString(R.string.locationphone_location), getString(R.string.searcharea_location) );
+        addFilter(getString(R.string.locationphone_location),
+                getString(R.string.searchnum_location) );
+        addFilter(getString(R.string.locationphone_location),
+                getString(R.string.searcharea_location) );
 
     }
 
@@ -166,7 +174,7 @@ public class ViewLocationActivity extends AppCompatActivity
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(filteredLocations));
     }
 
-    public class SimpleItemRecyclerViewAdapter
+    public final class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final List<Location> mLocationList;
@@ -189,7 +197,8 @@ public class ViewLocationActivity extends AppCompatActivity
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getApplication(), getString(R.string.info_location), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplication(), getString(R.string.info_location),
+                            Toast.LENGTH_SHORT).show();
                     Context context = v.getContext();
                     Intent intent = new Intent(context, LocationDetailActivity.class);
 

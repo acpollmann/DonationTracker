@@ -37,7 +37,6 @@ public class AddDonationActivity extends AppCompatActivity {
     private EditText mValueField;
     private Spinner categorySpinner;
     private EditText mCommentField;
-    private Button uploadImageButton;
     private ImageView imageToUpload;
     private ListModel model;
 
@@ -65,7 +64,7 @@ public class AddDonationActivity extends AppCompatActivity {
         mValueField = findViewById(R.id.valueField);
         categorySpinner = findViewById(R.id.categorySpinner);
         mCommentField = findViewById(R.id.commentField);
-        uploadImageButton = findViewById(R.id.uploadImageButton);
+        Button uploadImageButton = findViewById(R.id.uploadImageButton);
         imageToUpload = findViewById(R.id.imageToUpload);
 
          /*

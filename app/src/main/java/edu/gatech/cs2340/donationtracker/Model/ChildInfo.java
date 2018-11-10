@@ -15,6 +15,7 @@ public class ChildInfo {
 
     /**
      * Gets the sequence from the child information on the view location activity
+     * @return sequence of the child info
      */
     public String getSequence() {
         return sequence;
