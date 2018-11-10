@@ -31,6 +31,7 @@ public class ChildInfo {
 
     /**
      * Gets the name from the child information on the view location activity
+     * @return name of the child info
      */
     public String getName() {
         return name;

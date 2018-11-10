@@ -11,6 +11,13 @@ import java.util.List;
 
 import edu.gatech.cs2340.donationtracker.R;
 
+/**
+ * Implementation of adapter for expandable list view for view locations
+ *
+ * @author Group 71B
+ * @version 1.0
+ */
+
 public class CustomAdapter extends BaseExpandableListAdapter {
 
     private final Context context;

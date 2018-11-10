@@ -68,9 +68,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         //save the map instance returned from Google
         /* holds the map object returned from Google */
-        GoogleMap mMap = googleMap;
+        GoogleMap myGoogleMap = googleMap;
 
-        mMap.getUiSettings().setZoomControlsEnabled(true);
+        myGoogleMap.getUiSettings().setZoomControlsEnabled(true);
 
         //get the data to display
         List<Location> locationList = ListModel.getInstance().getLocations();
@@ -79,17 +79,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         for (Location location : locationList) {
             Log.d("Location added", location.getLatitude() + ", "  + location.getLongitude());
             LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(loc).title(location.getLocationName())
+            myGoogleMap.addMarker(new MarkerOptions().position(loc).title(location.getLocationName())
                     .snippet(location.getPhone()));
         }
         Double gatechLat = 33.7756;
         Double gatechLong = -84.3963;
         Float initialZoom = 10.0f;
         LatLng gatech = new LatLng(gatechLat, gatechLong);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(gatech, initialZoom));
+        myGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(gatech, initialZoom));
 
         //Use a custom layout for the pin data
-        mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
+        myGoogleMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
     }
 
     /**
@@ -112,7 +112,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             TextView tvTitle = myContentsView.findViewById(R.id.title);
             tvTitle.setText(marker.getTitle());
-            TextView tvSnippet = ((TextView)myContentsView.findViewById(R.id.snippet));
+            TextView tvSnippet = (myContentsView.findViewById(R.id.snippet));
             tvSnippet.setText(marker.getSnippet());
 
             return myContentsView;

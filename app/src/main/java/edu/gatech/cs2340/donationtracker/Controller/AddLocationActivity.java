@@ -39,14 +39,14 @@ public class AddLocationActivity extends AppCompatActivity {
 
     private ListModel model;
 
-    String[] states = {
+    private final String[] states = {
             "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "IA", "ID", "IL",
             "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND",
             "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN",
             "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"
     };
 
-    String[] locationTypes = {
+    private final String[] locationTypes = {
             "Drop Off", "Store", "Warehouse"
     };
 
