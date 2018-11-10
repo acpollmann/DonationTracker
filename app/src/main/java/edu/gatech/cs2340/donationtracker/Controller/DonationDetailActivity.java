@@ -19,7 +19,6 @@ import edu.gatech.cs2340.donationtracker.R;
  */
 
 public class DonationDetailActivity extends AppCompatActivity {
-    private TextView mName;
     private TextView mLocation;
     private TextView mTimestamp;
     private TextView mValue;
@@ -39,7 +38,7 @@ public class DonationDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donation_detail);
 
-        mName = findViewById(R.id.name);
+        TextView mName = findViewById(R.id.name);
         mLocation = findViewById(R.id.location);
         mTimestamp = findViewById(R.id.timestamp);
         mValue = findViewById(R.id.value);

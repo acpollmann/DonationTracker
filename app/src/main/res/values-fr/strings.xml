@@ -11,8 +11,8 @@
     <string name="error_invalid_password">Le mot de passe êtes aussi court</string>
     <string name="error_incorrect_password">Le mot de passe êtes erroné</string>
     <string name="error_field_required">Les zones sont requis</string>
-    <string name="permission_rationale" translatable="false">"Contacts permissions are needed for providing email
-        completions."
+    <string name="permission_rationale" translatable="false">"Contacts permissions are
+        needed for providing email completions."
     </string>
     <string name="action_settings">Paramètre</string>
     <string name="title_activity_main">Page d’accueil activité</string>

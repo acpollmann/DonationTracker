@@ -37,7 +37,6 @@ public class AddDonationActivity extends AppCompatActivity {
     private EditText mValueField;
     private Spinner categorySpinner;
     private EditText mCommentField;
-    private Button uploadImageButton;
     private ImageView imageToUpload;
     private ListModel model;
 
@@ -65,7 +64,7 @@ public class AddDonationActivity extends AppCompatActivity {
         mValueField = findViewById(R.id.valueField);
         categorySpinner = findViewById(R.id.categorySpinner);
         mCommentField = findViewById(R.id.commentField);
-        uploadImageButton = findViewById(R.id.uploadImageButton);
+        Button uploadImageButton = findViewById(R.id.uploadImageButton);
         imageToUpload = findViewById(R.id.imageToUpload);
 
          /*
@@ -121,7 +120,7 @@ public class AddDonationActivity extends AppCompatActivity {
 
         if ("".equals(name) || "".equals(timeStamp) || "".equals(shortDescription)
                 || "".equals(fullDescription) || "".equals(value)) {
-            mErrorMessage.setText("All fields except Comments must be filled in.");
+            mErrorMessage.setText(R.string.addDonationErrorM);
         } else {
             model.addDonation(name, location, timeStamp, shortDescription,
                     fullDescription, value, category, comment);

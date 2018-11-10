@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -44,7 +45,8 @@ public class FirestoreManager {
     }
 
     /** Stores a User to Firestore.
-     * @param user*/
+     * @param user the User object instance to be added
+     * */
     public void add(User user) {
 
         // Add a new document with a generated ID
@@ -78,16 +80,19 @@ public class FirestoreManager {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("doc", document.getId() + " => " + document.getData());
+                                Log.d("doc", document.getId() + " => "
+                                        + document.getData());
 
                                 Map<String, Object> userDoc = document.getData();
                                 User user = new User(
-                                        (String) userDoc.get("email"), (String) userDoc.get("password")
+                                        (String) userDoc.get("email"),
+                                        (String) userDoc.get("password")
                                 );
                                 users.add(user);
                             }
                         } else {
-                            Log.d("docError", "Error getting documents: ", task.getException());
+                            Log.d("docError", "Error getting documents: ",
+                                    task.getException());
                         }
                     }
                 });
@@ -96,7 +101,8 @@ public class FirestoreManager {
     }
 
     /** Stores a Location to Firestore.
-     * @param location*/
+     * @param location the Location object instance to be added
+     * */
     public void addLocation(Location location) {
 
         // Add a new document with a generated ID
@@ -172,7 +178,8 @@ public class FirestoreManager {
 
 
     /** Stores a Donation to Firestore.
-     * @param donation*/
+     * @param donation the Donation object instance to be added to Firestore
+     * */
     public void addDonation(Donation donation) {
 
         // Add a new document with a generated ID
@@ -204,8 +211,10 @@ public class FirestoreManager {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("doc", document.getId() + " => " + document.getData());
+                            for (QueryDocumentSnapshot document :
+                                    Objects.requireNonNull(task.getResult())) {
+                                Log.d("doc", document.getId() + " => "
+                                        + document.getData());
 
                                 Map<String, Object> donationDoc = document.getData();
 

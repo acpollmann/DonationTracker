@@ -18,7 +18,6 @@ import edu.gatech.cs2340.donationtracker.R;
  */
 
 public class LocationDetailActivity extends AppCompatActivity {
-    private TextView mName;
     private TextView mType;
     private TextView mAddress;
     private TextView latitudeLongitude;
@@ -36,7 +35,7 @@ public class LocationDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_detail);
 
-        mName = findViewById(R.id.name);
+        TextView mName = findViewById(R.id.name);
         mType = findViewById(R.id.type);
         mAddress = findViewById(R.id.address);
         latitudeLongitude = findViewById(R.id.latitude_longitude);

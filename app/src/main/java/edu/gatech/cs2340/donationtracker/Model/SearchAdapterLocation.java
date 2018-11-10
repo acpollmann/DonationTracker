@@ -24,7 +24,7 @@ public class SearchAdapterLocation extends BaseAdapter {
         mContext = context;
         this.locationList = namesList;
         inflater = LayoutInflater.from(mContext);
-        this.arraylist = new ArrayList<Location>();
+        this.arraylist = new ArrayList<>();
         this.arraylist.addAll(namesList);
     }
 
@@ -47,20 +47,22 @@ public class SearchAdapterLocation extends BaseAdapter {
         return position;
     }
 
+    @Override
     public View getView(final int position, View view, ViewGroup parent) {
+        View view1 = view;
         final ViewHolder holder;
-        if (view == null) {
+        if (view1 == null) {
             holder = new ViewHolder();
-            view = inflater.inflate(R.layout.search_item, null);
+            view1 = inflater.inflate(R.layout.search_item, null);
             // Locate the TextViews in listview_item.xml
-            holder.name = (TextView) view.findViewById(R.id.name);
-            view.setTag(holder);
+            holder.name = view1.findViewById(R.id.name);
+            view1.setTag(holder);
         } else {
-            holder = (ViewHolder) view.getTag();
+            holder = (ViewHolder) view1.getTag();
         }
         // Set the results into TextViews
         holder.name.setText(locationList.get(position).getLocationName());
-        return view;
+        return view1;
     }
 
     // Filter Class

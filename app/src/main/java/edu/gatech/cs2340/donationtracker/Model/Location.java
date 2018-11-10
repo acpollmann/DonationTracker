@@ -1,7 +1,5 @@
 package edu.gatech.cs2340.donationtracker.Model;
 
-import java.util.List;
-
 /**
  * Implementation a location for the location list and deatil page
  *

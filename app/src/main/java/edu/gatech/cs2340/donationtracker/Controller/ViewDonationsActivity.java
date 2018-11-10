@@ -197,7 +197,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
      * <p>
      * In this case, we are just mapping the toString of the Course object to a text field.
      */
-    private class SimpleDonationRecyclerViewAdapter
+    private final class SimpleDonationRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleDonationRecyclerViewAdapter.ViewHolder> {
 
         /**
@@ -286,7 +286,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
          * about the binding between the model element (in this case a Course) and the widgets in
          * the list view (in this case the two TextView)
          */
-        public class ViewHolder extends RecyclerView.ViewHolder {
+        public final class ViewHolder extends RecyclerView.ViewHolder {
             private final View mView;
             private final TextView mContentView;
             public Donation mDonation;

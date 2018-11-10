@@ -3,7 +3,7 @@ package edu.gatech.cs2340.donationtracker.Model;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UserSet {
+public final class UserSet {
     /** Singleton instance */
     private static UserSet instance;
     /**

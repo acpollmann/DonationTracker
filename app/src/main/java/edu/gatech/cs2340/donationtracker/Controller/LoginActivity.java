@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             mEmailField.setText("");
             mPasswordField.setText("");
-            mErrorMessage.setText("Invalid email/password");
+            mErrorMessage.setText(R.string.loginErrorM);
         }
     }
     private void configureBackButton() {
