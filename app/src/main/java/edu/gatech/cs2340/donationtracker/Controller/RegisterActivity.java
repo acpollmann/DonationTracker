@@ -13,6 +13,15 @@ import android.widget.TextView;
 import edu.gatech.cs2340.donationtracker.Model.UserSet;
 import edu.gatech.cs2340.donationtracker.R;
 
+/**
+ * Implementation that will initiate the REGISTRATION page,
+ * so if the user if not already in the database, it will create
+ * a new account for the otherwise an error message will be shown.
+ *
+ * @author Group 71B
+ * @version 1.0
+ */
+
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText mEmailField;
@@ -45,6 +54,10 @@ public class RegisterActivity extends AppCompatActivity {
         userSet = UserSet.getInstance();
     }
 
+    /**
+     * It changes the page to the REGISTER page to the previous page if
+     * the back button.
+     */
     private void configureBackButton() {
         Button backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +69,15 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * This method will collect input data and set it to a variable.
+     * Then it will use that information, check the data base to see if
+     * the user currently exists in the system. If so, an error message
+     * will be shown. If not, then the user object will be created and the
+     * information will be added into the database.
+     *
+     * @param view the current view of the MAIN page
+     */
     public void onRegisterPressed(View view) {
         String email = mEmailField.getText().toString();
         String password = mPasswordField.getText().toString();

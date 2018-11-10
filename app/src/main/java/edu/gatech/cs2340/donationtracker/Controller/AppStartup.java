@@ -20,16 +20,12 @@ import edu.gatech.cs2340.donationtracker.Model.UserSet;
  */
 
 public class AppStartup extends Application {
-    private FirestoreManager firestoreManager;
 
-    /**
-     * On the creation of the app it will create the list model
-     * and set up the fireStore. It will add the lists of donations
-     * and locations to fireStore.
-     */
     @Override
     public void onCreate() {
         super.onCreate();
+
+        FirestoreManager firestoreManager;
 
         ListModel model = ListModel.getInstance();
 

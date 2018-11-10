@@ -27,6 +27,15 @@ import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.Model.SearchAdapterLocation;
 import edu.gatech.cs2340.donationtracker.R;
 
+/**
+ * Implementation that will initiate the VIEW LOCATIONS page,
+ * it will collect the various locations, then display their
+ * information on the list model.It will also implement the searching and
+ * filtering features.
+ *
+ * @author Group 71B
+ * @version 1.0
+ */
 public class ViewLocationActivity extends AppCompatActivity
         implements SearchView.OnQueryTextListener {
     ListModel model = ListModel.getInstance();
@@ -105,13 +114,21 @@ public class ViewLocationActivity extends AppCompatActivity
         searchAdapter.filter(newText);
         return false;
     }
+
+    /**
+     * It will change the display from the current page to the previous page.
+     *
+     * @param view the current view of the VIEW DONATIONS page
+     */
     public void onBackButtonPressed(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
 
-    //load some initial data into out list
+    /**
+     *This method will load some initial data into out list
+     */
     private void loadData(){
         addFilter(getString(R.string.filterlat_location), getString(R.string.searchlat_location) );
         addFilter(getString(R.string.filterlat_location), getString(R.string.searchlong_location) );
@@ -137,8 +154,12 @@ public class ViewLocationActivity extends AppCompatActivity
                 getString(R.string.searcharea_location) );
 
     }
-
-    //here we maintain our products in various departments
+    /**
+     *This method will maintain the location filters.
+     *
+     * @param information the general name of the location filter
+     * @param sortBy the specfic filter type
+     */
     private void addFilter(String information, String sortBy) {
         //check the hash map if the group already exists
         GroupInfo headerInfo = filteredBy.get(information);
@@ -165,6 +186,11 @@ public class ViewLocationActivity extends AppCompatActivity
         headerInfo.setProductList(productList);
     }
 
+    /**
+     * This method sets up the recycler view so it can display the locations.
+     *
+     * @param recyclerView the recyclerview on the VIEW LOCATIONS page
+     */
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         List<Location> filteredLocations = model.getLocations();
         if (filteredLocations.isEmpty()) {
@@ -233,6 +259,10 @@ public class ViewLocationActivity extends AppCompatActivity
             private final View mView;
             private final TextView mContentView;
 
+            /**
+             * A constructor for the view
+             * @param view the current view of the screen
+             */
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
@@ -245,6 +275,11 @@ public class ViewLocationActivity extends AppCompatActivity
             }
         }
     }
+    /**
+     * It will change the display from the current page to ADD LOCATIONS page.
+     *
+     * @param view the current view of the VIEW DONATIONS page
+     */
     public void onAddLocationPressed(View view) {
         Intent intent = new Intent(this, AddLocationActivity.class);
         startActivity(intent);

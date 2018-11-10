@@ -18,29 +18,18 @@ import edu.gatech.cs2340.donationtracker.R;
  */
 
 public class LocationDetailActivity extends AppCompatActivity {
-    private TextView mType;
-    private TextView mAddress;
-    private TextView latitudeLongitude;
-    private TextView mPhoneNumber;
-    private TextView mWebSite;
 
-    /**
-     * On the creation of the LOCATION DETAIL page, it utilizes
-     * getters to collect specific information about the
-     * donation item and changes the texts of the widgets in accordance.
-     * @param savedInstanceState the bundle with information
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_detail);
 
         TextView mName = findViewById(R.id.name);
-        mType = findViewById(R.id.type);
-        mAddress = findViewById(R.id.address);
-        latitudeLongitude = findViewById(R.id.latitude_longitude);
-        mPhoneNumber = findViewById(R.id.phone_number);
-        mWebSite = findViewById(R.id.website);
+        TextView mType = findViewById(R.id.type);
+        TextView mAddress = findViewById(R.id.address);
+        TextView latitudeLongitude = findViewById(R.id.latitude_longitude);
+        TextView mPhoneNumber = findViewById(R.id.phone_number);
+        TextView mWebSite = findViewById(R.id.website);
 
         Intent intent = getIntent();
         Bundle b = intent.getExtras();

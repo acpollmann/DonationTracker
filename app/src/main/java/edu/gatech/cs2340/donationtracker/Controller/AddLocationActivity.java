@@ -50,14 +50,6 @@ public class AddLocationActivity extends AppCompatActivity {
             "Drop Off", "Store", "Warehouse"
     };
 
-
-    /**
-     * On the creation of the ADD LOCATION page, it will
-     * change the display of the device, sets the information collected
-     * from the page to fields. It also creates adapters for the spinners
-     * which will be used to get information on the state and type.
-     * @param savedInstanceState a bundle of information from widgets
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

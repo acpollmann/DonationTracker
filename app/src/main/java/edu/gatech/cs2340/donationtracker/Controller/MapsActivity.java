@@ -22,6 +22,15 @@ import edu.gatech.cs2340.donationtracker.Model.ListModel;
 import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.R;
 
+/**
+ * Implementation that will initiate the MAP page and
+ * display google api so the user will see a map with pins
+ * of the donation locations.
+ *
+ * @author Group 71B
+ * @version 1.0
+ */
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     @Override
@@ -34,6 +43,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Objects.requireNonNull(mapFragment).getMapAsync(this);
     }
 
+    /**
+     * It changes the page to the MAP VIEW page for the app if
+     * the MAP VIEW button is pressed to display the MAIN page.
+     *
+     * @param view the current view of the MAIN page
+     */
     public void onBackButtonPressed(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
