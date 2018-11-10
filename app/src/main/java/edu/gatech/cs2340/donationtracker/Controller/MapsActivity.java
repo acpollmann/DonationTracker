@@ -16,15 +16,22 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
+import java.util.Objects;
 
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
 import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.R;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+/**
+ * Implementation that will initiate the MAP page and
+ * display google api so the user will see a map with pins
+ * of the donation locations.
+ *
+ * @author Group 71B
+ * @version 1.0
+ */
 
-    /** holds the map object returned from Google */
-    private GoogleMap mMap;
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +40,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        Objects.requireNonNull(mapFragment).getMapAsync(this);
     }
 
+    /**
+     * It changes the page to the MAP VIEW page for the app if
+     * the MAP VIEW button is pressed to display the MAIN page.
+     *
+     * @param view the current view of the MAIN page
+     */
     public void onBackButtonPressed(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -54,7 +67,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         //save the map instance returned from Google
-        mMap = googleMap;
+        /* holds the map object returned from Google */
+        GoogleMap mMap = googleMap;
 
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
@@ -68,9 +82,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.addMarker(new MarkerOptions().position(loc).title(location.getLocationName())
                     .snippet(location.getPhone()));
         }
-
-        LatLng gatech = new LatLng(33.7756, -84.3963);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(gatech, 10.0f));
+        Double gatechLat = 33.7756;
+        Double gatechLong = -84.3963;
+        Float initialZoom = 10.0f;
+        LatLng gatech = new LatLng(gatechLat, gatechLong);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(gatech, initialZoom));
 
         //Use a custom layout for the pin data
         mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
@@ -94,7 +110,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         @Override
         public View getInfoContents(Marker marker) {
 
-            TextView tvTitle = ((TextView)myContentsView.findViewById(R.id.title));
+            TextView tvTitle = myContentsView.findViewById(R.id.title);
             tvTitle.setText(marker.getTitle());
             TextView tvSnippet = ((TextView)myContentsView.findViewById(R.id.snippet));
             tvSnippet.setText(marker.getSnippet());

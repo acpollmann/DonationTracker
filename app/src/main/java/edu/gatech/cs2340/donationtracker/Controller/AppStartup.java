@@ -12,15 +12,22 @@ import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.Model.User;
 import edu.gatech.cs2340.donationtracker.Model.UserSet;
 
+/**
+ * Implementation that will initiate ListModel and FireStore.
+ *
+ * @author Group 71B
+ * @version 1.0
+ */
+
 public class AppStartup extends Application {
-    private ListModel model;
-    private FirestoreManager firestoreManager;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        model = ListModel.getInstance();
+        FirestoreManager firestoreManager;
+
+        ListModel model = ListModel.getInstance();
 
 
         firestoreManager = new FirestoreManager();

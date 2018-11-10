@@ -33,7 +33,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Add Donation"
+        android:text="@string/addingit_donation"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -88,7 +88,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/timestampField"
@@ -103,7 +104,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nameField" />
+                app:layout_constraintTop_toBottomOf="@+id/nameField"
+                android:autofillHints="" />
 
             <TextView
                 android:id="@+id/locationText"
@@ -146,7 +148,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/locationSpinner" />
+                app:layout_constraintTop_toBottomOf="@+id/locationSpinner"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/fullDescriptionField"
@@ -161,7 +164,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/shortDescriptionField" />
+                app:layout_constraintTop_toBottomOf="@+id/shortDescriptionField"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/valueField"
@@ -177,7 +181,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fullDescriptionField" />
+                app:layout_constraintTop_toBottomOf="@+id/fullDescriptionField"
+                android:autofillHints="" />
 
             <TextView
                 android:id="@+id/categoryText"
@@ -185,7 +190,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="Category"
+                android:text="@string/category_donation"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/categorySpinner"
@@ -220,7 +225,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/categorySpinner" />
+                app:layout_constraintTop_toBottomOf="@+id/categorySpinner"
+                android:autofillHints="" />
 
             <TextView
                 android:id="@+id/pictureText"
@@ -261,7 +267,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/uploadImageButton" />
+                app:layout_constraintTop_toBottomOf="@+id/uploadImageButton"
+                android:contentDescription="@string/image_donation" />
 
             <Button
                 android:id="@+id/addDonationButton"

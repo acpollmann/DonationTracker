@@ -25,7 +25,15 @@ import edu.gatech.cs2340.donationtracker.Model.ListModel;
 import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.R;
 
-
+/**
+ * Implementation that will initiate the VIEW DONATIONS page,
+ * it will collect the various donation items, then display them
+ * on the list model.It will also implement the searching and
+ * filtering features to organize all the donations.
+ *
+ * @author Group 71B
+ * @version 1.0
+ */
 public class ViewDonationsActivity extends AppCompatActivity {
 
     private Spinner categorySearchSpinner;
@@ -112,7 +120,11 @@ public class ViewDonationsActivity extends AppCompatActivity {
         });
 
     }
-
+    /**
+     * It will change the display from the current page to the previous page.
+     *
+     * @param view the current view of the VIEW DONATIONS page
+     */
     public void onBackButtonPressed(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -120,10 +132,12 @@ public class ViewDonationsActivity extends AppCompatActivity {
     }
 
     /**
-     * Filter by the
-     * @param donations the list of available donations
-     * @param filter the filter that allows only donations fit in a certain catagory to be included.
-     * @return filtered list
+     * This method will iterate through the donations list and then based on the filter
+     * it will return a list with donations that fit the criteria. (CATEGORY)
+     *
+     * @param donations the list of all the donations in the app
+     * @param filter a string that each donation item should have in order to be
+     * returned in the final filtered list (category type)
      */
     private List<Donation> filterByCategory(List<Donation> donations, String filter) {
         if ("All".equals(filter)) {
@@ -140,10 +154,12 @@ public class ViewDonationsActivity extends AppCompatActivity {
     }
 
     /**
-     * Filter by the
-     * @param donations the list of available donations
-     * @param filter the filter that allows only donations from a particular location to be included.
-     * @return filtered list
+     * This method will iterate through the donations list and then based on the filter
+     * it will return a list with donations that fit the criteria. (LOCATION)
+     *
+     * @param donations the list of all the donations in the app
+     * @param filter a string that each donation item should have in order to be
+     * returned in the final filtered list (location)
      */
     private List<Donation> filterByLocation(List<Donation> donations, String filter) {
         if ("All".equals(filter)) {
@@ -161,11 +177,11 @@ public class ViewDonationsActivity extends AppCompatActivity {
     }
 
     /**
-     * Allows text in search bar to create a list from donations
-     * that contains the text typed into the bar
-     * @param donations list of donations
-     * @param search string fragment used to search donations
-     * @return the list of searched donations
+     * This method will take user text input and search for donation items with names
+     * mathcing the string.
+     *
+     * @param donations the list of all the donations in the app
+     * @param search a string from the user that will be used to filter (DONATION NAME)
      */
     private List<Donation> searchForDonation (List<Donation> donations, String search) {
         if (search == null) {
@@ -207,7 +223,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         if (filteredDonations.isEmpty()) {
             Toast.makeText(
                     ViewDonationsActivity.this,
-                    "Selected filter doesn't have donations.",
+                    getString(R.string.selected_nodonations),
                     Toast.LENGTH_SHORT).show();
         }
 
@@ -220,7 +236,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
      * <p>
      * In this case, we are just mapping the toString of the Course object to a text field.
      */
-    private class SimpleDonationRecyclerViewAdapter
+    private final class SimpleDonationRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleDonationRecyclerViewAdapter.ViewHolder> {
 
         /**
@@ -313,7 +329,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
          * about the binding between the model element (in this case a Course) and the widgets in
          * the list view (in this case the two TextView)
          */
-        public class ViewHolder extends RecyclerView.ViewHolder {
+        public final class ViewHolder extends RecyclerView.ViewHolder {
             private final View mView;
             private final TextView mContentView;
             public Donation mDonation;

@@ -9,25 +9,27 @@ import android.widget.TextView;
 
 import edu.gatech.cs2340.donationtracker.R;
 
+/**
+ * Implementation that will initiate the LOCATION DETAIL page and
+ * display information about the specific location.
+ *
+ * @author Group 71B
+ * @version 1.0
+ */
+
 public class LocationDetailActivity extends AppCompatActivity {
-    private TextView mName;
-    private TextView mType;
-    private TextView mAddress;
-    private TextView latitudeLongitude;
-    private TextView mPhoneNumber;
-    private TextView mWebSite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_detail);
 
-        mName = findViewById(R.id.name);
-        mType = findViewById(R.id.type);
-        mAddress = findViewById(R.id.address);
-        latitudeLongitude = findViewById(R.id.latitude_longitude);
-        mPhoneNumber = findViewById(R.id.phone_number);
-        mWebSite = findViewById(R.id.website);
+        TextView mName = findViewById(R.id.name);
+        TextView mType = findViewById(R.id.type);
+        TextView mAddress = findViewById(R.id.address);
+        TextView latitudeLongitude = findViewById(R.id.latitude_longitude);
+        TextView mPhoneNumber = findViewById(R.id.phone_number);
+        TextView mWebSite = findViewById(R.id.website);
 
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
@@ -49,6 +51,12 @@ public class LocationDetailActivity extends AppCompatActivity {
         mWebSite.setText(website);
     }
 
+    /**
+     * It will change the page on the screen if the
+     * back button is pressed.
+     *
+     * @param view the current view of the LOCATION DETAIL page
+     */
     public void onBackButtonPressed(View view) {
         Intent intent = new Intent(this, ViewLocationActivity.class);
         startActivity(intent);

@@ -16,6 +16,14 @@ import edu.gatech.cs2340.donationtracker.Model.ListModel;
 import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.R;
 
+/**
+ * Implementation that will initiate the ADD DONATION page and
+ * if given valid data, will create a donation item then change
+ * the list model on the SEARCH DONATION page.
+ *
+ * @author Group 71B
+ * @version 1.0
+ */
 
 public class AddDonationActivity extends AppCompatActivity {
 
@@ -29,15 +37,14 @@ public class AddDonationActivity extends AppCompatActivity {
     private EditText mValueField;
     private Spinner categorySpinner;
     private EditText mCommentField;
-    private Button uploadImageButton;
-    private ImageView imageToUpload;
-
     private ListModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_donation);
+
+        ImageView imageToUpload;
 
         configureBackButton();
 
@@ -51,10 +58,8 @@ public class AddDonationActivity extends AppCompatActivity {
         mValueField = findViewById(R.id.valueField);
         categorySpinner = findViewById(R.id.categorySpinner);
         mCommentField = findViewById(R.id.commentField);
-        uploadImageButton = findViewById(R.id.uploadImageButton);
+        Button uploadImageButton = findViewById(R.id.uploadImageButton);
         imageToUpload = findViewById(R.id.imageToUpload);
-
-
 
          /*
           Set up the adapter to display the allowable locations in the spinner
@@ -76,6 +81,10 @@ public class AddDonationActivity extends AppCompatActivity {
         model = ListModel.getInstance();
     }
 
+    /**
+     *Allows users to return to the main page from the ADD DONATION page.
+     *Utilizes a listener to determine is the user wants to return.
+     */
     private void configureBackButton() {
         Button backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +96,11 @@ public class AddDonationActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Will utilize information from the screen, create a new donation,
+     * and then update the list model as well as the display.
+     * @param view the current view of the ADD DONATION page
+     */
     public void onAddDonationButtonPressed(View view) {
 
         String name = mNameField.getText().toString();
@@ -100,7 +114,7 @@ public class AddDonationActivity extends AppCompatActivity {
 
         if ("".equals(name) || "".equals(timeStamp) || "".equals(shortDescription)
                 || "".equals(fullDescription) || "".equals(value)) {
-            mErrorMessage.setText("All fields except Comments must be filled in.");
+            mErrorMessage.setText(R.string.addDonationErrorM);
         } else {
             model.addDonation(name, location, timeStamp, shortDescription,
                     fullDescription, value, category, comment);

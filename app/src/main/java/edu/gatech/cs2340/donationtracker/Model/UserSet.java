@@ -3,9 +3,12 @@ package edu.gatech.cs2340.donationtracker.Model;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UserSet {
+public final class UserSet {
     /** Singleton instance */
     private static UserSet instance;
+    /**
+     * Gets instance of user
+     */
     public static UserSet getInstance() {
         if (instance == null) {
             instance = new UserSet(new FirestoreManager());
