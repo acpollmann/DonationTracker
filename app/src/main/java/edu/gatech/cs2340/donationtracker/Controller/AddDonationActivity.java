@@ -37,20 +37,14 @@ public class AddDonationActivity extends AppCompatActivity {
     private EditText mValueField;
     private Spinner categorySpinner;
     private EditText mCommentField;
-    private ImageView imageToUpload;
     private ListModel model;
 
-    /**
-     * On the creation of the ADD DONATION page, it will
-     * change the display of the device, sets the information collected
-     * from the page to fields. It also creates adapters for the spinners
-     * which will be used later to filter the donation items.
-     * @param savedInstanceState a bundle of information from widgets
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_donation);
+
+        ImageView imageToUpload;
 
         configureBackButton();
 

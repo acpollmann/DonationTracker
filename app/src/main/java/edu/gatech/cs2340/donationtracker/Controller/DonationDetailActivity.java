@@ -19,33 +19,20 @@ import edu.gatech.cs2340.donationtracker.R;
  */
 
 public class DonationDetailActivity extends AppCompatActivity {
-    private TextView mLocation;
-    private TextView mTimestamp;
-    private TextView mValue;
-    private TextView mCategory;
-    private TextView mShortDescription;
-    private TextView mFullDescription;
-    private TextView mComments;
 
-    /**
-     * On the creation of the DONATION DETAIL page, it utilizes
-     * getters to collect specific information about the
-     * donation item and changes the texts of the widgets in accordance.
-     * @param savedInstanceState the bundle with information
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donation_detail);
 
         TextView mName = findViewById(R.id.name);
-        mLocation = findViewById(R.id.location);
-        mTimestamp = findViewById(R.id.timestamp);
-        mValue = findViewById(R.id.value);
-        mCategory = findViewById(R.id.category);
-        mShortDescription = findViewById(R.id.shortDescription);
-        mFullDescription = findViewById(R.id.fullDescription);
-        mComments = findViewById(R.id.comments);
+        TextView mLocation = findViewById(R.id.location);
+        TextView mTimestamp = findViewById(R.id.timestamp);
+        TextView mValue = findViewById(R.id.value);
+        TextView mCategory = findViewById(R.id.category);
+        TextView mShortDescription = findViewById(R.id.shortDescription);
+        TextView mFullDescription = findViewById(R.id.fullDescription);
+        TextView mComments = findViewById(R.id.comments);
 
 
         Intent intent = getIntent();

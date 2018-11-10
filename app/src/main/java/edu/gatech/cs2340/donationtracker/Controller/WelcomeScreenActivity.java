@@ -20,7 +20,15 @@ import java.util.Locale;
 
 import edu.gatech.cs2340.donationtracker.R;
 
-
+/**
+ * Implementation that will initiate the WELCOME page which
+ * displays 2 buttons. One for the login page the other for the
+ * registration page.
+ * email/password.
+ *
+ * @author Group 71B
+ * @version 1.0
+ */
 public class WelcomeScreenActivity extends AppCompatActivity {
     LinearLayout welcomeScreen;
     AnimationDrawable anim;
@@ -46,7 +54,9 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         configureSkipButton();
         addListenerOnSpinnerItemSelection();
     }
-
+    /**
+     * It sets up the login button, so if pressed it will redirect to the LOGIN page.
+     */
     public void configureLoginButton() {
         Button loginButton = findViewById(R.id.login_button);
         Animation fromBottom = AnimationUtils.loadAnimation(this, R.anim.fromtop);
@@ -59,6 +69,10 @@ public class WelcomeScreenActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * It sets up the registration button, so if pressed it will redirect to the REGISTRATION page.
+     */
     private void configureRegistrationButton() {
         Button registerButton = findViewById(R.id.register_button);
         registerButton.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +83,10 @@ public class WelcomeScreenActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * It sets up the skip button, so if pressed it will redirect to the MAIN page.
+     */
     private void configureSkipButton() {
         Button registerButton = findViewById(R.id.skipLogin);
         registerButton.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +96,11 @@ public class WelcomeScreenActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * It sets up the listener, so if a user changes the language spinner the app will
+     * know to change the language.
+     */
     public void addListenerOnSpinnerItemSelection() {
         Spinner langspinner = (Spinner) findViewById(R.id.languagespinner);
         langspinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
@@ -129,7 +152,11 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         public void onNothingSelected(AdapterView<?> arg0) {
         }
     }
-
+    /**
+     * A method for the configuration fo the app when language is changed.
+     *
+     * @param lang the specific language
+     */
     public void setAppLocale(String lang) {
         if (!lang.equals(currentLanguage)) {
             myLocale = new Locale(lang);

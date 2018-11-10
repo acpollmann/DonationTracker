@@ -66,14 +66,15 @@ public class SearchAdapterLocation extends BaseAdapter {
     }
 
     // Filter Class
+    @SuppressWarnings("AssignmentToMethodParameter")
     public void filter(String charText) {
-        charText = charText.toLowerCase(Locale.getDefault());
+        String text = charText.toLowerCase(Locale.getDefault());
         locationList.clear();
-        if (charText.isEmpty()) {
+        if (text.isEmpty()) {
             locationList.addAll(arraylist);
         } else {
             for (Location wp : arraylist) {
-                if (wp.getLocationName().contains(charText)) {
+                if (wp.getLocationName().contains(text)) {
                     locationList.add(wp);
                 }
             }
