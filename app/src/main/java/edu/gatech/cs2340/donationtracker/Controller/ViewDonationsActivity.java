@@ -79,6 +79,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
          */
         List<String> selectableLocations = new ArrayList<>();
         selectableLocations.add("All");
+
         for (Location location : model.getLocations()) {
             selectableLocations.add(Objects.toString(location));
         }
@@ -205,6 +206,9 @@ public class ViewDonationsActivity extends AppCompatActivity {
     private void setupRecyclerView(RecyclerView recyclerView) {
         List<Donation> filteredDonations = model.getDonations();
 
+        filteredDonations = filterByCategory(filteredDonations, (String) categorySearchSpinner.getSelectedItem());
+        filteredDonations = filterByLocation(filteredDonations, (String) locationSearchSpinner.getSelectedItem());
+        filteredDonations = searchForDonation(filteredDonations, searchNameView.getQuery().toString());
         filteredDonations = filterByCategory(
                 filteredDonations, (String) categorySearchSpinner.getSelectedItem()
         );
@@ -311,6 +315,10 @@ public class ViewDonationsActivity extends AppCompatActivity {
             });
         }
 
+        /**
+         * Returns the number of elements in mDonationList
+         * @return mDonationList.size() the bu
+         */
         @Override
         public int getItemCount() {
             return mDonationList.size();
@@ -340,3 +348,4 @@ public class ViewDonationsActivity extends AppCompatActivity {
 
     }
 }
+
