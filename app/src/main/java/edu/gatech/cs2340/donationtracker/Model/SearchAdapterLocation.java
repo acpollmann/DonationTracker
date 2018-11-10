@@ -15,8 +15,8 @@ public class SearchAdapterLocation extends BaseAdapter {
 
     // Declare Variables
 
-    Context mContext;
-    LayoutInflater inflater;
+    private final Context mContext;
+    private final LayoutInflater inflater;
     private final List<Location> locationList;
     private final List<Location> arraylist;
 
@@ -28,7 +28,7 @@ public class SearchAdapterLocation extends BaseAdapter {
         this.arraylist.addAll(namesList);
     }
 
-    public class ViewHolder {
+    class ViewHolder {
         TextView name;
     }
 
