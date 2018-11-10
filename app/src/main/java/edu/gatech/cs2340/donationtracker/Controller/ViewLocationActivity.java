@@ -99,6 +99,7 @@ public class ViewLocationActivity extends AppCompatActivity
     }
     @Override
     public boolean onQueryTextSubmit(String query) {
+
         searchNameView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             View recyclerView = findViewById(R.id.locationitem_list);
             @Override
@@ -118,7 +119,7 @@ public class ViewLocationActivity extends AppCompatActivity
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        //searchAdapter.filter(newText);
+        searchAdapter.filter(newText);
         return false;
     }
 

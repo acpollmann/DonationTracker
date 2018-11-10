@@ -110,6 +110,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
                 return false;
             }
         });
+
     }
 
     public void onBackButtonPressed(View view) {
@@ -155,6 +156,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
                 filteredByLocation.add(donation);
             }
         }
+
         return filteredByLocation;
     }
 
@@ -176,6 +178,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
                 searchedDonations.add(donation);
             }
         }
+
         return searchedDonations;
     }
 
