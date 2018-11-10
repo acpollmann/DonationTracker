@@ -87,5 +87,6 @@
     <string name="household_donation">Household Items</string>
     <string name="other_donation">Other</string>
     <string name="all_donation">All</string>
+    <string name="language_prompt">Choose a Language</string>
 
 </resources>

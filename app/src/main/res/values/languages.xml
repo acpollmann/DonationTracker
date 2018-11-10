@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="language_prompt">Choose a Language</string>
+
+    <string-array name="language_arrays">
+        <item>Default</item>
+        <item>Español</item>
+        <item>Français</item>
+        <item>日本人</item>
+        <item>한국어</item>
+        <item>Pусский</item>
+        <item>普通话</item>
+        <item>English</item>
+    </string-array>
+
+</resources>

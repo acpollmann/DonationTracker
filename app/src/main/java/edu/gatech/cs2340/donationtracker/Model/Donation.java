@@ -5,6 +5,8 @@ import android.media.Image;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.gatech.cs2340.donationtracker.R;
+
 /**
  * User creates the donation using the different requirements.
  * User is later able to access the donation object formed here.
@@ -26,7 +28,6 @@ public class Donation {
     private String category;
     private String comments;
     private Image picture;
-
     public static List<String> legalCategories = Arrays.asList("Clothing", "Hat",
             "Kitchen", "Electronics", "Household", "Other");
 
