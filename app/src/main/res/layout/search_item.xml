@@ -8,12 +8,12 @@ android:padding="10dp">
     android:id="@+id/nameLabel"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Location : " />
+    android:text="@string/location_colon" />
 
 <TextView
     android:id="@+id/name"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_toRightOf="@+id/nameLabel" />
+    android:layout_toEndOf="@+id/nameLabel" />
 
 </RelativeLayout>

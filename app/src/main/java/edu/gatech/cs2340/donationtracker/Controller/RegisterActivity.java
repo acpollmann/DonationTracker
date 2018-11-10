@@ -1,8 +1,8 @@
 package edu.gatech.cs2340.donationtracker.Controller;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import edu.gatech.cs2340.donationtracker.Model.User;
 import edu.gatech.cs2340.donationtracker.Model.UserSet;
 import edu.gatech.cs2340.donationtracker.R;
 
@@ -66,11 +65,11 @@ public class RegisterActivity extends AppCompatActivity {
         if ("".equals(email) || "".equals(password)) {
             mEmailField.setText("");
             mPasswordField.setText("");
-            mErrorMessage.setText("Email and password are required.");
+            mErrorMessage.setText(R.string.registerErrorM);
         } else if (userSet.userExists(email)) {
             mEmailField.setText("");
             mPasswordField.setText("");
-            mErrorMessage.setText("User already exists.");
+            mErrorMessage.setText(R.string.registerExistingUserErrorM);
         } else {
             userSet.addUser(email, password, type);
             Intent intent = new Intent(this, WelcomeScreenActivity.class);

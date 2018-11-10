@@ -100,7 +100,7 @@ public class AddDonationActivity extends AppCompatActivity {
 
         if ("".equals(name) || "".equals(timeStamp) || "".equals(shortDescription)
                 || "".equals(fullDescription) || "".equals(value)) {
-            mErrorMessage.setText("All fields except Comments must be filled in.");
+            mErrorMessage.setText(R.string.addDonationErrorM);
         } else {
             model.addDonation(name, location, timeStamp, shortDescription,
                     fullDescription, value, category, comment);
