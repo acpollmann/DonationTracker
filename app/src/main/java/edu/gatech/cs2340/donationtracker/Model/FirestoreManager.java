@@ -79,7 +79,7 @@ public class FirestoreManager {
 
                                 Map<String, Object> userDoc = document.getData();
                                 User user = new User(
-                                        (String) userDoc.get("email"), (String) userDoc.get("password")
+                                    (String) userDoc.get("email"), (String) userDoc.get("password")
                                 );
                                 users.add(user);
                             }
