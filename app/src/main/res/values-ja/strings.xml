@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DonationTracker</string>
 
@@ -76,10 +77,11 @@
     <string name="registertype">Account Type</string>
     <string name="skip">Skip</string>
     <string name="search">Search</string>
-    <string name="info_location">Location Information</string>
+    <string name="language_prompt">Choose a Language</string>
+    <string name="info_location">Location Info</string>
+    <string name="selected_nodonations">Selected filter doesnt have donations.</string>
     <string name="header">Header is ::</string>
     <string name="clicked">Clicked on ::</string>
-    <string name="selected_nodonations">Selected filter doesnt have donations.</string>
     <string name="clothing_donation">Clothing</string>
     <string name="hat_donation">Hat</string>
     <string name="kitchen_donation">Kitchenware</string>
@@ -87,5 +89,4 @@
     <string name="household_donation">Household Items</string>
     <string name="other_donation">Other</string>
     <string name="all_donation">All</string>
-
 </resources>

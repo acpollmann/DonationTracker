@@ -63,7 +63,7 @@ public class ViewLocationActivity extends AppCompatActivity
                 //get the child info
                 ChildInfo detailInfo = headerInfo.getProductList().get(childPosition);
                 //display it or do something with it
-                Toast.makeText(getBaseContext(), " Clicked on :: " + headerInfo.getName()
+                Toast.makeText(getBaseContext(), getString(R.string.clicked) + headerInfo.getName()
                         + "/" + detailInfo.getName(), Toast.LENGTH_LONG).show();
                 return false;
             }
@@ -88,7 +88,7 @@ public class ViewLocationActivity extends AppCompatActivity
                 //get the group header
                 GroupInfo headerInfo = expandableListList.get(groupPosition);
                 //display it or do something with it
-                Toast.makeText(getBaseContext(), " Header is :: " + headerInfo.getName(),
+                Toast.makeText(getBaseContext(), getString(R.string.header) + headerInfo.getName(),
                         Toast.LENGTH_LONG).show();
 
                 return false;
@@ -161,7 +161,7 @@ public class ViewLocationActivity extends AppCompatActivity
         List<Location> filteredLocations = model.getLocations();
         if (filteredLocations.isEmpty()) {
             Toast.makeText(ViewLocationActivity.this,
-                    "Selected filter doesn't have donations.", Toast.LENGTH_SHORT).show();
+                    getString(R.string.selected_nodonations), Toast.LENGTH_SHORT).show();
         }
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(filteredLocations));
     }
@@ -189,7 +189,7 @@ public class ViewLocationActivity extends AppCompatActivity
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getApplication(), "Location Info", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplication(), getString(R.string.info_location), Toast.LENGTH_SHORT).show();
                     Context context = v.getContext();
                     Intent intent = new Intent(context, LocationDetailActivity.class);
 

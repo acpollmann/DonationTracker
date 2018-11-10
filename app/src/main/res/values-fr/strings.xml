@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DonationTracker</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Courriel</string>
+    <string name="prompt_password">Mot de passe</string>
+    <string name="prompt_username">Nom d’utilisateur</string>
+    <string name="action_sign_in_short">Se connecter</string>
+    <string name="error_invalid_email">Le courriel êtes invalide</string>
+    <string name="error_invalid_password">Le mot de passe êtes aussi court</string>
+    <string name="error_incorrect_password">Le mot de passe êtes erroné</string>
+    <string name="error_field_required">Les zones sont requis</string>
+    <string name="permission_rationale" translatable="false">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="action_settings">Paramètre</string>
+    <string name="title_activity_main">Page d’accueil activité</string>
+    <string name="title_home">Page d’accueil</string>
+    <string name="title_dashboard">Tableau de bord</string>
+    <string name="logout">Fermer la session</string>
+    <string name="title_activity_register">S’inscrire Activité</string>
+    <string name="log_in">Se connecter</string>
+    <string name="register">S’inscrire</string>
+    <string name="logo">Logo</string>
+    <string name="action_sign_in">S’inscrire ou se connecter</string>
+    <string name="title_activity_read_location">Lire les emplacement</string>
+    <string name="title_activity_maps">Carte</string>
+    <string name="backButton" translatable="false">&lt;</string>
+    <string name="name_donation">Appelle</string>
+    <string name="timestamp_donation">Horodatage</string>
+    <string name="tabletimestamp_donation">Horodatage: </string>
+    <string name="location_donation">Emplacement</string>
+    <string name="tableloc_donation">Emplacement: </string>
+    <string name="shortdescription_donation">La description court</string>
+    <string name="fulldescription_donation">La description complète</string>
+    <string name="value_donation">Valeur (Monétaire)</string>
+    <string name="tableval_donation">Valeur: </string>
+    <string name="category_donation">Catégorie</string>
+    <string name="tablecategory_donation">Catégorie: </string>
+    <string name="comments_donation">Commentaire (Optionnel)</string>
+    <string name="tablecomments_donation">Commentaire</string>
+    <string name="image_donation">Photo (Optionnel)</string>
+    <string name="uploadimage_donation">Téléchargé Photo</string>
+    <string name="addingit_donation">Ajoutez Une Donation</string>
+    <string name="map_view">Vois Carte</string>
+    <string name="stat">Statistique</string>
+    <string name="search_donation">Cherchez Les Donation</string>
+    <string name="view_location">Lisez Les Emplacement</string>
+    <string name="manage">Gérez Compte</string>
+    <string name="adding_location">Ajoutez Une Emplacement</string>
+    <string name="phonenumber_location">Numéro de téléphone</string>
+    <string name="streetaddress_location">Adresse</string>
+    <string name="city_location">Cité</string>
+    <string name="zipcode_location">Code Postal</string>
+    <string name="lat_location">Latitude</string>
+    <string name="long_location">Longitude</string>
+    <string name="latlong_location">Latitude/Longitude</string>
+    <string name="website_location">Site web</string>
+    <string name="locationname_location">Appelle De La Emplacement</string>
+    <string name="type_location">Type</string>
+    <string name="search_at_location">Cherchez Les Donation à cette Emplacement</string>
+    <string name="filterlat_location">Latitude Et Longitude De La Emplacement</string>
+    <string name="searchlat_location">Triez par Latitude</string>
+    <string name="searchlong_location">Triez par Longitude</string>
+    <string name="searchalpha_location">Triez Alphabétiquement</string>
+    <string name="locationtype_location">Type De La Emplacement</string>
+    <string name="searchdrop_location">Montrez Si Es Un Lieu De Déchargement nm</string>
+    <string name="searchstore_location">Montrez Si Es Un Magasin</string>
+    <string name="searchware_location">montrez Si Es Entrepôt</string>
+    <string name="searchnum_location">Triez Numériquement</string>
+    <string name="searcharea_location">Triez par Indicatif Régional</string>
+    <string name="searchclose_location">Triez par Proximité</string>
+    <string name="locationaddress_location">Adresse De La Emplacement</string>
+    <string name="locationphone_location">Numéro De Téléphone De La Emplacement</string>
+    <string name="registerhere">S’inscrire Ici</string>
+    <string name="registertype">Type de Compte</string>
+    <string name="skip">Sautez</string>
+    <string name="search">Recherchez</string>
+    <string name="language_prompt">Choisissez Une Lang</string>
+    <string name="info_location">Information De La Emplacement</string>
+    <string name="selected_nodonations">Sélect filtrer n"ont pas les donations.</string>
+    <string name="header">Titre es ::</string>
+    <string name="clicked">Cliquez sur ::</string>
+    <string name="clothing_donation">vêtements</string>
+    <string name="hat_donation">chapeau</string>
+    <string name="kitchen_donation">ustensiles de cuisine</string>
+    <string name="tech_donation">électronique</string>
+    <string name="household_donation">objet de le foyer</string>
+    <string name="other_donation">autre</string>
+    <string name="all_donation">toutes</string>
+</resources>
