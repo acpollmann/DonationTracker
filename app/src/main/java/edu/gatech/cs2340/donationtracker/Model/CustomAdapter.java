@@ -16,22 +16,35 @@ public class CustomAdapter extends BaseExpandableListAdapter {
     private final Context context;
     private final List<GroupInfo> deptList;
 
+    /**
+     * creating the adapter
+     * @param context,deptlist what based on and what goes to
+     */
     public CustomAdapter(Context context, List<GroupInfo> deptList) {
         this.context = context;
         this.deptList = deptList;
     }
 
+    /**
+     * Gets the child information on the view location activity
+     */
     @Override
     public Object getChild(int groupPosition, int childPosition) {
         List<ChildInfo> productList = deptList.get(groupPosition).getProductList();
         return productList.get(childPosition);
     }
 
+    /**
+     * Gets the child information id on the view location activity
+     */
     @Override
     public long getChildId(int groupPosition, int childPosition) {
         return childPosition;
     }
 
+    /**
+     * Gets the child information view on the view location activity
+     */
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild,
                              View view, ViewGroup parent) {
@@ -51,6 +64,9 @@ public class CustomAdapter extends BaseExpandableListAdapter {
         return view;
     }
 
+    /**
+     * Gets the child information count on the view location activity
+     */
     @Override
     public int getChildrenCount(int groupPosition) {
 
@@ -59,21 +75,33 @@ public class CustomAdapter extends BaseExpandableListAdapter {
 
     }
 
+    /**
+     * Gets the group information on the view location activity
+     */
     @Override
     public Object getGroup(int groupPosition) {
         return deptList.get(groupPosition);
     }
 
+    /**
+     * Gets the group count information on the view location activity
+     */
     @Override
     public int getGroupCount() {
         return deptList.size();
     }
 
+    /**
+     * Gets the group id information on the view location activity
+     */
     @Override
     public long getGroupId(int groupPosition) {
         return groupPosition;
     }
 
+    /**
+     * Gets the group view information on the view location activity
+     */
     @Override
     public View getGroupView(int groupPosition, boolean isLastChild, View view,
                              ViewGroup parent) {
@@ -91,11 +119,17 @@ public class CustomAdapter extends BaseExpandableListAdapter {
         return view;
     }
 
+    /**
+     * Check if there is a stable id
+     */
     @Override
     public boolean hasStableIds() {
         return true;
     }
 
+    /**
+     * Check if child is selectable
+     */
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
