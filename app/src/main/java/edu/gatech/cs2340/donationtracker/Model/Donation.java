@@ -32,6 +32,17 @@ public class Donation {
     public static List<String> searchLegalCategories = Arrays.asList("All", "Clothing", "Hat",
             "Kitchen", "Electronics", "Household", "Other");
 
+    /**
+     * Adds a donation to the donation list for application
+     * @param location what required of a donation
+     * @param timeStamp what required of a donation
+     * @param shortDescription what required of a donation
+     * @param fullDescription what required of a donation
+     * @param value what required of a donation
+     * @param category what required of a donation
+     * @param comments what required of a donation
+     * @param name what required of a donation
+     */
     public Donation(String name, Location location, String timeStamp,
                     String shortDescription, String fullDescription,
                     String value, String category, String comments) {
@@ -55,6 +66,7 @@ public class Donation {
 
     /**
      * Gets the name from donation form for the activity pages
+     * @return name of the donation
      */
     public String getName() {
         return name;
@@ -70,6 +82,7 @@ public class Donation {
 
     /**
      * Gets the location from donation form for the activity pages
+     * @return timestamp of the donation
      */
     public String getTimeStamp() {
         return timeStamp;
@@ -85,6 +98,7 @@ public class Donation {
 
     /**
      * Gets the location from donation form for the activity pages
+     * @return location of the donation
      */
     public Location getLocation() {
         return location;
@@ -100,6 +114,7 @@ public class Donation {
 
     /**
      * Gets the short description from donation form for the activity pages
+     * @return short description of the donation
      */
     public String getShortDescription() {
         return shortDescription;
@@ -115,6 +130,7 @@ public class Donation {
 
     /**
      * Gets the full description from donation form for the activity pages
+     * @return full description of the donation
      */
     public String getFullDescription() {
         return fullDescription;
@@ -130,6 +146,7 @@ public class Donation {
 
     /**
      * Gets the value from donation form for the activity pages
+     * @return value of the donation
      */
     public String getValue() {
         return value;
@@ -145,6 +162,7 @@ public class Donation {
 
     /**
      * Gets the category from donation form for the activity pages
+     * @return category of the donation
      */
     public String getCategory() {
         return category;
@@ -160,6 +178,7 @@ public class Donation {
 
     /**
      * Gets the comments from donation form for the activity pages
+     * @return comment of the donation
      */
     public String getComments() {
         return comments;
@@ -175,6 +194,7 @@ public class Donation {
 
     /**
      * Gets the picture from donation form for the activity pages
+     * @return picture of the donation
      */
     public Image getPicture() {
         return picture;

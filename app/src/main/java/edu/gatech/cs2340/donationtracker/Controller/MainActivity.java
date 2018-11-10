@@ -25,13 +25,12 @@ import edu.gatech.cs2340.donationtracker.R;
 public class
 MainActivity extends AppCompatActivity {
 
-    public static String TAG = "Donation_TrackerAPP";
-    ObjectAnimator viewanimator;
-    ObjectAnimator addanimator;
-    ObjectAnimator statanimator;
-    ObjectAnimator mananimator;
-    ObjectAnimator mapanimator;
-    ObjectAnimator searchanimator;
+    private ObjectAnimator viewanimator;
+    private ObjectAnimator addanimator;
+    private ObjectAnimator statanimator;
+    private ObjectAnimator mananimator;
+    private ObjectAnimator mapanimator;
+    private ObjectAnimator searchanimator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,13 +122,13 @@ MainActivity extends AppCompatActivity {
      *
      * @param view the current view of the MAIN page
      */
-    public void animateButtons(View view) {
+    private void animateButtons(View view) {
         Button viewLocationTarget = this.findViewById(R.id.view_location_bubble);
-        Button addDonationTarget = (Button) this.findViewById(R.id.add_donation_bubble);
-        Button statsTarget = (Button) this.findViewById(R.id.statistics_bubble);
-        Button manageTarget = (Button) this.findViewById(R.id.manage_accounts_bubble);
-        Button mapTarget = (Button) this.findViewById(R.id.map_view_bubble);
-        Button searchTarget = (Button) this.findViewById(R.id.search_for_donation_button);
+        Button addDonationTarget = this.findViewById(R.id.add_donation_bubble);
+        Button statsTarget = this.findViewById(R.id.statistics_bubble);
+        Button manageTarget = this.findViewById(R.id.manage_accounts_bubble);
+        Button mapTarget = this.findViewById(R.id.map_view_bubble);
+        Button searchTarget = this.findViewById(R.id.search_for_donation_button);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Path path = new Path();
             path.arcTo(0f, 0f, 800f, 1100f, -24f, 14000f, false);

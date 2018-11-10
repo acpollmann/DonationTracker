@@ -14,6 +14,11 @@ import java.util.List;
 public final class ListModel {
 
     private static ListModel instance;
+
+    /**
+     * gets the instance of list model for location and donation
+     * @return database instance
+     */
     public static ListModel getInstance() {
         if (instance == null) {
             instance = new ListModel(new FirestoreManager());
@@ -38,8 +43,16 @@ public final class ListModel {
 
     /**
      * Adds a location to the location list for application
-     * @param name,latitude,longitude,street,city,state,zip,type,phone,web what
-     * required of a location
+     * @param latitude what required of a location
+     * @param longitude what required of a location
+     * @param street what required of a location
+     * @param city what required of a location
+     * @param state what required of a location
+     * @param zip what required of a location
+     * @param type what required of a location
+     * @param phone what required of a location
+     * @param web what required of a location
+     * @param name what required of a location
      */
     public void addLocation(String name, String latitude, String longitude,
                             String street, String city, String state, String zip, String type,
@@ -53,8 +66,14 @@ public final class ListModel {
 
     /**
      * Adds a donation to the donation list for application
-     * @param name,location,timeStamp,shortDescription,fullDescription,value,category,comment what
-     * required of a donation
+     * @param location what required of a donation
+     * @param timeStamp what required of a donation
+     * @param shortDescription what required of a donation
+     * @param fullDescription what required of a donation
+     * @param value what required of a donation
+     * @param category what required of a donation
+     * @param comment what required of a donation
+     * @param name what required of a donation
      */
     public void addDonation(String name, Location location, String timeStamp,
                             String shortDescription, String fullDescription, String value,
@@ -67,6 +86,7 @@ public final class ListModel {
 
     /**
      * Gets the list of locations for the the application
+     * @return list of locations
      */
     public List<Location> getLocations() {
         return locations;
@@ -74,6 +94,7 @@ public final class ListModel {
 
     /**
      * Gets the donation list for application
+     * @return list of donations
      */
     public List<Donation> getDonations() { return donations; }
 
@@ -96,6 +117,7 @@ public final class ListModel {
 
     /**
      * Gets the size of location list for application
+     * @return size of list of locations
      */
     public int getLocationListSize() {
         return locations.size();
@@ -104,6 +126,7 @@ public final class ListModel {
     /**
      * finds item by the key value
      * @param key id for item
+     * @return location from id
      */
     public Location findItemById(int key) {
 

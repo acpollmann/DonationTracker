@@ -332,7 +332,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         public final class ViewHolder extends RecyclerView.ViewHolder {
             private final View mView;
             private final TextView mContentView;
-            public Donation mDonation;
+            Donation mDonation;
 
             private ViewHolder(View view) {
                 super(view);

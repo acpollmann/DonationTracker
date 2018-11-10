@@ -53,8 +53,17 @@ public class Location {
 
     /**
      * Adds a location to the location list for application with key
-     * @param key,locationName,latitude,longitude,street,city,state,zip,type,phone,web what
-     * required of a location
+     * @param latitude what required of a location
+     * @param longitude what required of a location
+     * @param locationAddress what required of a location
+     * @param locationCity what required of a location
+     * @param locationState what required of a location
+     * @param zipCode what required of a location
+     * @param locationType what required of a location
+     * @param phoneNumber what required of a location
+     * @param website what required of a location
+     * @param locationName what required of a location
+     * @param key what required of a location
      */
     public Location(int key, String locationName, double latitude, double longitude,
                     String locationAddress, String locationCity, String locationState,
@@ -74,8 +83,16 @@ public class Location {
 
     /**
      * Adds a location to the location list for application without key
-     * @param locationName,latitude,longitude,street,city,state,zip,type,phone,web what
-     * required of a location
+     * @param latitude what required of a location
+     * @param longitude what required of a location
+     * @param locationAddress what required of a location
+     * @param locationCity what required of a location
+     * @param locationState what required of a location
+     * @param zipCode what required of a location
+     * @param locationType what required of a location
+     * @param phoneNumber what required of a location
+     * @param website what required of a location
+     * @param locationName what required of a location
      */
     public Location(String locationName, double latitude, double longitude,
                     String locationAddress, String locationCity, String locationState,
@@ -95,57 +112,70 @@ public class Location {
 
     /**
      * Gets key for location
+     * @return key for location
      */
     public int getKey() {return key;}
     /**
      * Gets next key from list model location list for application
+     * @return key for next location
      */
-    public int getNext_key() {
+    private int getNext_key() {
         return ListModel.getInstance().getLocationListSize() + 1;
     }
     /**
      * Gets location name for the location
+     * @return name for location
      */
     public String getLocationName() {return locationName;}
     /**
      * Gets latitude for the location
+     * @return latitude for location
      */
     public double getLatitude() {return latitude;}
     /**
      * Gets longitude for the location
+     * @return longitude for location
      */
     public double getLongitude() {return longitude;}
     /**
      * Gets address for the location
+     * @return address for location
      */
     public String getAddress() {return locationAddress;}
     /**
      * Gets city for the location
+     * @return city for location
      */
     public String getCity() {return locationCity;}
     /**
      * Gets state for the location
+     * @return state for location
      */
     public String getState() {return locationState;}
     /**
      * Gets zip code for the location
+     * @return zipcode for location
      */
     public int getZipCode() {return zipCode;}
     /**
      * Gets type of location for the location
+     * @return location type for location
      */
     public String getType() {return locationType;}
     /**
      * Gets phone number for the location
+     * @return phone number for location
      */
     public String getPhone() {return phoneNumber;}
     /**
      * Gets website for the location
+     * @return website for location
      */
     public String getWebsite() {return website;}
 
     /**
      * Create string for location name
+     * @return string for name for location
      */
     @Override
     public String toString() {
