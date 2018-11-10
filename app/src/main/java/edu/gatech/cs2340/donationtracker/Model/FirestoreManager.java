@@ -33,6 +33,9 @@ public class FirestoreManager {
 
     private final List<Location> locations;
 
+    /**
+     * create instance of database
+     */
     public FirestoreManager() {
         db = FirebaseFirestore.getInstance();
         users = new HashSet<>();

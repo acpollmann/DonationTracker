@@ -9,6 +9,14 @@ import android.widget.TextView;
 
 import edu.gatech.cs2340.donationtracker.R;
 
+/**
+ * Implementation that will initiate the LOCATION DETAIL page and
+ * display information about the specific location.
+ *
+ * @author Group 71B
+ * @version 1.0
+ */
+
 public class LocationDetailActivity extends AppCompatActivity {
     private TextView mName;
     private TextView mType;
@@ -17,6 +25,12 @@ public class LocationDetailActivity extends AppCompatActivity {
     private TextView mPhoneNumber;
     private TextView mWebSite;
 
+    /**
+     * On the creation of the LOCATION DETAIL page, it utilizes
+     * getters to collect specific information about the
+     * donation item and changes the texts of the widgets in accordance.
+     * @param savedInstanceState the bundle with information
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +63,12 @@ public class LocationDetailActivity extends AppCompatActivity {
         mWebSite.setText(website);
     }
 
+    /**
+     * It will change the page on the screen if the
+     * back button is pressed.
+     *
+     * @param view the current view of the LOCATION DETAIL page
+     */
     public void onBackButtonPressed(View view) {
         Intent intent = new Intent(this, ViewLocationActivity.class);
         startActivity(intent);

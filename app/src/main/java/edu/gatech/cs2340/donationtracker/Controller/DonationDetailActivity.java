@@ -9,6 +9,15 @@ import android.widget.TextView;
 
 import edu.gatech.cs2340.donationtracker.R;
 
+/**
+ * Implementation that will initiate the DONATION DETAIL
+ * page, change the display of the screen, and shows
+ * the specific information for the donation items.
+ *
+ * @author Group 71B
+ * @version 1.0
+ */
+
 public class DonationDetailActivity extends AppCompatActivity {
     private TextView mName;
     private TextView mLocation;
@@ -19,7 +28,12 @@ public class DonationDetailActivity extends AppCompatActivity {
     private TextView mFullDescription;
     private TextView mComments;
 
-
+    /**
+     * On the creation of the DONATION DETAIL page, it utilizes
+     * getters to collect specific information about the
+     * donation item and changes the texts of the widgets in accordance.
+     * @param savedInstanceState the bundle with information
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +70,12 @@ public class DonationDetailActivity extends AppCompatActivity {
         mComments.setText(comments);
     }
 
+    /**
+     * It will change the page on the screen if the
+     * back button is pressed.
+     *
+     * @param view the current view of the DONATION DETAIL page
+     */
     public void onBackButtonPressed(View view) {
         Intent intent = new Intent(this, ViewDonationsActivity.class);
         startActivity(intent);

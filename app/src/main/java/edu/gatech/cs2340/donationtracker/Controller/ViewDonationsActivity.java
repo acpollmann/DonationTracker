@@ -184,7 +184,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         if (filteredDonations.isEmpty()) {
             Toast.makeText(
                     ViewDonationsActivity.this,
-                    "Selected filter doesn't have donations.",
+                    getString(R.string.selected_nodonations),
                     Toast.LENGTH_SHORT).show();
         }
 

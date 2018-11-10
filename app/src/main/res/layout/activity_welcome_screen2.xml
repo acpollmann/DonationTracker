@@ -10,6 +10,12 @@
     android:padding="16dp"
     android:id="@+id/welcomeScreen"
     tools:context=".Controller.WelcomeScreenActivity">
+    <Spinner
+        android:id="@+id/languagespinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/language_arrays"
+        android:prompt="@string/language_prompt" />
 
     <Button
         android:id="@+id/skipLogin"

@@ -16,6 +16,14 @@ import edu.gatech.cs2340.donationtracker.Model.ListModel;
 import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.R;
 
+/**
+ * Implementation that will initiate the ADD DONATION page and
+ * if given valid data, will create a donation item then change
+ * the list model on the SEARCH DONATION page.
+ *
+ * @author Group 71B
+ * @version 1.0
+ */
 
 public class AddDonationActivity extends AppCompatActivity {
 
@@ -31,9 +39,15 @@ public class AddDonationActivity extends AppCompatActivity {
     private EditText mCommentField;
     private Button uploadImageButton;
     private ImageView imageToUpload;
-
     private ListModel model;
 
+    /**
+     * On the creation of the ADD DONATION page, it will
+     * change the display of the device, sets the information collected
+     * from the page to fields. It also creates adapters for the spinners
+     * which will be used later to filter the donation items.
+     * @param savedInstanceState a bundle of information from widgets
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +67,6 @@ public class AddDonationActivity extends AppCompatActivity {
         mCommentField = findViewById(R.id.commentField);
         uploadImageButton = findViewById(R.id.uploadImageButton);
         imageToUpload = findViewById(R.id.imageToUpload);
-
-
 
          /*
           Set up the adapter to display the allowable locations in the spinner
@@ -76,6 +88,10 @@ public class AddDonationActivity extends AppCompatActivity {
         model = ListModel.getInstance();
     }
 
+    /**
+     *Allows users to return to the main page from the ADD DONATION page.
+     *Utilizes a listener to determine is the user wants to return.
+     */
     private void configureBackButton() {
         Button backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +103,11 @@ public class AddDonationActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Will utilize information from the screen, create a new donation,
+     * and then update the list model as well as the display.
+     * @param view the current view of the ADD DONATION page
+     */
     public void onAddDonationButtonPressed(View view) {
 
         String name = mNameField.getText().toString();
