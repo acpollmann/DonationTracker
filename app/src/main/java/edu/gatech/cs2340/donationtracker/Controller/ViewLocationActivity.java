@@ -99,7 +99,6 @@ public class ViewLocationActivity extends AppCompatActivity
     }
     @Override
     public boolean onQueryTextSubmit(String query) {
-
         searchNameView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             View recyclerView = findViewById(R.id.locationitem_list);
             @Override
@@ -110,15 +109,16 @@ public class ViewLocationActivity extends AppCompatActivity
             @Override
             public boolean onQueryTextChange(String newText) {
                 setupRecyclerView((RecyclerView) recyclerView);
+                searchAdapter.filter(newText);
                 return false;
             }
         });
-        return true;
+        return false;
     }
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        searchAdapter.filter(newText);
+        //searchAdapter.filter(newText);
         return false;
     }
 
@@ -226,6 +226,7 @@ public class ViewLocationActivity extends AppCompatActivity
             }
             recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(filteredLocations));
         }
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(filteredLocations));
     }
 
     public class SimpleItemRecyclerViewAdapter
@@ -262,7 +263,7 @@ public class ViewLocationActivity extends AppCompatActivity
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Toast.makeText(getApplication(), "Location Info", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplication(), "Location Info", Toast.LENGTH_SHORT).show();
                     Context context = v.getContext();
                     Intent intent = new Intent(context, LocationDetailActivity.class);
 

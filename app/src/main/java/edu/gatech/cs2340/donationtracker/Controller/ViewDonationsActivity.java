@@ -110,7 +110,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
                 return false;
             }
         });
-
     }
 
     public void onBackButtonPressed(View view) {
@@ -118,6 +117,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         startActivity(intent);
         overridePendingTransition(R.anim.slideright, R.anim.slideleft);
     }
+
     /**
      * Filter by the
      * @param donations the list of available donations
@@ -155,7 +155,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
                 filteredByLocation.add(donation);
             }
         }
-
         return filteredByLocation;
     }
 
