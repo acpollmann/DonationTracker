@@ -100,7 +100,7 @@ public class Location {
     /**
      * Gets next key from list model location list for application
      */
-    public int getNext_key() {
+    private int getNext_key() {
         return ListModel.getInstance().getLocationListSize() + 1;
     }
     /**

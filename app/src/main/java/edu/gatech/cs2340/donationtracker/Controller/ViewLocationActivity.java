@@ -238,7 +238,8 @@ public class ViewLocationActivity extends AppCompatActivity
 
         List<Location> filteredLocations = model.getLocations();
 
-        filteredLocations = searchForLocation(filteredLocations, searchNameView.getQuery().toString());
+        filteredLocations = searchForLocation(filteredLocations,
+                                              searchNameView.getQuery().toString());
 
         if (filteredLocations.isEmpty()) {
             Toast.makeText(ViewLocationActivity.this,

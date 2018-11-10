@@ -19,6 +19,7 @@ import edu.gatech.cs2340.donationtracker.Model.UserSet;
  * @version 1.0
  */
 
+@SuppressWarnings("WeakerAccess")
 public class AppStartup extends Application {
 
     @Override

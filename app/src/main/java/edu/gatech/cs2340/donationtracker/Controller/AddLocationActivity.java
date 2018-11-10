@@ -39,14 +39,14 @@ public class AddLocationActivity extends AppCompatActivity {
 
     private ListModel model;
 
-    String[] states = {
+    private String[] states = {
             "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "IA", "ID", "IL",
             "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND",
             "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN",
             "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"
     };
 
-    String[] locationTypes = {
+    private String[] locationTypes = {
             "Drop Off", "Store", "Warehouse"
     };
 
@@ -76,6 +76,7 @@ public class AddLocationActivity extends AppCompatActivity {
         for (String state: states) {
             Log.d("states spin", state);
         }
+        @SuppressWarnings("unchecked")
         ArrayAdapter<String> statesAdapter = new ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, states);
         statesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -84,7 +85,8 @@ public class AddLocationActivity extends AppCompatActivity {
         /*
           Set up the adapter to display the allowable location types in the spinner
          */
-        ArrayAdapter<String> typeAdapter = new ArrayAdapter(this,
+        @SuppressWarnings("unchecked")
+        ArrayAdapter<String> typeAdapter = (ArrayAdapter<String>) new ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, locationTypes);
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         typeSpinner.setAdapter(typeAdapter);

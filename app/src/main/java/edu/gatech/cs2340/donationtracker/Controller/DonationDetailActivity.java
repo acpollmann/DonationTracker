@@ -37,23 +37,38 @@ public class DonationDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
-        String name = b.getString("name");
-        String location = b.getString("location");
-        String timestamp = b.getString("timestamp");
-        String value = b.getString("value");
-        String category = b.getString("category");
-        String shortDescription = b.getString("shortDescription");
-        String fullDescription = b.getString("fullDescription");
-        String comments = b.getString("comments");
-
-        mName.setText(name);
-        mLocation.setText(location);
-        mTimestamp.setText(timestamp);
-        mValue.setText(value);
-        mCategory.setText(category);
-        mShortDescription.setText(shortDescription);
-        mFullDescription.setText(fullDescription);
-        mComments.setText(comments);
+        if (b.getString("name") != null) {
+            String name = b.getString("name");
+            mName.setText(name);
+        }
+        if (b.getString("location") != null) {
+            String location = b.getString("location");
+            mLocation.setText(location);
+        }
+        if (b.getString("timestamp") != null) {
+            String timestamp = b.getString("timestamp");
+            mTimestamp.setText(timestamp);
+        }
+        if (b.getString("value") != null) {
+            String value = b.getString("value");
+            mValue.setText(value);
+        }
+        if (b.getString("category") != null) {
+            String category = b.getString("category");
+            mCategory.setText(category);
+        }
+        if (b.getString("shortDescription") != null) {
+            String shortDescription = b.getString("shortDescription");
+            mShortDescription.setText(shortDescription);
+        }
+        if (b.getString("fullDescription") != null) {
+            String fullDescription = b.getString("fullDescription");
+            mFullDescription.setText(fullDescription);
+        }
+        if (b.getString("comments") != null) {
+            String comments = b.getString("comments");
+            mComments.setText(comments);
+        }
     }
 
     /**

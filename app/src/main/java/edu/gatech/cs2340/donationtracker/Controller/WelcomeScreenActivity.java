@@ -102,7 +102,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
      * know to change the language.
      */
     public void addListenerOnSpinnerItemSelection() {
-        Spinner langspinner = (Spinner) findViewById(R.id.languagespinner);
+        Spinner langspinner = findViewById(R.id.languagespinner);
         langspinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
     }
     public class CustomOnItemSelectedListener implements AdapterView.OnItemSelectedListener {
