@@ -1,8 +1,8 @@
 package edu.gatech.cs2340.donationtracker.Controller;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -12,7 +12,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
-import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.R;
 
 /**
@@ -51,14 +50,6 @@ public class AddLocationActivity extends AppCompatActivity {
             "Drop Off", "Store", "Warehouse"
     };
 
-
-    /**
-     * On the creation of the ADD LOCATION page, it will
-     * change the display of the device, sets the information collected
-     * from the page to fields. It also creates adapters for the spinners
-     * which will be used to get information on the state and type.
-     * @param savedInstanceState a bundle of information from widgets
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,7 +128,7 @@ public class AddLocationActivity extends AppCompatActivity {
 
         if ("".equals(name) || "".equals(latitude) || "".equals(longitude) || "".equals(street)
                 || "".equals(city) || "".equals(zip) || "".equals(web) || "".equals(phone)) {
-            mErrorMessage.setText("All fields must be filled in.");
+            mErrorMessage.setText(R.string.addLocationErrorM);
         } else {
             model.addLocation(name, latitude, longitude, street,
                     city, state, zip, type, phone, web);

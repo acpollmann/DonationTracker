@@ -10,4 +10,5 @@
     android:layout_marginRight="16dp"
     app:layoutManager="android.support.v7.widget.LinearLayoutManager"
     tools:listitem="@layout/locationitem_list_content"
-    android:clickable="true"/>
+    android:clickable="true"
+    android:focusable="true" />

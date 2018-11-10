@@ -14,88 +14,125 @@ import edu.gatech.cs2340.donationtracker.R;
 public class CustomAdapter extends BaseExpandableListAdapter {
 
     private final Context context;
-    private final List<GroupInfo> deptList;
+    private final List<GroupInfo> filterTypeList;
 
-    public CustomAdapter(Context context, List<GroupInfo> deptList) {
+    /**
+     * creating the adapter
+     * @param context,deptlist what based on and what goes to
+     * @param filterTypeList list of the children to be put in the adapter
+     */
+    public CustomAdapter(Context context, List<GroupInfo> filterTypeList) {
         this.context = context;
-        this.deptList = deptList;
+        this.filterTypeList = filterTypeList;
     }
 
+    /**
+     * Gets the child information on the view location activity
+     */
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        List<ChildInfo> productList = deptList.get(groupPosition).getProductList();
+        List<ChildInfo> productList = filterTypeList.get(groupPosition).getProductList();
         return productList.get(childPosition);
     }
 
+    /**
+     * Gets the child information id on the view location activity
+     */
     @Override
     public long getChildId(int groupPosition, int childPosition) {
         return childPosition;
     }
 
+    /**
+     * Gets the child information view on the view location activity
+     */
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild,
                              View view, ViewGroup parent) {
 
+        View view1 = view;
         ChildInfo detailInfo = (ChildInfo) getChild(groupPosition, childPosition);
-        if (view == null) {
+        if (view1 == null) {
             LayoutInflater detailInflater =
                     (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = detailInflater.inflate(R.layout.locationsearch_child, null);
+            view1 = detailInflater.inflate(R.layout.locationsearch_child, null);
         }
 
-        TextView sequence = view.findViewById(R.id.sequence);
-        sequence.setText(detailInfo.getSequence().trim() + ". ");
-        TextView childItem = view.findViewById(R.id.childItem);
+        TextView sequence = view1.findViewById(R.id.sequence);
+        sequence.setText(detailInfo.getSequence().trim());
+        TextView childItem = view1.findViewById(R.id.childItem);
         childItem.setText(detailInfo.getName().trim());
 
-        return view;
+        return view1;
     }
 
+    /**
+     * Gets the child information count on the view location activity
+     */
     @Override
     public int getChildrenCount(int groupPosition) {
 
-        List<ChildInfo> productList = deptList.get(groupPosition).getProductList();
+        List<ChildInfo> productList = filterTypeList.get(groupPosition).getProductList();
         return productList.size();
 
     }
 
+    /**
+     * Gets the group information on the view location activity
+     */
     @Override
     public Object getGroup(int groupPosition) {
-        return deptList.get(groupPosition);
+        return filterTypeList.get(groupPosition);
     }
 
+    /**
+     * Gets the group count information on the view location activity
+     */
     @Override
     public int getGroupCount() {
-        return deptList.size();
+        return filterTypeList.size();
     }
 
+    /**
+     * Gets the group id information on the view location activity
+     */
     @Override
     public long getGroupId(int groupPosition) {
         return groupPosition;
     }
 
+    /**
+     * Gets the group view information on the view location activity
+     */
     @Override
     public View getGroupView(int groupPosition, boolean isLastChild, View view,
                              ViewGroup parent) {
 
+        View view1 = view;
         GroupInfo headerInfo = (GroupInfo) getGroup(groupPosition);
-        if (view == null) {
+        if (view1 == null) {
             LayoutInflater inf =
                     (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inf.inflate(R.layout.locationsearch_subject, null);
+            view1 = inf.inflate(R.layout.locationsearch_subject, null);
         }
 
-        TextView heading = view.findViewById(R.id.heading);
+        TextView heading = view1.findViewById(R.id.heading);
         heading.setText(headerInfo.getName().trim());
 
-        return view;
+        return view1;
     }
 
+    /**
+     * Check if there is a stable id
+     */
     @Override
     public boolean hasStableIds() {
         return true;
     }
 
+    /**
+     * Check if child is selectable
+     */
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;

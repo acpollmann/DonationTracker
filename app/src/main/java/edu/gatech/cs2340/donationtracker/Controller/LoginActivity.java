@@ -19,7 +19,6 @@ import edu.gatech.cs2340.donationtracker.R;
  * @author Group 71B
  * @version 1.0
  */
-
 public class LoginActivity extends AppCompatActivity {
 
 
@@ -41,6 +40,15 @@ public class LoginActivity extends AppCompatActivity {
         configureBackButton();
     }
 
+    /**
+     * It uses the information, user input, to check and see
+     * if the information is correct and exists. If so, the
+     * method changes the current screen. Otherwise, it will
+     * return a message stating the invalid credentials were
+     * inputted and the current user cannot log in.
+     *
+     * @param view the current view of the LOGIN page
+     */
     public void onLoginPressed(View view) {
         String email = mEmailField.getText().toString();
         String password = mPasswordField.getText().toString();
@@ -53,9 +61,14 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             mEmailField.setText("");
             mPasswordField.setText("");
-            mErrorMessage.setText("Invalid email/password");
+            mErrorMessage.setText(R.string.loginErrorM);
         }
     }
+
+    /**
+     * It will change the page on the screen if the
+     * back button is pressed.
+     */
     private void configureBackButton() {
         Button backButton = findViewById(R.id.cancel_login_button);
         backButton.setOnClickListener(new View.OnClickListener() {

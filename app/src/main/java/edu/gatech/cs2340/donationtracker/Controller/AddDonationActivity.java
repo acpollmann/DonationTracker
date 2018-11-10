@@ -37,21 +37,14 @@ public class AddDonationActivity extends AppCompatActivity {
     private EditText mValueField;
     private Spinner categorySpinner;
     private EditText mCommentField;
-    private Button uploadImageButton;
-    private ImageView imageToUpload;
     private ListModel model;
 
-    /**
-     * On the creation of the ADD DONATION page, it will
-     * change the display of the device, sets the information collected
-     * from the page to fields. It also creates adapters for the spinners
-     * which will be used later to filter the donation items.
-     * @param savedInstanceState a bundle of information from widgets
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_donation);
+
+        ImageView imageToUpload;
 
         configureBackButton();
 
@@ -65,7 +58,7 @@ public class AddDonationActivity extends AppCompatActivity {
         mValueField = findViewById(R.id.valueField);
         categorySpinner = findViewById(R.id.categorySpinner);
         mCommentField = findViewById(R.id.commentField);
-        uploadImageButton = findViewById(R.id.uploadImageButton);
+        Button uploadImageButton = findViewById(R.id.uploadImageButton);
         imageToUpload = findViewById(R.id.imageToUpload);
 
          /*
@@ -121,7 +114,7 @@ public class AddDonationActivity extends AppCompatActivity {
 
         if ("".equals(name) || "".equals(timeStamp) || "".equals(shortDescription)
                 || "".equals(fullDescription) || "".equals(value)) {
-            mErrorMessage.setText("All fields except Comments must be filled in.");
+            mErrorMessage.setText(R.string.addDonationErrorM);
         } else {
             model.addDonation(name, location, timeStamp, shortDescription,
                     fullDescription, value, category, comment);

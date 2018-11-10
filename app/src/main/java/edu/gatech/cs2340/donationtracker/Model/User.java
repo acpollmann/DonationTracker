@@ -1,8 +1,12 @@
 package edu.gatech.cs2340.donationtracker.Model;
 
+
 /**
- * User Class
- * Created by amypollmann on 9/30/18.
+ * Implementation a location for the location list and deatil page
+ * Created on 9/30/18.
+ *
+ * @author Group 71B
+ * @version 1.0
  */
 
 public class User {
@@ -28,18 +32,50 @@ public class User {
      * Getters and setters
      */
     //no setter for this.  id is a read only field
+    /**
+     * Gets id for user
+     * @return id of user
+     */
     public int getId() { return _id; }
 
+    /**
+     * Gets password for user
+     */
     public String getPassword() {return _password; }
+    /**
+     * Sets password for user
+     * @param password user password
+     */
     public void setPassword(String password) { this._password = password; }
 
+    /**
+     * Gets email for user
+     */
     public String getEmail() { return _email; }
+    /**
+     * Sets password for user
+     * @param email user email
+     */
     public void setEmail(String email) { this._email = email; }
 
+    /**
+     * Gets account type
+     */
     public String getType() { return _type; }
+    /**
+     * Sets account type for user
+     * @param type account type
+     */
     public void setType(String type) { this._type = type; }
 
+    /**
+     * Gets boolean if account locked
+     */
     public boolean isAccountLocked() { return _accountLocked; }
+    /**
+     * Sets if locked or not
+     * @param locked if locked
+     */
     public void setAccountLocked(boolean locked) { this._accountLocked = locked; }
 
     /**
@@ -65,6 +101,9 @@ public class User {
         this._id = User.Next_Id++;
     }
 
+    /**
+     * Uses equal method to check users
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -77,14 +116,20 @@ public class User {
         return this._email.equals(u.getEmail()) && this._password.equals(u.getPassword());
     }
 
+    /**
+     * Create hashcode for email and password
+     */
     @Override
     public int hashCode() {
         int result = 17;
-        result = 37 * result + (_email == null ? 0 : _email.hashCode());
-        result = 37 * result + (_password == null ? 0 : _password.hashCode());
+        result = (37 * result) + ((_email == null) ? 0 : _email.hashCode());
+        result = (37 * result) + (((_password == null) ? 0 : _password.hashCode()));
         return result;
     }
 
+    /**
+     * Create string for email
+     */
     @Override
     public String toString() {
         return this._email;
