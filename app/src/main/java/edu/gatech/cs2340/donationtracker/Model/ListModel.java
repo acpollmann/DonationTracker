@@ -27,6 +27,15 @@ public final class ListModel {
         return instance;
     }
 
+    /**
+     * Gets an instance of UserSet, used for testing purposes
+     * @param firestoreManager an instance of FirestoreManager
+     * @return an instance of UserSet
+     */
+    public static ListModel getTestInstance(FirestoreManager firestoreManager) {
+        return new ListModel(firestoreManager);
+    }
+
     private List<Location> locations;
 
     private List<Donation> donations;
@@ -128,14 +137,14 @@ public final class ListModel {
      * @param key id for item
      * @return location from id
      */
-    public Location findItemById(int key) {
+    public Location findLocationById(int key) {
 
         for (Location l : locations) {
             if (l.getKey() == key) {
                 return l;
             }
         }
-        Log.d("MYAPP", "Warning - Failed to find key: " + key);
+
         return null;
     }
 }
