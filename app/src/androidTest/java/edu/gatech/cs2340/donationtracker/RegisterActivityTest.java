@@ -27,6 +27,7 @@ import static org.hamcrest.core.AllOf.allOf;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(AndroidJUnit4.class)
 public class RegisterActivityTest {
@@ -54,7 +55,7 @@ public class RegisterActivityTest {
     @Test
     public void testOnRegisterPressed_UserAlreadyExists() {
         UserSet mockUserSet = mock(UserSet.class);
-        mockUserSet.addUser("email1", "password1", "User");
+        when(mockUserSet.userExists(user1.getEmail())).thenReturn(true);
         mActivityRule.getActivity().setUserSet(mockUserSet);
 
         // type email1 into the email field
@@ -69,9 +70,6 @@ public class RegisterActivityTest {
 
         // click the register button
         onView(withId(R.id.saveRegistrationButton)).perform(click());
-
-        verify(mockUserSet).userExists(user1.getEmail());
-        assertTrue("This is the set of users:" + mockUserSet.getUsers().toString(), mockUserSet.userExists(user1.getEmail()));
 
         // check that fields become empty
         onView(withId(R.id.email_field)).check(matches(withText("")));
