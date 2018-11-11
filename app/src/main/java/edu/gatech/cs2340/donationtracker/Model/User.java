@@ -42,7 +42,7 @@ public class User {
      * Gets password for user
      * @return password of user
      */
-    private String getPassword() {return _password; }
+    public String getPassword() {return _password; }
     /**
      * Sets password for user
      * @param password user password

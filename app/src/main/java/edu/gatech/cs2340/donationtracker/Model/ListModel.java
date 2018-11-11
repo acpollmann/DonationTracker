@@ -11,7 +11,7 @@ import java.util.List;
  * @author Group 71B
  * @version 1.0
  */
-public final class ListModel {
+public class ListModel {
 
     private static ListModel instance;
 
@@ -25,6 +25,15 @@ public final class ListModel {
         }
 
         return instance;
+    }
+
+    /**
+     * Gets an instance of UserSet, used for testing purposes
+     * @param firestoreManager an instance of FirestoreManager
+     * @return an instance of UserSet
+     */
+    public static ListModel getTestInstance(FirestoreManager firestoreManager) {
+        return new ListModel(firestoreManager);
     }
 
     private List<Location> locations;
@@ -62,6 +71,15 @@ public final class ListModel {
                 type, phone, web);
         locations.add(newLocation);
         firestoreManager.addLocation(newLocation);
+    }
+
+    /**
+     * Adds a location to the location list for application
+     * @param location the location to add
+     */
+    public void addLocation(Location location) {
+        locations.add(location);
+        firestoreManager.addLocation(location);
     }
 
     /**
@@ -127,14 +145,14 @@ public final class ListModel {
      * @param key id for item
      * @return location from id
      */
-    public Location findItemById(int key) {
+    public Location findLocationById(int key) {
 
         for (Location l : locations) {
             if (l.getKey() == key) {
                 return l;
             }
         }
-        Log.d("MYAPP", "Warning - Failed to find key: " + key);
+
         return null;
     }
 }

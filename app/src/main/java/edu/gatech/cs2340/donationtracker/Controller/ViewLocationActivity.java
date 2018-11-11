@@ -130,16 +130,16 @@ public class ViewLocationActivity extends AppCompatActivity
      *This method will load some initial data into out list
      */
     private void loadData(){
-        addFilter(getString(R.string.filterlat_location), getString(R.string.searchlat_location) );
-        addFilter(getString(R.string.filterlat_location), getString(R.string.searchlong_location) );
+        addFilter(getString(R.string.filterlat_location), getString(R.string.searchlat_location));
+        addFilter(getString(R.string.filterlat_location), getString(R.string.searchlong_location));
 
         addFilter(getString(R.string.locationname_location),
-                getString(R.string.searchalpha_location) );
+                getString(R.string.searchalpha_location));
 
         addFilter(getString(R.string.locationtype_location),
-                getString(R.string.searchdrop_location) );
+                getString(R.string.searchdrop_location));
         addFilter(getString(R.string.locationtype_location),
-                getString(R.string.searchstore_location) );
+                getString(R.string.searchstore_location));
         addFilter(getString(R.string.locationtype_location),
                 getString(R.string.searchware_location) );
 

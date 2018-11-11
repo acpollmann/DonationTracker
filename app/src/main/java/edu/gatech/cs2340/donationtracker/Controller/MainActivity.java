@@ -22,8 +22,7 @@ import edu.gatech.cs2340.donationtracker.R;
  * @author Group 71B
  * @version 1.0
  */
-public class
-MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private ObjectAnimator viewanimator;
     private ObjectAnimator addanimator;

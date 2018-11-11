@@ -36,8 +36,16 @@ public class LoginActivity extends AppCompatActivity {
         mPasswordField = findViewById(R.id.password_field);
         mErrorMessage = findViewById(R.id.error_message);
 
-        userSet = UserSet.getInstance();
+        setUserSet(UserSet.getInstance());
         configureBackButton();
+    }
+
+    /**
+     * Sets the UserSet to be used by this activity
+     * @param userSet an instance of UserSet
+     */
+    public void setUserSet(UserSet userSet) {
+        this.userSet = userSet;
     }
 
     /**
