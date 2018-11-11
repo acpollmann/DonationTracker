@@ -25,6 +25,15 @@ public final class UserSet {
         return instance;
     }
 
+    /**
+     * Gets an instance of UserSet, used for testing purposes
+     * @param firestoreManager an instance of FirestoreManager
+     * @return an instance of UserSet
+     */
+    public static UserSet getTestInstance(FirestoreManager firestoreManager) {
+        return new UserSet(firestoreManager);
+    }
+
     /** Set of users known to the application. */
     private Set<User> _users;
 
