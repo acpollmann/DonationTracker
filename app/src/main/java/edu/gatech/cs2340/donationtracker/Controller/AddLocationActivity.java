@@ -91,7 +91,15 @@ public class AddLocationActivity extends AppCompatActivity {
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         typeSpinner.setAdapter(typeAdapter);
 
-        model = ListModel.getInstance();
+        setListModel(ListModel.getInstance());
+    }
+
+    /**
+     * Sets the listModel to be used by this activity
+     * @param listModel an instance of ListModel
+     */
+    public void setListModel(ListModel listModel) {
+        this.model = listModel;
     }
 
     /**

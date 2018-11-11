@@ -11,7 +11,7 @@ import java.util.List;
  * @author Group 71B
  * @version 1.0
  */
-public final class ListModel {
+public class ListModel {
 
     private static ListModel instance;
 
