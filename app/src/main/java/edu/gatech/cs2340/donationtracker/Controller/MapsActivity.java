@@ -70,7 +70,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         /* holds the map object returned from Google */
         GoogleMap myGoogleMap = googleMap;
 
-        myGoogleMap.getUiSettings().setZoomControlsEnabled(true);
+        googleMap.getUiSettings().setZoomControlsEnabled(true);
 
         //get the data to display
         List<Location> locationList = ListModel.getInstance().getLocations();
@@ -80,7 +80,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Log.d("Location added", location.getLatitude() + ", "  + location.getLongitude());
             LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
 
-            myGoogleMap.addMarker(new MarkerOptions().position(loc).title(location.getLocationName())
+            googleMap.addMarker(new MarkerOptions().position(loc).title(location.getLocationName())
 
                     .snippet(location.getPhone()));
         }
@@ -89,10 +89,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Float initialZoom = 10.0f;
         LatLng gatech = new LatLng(gatechLat, gatechLong);
 
-        myGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(gatech, initialZoom));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(gatech, initialZoom));
 
         //Use a custom layout for the pin data
-        myGoogleMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
+        googleMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
     }
 
     /**
