@@ -74,6 +74,15 @@ public final class ListModel {
     }
 
     /**
+     * Adds a location to the location list for application
+     * @param location the location to add
+     */
+    public void addLocation(Location location) {
+        locations.add(location);
+        firestoreManager.addLocation(location);
+    }
+
+    /**
      * Adds a donation to the donation list for application
      * @param location what required of a donation
      * @param timeStamp what required of a donation

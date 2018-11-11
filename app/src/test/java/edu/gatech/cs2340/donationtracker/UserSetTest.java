@@ -10,9 +10,8 @@ import edu.gatech.cs2340.donationtracker.Model.FirestoreManager;
 import edu.gatech.cs2340.donationtracker.Model.User;
 import edu.gatech.cs2340.donationtracker.Model.UserSet;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 
 public class UserSetTest {
