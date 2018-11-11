@@ -33,22 +33,23 @@ public class LocationDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
-        Log.d("bundle: ", intent.getExtras().toString());
+        if (b != null) {
+            Log.d("bundle: ", intent.getExtras().toString());
+            String name = b.getString("name");
+            String type = b.getString("type");
+            Log.d("Type: ", type);
+            String address = b.getString("address");
+            String lat_long = b.getString("latitudeLongitude");
+            String phone_number = b.getString("phoneNumber");
+            String website = b.getString("website");
 
-        String name = b.getString("name");
-        String type = b.getString("type");
-        Log.d("Type: ", type);
-        String address = b.getString("address");
-        String lat_long = b.getString("latitudeLongitude");
-        String phone_number = b.getString("phoneNumber");
-        String website = b.getString("website");
-
-        mName.setText(name);
-        mType.setText(type);
-        mAddress.setText(address);
-        latitudeLongitude.setText(lat_long);
-        mPhoneNumber.setText(phone_number);
-        mWebSite.setText(website);
+            mName.setText(name);
+            mType.setText(type);
+            mAddress.setText(address);
+            latitudeLongitude.setText(lat_long);
+            mPhoneNumber.setText(phone_number);
+            mWebSite.setText(website);
+        }
     }
 
     /**

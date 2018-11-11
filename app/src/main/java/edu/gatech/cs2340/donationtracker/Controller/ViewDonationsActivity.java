@@ -54,7 +54,9 @@ public class ViewDonationsActivity extends AppCompatActivity {
         /*
           Set up the adapter to display the allowable categories in the spinner
          */
-        final ArrayAdapter<Location> categorySearchAdapter = new ArrayAdapter(this,
+        @SuppressWarnings("unchecked")
+        final ArrayAdapter<Location> categorySearchAdapter =
+                (ArrayAdapter<Location>)new ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, Donation.searchLegalCategories);
         categorySearchAdapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item
@@ -83,8 +85,9 @@ public class ViewDonationsActivity extends AppCompatActivity {
         for (Location location : model.getLocations()) {
             selectableLocations.add(Objects.toString(location));
         }
-
-        final ArrayAdapter<Location> locationSearchAdapter = new ArrayAdapter(this,
+        @SuppressWarnings("unchecked")
+        final ArrayAdapter<Location> locationSearchAdapter =
+                (ArrayAdapter<Location>) new ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, selectableLocations);
         locationSearchAdapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item
@@ -207,15 +210,27 @@ public class ViewDonationsActivity extends AppCompatActivity {
         List<Donation> filteredDonations = model.getDonations();
 
         filteredDonations = filterByCategory(
-                filteredDonations, (String) categorySearchSpinner.getSelectedItem()
-        );
+                            filteredDonations,
+                            (String) categorySearchSpinner.
+                                    getSelectedItem());
         filteredDonations = filterByLocation(
-                filteredDonations, (String) locationSearchSpinner.getSelectedItem()
-        );
+                            filteredDonations,
+                            (String) locationSearchSpinner.
+                                    getSelectedItem());
         filteredDonations = searchForDonation(
-                filteredDonations, searchNameView.getQuery().toString()
-        );
-
+                            filteredDonations,
+                            searchNameView.getQuery().toString());
+        filteredDonations = filterByCategory(
+                            filteredDonations,
+                            (String) categorySearchSpinner.
+                                    getSelectedItem());
+        filteredDonations = filterByLocation(
+                            filteredDonations,
+                            (String) locationSearchSpinner.
+                                    getSelectedItem());
+        filteredDonations = searchForDonation(
+                            filteredDonations,
+                            searchNameView.getQuery().toString());
 
         if (filteredDonations.isEmpty()) {
             Toast.makeText(

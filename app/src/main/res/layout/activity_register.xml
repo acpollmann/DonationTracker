@@ -58,7 +58,8 @@
             app:layout_constraintBottom_toTopOf="@+id/textView4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            android:autofillHints="password" />
     </android.support.design.widget.TextInputLayout>
 
     <TextView
@@ -101,7 +102,8 @@
             android:inputType="textEmailAddress"
             android:textColor="@android:color/darker_gray"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            android:autofillHints="email" />
     </android.support.design.widget.TextInputLayout>
 
     <TextView

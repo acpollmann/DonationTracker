@@ -122,7 +122,6 @@ public final class ListModel {
      */
     public void setLocations(List<Location> locations) {
         this.locations = locations;
-        this.locations = locations;
     }
 
     /**

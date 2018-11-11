@@ -101,6 +101,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
      * It sets up the listener, so if a user changes the language spinner the app will
      * know to change the language.
      */
+
     private void addListenerOnSpinnerItemSelection() {
         Spinner langspinner = findViewById(R.id.languagespinner);
         langspinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());

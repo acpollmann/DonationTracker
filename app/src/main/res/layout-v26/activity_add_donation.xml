@@ -89,8 +89,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:autofillHints=""
-                tools:targetApi="o" />
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/timestampField"
@@ -106,8 +105,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nameField"
-                android:autofillHints=""
-                tools:targetApi="o" />
+                android:autofillHints="" />
 
             <TextView
                 android:id="@+id/locationText"
@@ -151,8 +149,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/locationSpinner"
-                android:autofillHints=""
-                tools:targetApi="o" />
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/fullDescriptionField"
@@ -168,8 +165,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/shortDescriptionField"
-                android:autofillHints=""
-                tools:targetApi="o" />
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/valueField"
@@ -186,8 +182,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fullDescriptionField"
-                android:autofillHints=""
-                tools:targetApi="o" />
+                android:autofillHints="" />
 
             <TextView
                 android:id="@+id/categoryText"
@@ -231,8 +226,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/categorySpinner"
-                android:autofillHints=""
-                tools:targetApi="o" />
+                android:autofillHints="" />
 
             <TextView
                 android:id="@+id/pictureText"
