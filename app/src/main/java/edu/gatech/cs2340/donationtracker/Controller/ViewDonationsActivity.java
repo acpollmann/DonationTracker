@@ -206,9 +206,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
     private void setupRecyclerView(RecyclerView recyclerView) {
         List<Donation> filteredDonations = model.getDonations();
 
-        filteredDonations = filterByCategory(filteredDonations, (String) categorySearchSpinner.getSelectedItem());
-        filteredDonations = filterByLocation(filteredDonations, (String) locationSearchSpinner.getSelectedItem());
-        filteredDonations = searchForDonation(filteredDonations, searchNameView.getQuery().toString());
         filteredDonations = filterByCategory(
                 filteredDonations, (String) categorySearchSpinner.getSelectedItem()
         );
