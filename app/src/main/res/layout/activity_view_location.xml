@@ -82,7 +82,7 @@
 
     <ExpandableListView
         android:id="@+id/simpleExpandableListView"
-        android:layout_width="106dp"
+        android:layout_width="118dp"
         android:layout_height="398dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="8dp"
