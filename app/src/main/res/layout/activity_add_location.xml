@@ -34,7 +34,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/adding_location"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textSize="40sp"
+        android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/backButton"

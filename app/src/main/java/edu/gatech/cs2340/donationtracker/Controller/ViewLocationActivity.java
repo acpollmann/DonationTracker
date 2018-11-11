@@ -38,13 +38,11 @@ import edu.gatech.cs2340.donationtracker.R;
  */
 public class ViewLocationActivity extends AppCompatActivity
         implements SearchView.OnQueryTextListener {
-
     private final ListModel model = ListModel.getInstance();
     private final Map<String, GroupInfo> filteredBy = new LinkedHashMap<>();
     private final ArrayList<GroupInfo> expandableListList = new ArrayList<>();
     private SearchAdapterLocation searchAdapter;
     private ExpandableListView simpleExpandableListView;
-    private SearchView searchNameView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +52,6 @@ public class ViewLocationActivity extends AppCompatActivity
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
         // add data for displaying in expandable list view
-        searchNameView = findViewById(R.id.searchView);
         loadData();
 
         //get reference of the ExpandableListView
@@ -67,72 +64,56 @@ public class ViewLocationActivity extends AppCompatActivity
         // setOnChildClickListener listener for child row click
         simpleExpandableListView
                 .setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,
-                                        int childPosition, long id) {
-                //get the group header
-                GroupInfo headerInfo = expandableListList.get(groupPosition);
-                //get the child info
-                ChildInfo detailInfo = headerInfo.getProductList().get(childPosition);
-                //display it or do something with it
-                Toast.makeText(getBaseContext(), getString(R.string.clicked) + headerInfo.getName()
-                        + "/" + detailInfo.getName(), Toast.LENGTH_LONG).show();
-                return false;
-            }
-        });
+                    @Override
+                    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,
+                                                int childPosition, long id) {
+                        //get the group header
+                        GroupInfo headerInfo = expandableListList.get(groupPosition);
+                        //get the child info
+                        ChildInfo detailInfo = headerInfo.getProductList().get(childPosition);
+                        //display it or do something with it
+                        Toast.makeText(getBaseContext(), getString(R.string.clicked) + headerInfo.getName()
+                                + "/" + detailInfo.getName(), Toast.LENGTH_LONG).show();
+                        return false;
+                    }
+                });
         final int[] prevExpandPosition = {-1};
         simpleExpandableListView
                 .setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-            @Override
-            public void onGroupExpand(int groupPosition) {
-                if ((prevExpandPosition[0] >= 0) && (prevExpandPosition[0] != groupPosition)) {
-                    simpleExpandableListView.collapseGroup(prevExpandPosition[0]);
-                }
-                prevExpandPosition[0] = groupPosition;
-            }
-        });
+                    @Override
+                    public void onGroupExpand(int groupPosition) {
+                        if ((prevExpandPosition[0] >= 0) && (prevExpandPosition[0] != groupPosition)) {
+                            simpleExpandableListView.collapseGroup(prevExpandPosition[0]);
+                        }
+                        prevExpandPosition[0] = groupPosition;
+                    }
+                });
         // setOnGroupClickListener listener for group heading click
         simpleExpandableListView
                 .setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
-            @Override
-            public boolean onGroupClick(ExpandableListView parent, View v,
-                                        int groupPosition, long id) {
-                //get the group header
-                GroupInfo headerInfo = expandableListList.get(groupPosition);
-                //display it or do something with it
-                Toast.makeText(getBaseContext(), getString(R.string.header) + headerInfo.getName(),
-                        Toast.LENGTH_LONG).show();
+                    @Override
+                    public boolean onGroupClick(ExpandableListView parent, View v,
+                                                int groupPosition, long id) {
+                        //get the group header
+                        GroupInfo headerInfo = expandableListList.get(groupPosition);
+                        //display it or do something with it
+                        Toast.makeText(getBaseContext(), getString(R.string.header) + headerInfo.getName(),
+                                Toast.LENGTH_LONG).show();
 
-                return false;
-            }
-        });
+                        return false;
+                    }
+                });
     }
     @Override
     public boolean onQueryTextSubmit(String query) {
 
-        searchNameView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            View recyclerView = findViewById(R.id.locationitem_list);
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                setupRecyclerView((RecyclerView) recyclerView);
-                return false;
-            }
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                setupRecyclerView((RecyclerView) recyclerView);
-                searchAdapter.filter(newText);
-                return false;
-            }
-        });
         return false;
     }
-
     @Override
     public boolean onQueryTextChange(String newText) {
         searchAdapter.filter(newText);
         return false;
     }
-
 
     /**
      * It will change the display from the current page to the previous page.
@@ -172,29 +153,6 @@ public class ViewLocationActivity extends AppCompatActivity
         addFilter(getString(R.string.locationphone_location),
                 getString(R.string.searcharea_location) );
 
-        addFilter("Location Phone Number","Sort Numerically");
-        addFilter("Location Phone Number","Sort By Area Code");
-    }
-
-    /**
-     * Allows text in search bar to create a list from donations
-     * that contains the text typed into the bar
-     * @param locations list of donations
-     * @param search string fragment used to search donations
-     * @return the list of searched donations
-     */
-    private List<Location> searchForLocation (List<Location> locations, String search) {
-        if (search == null) {
-            return locations;
-        }
-
-        List<Location> searchedLocations = new ArrayList<>();
-        for (Location location : locations) {
-            if (location.getLocationName().toLowerCase().contains(search.toLowerCase())) {
-                searchedLocations.add(location);
-            }
-        }
-        return searchedLocations;
     }
     /**
      *This method will maintain the location filters.
@@ -234,12 +192,7 @@ public class ViewLocationActivity extends AppCompatActivity
      * @param recyclerView the recyclerview on the VIEW LOCATIONS page
      */
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-
         List<Location> filteredLocations = model.getLocations();
-
-        filteredLocations = searchForLocation(filteredLocations,
-                                              searchNameView.getQuery().toString());
-
         if (filteredLocations.isEmpty()) {
             Toast.makeText(ViewLocationActivity.this,
                     getString(R.string.selected_nodonations), Toast.LENGTH_SHORT).show();
@@ -265,17 +218,6 @@ public class ViewLocationActivity extends AppCompatActivity
 
         @Override
         public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-
-            /*
-        This is where we have to bind each data element in the list (given by position parameter)
-        to an element in the view (which is one of our two TextView widgets
-         */
-            //start by getting the element at the correct position
-            holder.mLocation = mLocationList.get(position);
-        /*
-          Now we bind the data to the widgets.  In this case, pretty simple, put the id in one
-          textview and the string rep of a course in the other.
-         */
             holder.mContentView.setText(mLocationList.get(position).getLocationName());
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -308,10 +250,6 @@ public class ViewLocationActivity extends AppCompatActivity
             });
         }
 
-        /**
-         * Returns the number of elements in mLocationList
-         * @return mLocationList.size() the num of elements
-         */
         @Override
         public int getItemCount() {
             return mLocationList.size();
@@ -320,7 +258,6 @@ public class ViewLocationActivity extends AppCompatActivity
         public class ViewHolder extends RecyclerView.ViewHolder {
             private final View mView;
             private final TextView mContentView;
-            Location mLocation;
 
             /**
              * A constructor for the view
