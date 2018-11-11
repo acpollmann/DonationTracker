@@ -30,10 +30,10 @@ import edu.gatech.cs2340.donationtracker.R;
  * @version 1.0
  */
 public class WelcomeScreenActivity extends AppCompatActivity {
-    LinearLayout welcomeScreen;
-    AnimationDrawable anim;
-    Locale myLocale;
-    String currentLanguage = "en";
+    private LinearLayout welcomeScreen;
+    private AnimationDrawable anim;
+    private Locale myLocale;
+    private String currentLanguage = "en";
     String currentLang;
 
     @Override
@@ -57,7 +57,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
     /**
      * It sets up the login button, so if pressed it will redirect to the LOGIN page.
      */
-    public void configureLoginButton() {
+    private void configureLoginButton() {
         Button loginButton = findViewById(R.id.login_button);
         Animation fromBottom = AnimationUtils.loadAnimation(this, R.anim.fromtop);
         loginButton.startAnimation(fromBottom);
@@ -101,11 +101,12 @@ public class WelcomeScreenActivity extends AppCompatActivity {
      * It sets up the listener, so if a user changes the language spinner the app will
      * know to change the language.
      */
-    public void addListenerOnSpinnerItemSelection() {
+
+    private void addListenerOnSpinnerItemSelection() {
         Spinner langspinner = findViewById(R.id.languagespinner);
         langspinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
     }
-    public class CustomOnItemSelectedListener implements AdapterView.OnItemSelectedListener {
+    class CustomOnItemSelectedListener implements AdapterView.OnItemSelectedListener {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
             if (pos == 0) {
@@ -157,7 +158,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
      *
      * @param lang the specific language
      */
-    public void setAppLocale(String lang) {
+    private void setAppLocale(String lang) {
         if (!lang.equals(currentLanguage)) {
             myLocale = new Locale(lang);
             Resources res = getResources();
