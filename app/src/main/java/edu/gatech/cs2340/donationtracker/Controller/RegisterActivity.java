@@ -51,7 +51,11 @@ public class RegisterActivity extends AppCompatActivity {
         mPasswordField = findViewById(R.id.password_field);
         mErrorMessage = findViewById(R.id.error_message_register);
 
-        userSet = UserSet.getInstance();
+        setUserSet(UserSet.getInstance());
+    }
+
+    public void setUserSet(UserSet userSet) {
+        this.userSet = userSet;
     }
 
     /**
