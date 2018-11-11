@@ -79,16 +79,18 @@ public class FirestoreManager {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("doc", document.getId() + " => "
-                                        + document.getData());
+                            if (task.getResult() != null) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d("doc", document.getId() + " => "
+                                            + document.getData());
 
-                                Map<String, Object> userDoc = document.getData();
-                                User user = new User(
-                                        (String) userDoc.get("email"),
-                                        (String) userDoc.get("password")
-                                );
-                                users.add(user);
+                                    Map<String, Object> userDoc = document.getData();
+                                    User user = new User(
+                                            (String) userDoc.get("email"),
+                                            (String) userDoc.get("password")
+                                    );
+                                    users.add(user);
+                                }
                             }
                         } else {
                             Log.d("docError", "Error getting documents: ",
@@ -134,37 +136,39 @@ public class FirestoreManager {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("doc", document.getId() + " => " + document.getData());
+                            if (task.getResult() != null) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d("doc", document.getId() + " => " + document.getData());
 
-                                Map<String, Object> locationMap = document.getData();
+                                    Map<String, Object> locationMap = document.getData();
 
 
-                                long keyl = (long) locationMap.get("key");
-                                int key  = (int) keyl;
+                                    long keyl = (long) locationMap.get("key");
+                                    int key = (int) keyl;
 
-                                double latitude = (double) locationMap.get("latitude");
+                                    double latitude = (double) locationMap.get("latitude");
 
-                                double longitude = (double) locationMap.get("longitude");
+                                    double longitude = (double) locationMap.get("longitude");
 
-                                long zipl = (long) locationMap.get("zipCode");
-                                int zipCode  = (int) zipl;
+                                    long zipl = (long) locationMap.get("zipCode");
+                                    int zipCode = (int) zipl;
 
-                                Location location = new Location(
-                                        key,
-                                        (String) locationMap.get("locationName"),
-                                        latitude,
-                                        longitude,
-                                        (String) locationMap.get("address"),
-                                        (String) locationMap.get("city"),
-                                        (String) locationMap.get("state"),
-                                        zipCode,
-                                        (String) locationMap.get("type"),
-                                        (String) locationMap.get("phone"),
-                                        (String) locationMap.get("website")
-                                );
+                                    Location location = new Location(
+                                            key,
+                                            (String) locationMap.get("locationName"),
+                                            latitude,
+                                            longitude,
+                                            (String) locationMap.get("address"),
+                                            (String) locationMap.get("city"),
+                                            (String) locationMap.get("state"),
+                                            zipCode,
+                                            (String) locationMap.get("type"),
+                                            (String) locationMap.get("phone"),
+                                            (String) locationMap.get("website")
+                                    );
 
-                                locations.add(location);
+                                    locations.add(location);
+                                }
                             }
                         } else {
                             Log.d("docError", "Error getting documents: ", task.getException());
@@ -217,24 +221,27 @@ public class FirestoreManager {
                                         + document.getData());
 
                                 Map<String, Object> donationDoc = document.getData();
-
+                                @SuppressWarnings("unchecked")
                                 Map<String, Object> locationMap =
                                         (Map<String, Object>) donationDoc.get("location");
 
-                                long keyl = (long) locationMap.get("key");
-                                int key  = (int) keyl;
-                                Location location = ListModel.getInstance().findItemById(key);
-                                Donation newDonation =
-                                        new Donation((String) donationDoc.get("name"),
-                                                location,
-                                                (String) donationDoc.get("timeStamp"),
-                                                (String) donationDoc.get("shortDescription"),
-                                                (String) donationDoc.get("fullDescription"),
-                                                (String) donationDoc.get("value"),
-                                                (String) donationDoc.get("category"),
-                                                (String) donationDoc.get("comments")
-                                        );
-                                donations.add(newDonation);
+                                if (locationMap.get("key") != null) {
+                                    long keyl = (long) locationMap.get("key");
+                                    int key = (int) keyl;
+                                    Location location = ListModel.getInstance().findItemById(key);
+
+                                    Donation newDonation =
+                                            new Donation((String) donationDoc.get("name"),
+                                                    location,
+                                                    (String) donationDoc.get("timeStamp"),
+                                                    (String) donationDoc.get("shortDescription"),
+                                                    (String) donationDoc.get("fullDescription"),
+                                                    (String) donationDoc.get("value"),
+                                                    (String) donationDoc.get("category"),
+                                                    (String) donationDoc.get("comments")
+                                            );
+                                    donations.add(newDonation);
+                                }
                             }
                         } else {
                             Log.d("docError", "Error getting documents: ", task.getException());

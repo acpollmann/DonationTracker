@@ -79,7 +79,7 @@
     <string name="info_location">Location Information</string>
     <string name="header">Header is ::</string>
     <string name="clicked">Clicked on ::</string>
-    <string name="selected_nodonations">Selected filter doesnt have donations.</string>
+    <string name="selected_nodonations">Selected filter does not have donations.</string>
     <string name="clothing_donation">Clothing</string>
     <string name="hat_donation">Hat</string>
     <string name="kitchen_donation">Kitchenware</string>

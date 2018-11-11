@@ -59,7 +59,7 @@
     <string name="searchlong_location">Ordenar Por Longitud</string>
     <string name="searchalpha_location">Ordenar Alfabético</string>
     <string name="searchnum_location">Ordenar Numérico</string>
-    <string name="searcharea_location">Ordenar Por Codido por Area</string>
+    <string name="searcharea_location">Ordenar Por Codido por Área</string>
     <string name="searchclose_location">Ordenar Por Cercanía</string>
     <string name="locationtype_location">Tipo de la  Ubicación</string>
     <string name="searchdrop_location">Enseñar si es un punto de entrega</string>

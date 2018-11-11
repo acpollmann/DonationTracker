@@ -79,13 +79,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         for (Location location : locationList) {
             Log.d("Location added", location.getLatitude() + ", "  + location.getLongitude());
             LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
+
             myGoogleMap.addMarker(new MarkerOptions().position(loc).title(location.getLocationName())
+
                     .snippet(location.getPhone()));
         }
         Double gatechLat = 33.7756;
         Double gatechLong = -84.3963;
         Float initialZoom = 10.0f;
         LatLng gatech = new LatLng(gatechLat, gatechLong);
+
         myGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(gatech, initialZoom));
 
         //Use a custom layout for the pin data
