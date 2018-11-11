@@ -54,6 +54,10 @@ public class RegisterActivity extends AppCompatActivity {
         setUserSet(UserSet.getInstance());
     }
 
+    /**
+     * Sets the UserSet to be used by this activity
+     * @param userSet an instance of UserSet
+     */
     public void setUserSet(UserSet userSet) {
         this.userSet = userSet;
     }
