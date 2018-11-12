@@ -3,11 +3,19 @@ package edu.gatech.cs2340.donationtracker.Model;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Implementation user set for app
+ * Created on 9/30/18.
+ *
+ * @author Group 71B
+ * @version 1.0
+ */
 public final class UserSet {
     /** Singleton instance */
     private static UserSet instance;
     /**
      * Gets instance of user
+     * @return instance of user
      */
     public static UserSet getInstance() {
         if (instance == null) {

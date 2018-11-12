@@ -2,7 +2,7 @@ package edu.gatech.cs2340.donationtracker.Model;
 
 
 /**
- * Implementation a location for the location list and deatil page
+ * Implementation user for app
  * Created on 9/30/18.
  *
  * @author Group 71B
@@ -40,8 +40,9 @@ public class User {
 
     /**
      * Gets password for user
+     * @return password of user
      */
-    public String getPassword() {return _password; }
+    private String getPassword() {return _password; }
     /**
      * Sets password for user
      * @param password user password
@@ -50,6 +51,7 @@ public class User {
 
     /**
      * Gets email for user
+     * @return email of user
      */
     public String getEmail() { return _email; }
     /**
@@ -60,6 +62,7 @@ public class User {
 
     /**
      * Gets account type
+     * @return account type of user
      */
     public String getType() { return _type; }
     /**
@@ -70,6 +73,7 @@ public class User {
 
     /**
      * Gets boolean if account locked
+     * @return if user locked
      */
     public boolean isAccountLocked() { return _accountLocked; }
     /**
@@ -103,6 +107,7 @@ public class User {
 
     /**
      * Uses equal method to check users
+     * @return if equals
      */
     @Override
     public boolean equals(Object obj) {
@@ -118,6 +123,7 @@ public class User {
 
     /**
      * Create hashcode for email and password
+     * @return hashcode of user
      */
     @Override
     public int hashCode() {
@@ -129,6 +135,7 @@ public class User {
 
     /**
      * Create string for email
+     * @return string of email
      */
     @Override
     public String toString() {
