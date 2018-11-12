@@ -15,13 +15,12 @@ public class SearchAdapterLocation extends BaseAdapter {
 
     // Declare Variables
 
-    private final Context mContext;
     private final LayoutInflater inflater;
     private final List<Location> locationList;
     private final List<Location> arraylist;
 
     public SearchAdapterLocation(Context context, List<Location> namesList) {
-        mContext = context;
+        Context mContext = context;
         this.locationList = namesList;
         inflater = LayoutInflater.from(mContext);
         this.arraylist = new ArrayList<>();
