@@ -56,6 +56,8 @@ public class AddDonationActivity extends AppCompatActivity {
         categorySpinner = findViewById(R.id.categorySpinner);
         mCommentField = findViewById(R.id.commentField);
 
+        model = ListModel.getInstance();
+
          /*
           Set up the adapter to display the allowable locations in the spinner
          */
