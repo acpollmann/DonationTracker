@@ -20,9 +20,8 @@ public class SearchAdapterLocation extends BaseAdapter {
     private final List<Location> arraylist;
 
     public SearchAdapterLocation(Context context, List<Location> namesList) {
-        Context mContext = context;
         this.locationList = namesList;
-        inflater = LayoutInflater.from(mContext);
+        inflater = LayoutInflater.from(context);
         this.arraylist = new ArrayList<>();
         this.arraylist.addAll(namesList);
     }

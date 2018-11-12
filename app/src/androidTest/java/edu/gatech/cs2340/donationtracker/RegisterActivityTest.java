@@ -59,7 +59,8 @@ public class RegisterActivityTest {
         onView(withId(R.id.email_field)).perform(typeText(user1.getEmail()), closeSoftKeyboard());
 
         // type password1 into the password field
-        onView(withId(R.id.password_field)).perform(typeText(user1.getPassword()), closeSoftKeyboard());
+        onView(withId(R.id.password_field)).perform(typeText(user1.getPassword()),
+                closeSoftKeyboard());
 
         // click User in the spinner
         onView(withId(R.id.user_spinner)).perform(click());
