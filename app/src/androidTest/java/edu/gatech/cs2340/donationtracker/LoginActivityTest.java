@@ -40,7 +40,8 @@ public class LoginActivityTest {
         onView(withId(R.id.email_field)).perform(typeText(user1.getEmail()), closeSoftKeyboard());
 
         // type password1 into the password field
-        onView(withId(R.id.password_field)).perform(typeText(user1.getPassword()), closeSoftKeyboard());
+        onView(withId(R.id.password_field)).perform(typeText(user1.getPassword()),
+                closeSoftKeyboard());
 
         // click the login button
         onView(withId(R.id.email_sign_in_button)).perform(click());
@@ -55,7 +56,8 @@ public class LoginActivityTest {
         onView(withId(R.id.email_field)).perform(typeText("Invalid email"), closeSoftKeyboard());
 
         // type password1 into the password field
-        onView(withId(R.id.password_field)).perform(typeText("Invalid password"), closeSoftKeyboard());
+        onView(withId(R.id.password_field)).perform(typeText("Invalid password"),
+                closeSoftKeyboard());
 
         // click the login button
         onView(withId(R.id.email_sign_in_button)).perform(click());
