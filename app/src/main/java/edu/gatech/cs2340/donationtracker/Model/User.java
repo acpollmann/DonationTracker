@@ -11,7 +11,7 @@ package edu.gatech.cs2340.donationtracker.Model;
 
 public class User {
     /** allow us to assign unique id numbers to each student */
-    private static int Next_Id;
+    private static int next_Id;
 
     /** this user's id number */
     private final int _id;
@@ -102,7 +102,7 @@ public class User {
         this._password = password;
         this._type = type;
         this._accountLocked = false;
-        this._id = User.Next_Id++;
+        this._id = next_Id++;
     }
 
     /**

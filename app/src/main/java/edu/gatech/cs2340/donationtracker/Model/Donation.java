@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Donation {
     /** allow user to assign number to specific donations */
-    private static int Next_key;
+    private static int next_key;
     private final int key;
     private String name;
     private String timeStamp;
@@ -54,7 +54,7 @@ public class Donation {
         this.value = value;
         this.category = category;
         this.comments = comments;
-        this.key = Donation.Next_key++;
+        this.key = next_key++;
 
     }
 

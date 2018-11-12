@@ -11,18 +11,17 @@ import java.util.Set;
  * @version 1.0
  */
 public class UserSet {
-    /** Singleton instance */
-    private static UserSet instance;
+    private static class InstanceHolder {
+        private static final UserSet instance = new UserSet(new FirestoreManager());
+    }
+
     /**
      * Gets instance of user
      * @return instance of user
      */
     public static UserSet getInstance() {
-        if (instance == null) {
-            instance = new UserSet(new FirestoreManager());
-        }
 
-        return instance;
+        return InstanceHolder.instance;
     }
 
     /**

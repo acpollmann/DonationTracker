@@ -1,7 +1,5 @@
 package edu.gatech.cs2340.donationtracker.Model;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,18 +11,17 @@ import java.util.List;
  */
 public class ListModel {
 
-    private static ListModel instance;
+    private static class InstanceHolder {
+        private static final ListModel instance = new ListModel(new FirestoreManager());
+    }
 
     /**
      * gets the instance of list model for location and donation
      * @return database instance
      */
     public static ListModel getInstance() {
-        if (instance == null) {
-            instance = new ListModel(new FirestoreManager());
-        }
 
-        return instance;
+        return InstanceHolder.instance;
     }
 
     /**

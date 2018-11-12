@@ -49,17 +49,18 @@ public class CustomAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild,
                              View view, ViewGroup parent) {
 
+        View view1 = view;
         ChildInfo detailInfo = (ChildInfo) getChild(groupPosition, childPosition);
-        if (view == null) {
+        if (view1 == null) {
             LayoutInflater detailInflater =
                     (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = detailInflater.inflate(R.layout.locationsearch_child, null);
+            view1 = detailInflater.inflate(R.layout.locationsearch_child, null);
         }
 
-        TextView childItem = view.findViewById(R.id.childItem);
+        TextView childItem = view1.findViewById(R.id.childItem);
         childItem.setText(detailInfo.getName().trim());
 
-        return view;
+        return view1;
     }
 
     /**
