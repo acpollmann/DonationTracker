@@ -32,7 +32,7 @@ public class GroupInfo {
 
     /**
      * gets the product list with the list of sort names from view location activity
-     * @return arraylist of a string that is a list of sort names
+     * @return Array list of a string that is a list of sort names
      */
     public ArrayList<ChildInfo> getProductList() {
         return list;

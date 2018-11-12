@@ -10,7 +10,7 @@ import java.util.Set;
  * @author Group 71B
  * @version 1.0
  */
-@SuppressWarnings("ClassWithOnlyPrivateConstructors")
+@SuppressWarnings({"ClassWithOnlyPrivateConstructors", "SpellCheckingInspection"})
 public class UserSet {
     /** Singleton instance */
     private static UserSet instance;

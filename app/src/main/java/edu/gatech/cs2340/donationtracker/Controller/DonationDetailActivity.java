@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 import edu.gatech.cs2340.donationtracker.R;
 
 /**
@@ -37,8 +39,7 @@ public class DonationDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
-        assert b != null;
-        if (b.getString("name") != null) {
+        if (Objects.requireNonNull(b).getString("name") != null) {
             String name = b.getString("name");
             mName.setText(name);
         }

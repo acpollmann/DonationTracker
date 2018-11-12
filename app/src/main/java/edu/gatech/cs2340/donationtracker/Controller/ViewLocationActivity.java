@@ -63,14 +63,16 @@ public class ViewLocationActivity extends AppCompatActivity
         simpleExpandableListView
                 .setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
                     @Override
-                    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,
+                    public boolean onChildClick(ExpandableListView parent, View v,
+                                                int groupPosition,
                                                 int childPosition, long id) {
                         //get the group header
                         GroupInfo headerInfo = expandableListList.get(groupPosition);
                         //get the child info
                         ChildInfo detailInfo = headerInfo.getProductList().get(childPosition);
                         //display it or do something with it
-                        Toast.makeText(getBaseContext(), getString(R.string.clicked) + headerInfo.getName()
+                        Toast.makeText(getBaseContext(), getString(R.string.clicked)
+                                                                + headerInfo.getName()
                                 + "/" + detailInfo.getName(), Toast.LENGTH_LONG).show();
                         return false;
                     }
@@ -80,7 +82,8 @@ public class ViewLocationActivity extends AppCompatActivity
                 .setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
                     @Override
                     public void onGroupExpand(int groupPosition) {
-                        if ((prevExpandPosition[0] >= 0) && (prevExpandPosition[0] != groupPosition)) {
+                        if ((prevExpandPosition[0] >= 0) &&
+                                (prevExpandPosition[0] != groupPosition)) {
                             simpleExpandableListView.collapseGroup(prevExpandPosition[0]);
                         }
                         prevExpandPosition[0] = groupPosition;
@@ -95,7 +98,8 @@ public class ViewLocationActivity extends AppCompatActivity
                         //get the group header
                         GroupInfo headerInfo = expandableListList.get(groupPosition);
                         //display it or do something with it
-                        Toast.makeText(getBaseContext(), getString(R.string.header) + headerInfo.getName(),
+                        Toast.makeText(getBaseContext(), getString(R.string.header)
+                                        + headerInfo.getName(),
                                 Toast.LENGTH_LONG).show();
 
                         return false;
@@ -155,7 +159,7 @@ public class ViewLocationActivity extends AppCompatActivity
      *This method will maintain the location filters.
      *
      * @param information the general name of the location filter
-     * @param sortBy the specfic filter type
+     * @param sortBy the specific filter type
      */
     private void addFilter(String information, String sortBy) {
         //check the hash map if the group already exists
@@ -188,6 +192,7 @@ public class ViewLocationActivity extends AppCompatActivity
      *
      * @param recyclerView the recyclerview on the VIEW LOCATIONS page
      */
+    @SuppressWarnings("SpellCheckingInspection")
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         List<Location> filteredLocations = model.getLocations();
         if (filteredLocations.isEmpty()) {

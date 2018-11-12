@@ -80,7 +80,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
 
             googleMap.addMarker(new MarkerOptions().position(loc).title(location.getLocationName())
-
                     .snippet(location.getPhone()));
         }
         final double gatechLat = 33.7756;
@@ -92,6 +91,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //Use a custom layout for the pin data
         googleMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
+
     }
 
     /**
@@ -114,6 +114,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             TextView tvTitle = myContentsView.findViewById(R.id.title);
             tvTitle.setText(marker.getTitle());
+
             TextView tvSnippet = (myContentsView.findViewById(R.id.snippet));
             tvSnippet.setText(marker.getSnippet());
 
