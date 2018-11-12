@@ -87,8 +87,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/websiteField"
-                android:autofillHints="phone number" />
+                app:layout_constraintTop_toBottomOf="@+id/websiteField" />
 
             <EditText
                 android:id="@+id/addressField"
@@ -105,8 +104,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.492"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/LongField"
-                android:autofillHints="street address" />
+                app:layout_constraintTop_toBottomOf="@+id/LongField" />
 
             <EditText
                 android:id="@+id/CityField"
@@ -120,8 +118,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/StateSpinner"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addressField"
-                android:autofillHints="" />
+                app:layout_constraintTop_toBottomOf="@+id/addressField" />
 
             <Spinner
                 android:id="@+id/StateSpinner"
@@ -145,8 +142,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/websiteField"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/StateSpinner"
-                android:autofillHints="zip code" />
+                app:layout_constraintTop_toBottomOf="@+id/StateSpinner" />
 
 
             <EditText
@@ -163,8 +159,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/LongField"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nameField"
-                android:autofillHints="latitude" />
+                app:layout_constraintTop_toBottomOf="@+id/nameField" />
 
             <EditText
                 android:id="@+id/LongField"
@@ -180,8 +175,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/addressField"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/LatField"
-                android:autofillHints="longitude" />
+                app:layout_constraintTop_toBottomOf="@+id/LatField" />
 
             <EditText
                 android:id="@+id/websiteField"
@@ -197,8 +191,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/phoneField"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ZipField"
-                android:autofillHints="website" />
+                app:layout_constraintTop_toBottomOf="@+id/ZipField" />
 
             <EditText
                 android:id="@+id/nameField"
@@ -213,8 +206,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/LatField"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:autofillHints="location name" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/addLocationButton"

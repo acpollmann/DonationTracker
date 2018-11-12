@@ -3,28 +3,17 @@
 
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="prompt_username">Username</string>
     <string name="action_sign_in_short">Login</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale" translatable="false">"Contacts permissions are
-        needed for providing email completions."
-    </string>
-    <string name="action_settings">Setting</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
     <string name="logout">Logout</string>
-    <string name="title_activity_register">RegisterActivity</string>
     <string name="log_in">Log In</string>
     <string name="register">Register</string>
     <string name="logo">Logo</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="title_activity_read_location">ReadLocation</string>
     <string name="title_activity_maps">Map</string>
-    <string name="backButton" translatable="false">&lt;</string>
     <string name="name_donation">Name</string>
     <string name="timestamp_donation">Time Stamp</string>
     <string name="tabletimestamp_donation">Time Stamp: </string>
@@ -74,25 +63,15 @@
     <string name="registerhere">Register Here</string>
     <string name="registertype">Account Type</string>
     <string name="skip">Skip</string>
-    <string name="search">Search</string>
     <string name="info_location">Location Info</string>
     <string name="header">Header is ::</string>
     <string name="clicked">Clicked on ::</string>
     <string name="selected_nodonations">Selected filter does not have donations.</string>
-    <string name="clothing_donation">Clothing</string>
-    <string name="hat_donation">Hat</string>
-    <string name="kitchen_donation">Kitchenware</string>
-    <string name="tech_donation">Electronics</string>
-    <string name="household_donation">Household Items</string>
-    <string name="other_donation">Other</string>
-    <string name="all_donation">All</string>
     <string name="language_prompt">Choose a Language</string>
     <string name="loginErrorM">Invalid email/password</string>
     <string name="registerErrorM">Email and password are required.</string>
     <string name="registerExistingUserErrorM">User already exists.</string>
-    <string name="add_donation">Add Donation</string>
-    <string name="addDonationErrorM">All fields except Comments must be filled in.</string>
-    <string name="location_colon">"Location : "</string>
     <string name="addLocationErrorM">All fields must be filled in.</string>
+    <string name="addDonationErrorM">All fields except Comments must be filled in.</string>
 
 </resources>
