@@ -12,17 +12,17 @@ import java.util.List;
 @SuppressWarnings({"ClassWithOnlyPrivateConstructors", "SpellCheckingInspection"})
 public class ListModel {
 
-    private static class InstanceHolder {
-        private static final ListModel instance = new ListModel(new FirestoreManager());
-    }
+    private static ListModel instance;
 
     /**
      * gets the instance of list model for location and donation
      * @return database instance
      */
-    public static ListModel getInstance() {
-
-        return InstanceHolder.instance;
+    public static synchronized ListModel getInstance() {
+        if (instance == null) {
+            instance =  new ListModel(new FirestoreManager());
+        }
+        return instance;
     }
 
     /**
