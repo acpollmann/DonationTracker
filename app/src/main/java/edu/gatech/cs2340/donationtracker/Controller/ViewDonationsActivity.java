@@ -220,17 +220,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
         filteredDonations = searchForDonation(
                             filteredDonations,
                             searchNameView.getQuery().toString());
-        filteredDonations = filterByCategory(
-                            filteredDonations,
-                            (String) categorySearchSpinner.
-                                    getSelectedItem());
-        filteredDonations = filterByLocation(
-                            filteredDonations,
-                            (String) locationSearchSpinner.
-                                    getSelectedItem());
-        filteredDonations = searchForDonation(
-                            filteredDonations,
-                            searchNameView.getQuery().toString());
 
         if (filteredDonations.isEmpty()) {
             Toast.makeText(
