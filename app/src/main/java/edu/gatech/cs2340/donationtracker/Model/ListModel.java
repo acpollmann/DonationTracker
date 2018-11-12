@@ -12,18 +12,17 @@ import java.util.List;
 @SuppressWarnings("SpellCheckingInspection")
 public class ListModel {
 
-    private static ListModel instance;
+    private static class InstanceHolder {
+        private static final ListModel instance = new ListModel(new FirestoreManager());
+    }
 
     /**
      * gets the instance of list model for location and donation
      * @return database instance
      */
     public static ListModel getInstance() {
-        if (instance == null) {
-            instance = new ListModel(new FirestoreManager());
-        }
 
-        return instance;
+        return InstanceHolder.instance;
     }
 
     /**
@@ -138,6 +137,14 @@ public class ListModel {
      */
     public int getLocationListSize() {
         return locations.size();
+    }
+
+    /**
+     * Gets the size of donation list for application
+     * @return size of list of donations
+     */
+    public int getDonationListSize() {
+        return donations.size();
     }
 
     /**
