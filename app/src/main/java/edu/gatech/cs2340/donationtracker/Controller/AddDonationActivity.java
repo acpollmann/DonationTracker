@@ -59,7 +59,7 @@ public class AddDonationActivity extends AppCompatActivity {
         categorySpinner = findViewById(R.id.categorySpinner);
         mCommentField = findViewById(R.id.commentField);
         Button uploadImageButton = findViewById(R.id.uploadImageButton);
-        imageToUpload = findViewById(R.id.imageToUpload);
+        //imageToUpload = findViewById(R.id.imageToUpload);
 
          /*
           Set up the adapter to display the allowable locations in the spinner
