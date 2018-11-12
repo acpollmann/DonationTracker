@@ -105,6 +105,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         langspinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
     }
     class CustomOnItemSelectedListener implements AdapterView.OnItemSelectedListener {
+        @SuppressWarnings("SpellCheckingInspection")
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
             if (pos == 0) {

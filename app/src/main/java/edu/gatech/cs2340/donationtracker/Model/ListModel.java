@@ -9,6 +9,7 @@ import java.util.List;
  * @author Group 71B
  * @version 1.0
  */
+@SuppressWarnings("SpellCheckingInspection")
 public class ListModel {
 
     private static ListModel instance;
@@ -30,6 +31,7 @@ public class ListModel {
      * @param firestoreManager an instance of FirestoreManager
      * @return an instance of UserSet
      */
+    @SuppressWarnings("SpellCheckingInspection")
     public static ListModel getTestInstance(FirestoreManager firestoreManager) {
         return new ListModel(firestoreManager);
     }

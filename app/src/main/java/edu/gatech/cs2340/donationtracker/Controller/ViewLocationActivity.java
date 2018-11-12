@@ -159,7 +159,7 @@ public class ViewLocationActivity extends AppCompatActivity
      *This method will maintain the location filters.
      *
      * @param information the general name of the location filter
-     * @param sortBy the specfic filter type
+     * @param sortBy the specific filter type
      */
     private void addFilter(String information, String sortBy) {
         //check the hash map if the group already exists
@@ -192,6 +192,7 @@ public class ViewLocationActivity extends AppCompatActivity
      *
      * @param recyclerView the recyclerview on the VIEW LOCATIONS page
      */
+    @SuppressWarnings("SpellCheckingInspection")
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         List<Location> filteredLocations = model.getLocations();
         if (filteredLocations.isEmpty()) {

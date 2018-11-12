@@ -181,11 +181,12 @@ public class ViewDonationsActivity extends AppCompatActivity {
 
     /**
      * This method will take user text input and search for donation items with names
-     * mathcing the string.
+     * matching the string.
      *
      * @param donations the list of all the donations in the app
      * @param search a string from the user that will be used to filter (DONATION NAME)
      */
+    @SuppressWarnings("SpellCheckingInspection")
     private List<Donation> searchForDonation (List<Donation> donations, String search) {
         if (search == null) {
             return donations;
@@ -278,6 +279,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
             return new ViewHolder(view);
         }
 
+        @SuppressWarnings("SpellCheckingInspection")
         @Override
         public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         /*
