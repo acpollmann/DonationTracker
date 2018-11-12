@@ -111,17 +111,18 @@ public class CustomAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isLastChild, View view,
                              ViewGroup parent) {
 
+        View view1 = view;
         GroupInfo headerInfo = (GroupInfo) getGroup(groupPosition);
-        if (view == null) {
+        if (view1 == null) {
             LayoutInflater inf =
                     (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inf.inflate(R.layout.locationsearch_subject, null);
+            view1 = inf.inflate(R.layout.locationsearch_subject, null);
         }
 
-        TextView heading = view.findViewById(R.id.heading);
+        TextView heading = view1.findViewById(R.id.heading);
         heading.setText(headerInfo.getName().trim());
 
-        return view;
+        return view1;
     }
 
     /**

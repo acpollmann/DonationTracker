@@ -76,15 +76,6 @@ public class UserSet {
     }
 
     /**
-     * Adds a user to the app
-     * @param user the user to be added
-     */
-    public void addUser(User user) {
-        _users.add(user);
-        firestoreManager.add(user);
-    }
-
-    /**
      * Searches through the set of users in O(n) time, checking if a user with the given email
      * already exists in the set.
      *

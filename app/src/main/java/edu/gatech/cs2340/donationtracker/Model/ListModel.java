@@ -138,6 +138,14 @@ public class ListModel {
     }
 
     /**
+     * Gets the size of donation list for application
+     * @return size of list of donations
+     */
+    public int getDonationListSize() {
+        return donations.size();
+    }
+
+    /**
      * finds item by the key value
      * @param key id for item
      * @return location from id

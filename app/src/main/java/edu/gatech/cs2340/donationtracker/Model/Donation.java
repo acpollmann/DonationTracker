@@ -54,7 +54,7 @@ public class Donation {
         this.value = value;
         this.category = category;
         this.comments = comments;
-        this.key = next_key++;
+        this.key = getNext_Key();
 
     }
 
@@ -63,6 +63,15 @@ public class Donation {
      * @return key of the donation item
      */
     public int getKey() {return key;}
+
+    /**
+     * Gets next key from list model donation list for application
+     * @return key for next donation
+     */
+    private int getNext_Key() {
+        return ListModel.getInstance().getDonationListSize() + 1;
+    }
+
 
     /**
      * Gets the name from donation form for the activity pages
