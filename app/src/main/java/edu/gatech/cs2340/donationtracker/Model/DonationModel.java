@@ -20,7 +20,7 @@ public class DonationModel {
      */
     public static synchronized DonationModel getInstance() {
         if (instance == null) {
-            instance = new DonationModel(new FirestoreManager());
+            instance = new DonationModel(FirestoreManager.getInstance());
         }
         return instance;
     }

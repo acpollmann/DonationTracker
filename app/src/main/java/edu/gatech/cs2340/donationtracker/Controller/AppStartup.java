@@ -26,15 +26,13 @@ public class AppStartup extends Application {
     public void onCreate() {
         super.onCreate();
 
-        FirestoreManager firestoreManager = new FirestoreManager();
-
-        Set<User> users = firestoreManager.loadUsers();
+        Set<User> users = FirestoreManager.getInstance().loadUsers();
         UserModel.getInstance().setUsers(users);
 
-        List<Location> locations = firestoreManager.loadLocations();
+        List<Location> locations = FirestoreManager.getInstance().loadLocations();
         LocationModel.getInstance().setLocations(locations);
 
-        List<Donation> donations = firestoreManager.loadDonations();
+        List<Donation> donations = FirestoreManager.getInstance().loadDonations();
         DonationModel.getInstance().setDonations(donations);
     }
 }

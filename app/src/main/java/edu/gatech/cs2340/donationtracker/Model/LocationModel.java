@@ -20,7 +20,7 @@ public class LocationModel {
      */
     public static synchronized LocationModel getInstance() {
         if (instance == null) {
-            instance = new LocationModel(new FirestoreManager());
+            instance = new LocationModel(FirestoreManager.getInstance());
         }
         return instance;
     }

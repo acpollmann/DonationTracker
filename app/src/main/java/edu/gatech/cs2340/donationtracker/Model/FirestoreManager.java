@@ -25,6 +25,21 @@ import java.util.Set;
  */
 public class FirestoreManager {
 
+    private static FirestoreManager instance;
+
+    /**
+     * Gets an instance of FirestoreManager. If the instance hasn't been initialized yet, create a
+     * new instance.
+     * @return an instance of FirestoreManager
+     */
+    public static synchronized FirestoreManager getInstance() {
+        if (instance == null) {
+            instance = new FirestoreManager();
+        }
+
+        return instance;
+    }
+
     /** Provides direct access to the Firestore database. */
     private final FirebaseFirestore db;
 
@@ -37,7 +52,7 @@ public class FirestoreManager {
     /**
      * create instance of database
      */
-    public FirestoreManager() {
+    private FirestoreManager() {
         db = FirebaseFirestore.getInstance();
         users = new HashSet<>();
         locations = new ArrayList<>();

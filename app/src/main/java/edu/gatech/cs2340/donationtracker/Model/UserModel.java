@@ -19,7 +19,7 @@ public class UserModel {
      */
     public static synchronized UserModel getInstance() {
         if (instance == null) {
-            instance = new UserModel(new FirestoreManager());
+            instance = new UserModel(FirestoreManager.getInstance());
         }
         return instance;
     }
