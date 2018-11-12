@@ -12,17 +12,17 @@ import java.util.Set;
  */
 @SuppressWarnings({"ClassWithOnlyPrivateConstructors", "SpellCheckingInspection"})
 public class UserSet {
-    private static class InstanceHolder {
-        private static final UserSet instance = new UserSet(new FirestoreManager());
-    }
 
+    private static UserSet instance;
     /**
      * Gets instance of user
      * @return instance of user
      */
-    public static UserSet getInstance() {
-
-        return InstanceHolder.instance;
+    public static synchronized UserSet getInstance() {
+        if (instance == null) {
+            instance = new UserSet(new FirestoreManager());
+        }
+        return instance;
     }
 
     /**
