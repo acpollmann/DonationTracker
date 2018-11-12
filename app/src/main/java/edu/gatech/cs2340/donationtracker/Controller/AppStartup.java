@@ -10,7 +10,7 @@ import edu.gatech.cs2340.donationtracker.Model.FirestoreManager;
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
 import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.Model.User;
-import edu.gatech.cs2340.donationtracker.Model.UserSet;
+import edu.gatech.cs2340.donationtracker.Model.UserModel;
 
 /**
  * Implementation that will initiate ListModel and FireStore.
@@ -32,7 +32,7 @@ public class AppStartup extends Application {
 
         firestoreManager = new FirestoreManager();
         Set<User> users = firestoreManager.loadUsers();
-        UserSet.getInstance().setUsers(users);
+        UserModel.getInstance().setUsers(users);
 
 
         List<Location> locations = firestoreManager.loadLocations();

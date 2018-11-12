@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 
 import edu.gatech.cs2340.donationtracker.Controller.LoginActivity;
 import edu.gatech.cs2340.donationtracker.Model.User;
-import edu.gatech.cs2340.donationtracker.Model.UserSet;
+import edu.gatech.cs2340.donationtracker.Model.UserModel;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -32,9 +32,9 @@ public class LoginActivityTest {
 
     @Test
     public void testOnLoginPressed_ValidUser() {
-        UserSet mockUserSet = mock(UserSet.class);
-        when(mockUserSet.validUser(user1.getEmail(), user1.getPassword())).thenReturn(true);
-        mActivityRule.getActivity().setUserSet(mockUserSet);
+        UserModel mockUserModel = mock(UserModel.class);
+        when(mockUserModel.validUser(user1.getEmail(), user1.getPassword())).thenReturn(true);
+        mActivityRule.getActivity().setUserModel(mockUserModel);
 
         // type email1 into the email field
         onView(withId(R.id.email_field)).perform(typeText(user1.getEmail()), closeSoftKeyboard());
@@ -49,8 +49,8 @@ public class LoginActivityTest {
 
     @Test
     public void testOnLoginPressed_InvalidUser() {
-        UserSet mockUserSet = mock(UserSet.class);
-        mActivityRule.getActivity().setUserSet(mockUserSet);
+        UserModel mockUserModel = mock(UserModel.class);
+        mActivityRule.getActivity().setUserModel(mockUserModel);
 
         // type Invalid email into the email field
         onView(withId(R.id.email_field)).perform(typeText("Invalid email"), closeSoftKeyboard());

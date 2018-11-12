@@ -25,9 +25,9 @@ public class ListModel {
     }
 
     /**
-     * Gets an instance of UserSet, used for testing purposes
+     * Gets an instance of UserModel, used for testing purposes
      * @param firestoreManager an instance of FirestoreManager
-     * @return an instance of UserSet
+     * @return an instance of UserModel
      */
     public static ListModel getTestInstance(FirestoreManager firestoreManager) {
         return new ListModel(firestoreManager);
