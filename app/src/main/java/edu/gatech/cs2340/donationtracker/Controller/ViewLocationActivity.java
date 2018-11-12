@@ -25,7 +25,6 @@ import edu.gatech.cs2340.donationtracker.Model.CustomAdapter;
 import edu.gatech.cs2340.donationtracker.Model.GroupInfo;
 import edu.gatech.cs2340.donationtracker.Model.ListModel;
 import edu.gatech.cs2340.donationtracker.Model.Location;
-import edu.gatech.cs2340.donationtracker.Model.SearchAdapterLocation;
 import edu.gatech.cs2340.donationtracker.R;
 
 /**
@@ -42,7 +41,6 @@ public class ViewLocationActivity extends AppCompatActivity
     private final ListModel model = ListModel.getInstance();
     private final Map<String, GroupInfo> filteredBy = new LinkedHashMap<>();
     private final ArrayList<GroupInfo> expandableListList = new ArrayList<>();
-    private SearchAdapterLocation searchAdapter;
     private ExpandableListView simpleExpandableListView;
 
     @Override
@@ -112,7 +110,6 @@ public class ViewLocationActivity extends AppCompatActivity
     }
     @Override
     public boolean onQueryTextChange(String newText) {
-        searchAdapter.filter(newText);
         return false;
     }
 
