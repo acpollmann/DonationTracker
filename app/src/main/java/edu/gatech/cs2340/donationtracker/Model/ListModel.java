@@ -9,6 +9,7 @@ import java.util.List;
  * @author Group 71B
  * @version 1.0
  */
+@SuppressWarnings("ClassWithOnlyPrivateConstructors")
 public class ListModel {
 
     private static ListModel instance;
@@ -134,7 +135,7 @@ public class ListModel {
      * Gets the size of location list for application
      * @return size of list of locations
      */
-    public int getLocationListSize() {
+    int getLocationListSize() {
         return locations.size();
     }
 

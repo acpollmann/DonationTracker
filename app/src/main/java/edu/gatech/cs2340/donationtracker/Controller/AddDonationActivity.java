@@ -62,7 +62,7 @@ public class AddDonationActivity extends AppCompatActivity {
          */
          @SuppressWarnings("unchecked")
         ArrayAdapter<Location> locationAdapter = (ArrayAdapter<Location>)new ArrayAdapter(this,
-                android.R.layout.simple_spinner_item, ListModel.getInstance().getLocations());
+                android.R.layout.simple_spinner_item, model.getLocations());
         locationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         locationSpinner.setAdapter(locationAdapter);
 
