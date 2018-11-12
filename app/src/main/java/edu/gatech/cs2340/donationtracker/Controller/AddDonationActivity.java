@@ -11,7 +11,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import edu.gatech.cs2340.donationtracker.Model.Donation;
-import edu.gatech.cs2340.donationtracker.Model.ListModel;
+import edu.gatech.cs2340.donationtracker.Model.DonationModel;
+import edu.gatech.cs2340.donationtracker.Model.LocationModel;
 import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.R;
 
@@ -36,7 +37,9 @@ public class AddDonationActivity extends AppCompatActivity {
     private EditText mValueField;
     private Spinner categorySpinner;
     private EditText mCommentField;
-    private ListModel model;
+
+    private DonationModel donationModel;
+    private LocationModel locationModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,13 +59,14 @@ public class AddDonationActivity extends AppCompatActivity {
         categorySpinner = findViewById(R.id.categorySpinner);
         mCommentField = findViewById(R.id.commentField);
 
-        model = ListModel.getInstance();
+        donationModel = DonationModel.getInstance();
+        locationModel = LocationModel.getInstance();
 
          /*
           Set up the adapter to display the allowable locations in the spinner
          */
         ArrayAdapter<Location> locationAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, model.getLocations());
+                android.R.layout.simple_spinner_item, locationModel.getLocations());
         locationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         locationSpinner.setAdapter(locationAdapter);
 
@@ -73,8 +77,6 @@ public class AddDonationActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, Donation.legalCategories);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(categoryAdapter);
-
-        model = ListModel.getInstance();
     }
 
     /**
@@ -112,7 +114,7 @@ public class AddDonationActivity extends AppCompatActivity {
                 || "".equals(fullDescription) || "".equals(value)) {
             mErrorMessage.setText(R.string.addDonationErrorM);
         } else {
-            model.addDonation(name, location, timeStamp, shortDescription,
+            donationModel.addDonation(name, location, timeStamp, shortDescription,
                     fullDescription, value, category, comment);
             Intent intent = new Intent(this, ViewDonationsActivity.class);
             startActivity(intent);

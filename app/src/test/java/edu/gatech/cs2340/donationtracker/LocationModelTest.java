@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import edu.gatech.cs2340.donationtracker.Model.FirestoreManager;
-import edu.gatech.cs2340.donationtracker.Model.ListModel;
+import edu.gatech.cs2340.donationtracker.Model.LocationModel;
 import edu.gatech.cs2340.donationtracker.Model.Location;
 
 import static org.junit.Assert.assertEquals;
@@ -13,8 +13,8 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 
-public class ListModelTest {
-    private ListModel testListModel;
+public class LocationModelTest {
+    private LocationModel testLocationModel;
 
     private final Location location1 = new Location(
             1,
@@ -60,46 +60,46 @@ public class ListModelTest {
 
     @Before
     public void setup() {
-        testListModel = ListModel.getTestInstance(mock(FirestoreManager.class));
+        testLocationModel = LocationModel.getTestInstance(mock(FirestoreManager.class));
     }
 
     @Test
     public void testLocationById_EmptyList() {
-        assertTrue(testListModel.getLocations().isEmpty());
-        assertNull(testListModel.findLocationById(-1));
+        assertTrue(testLocationModel.getLocations().isEmpty());
+        assertNull(testLocationModel.findLocationById(-1));
     }
 
     @Test
     public void testLocationById_OneItem_KeyFound() {
-        testListModel.addLocation(location1);
-        assertFalse(testListModel.getLocations().isEmpty());
-        assertEquals(location1, testListModel.findLocationById(1));
+        testLocationModel.addLocation(location1);
+        assertFalse(testLocationModel.getLocations().isEmpty());
+        assertEquals(location1, testLocationModel.findLocationById(1));
     }
 
     @Test
     public void testLocationById_OneItem_KeyNotFound() {
-        testListModel.addLocation(location1);
-        assertFalse(testListModel.getLocations().isEmpty());
-        assertNull(testListModel.findLocationById(-1));
+        testLocationModel.addLocation(location1);
+        assertFalse(testLocationModel.getLocations().isEmpty());
+        assertNull(testLocationModel.findLocationById(-1));
     }
 
     @Test
     public void testLocationById_LargerList_KeyFound() {
-        testListModel.addLocation(location1);
-        testListModel.addLocation(location2);
-        testListModel.addLocation(location3);
-        assertFalse(testListModel.getLocations().isEmpty());
-        assertEquals(location1, testListModel.findLocationById(1));
-        assertEquals(location2, testListModel.findLocationById(2));
-        assertEquals(location3, testListModel.findLocationById(3));
+        testLocationModel.addLocation(location1);
+        testLocationModel.addLocation(location2);
+        testLocationModel.addLocation(location3);
+        assertFalse(testLocationModel.getLocations().isEmpty());
+        assertEquals(location1, testLocationModel.findLocationById(1));
+        assertEquals(location2, testLocationModel.findLocationById(2));
+        assertEquals(location3, testLocationModel.findLocationById(3));
     }
 
     @Test
     public void testLocationById_LargerList_KeyNotFound() {
-        testListModel.addLocation(location1);
-        testListModel.addLocation(location2);
-        testListModel.addLocation(location3);
-        assertFalse(testListModel.getLocations().isEmpty());
-        assertNull(testListModel.findLocationById(-1));
+        testLocationModel.addLocation(location1);
+        testLocationModel.addLocation(location2);
+        testLocationModel.addLocation(location3);
+        assertFalse(testLocationModel.getLocations().isEmpty());
+        assertNull(testLocationModel.findLocationById(-1));
     }
 }

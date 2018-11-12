@@ -122,7 +122,7 @@ public class Location {
      * @return key for next location
      */
     private int getNext_key() {
-        return ListModel.getInstance().getLocationListSize() + 1;
+        return LocationModel.getInstance().getLocationListSize() + 1;
     }
     /**
      * Gets location name for the location

@@ -21,7 +21,8 @@ import java.util.List;
 import java.util.Objects;
 
 import edu.gatech.cs2340.donationtracker.Model.Donation;
-import edu.gatech.cs2340.donationtracker.Model.ListModel;
+import edu.gatech.cs2340.donationtracker.Model.DonationModel;
+import edu.gatech.cs2340.donationtracker.Model.LocationModel;
 import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.R;
 
@@ -39,13 +40,17 @@ public class ViewDonationsActivity extends AppCompatActivity {
     private Spinner categorySearchSpinner;
     private Spinner locationSearchSpinner;
     private SearchView searchNameView;
-    private ListModel model;
+
+    private DonationModel donationModel;
+    private LocationModel locationModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_donations);
-        model = ListModel.getInstance();
+
+        donationModel = DonationModel.getInstance();
+        locationModel = LocationModel.getInstance();
 
         categorySearchSpinner = findViewById(R.id.categorySpinner);
         locationSearchSpinner = findViewById(R.id.locationSpinner);
@@ -80,7 +85,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         List<String> selectableLocations = new ArrayList<>();
         selectableLocations.add("All");
 
-        for (Location location : model.getLocations()) {
+        for (Location location : locationModel.getLocations()) {
             selectableLocations.add(Objects.toString(location));
         }
         final ArrayAdapter<String> locationSearchAdapter = new ArrayAdapter<>(this,
@@ -203,7 +208,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
      * @param recyclerView the view that needs this adapter
      */
     private void setupRecyclerView(RecyclerView recyclerView) {
-        List<Donation> filteredDonations = model.getDonations();
+        List<Donation> filteredDonations = donationModel.getDonations();
 
         filteredDonations = filterByCategory(
                             filteredDonations,
