@@ -23,7 +23,6 @@ import java.util.Set;
  * This class acts as an interface between the application and Firestore. The model gets passed into
  * this class, where objects will be converted into documents to store in Firestore.
  */
-@SuppressWarnings("SpellCheckingInspection")
 public class FirestoreManager {
 
     /** Provides direct access to the Firestore database. */
@@ -222,7 +221,6 @@ public class FirestoreManager {
                                         + document.getData());
 
                                 Map<String, Object> donationDoc = document.getData();
-                                @SuppressWarnings("unchecked")
                                 Map<String, Object> locationMap =
                                         (Map<String, Object>) donationDoc.get("location");
 

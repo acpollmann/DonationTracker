@@ -48,7 +48,6 @@ public class Location {
      * @param lat  the latitude
      * @param longit  the longitude
      */
-    @SuppressWarnings("SpellCheckingInspection")
     public Location(double lat, double longit) {
         latitude = lat;
         longitude = longit;

@@ -45,7 +45,6 @@ class SearchAdapterLocation extends BaseAdapter {
         return position;
     }
 
-    @SuppressWarnings("SpellCheckingInspection")
     @Override
     public View getView(final int position, View view, ViewGroup parent) {
         View view1 = view;
@@ -65,7 +64,6 @@ class SearchAdapterLocation extends BaseAdapter {
     }
 
     // Filter Class
-    @SuppressWarnings("AssignmentToMethodParameter")
     public void filter(String charText) {
         String text = charText.toLowerCase(Locale.getDefault());
         locationList.clear();
