@@ -11,13 +11,6 @@ import java.util.List;
 
 import edu.gatech.cs2340.donationtracker.R;
 
-/**
- * Implementation of adapter for expandable list view for view locations
- *
- * @author Group 71B
- * @version 1.0
- */
-
 public class CustomAdapter extends BaseExpandableListAdapter {
 
     private final Context context;
@@ -26,7 +19,6 @@ public class CustomAdapter extends BaseExpandableListAdapter {
     /**
      * creating the adapter
      * @param context,deptlist what based on and what goes to
-     * @param filterTypeList list of the children to be put in the adapter
      */
     public CustomAdapter(Context context, List<GroupInfo> filterTypeList) {
         this.context = context;
@@ -57,22 +49,17 @@ public class CustomAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild,
                              View view, ViewGroup parent) {
 
-        View view1 = view;
         ChildInfo detailInfo = (ChildInfo) getChild(groupPosition, childPosition);
-        if (view1 == null) {
+        if (view == null) {
             LayoutInflater detailInflater =
                     (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            if (detailInflater != null) {
-                view1 = detailInflater.inflate(R.layout.locationsearch_child, null);
-            }
+            view = detailInflater.inflate(R.layout.locationsearch_child, null);
         }
 
-        TextView sequence = view1.findViewById(R.id.sequence);
-        sequence.setText(detailInfo.getSequence().trim());
-        TextView childItem = view1.findViewById(R.id.childItem);
+        TextView childItem = view.findViewById(R.id.childItem);
         childItem.setText(detailInfo.getName().trim());
 
-        return view1;
+        return view;
     }
 
     /**
@@ -117,20 +104,17 @@ public class CustomAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isLastChild, View view,
                              ViewGroup parent) {
 
-        View view1 = view;
         GroupInfo headerInfo = (GroupInfo) getGroup(groupPosition);
-        if (view1 == null) {
+        if (view == null) {
             LayoutInflater inf =
                     (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            if (inf != null) {
-                view1 = inf.inflate(R.layout.locationsearch_child, null);
-            }
+            view = inf.inflate(R.layout.locationsearch_subject, null);
         }
 
-        TextView heading = view1.findViewById(R.id.heading);
+        TextView heading = view.findViewById(R.id.heading);
         heading.setText(headerInfo.getName().trim());
 
-        return view1;
+        return view;
     }
 
     /**

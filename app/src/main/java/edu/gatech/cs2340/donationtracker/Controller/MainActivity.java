@@ -25,10 +25,6 @@ import edu.gatech.cs2340.donationtracker.R;
 public class
 MainActivity extends AppCompatActivity {
 
-<<<<<<< HEAD
-    public static String TAG = "Donation_TrackerAPP";
-=======
->>>>>>> 818cdbc4bce7aff1e920ff30f1b83b177548a3f4
     private ObjectAnimator viewanimator;
     private ObjectAnimator addanimator;
     private ObjectAnimator statanimator;

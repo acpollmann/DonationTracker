@@ -68,14 +68,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         //save the map instance returned from Google
         /* holds the map object returned from Google */
-<<<<<<< HEAD
+
 
         googleMap.getUiSettings().setZoomControlsEnabled(true);
-=======
-        GoogleMap myGoogleMap = googleMap;
-
-        myGoogleMap.getUiSettings().setZoomControlsEnabled(true);
->>>>>>> 818cdbc4bce7aff1e920ff30f1b83b177548a3f4
 
         //get the data to display
         List<Location> locationList = ListModel.getInstance().getLocations();
@@ -84,28 +79,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         for (Location location : locationList) {
             Log.d("Location added", location.getLatitude() + ", "  + location.getLongitude());
             LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
-<<<<<<< HEAD
+
             googleMap.addMarker(new MarkerOptions().position(loc).title(location.getLocationName())
-=======
-            myGoogleMap.addMarker(new MarkerOptions().position(loc).title(location.getLocationName())
->>>>>>> 818cdbc4bce7aff1e920ff30f1b83b177548a3f4
                     .snippet(location.getPhone()));
         }
         Double gatechLat = 33.7756;
         Double gatechLong = -84.3963;
         Float initialZoom = 10.0f;
         LatLng gatech = new LatLng(gatechLat, gatechLong);
-<<<<<<< HEAD
+
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(gatech, initialZoom));
 
         //Use a custom layout for the pin data
         googleMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
-=======
-        myGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(gatech, initialZoom));
 
-        //Use a custom layout for the pin data
-        myGoogleMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
->>>>>>> 818cdbc4bce7aff1e920ff30f1b83b177548a3f4
     }
 
     /**
@@ -128,11 +115,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             TextView tvTitle = myContentsView.findViewById(R.id.title);
             tvTitle.setText(marker.getTitle());
-<<<<<<< HEAD
-            TextView tvSnippet = myContentsView.findViewById(R.id.snippet);
-=======
+
             TextView tvSnippet = (myContentsView.findViewById(R.id.snippet));
->>>>>>> 818cdbc4bce7aff1e920ff30f1b83b177548a3f4
             tvSnippet.setText(marker.getSnippet());
 
             return myContentsView;
