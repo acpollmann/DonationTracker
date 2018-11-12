@@ -10,7 +10,7 @@ import java.util.Set;
  * @author Group 71B
  * @version 1.0
  */
-public final class UserSet {
+public class UserSet {
     /** Singleton instance */
     private static UserSet instance;
     /**
@@ -23,6 +23,15 @@ public final class UserSet {
         }
 
         return instance;
+    }
+
+    /**
+     * Gets an instance of UserSet, used for testing purposes
+     * @param firestoreManager an instance of FirestoreManager
+     * @return an instance of UserSet
+     */
+    public static UserSet getTestInstance(FirestoreManager firestoreManager) {
+        return new UserSet(firestoreManager);
     }
 
     /** Set of users known to the application. */
@@ -65,6 +74,15 @@ public final class UserSet {
         User newUser = new User(email, password, type);
         _users.add(newUser);
         firestoreManager.add(newUser);
+    }
+
+    /**
+     * Adds a user to the app
+     * @param user the user to be added
+     */
+    public void addUser(User user) {
+        _users.add(user);
+        firestoreManager.add(user);
     }
 
     /**
