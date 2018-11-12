@@ -69,7 +69,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //save the map instance returned from Google
         /* holds the map object returned from Google */
 
-
         googleMap.getUiSettings().setZoomControlsEnabled(true);
 
         //get the data to display

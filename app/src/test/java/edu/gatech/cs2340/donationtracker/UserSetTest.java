@@ -3,8 +3,6 @@ package edu.gatech.cs2340.donationtracker;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.HashSet;
-import java.util.Set;
 
 import edu.gatech.cs2340.donationtracker.Model.FirestoreManager;
 import edu.gatech.cs2340.donationtracker.Model.User;
