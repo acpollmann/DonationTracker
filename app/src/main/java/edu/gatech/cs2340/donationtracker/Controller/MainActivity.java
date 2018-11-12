@@ -127,43 +127,38 @@ public class MainActivity extends AppCompatActivity {
         Button manageTarget = this.findViewById(R.id.manage_accounts_bubble);
         Button mapTarget = this.findViewById(R.id.map_view_bubble);
         Button searchTarget = this.findViewById(R.id.search_for_donation_button);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Path path = new Path();
-            path.arcTo(0f, 0f, 800f, 1100f, -24f, 14000f, false);
-            viewanimator = ObjectAnimator.ofFloat(viewLocationTarget, View.X, View.Y, path);
-            viewanimator.setDuration(500);
-            viewanimator.start();
-            Path path2 = new Path();
-            path2.arcTo(0f, 0f, 700f, 1700f, -145f, 14000f, false);
-            addanimator = ObjectAnimator.ofFloat(addDonationTarget, View.X, View.Y, path2);
-            addanimator.setDuration(500);
-            addanimator.start();
-            Path path3 = new Path();
-            path3.arcTo(0f, 0f, 400f, 2300f, -5f, 14000f, false);
-            statanimator = ObjectAnimator.ofFloat(statsTarget, View.X, View.Y, path3);
-            statanimator.setDuration(500);
-            statanimator.start();
-            Path path4 = new Path();
-            path4.arcTo(0f, 0f, 500f, 1170f, -50f, 12000f, false);
-            mananimator =
-                    ObjectAnimator.ofFloat(manageTarget, View.X, View.Y, path4);
-            mananimator.setDuration(500);
-            mananimator.start();
-            Path path5 = new Path();
-            path5.arcTo(0f, 0f, 110f, 1450f, 20f, 14000f, false);
-            mapanimator = ObjectAnimator.ofFloat(mapTarget, View.X, View.Y, path5);
-            mapanimator.setDuration(500);
-            mapanimator.start();
-            Path path6 = new Path();
-            path6.arcTo(0f, 0f, 770f, 1150f, 40f, 14000f, false);
-            searchanimator =
-                    ObjectAnimator.ofFloat(searchTarget, View.X, View.Y, path6);
-            searchanimator.setDuration(500);
-            searchanimator.start();
-        } else {
-            Animation ifoldanimation = AnimationUtils.loadAnimation(this, R.anim.rotateleft);
-            viewLocationTarget.startAnimation(ifoldanimation);
-        }
+        Path path = new Path();
+        path.arcTo(0f, 0f, 800f, 1100f, -24f, 14000f, false);
+        viewanimator = ObjectAnimator.ofFloat(viewLocationTarget, View.X, View.Y, path);
+        viewanimator.setDuration(500);
+        viewanimator.start();
+        Path path2 = new Path();
+        path2.arcTo(0f, 0f, 700f, 1700f, -145f, 14000f, false);
+        addanimator = ObjectAnimator.ofFloat(addDonationTarget, View.X, View.Y, path2);
+        addanimator.setDuration(500);
+        addanimator.start();
+        Path path3 = new Path();
+        path3.arcTo(0f, 0f, 400f, 2300f, -5f, 14000f, false);
+        statanimator = ObjectAnimator.ofFloat(statsTarget, View.X, View.Y, path3);
+        statanimator.setDuration(500);
+        statanimator.start();
+        Path path4 = new Path();
+        path4.arcTo(0f, 0f, 500f, 1170f, -50f, 12000f, false);
+        mananimator =
+                ObjectAnimator.ofFloat(manageTarget, View.X, View.Y, path4);
+        mananimator.setDuration(500);
+        mananimator.start();
+        Path path5 = new Path();
+        path5.arcTo(0f, 0f, 110f, 1450f, 20f, 14000f, false);
+        mapanimator = ObjectAnimator.ofFloat(mapTarget, View.X, View.Y, path5);
+        mapanimator.setDuration(500);
+        mapanimator.start();
+        Path path6 = new Path();
+        path6.arcTo(0f, 0f, 770f, 1150f, 40f, 14000f, false);
+        searchanimator =
+                ObjectAnimator.ofFloat(searchTarget, View.X, View.Y, path6);
+        searchanimator.setDuration(500);
+        searchanimator.start();
     }
 }
 
