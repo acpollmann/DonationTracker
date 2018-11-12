@@ -82,9 +82,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             googleMap.addMarker(new MarkerOptions().position(loc).title(location.getLocationName())
                     .snippet(location.getPhone()));
         }
-        Double gatechLat = 33.7756;
-        Double gatechLong = -84.3963;
-        Float initialZoom = 10.0f;
+        final double gatechLat = 33.7756;
+        final double gatechLong = -84.3963;
+        final float initialZoom = 10.0f;
         LatLng gatech = new LatLng(gatechLat, gatechLong);
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(gatech, initialZoom));

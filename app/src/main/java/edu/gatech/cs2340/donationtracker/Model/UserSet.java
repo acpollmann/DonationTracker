@@ -10,7 +10,7 @@ import java.util.Set;
  * @author Group 71B
  * @version 1.0
  */
-@SuppressWarnings("SpellCheckingInspection")
+@SuppressWarnings({"ClassWithOnlyPrivateConstructors", "SpellCheckingInspection"})
 public class UserSet {
     private static class InstanceHolder {
         private static final UserSet instance = new UserSet(new FirestoreManager());
