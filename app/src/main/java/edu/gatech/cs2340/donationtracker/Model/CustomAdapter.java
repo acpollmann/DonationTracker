@@ -115,7 +115,7 @@ public class CustomAdapter extends BaseExpandableListAdapter {
         if (view == null) {
             LayoutInflater inf =
                     (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inf.inflate(R.layout.locationsearch_subject, null);
+            view = Objects.requireNonNull(inf).inflate(R.layout.locationsearch_subject, null);
         }
 
         TextView heading = view.findViewById(R.id.heading);

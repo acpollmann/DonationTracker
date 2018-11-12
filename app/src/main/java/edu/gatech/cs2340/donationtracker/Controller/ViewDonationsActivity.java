@@ -187,7 +187,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
      * @param search a string from the user that will be used to filter (DONATION NAME)
      */
     @SuppressWarnings("SpellCheckingInspection")
-    private List<Donation> searchForDonation (List<Donation> donations, String search) {
+    private List<Donation> searchForDonation(List<Donation> donations, String search) {
         if (search == null) {
             return donations;
         }
