@@ -42,7 +42,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
     private SearchView searchNameView;
 
     private DonationModel donationModel;
-    private LocationModel locationModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +49,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_donations);
 
         donationModel = DonationModel.getInstance();
-        locationModel = LocationModel.getInstance();
+        LocationModel locationModel = LocationModel.getInstance();
 
         categorySearchSpinner = findViewById(R.id.categorySpinner);
         locationSearchSpinner = findViewById(R.id.locationSpinner);

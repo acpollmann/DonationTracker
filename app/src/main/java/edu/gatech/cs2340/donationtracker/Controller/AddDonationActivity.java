@@ -39,7 +39,6 @@ public class AddDonationActivity extends AppCompatActivity {
     private EditText mCommentField;
 
     private DonationModel donationModel;
-    private LocationModel locationModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +59,7 @@ public class AddDonationActivity extends AppCompatActivity {
         mCommentField = findViewById(R.id.commentField);
 
         donationModel = DonationModel.getInstance();
-        locationModel = LocationModel.getInstance();
+        LocationModel locationModel = LocationModel.getInstance();
 
          /*
           Set up the adapter to display the allowable locations in the spinner
