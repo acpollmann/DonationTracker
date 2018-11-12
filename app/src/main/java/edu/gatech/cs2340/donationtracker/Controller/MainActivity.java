@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
      * Specifically, details their path during animation.
      *
      */
+    @SuppressWarnings("OverlyLongMethod")
     private void animateButtons(View view) {
         ObjectAnimator viewanimator;
         ObjectAnimator addanimator;

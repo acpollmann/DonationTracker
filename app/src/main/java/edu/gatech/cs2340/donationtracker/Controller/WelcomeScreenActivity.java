@@ -31,7 +31,7 @@ import edu.gatech.cs2340.donationtracker.R;
  */
 public class WelcomeScreenActivity extends AppCompatActivity {
     private AnimationDrawable anim;
-    String currentLang;
+    private String currentLang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         welcomeScreen = findViewById(R.id.welcomeScreen);
         welcomeScreen.setBackgroundResource(R.drawable.background_anim);
         anim = (AnimationDrawable) welcomeScreen.getBackground();
-        int fadeDuration = 4500;
+        final int fadeDuration = 4500;
         anim.setEnterFadeDuration(fadeDuration);
         anim.setExitFadeDuration(fadeDuration);
         Button registerButton = findViewById(R.id.register_button);

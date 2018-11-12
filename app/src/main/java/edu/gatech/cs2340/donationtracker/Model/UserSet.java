@@ -10,20 +10,19 @@ import java.util.Set;
  * @author Group 71B
  * @version 1.0
  */
-@SuppressWarnings("SpellCheckingInspection")
+@SuppressWarnings({"ClassWithOnlyPrivateConstructors", "SpellCheckingInspection"})
 public class UserSet {
-    /** Singleton instance */
-    private static UserSet instance;
+    private static class InstanceHolder {
+        private static final UserSet instance = new UserSet(new FirestoreManager());
+    }
+
     /**
      * Gets instance of user
      * @return instance of user
      */
     public static UserSet getInstance() {
-        if (instance == null) {
-            instance = new UserSet(new FirestoreManager());
-        }
 
-        return instance;
+        return InstanceHolder.instance;
     }
 
     /**
@@ -75,15 +74,6 @@ public class UserSet {
         User newUser = new User(email, password, type);
         _users.add(newUser);
         firestoreManager.add(newUser);
-    }
-
-    /**
-     * Adds a user to the app
-     * @param user the user to be added
-     */
-    public void addUser(User user) {
-        _users.add(user);
-        firestoreManager.add(user);
     }
 
     /**

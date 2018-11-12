@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Donation {
     /** allow user to assign number to specific donations */
-    private static int Next_key;
+    private static int next_key;
     private final int key;
     private String name;
     private String timeStamp;
@@ -26,10 +26,10 @@ public class Donation {
     private String category;
     private String comments;
     private Image picture;
-    public static List<String> legalCategories = Arrays.asList("Clothing", "Hat",
+    public static final List<String> legalCategories = Arrays.asList("Clothing", "Hat",
             "Kitchen", "Electronics", "Household", "Other");
 
-    public static List<String> searchLegalCategories = Arrays.asList("All", "Clothing", "Hat",
+    public static final List<String> searchLegalCategories = Arrays.asList("All", "Clothing", "Hat",
             "Kitchen", "Electronics", "Household", "Other");
 
     /**
@@ -54,7 +54,7 @@ public class Donation {
         this.value = value;
         this.category = category;
         this.comments = comments;
-        this.key = Donation.Next_key++;
+        this.key = getNext_Key();
 
     }
 
@@ -63,6 +63,15 @@ public class Donation {
      * @return key of the donation item
      */
     public int getKey() {return key;}
+
+    /**
+     * Gets next key from list model donation list for application
+     * @return key for next donation
+     */
+    private int getNext_Key() {
+        return ListModel.getInstance().getDonationListSize() + 1;
+    }
+
 
     /**
      * Gets the name from donation form for the activity pages

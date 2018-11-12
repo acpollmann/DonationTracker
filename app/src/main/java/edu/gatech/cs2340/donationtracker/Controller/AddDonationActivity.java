@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -44,8 +43,6 @@ public class AddDonationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_donation);
 
-        ImageView imageToUpload;
-
         configureBackButton();
 
         mErrorMessage = findViewById(R.id.error_message);
@@ -58,15 +55,15 @@ public class AddDonationActivity extends AppCompatActivity {
         mValueField = findViewById(R.id.valueField);
         categorySpinner = findViewById(R.id.categorySpinner);
         mCommentField = findViewById(R.id.commentField);
-        Button uploadImageButton = findViewById(R.id.uploadImageButton);
-        //imageToUpload = findViewById(R.id.imageToUpload);
+
+        model = ListModel.getInstance();
 
          /*
           Set up the adapter to display the allowable locations in the spinner
          */
          @SuppressWarnings("unchecked")
         ArrayAdapter<Location> locationAdapter = (ArrayAdapter<Location>)new ArrayAdapter(this,
-                android.R.layout.simple_spinner_item, ListModel.getInstance().getLocations());
+                android.R.layout.simple_spinner_item, model.getLocations());
         locationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         locationSpinner.setAdapter(locationAdapter);
 

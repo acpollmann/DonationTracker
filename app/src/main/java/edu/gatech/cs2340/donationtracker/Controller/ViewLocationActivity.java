@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,7 +58,7 @@ public class ViewLocationActivity extends AppCompatActivity
         //get reference of the ExpandableListView
         simpleExpandableListView = findViewById(R.id.simpleExpandableListView);
         // create the adapter by passing your ArrayList data
-        CustomAdapter listAdapter = new CustomAdapter(ViewLocationActivity.this,
+        ExpandableListAdapter listAdapter = new CustomAdapter(ViewLocationActivity.this,
                 expandableListList);
         // attach the adapter to the expandable list view
         simpleExpandableListView.setAdapter(listAdapter);
