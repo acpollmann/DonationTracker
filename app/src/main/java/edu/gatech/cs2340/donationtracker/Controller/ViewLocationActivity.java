@@ -193,7 +193,6 @@ public class ViewLocationActivity extends AppCompatActivity
      *
      * @param recyclerView the recyclerview on the VIEW LOCATIONS page
      */
-    @SuppressWarnings("SpellCheckingInspection")
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         List<Location> filteredLocations = model.getLocations();
         if (filteredLocations.isEmpty()) {

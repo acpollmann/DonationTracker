@@ -54,9 +54,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         /*
           Set up the adapter to display the allowable categories in the spinner
          */
-        @SuppressWarnings("unchecked")
-        final ArrayAdapter<Location> categorySearchAdapter =
-                (ArrayAdapter<Location>)new ArrayAdapter(this,
+        final ArrayAdapter<String> categorySearchAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, Donation.searchLegalCategories);
         categorySearchAdapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item
@@ -85,9 +83,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         for (Location location : model.getLocations()) {
             selectableLocations.add(Objects.toString(location));
         }
-        @SuppressWarnings("unchecked")
-        final ArrayAdapter<Location> locationSearchAdapter =
-                (ArrayAdapter<Location>) new ArrayAdapter(this,
+        final ArrayAdapter<String> locationSearchAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, selectableLocations);
         locationSearchAdapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item
@@ -186,7 +182,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
      * @param donations the list of all the donations in the app
      * @param search a string from the user that will be used to filter (DONATION NAME)
      */
-    @SuppressWarnings("SpellCheckingInspection")
     private List<Donation> searchForDonation (List<Donation> donations, String search) {
         if (search == null) {
             return donations;
@@ -279,7 +274,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
             return new ViewHolder(view);
         }
 
-        @SuppressWarnings("SpellCheckingInspection")
         @Override
         public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         /*

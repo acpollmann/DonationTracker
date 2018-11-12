@@ -76,8 +76,7 @@ public class AddLocationActivity extends AppCompatActivity {
         for (String state: states) {
             Log.d("states spin", state);
         }
-        @SuppressWarnings("unchecked")
-        ArrayAdapter<String> statesAdapter = new ArrayAdapter(this,
+        ArrayAdapter<String> statesAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, states);
         statesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         stateSpinner.setAdapter(statesAdapter);
@@ -85,8 +84,7 @@ public class AddLocationActivity extends AppCompatActivity {
         /*
           Set up the adapter to display the allowable location types in the spinner
          */
-        @SuppressWarnings("unchecked")
-        ArrayAdapter<String> typeAdapter = (ArrayAdapter<String>) new ArrayAdapter(this,
+        ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, locationTypes);
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         typeSpinner.setAdapter(typeAdapter);
