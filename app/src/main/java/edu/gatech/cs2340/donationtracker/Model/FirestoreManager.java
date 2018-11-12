@@ -225,6 +225,7 @@ public class FirestoreManager {
                                 Map<String, Object> locationMap =
                                         (Map<String, Object>) donationDoc.get("location");
 
+                                assert locationMap != null;
                                 if (locationMap.get("key") != null) {
                                     long keyl = (long) locationMap.get("key");
                                     int key = (int) keyl;

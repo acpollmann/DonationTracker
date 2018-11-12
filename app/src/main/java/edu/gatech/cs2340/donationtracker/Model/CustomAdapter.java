@@ -53,6 +53,7 @@ public class CustomAdapter extends BaseExpandableListAdapter {
         if (view == null) {
             LayoutInflater detailInflater =
                     (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            assert detailInflater != null;
             view = detailInflater.inflate(R.layout.locationsearch_child, null);
         }
 
@@ -108,6 +109,7 @@ public class CustomAdapter extends BaseExpandableListAdapter {
         if (view == null) {
             LayoutInflater inf =
                     (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            assert inf != null;
             view = inf.inflate(R.layout.locationsearch_subject, null);
         }
 

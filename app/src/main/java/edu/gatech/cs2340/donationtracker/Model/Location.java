@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.donationtracker.Model;
 
+import android.support.annotation.NonNull;
+
 /**
  * Implementation a location for the location list and deatil page
  *
@@ -177,6 +179,7 @@ public class Location {
      * Create string for location name
      * @return string for name for location
      */
+    @NonNull
     @Override
     public String toString() {
         return locationName;

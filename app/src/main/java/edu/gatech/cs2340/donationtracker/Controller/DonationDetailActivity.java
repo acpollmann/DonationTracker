@@ -37,6 +37,7 @@ public class DonationDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
+        assert b != null;
         if (b.getString("name") != null) {
             String name = b.getString("name");
             mName.setText(name);

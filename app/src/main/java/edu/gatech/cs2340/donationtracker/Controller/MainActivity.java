@@ -121,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param view the current view of the MAIN page
      */
+    @SuppressWarnings("OverlyLongMethod")
     private void animateButtons(View view) {
         Button viewLocationTarget = this.findViewById(R.id.view_location_bubble);
         Button addDonationTarget = this.findViewById(R.id.add_donation_bubble);
