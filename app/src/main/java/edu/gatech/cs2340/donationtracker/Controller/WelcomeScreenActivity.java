@@ -30,14 +30,12 @@ import edu.gatech.cs2340.donationtracker.R;
  * @version 1.0
  */
 public class WelcomeScreenActivity extends AppCompatActivity {
-    private LinearLayout welcomeScreen;
     private AnimationDrawable anim;
-    private Locale myLocale;
-    private String currentLanguage = "en";
     String currentLang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        LinearLayout welcomeScreen;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen2);
         welcomeScreen = findViewById(R.id.welcomeScreen);
@@ -159,6 +157,8 @@ public class WelcomeScreenActivity extends AppCompatActivity {
      * @param lang the specific language
      */
     private void setAppLocale(String lang) {
+        Locale myLocale;
+        String currentLanguage = "en";
         if (!lang.equals(currentLanguage)) {
             myLocale = new Locale(lang);
             Resources res = getResources();
