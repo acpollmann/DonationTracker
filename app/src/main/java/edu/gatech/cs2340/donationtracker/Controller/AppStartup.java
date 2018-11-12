@@ -19,8 +19,7 @@ import edu.gatech.cs2340.donationtracker.Model.UserSet;
  * @version 1.0
  */
 
-@SuppressWarnings("FeatureEnvy")
-class AppStartup extends Application {
+public class AppStartup extends Application {
 
     @Override
     public void onCreate() {

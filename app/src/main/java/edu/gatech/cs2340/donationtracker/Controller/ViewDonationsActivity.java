@@ -108,7 +108,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         });
 
         searchNameView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            View recyclerView = findViewById(R.id.donation_list);
+            final View recyclerView = findViewById(R.id.donation_list);
             @Override
             public boolean onQueryTextSubmit(String query) {
                 setupRecyclerView((RecyclerView) recyclerView);

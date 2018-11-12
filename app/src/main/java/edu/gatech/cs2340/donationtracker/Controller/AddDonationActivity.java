@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -56,6 +55,8 @@ public class AddDonationActivity extends AppCompatActivity {
         mValueField = findViewById(R.id.valueField);
         categorySpinner = findViewById(R.id.categorySpinner);
         mCommentField = findViewById(R.id.commentField);
+
+        model = ListModel.getInstance();
 
          /*
           Set up the adapter to display the allowable locations in the spinner
