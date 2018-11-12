@@ -56,17 +56,19 @@ public class CustomAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild,
                              View view, ViewGroup parent) {
 
+        View view1 = view;
         ChildInfo detailInfo = (ChildInfo) getChild(groupPosition, childPosition);
-        if (view == null) {
+        if (view1 == null) {
             LayoutInflater detailInflater =
                     (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = Objects.requireNonNull(detailInflater).inflate(R.layout.locationsearch_child, null);
+            view1 = Objects.requireNonNull(detailInflater).inflate(R.layout.locationsearch_child,
+                    null);
         }
 
-        TextView childItem = view.findViewById(R.id.childItem);
+        TextView childItem = view1.findViewById(R.id.childItem);
         childItem.setText(detailInfo.getName().trim());
 
-        return view;
+        return view1;
     }
 
     /**
@@ -111,18 +113,19 @@ public class CustomAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isLastChild, View view,
                              ViewGroup parent) {
 
+        View view1 = view;
         GroupInfo headerInfo = (GroupInfo) getGroup(groupPosition);
-        if (view == null) {
+        if (view1 == null) {
             LayoutInflater inf =
                     (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             assert inf != null;
-            view = inf.inflate(R.layout.locationsearch_subject, null);
+            view1 = inf.inflate(R.layout.locationsearch_subject, null);
         }
 
-        TextView heading = view.findViewById(R.id.heading);
+        TextView heading = view1.findViewById(R.id.heading);
         heading.setText(headerInfo.getName().trim());
 
-        return view;
+        return view1;
     }
 
     /**

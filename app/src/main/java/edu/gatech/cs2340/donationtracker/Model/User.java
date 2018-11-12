@@ -12,12 +12,6 @@ import android.support.annotation.NonNull;
  */
 
 public class User {
-    /** allow us to assign unique id numbers to each student */
-    private static int Next_Id;
-
-    /** this user's id number */
-    private final int _id;
-
     /** this user's email */
     private String _email;
 
@@ -33,12 +27,6 @@ public class User {
     /* **********************
      * Getters and setters
      */
-    //no setter for this.  id is a read only field
-    /**
-     * Gets id for user
-     * @return id of user
-     */
-    public int getId() { return _id; }
 
     /**
      * Gets password for user
@@ -104,7 +92,6 @@ public class User {
         this._password = password;
         this._type = type;
         this._accountLocked = false;
-        this._id = User.Next_Id++;
     }
 
     /**
