@@ -45,6 +45,7 @@ public class SearchAdapterLocation extends BaseAdapter {
         return position;
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
     @Override
     public View getView(final int position, View view, ViewGroup parent) {
         View view1 = view;
