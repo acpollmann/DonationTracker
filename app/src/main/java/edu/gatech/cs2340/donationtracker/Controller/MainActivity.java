@@ -22,6 +22,7 @@ import edu.gatech.cs2340.donationtracker.R;
  * @author Group 71B
  * @version 1.0
  */
+@SuppressWarnings("MagicNumber")
 public class MainActivity extends AppCompatActivity {
 
 

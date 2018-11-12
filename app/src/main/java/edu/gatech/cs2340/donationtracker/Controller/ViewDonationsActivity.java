@@ -94,7 +94,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         );
         locationSearchSpinner.setAdapter(locationSearchAdapter);
         locationSearchSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            View recyclerView = findViewById(R.id.donation_list);
+            final View recyclerView = findViewById(R.id.donation_list);
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
