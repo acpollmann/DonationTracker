@@ -26,10 +26,10 @@ public class Donation {
     private String category;
     private String comments;
     private Image picture;
-    public static List<String> legalCategories = Arrays.asList("Clothing", "Hat",
+    public static final List<String> legalCategories = Arrays.asList("Clothing", "Hat",
             "Kitchen", "Electronics", "Household", "Other");
 
-    public static List<String> searchLegalCategories = Arrays.asList("All", "Clothing", "Hat",
+    public static final List<String> searchLegalCategories = Arrays.asList("All", "Clothing", "Hat",
             "Kitchen", "Electronics", "Household", "Other");
 
     /**
