@@ -24,12 +24,6 @@ import edu.gatech.cs2340.donationtracker.R;
  */
 public class MainActivity extends AppCompatActivity {
 
-    private ObjectAnimator viewanimator;
-    private ObjectAnimator addanimator;
-    private ObjectAnimator statanimator;
-    private ObjectAnimator mananimator;
-    private ObjectAnimator mapanimator;
-    private ObjectAnimator searchanimator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,10 +113,15 @@ public class MainActivity extends AppCompatActivity {
      * Method for the animation of the buttons when they are pressed.
      * Specifically, details their path during animation.
      *
-     * @param view the current view of the MAIN page
      */
     @SuppressWarnings("OverlyLongMethod")
     private void animateButtons(View view) {
+        ObjectAnimator viewanimator;
+        ObjectAnimator addanimator;
+        ObjectAnimator statanimator;
+        ObjectAnimator mananimator;
+        ObjectAnimator mapanimator;
+        ObjectAnimator searchanimator;
         Button viewLocationTarget = this.findViewById(R.id.view_location_bubble);
         Button addDonationTarget = this.findViewById(R.id.add_donation_bubble);
         Button statsTarget = this.findViewById(R.id.statistics_bubble);

@@ -11,6 +11,11 @@ import java.util.List;
 
 import edu.gatech.cs2340.donationtracker.R;
 
+/**
+ * Adapter that implements expandable list view for view location
+ * @author Group 71B
+ * @version 1.0
+ */
 public class CustomAdapter extends BaseExpandableListAdapter {
 
     private final Context context;
@@ -18,7 +23,8 @@ public class CustomAdapter extends BaseExpandableListAdapter {
 
     /**
      * creating the adapter
-     * @param context,deptlist what based on and what goes to
+     * @param context what based on and what goes to
+     * @param filterTypeList what based on and what goes to
      */
     public CustomAdapter(Context context, List<GroupInfo> filterTypeList) {
         this.context = context;
