@@ -8,6 +8,7 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Objects;
 
 import edu.gatech.cs2340.donationtracker.R;
 
@@ -60,7 +61,8 @@ public class CustomAdapter extends BaseExpandableListAdapter {
         if (view1 == null) {
             LayoutInflater detailInflater =
                     (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view1 = detailInflater.inflate(R.layout.locationsearch_child, null);
+            view1 = Objects.requireNonNull(detailInflater).inflate(R.layout.locationsearch_child,
+                    null);
         }
 
         TextView childItem = view1.findViewById(R.id.childItem);

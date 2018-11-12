@@ -1,6 +1,8 @@
 package edu.gatech.cs2340.donationtracker.Model;
 
 
+import android.support.annotation.NonNull;
+
 /**
  * Implementation user for app
  * Created on 9/30/18.
@@ -124,6 +126,7 @@ public class User {
      * Create string for email
      * @return string of email
      */
+    @NonNull
     @Override
     public String toString() {
         return this._email;

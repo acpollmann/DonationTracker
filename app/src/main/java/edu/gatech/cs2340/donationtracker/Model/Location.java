@@ -1,7 +1,9 @@
 package edu.gatech.cs2340.donationtracker.Model;
 
+import android.support.annotation.NonNull;
+
 /**
- * Implementation a location for the location list and deatil page
+ * Implementation a location for the location list and detail page
  *
  * @author Group 71B
  * @version 1.0
@@ -46,6 +48,7 @@ public class Location {
      * @param lat  the latitude
      * @param longit  the longitude
      */
+    @SuppressWarnings("SpellCheckingInspection")
     public Location(double lat, double longit) {
         latitude = lat;
         longitude = longit;
@@ -154,7 +157,7 @@ public class Location {
     public String getState() {return locationState;}
     /**
      * Gets zip code for the location
-     * @return zipcode for location
+     * @return zip code for location
      */
     public int getZipCode() {return zipCode;}
     /**
@@ -177,6 +180,7 @@ public class Location {
      * Create string for location name
      * @return string for name for location
      */
+    @NonNull
     @Override
     public String toString() {
         return locationName;
