@@ -23,7 +23,7 @@ import java.util.Map;
 import edu.gatech.cs2340.donationtracker.Model.ChildInfo;
 import edu.gatech.cs2340.donationtracker.Model.CustomAdapter;
 import edu.gatech.cs2340.donationtracker.Model.GroupInfo;
-import edu.gatech.cs2340.donationtracker.Model.ListModel;
+import edu.gatech.cs2340.donationtracker.Model.LocationModel;
 import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.R;
 
@@ -38,7 +38,7 @@ import edu.gatech.cs2340.donationtracker.R;
  */
 public class ViewLocationActivity extends AppCompatActivity
         implements SearchView.OnQueryTextListener {
-    private final ListModel model = ListModel.getInstance();
+    private final LocationModel model = LocationModel.getInstance();
     private final Map<String, GroupInfo> filteredBy = new LinkedHashMap<>();
     private final ArrayList<GroupInfo> expandableListList = new ArrayList<>();
     private ExpandableListView simpleExpandableListView;
