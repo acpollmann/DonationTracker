@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view the current view of the MAIN page
      */
     public void onMapViewButtonPressed(View view) {
-        animateButtons(view);
+        animateButtons();
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
         Handler handler = new Handler();
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view the current view of the MAIN page
      */
     public void onViewLocationButtonPressed(View view) {
-        animateButtons(view);
+        animateButtons();
         Intent intent = new Intent(this, ViewLocationActivity.class);
         finish();
         startActivity(intent);
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view the current view of the MAIN page
      */
     public void onAddDonationButtonPressed(View view) {
-        animateButtons(view);
+        animateButtons();
         Intent intent = new Intent(this, AddDonationActivity.class);
         startActivity(intent);
         Handler handler = new Handler();
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view the current view of the MAIN page
      */
     public void onSearchDonationButtonPressed(View view) {
-        animateButtons(view);
+        animateButtons();
         Intent intent = new Intent(this, ViewDonationsActivity.class);
         startActivity(intent);
         Handler handler = new Handler();
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
      * Specifically, details their path during animation.
      *
      */
-    private void animateButtons(View view) {
+    private void animateButtons() {
         ObjectAnimator viewanimator;
         ObjectAnimator addanimator;
         ObjectAnimator statanimator;
@@ -163,6 +163,9 @@ public class MainActivity extends AppCompatActivity {
         }  else {
             Animation ifoldanimation = AnimationUtils.loadAnimation(this, R.anim.rotateleft);
             viewLocationTarget.startAnimation(ifoldanimation);
+            searchTarget.startAnimation(ifoldanimation);
+            addDonationTarget.startAnimation(ifoldanimation);
+            mapTarget.startAnimation(ifoldanimation);
         }
     }
 }
