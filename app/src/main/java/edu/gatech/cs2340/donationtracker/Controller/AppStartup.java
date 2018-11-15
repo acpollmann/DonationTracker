@@ -20,14 +20,15 @@ import edu.gatech.cs2340.donationtracker.Model.UserSet;
  */
 
 public class AppStartup extends Application {
-
+    //FirestoreManager firestoreManager;
+    ListModel model = ListModel.getInstance();
     @Override
     public void onCreate() {
         super.onCreate();
 
         FirestoreManager firestoreManager;
 
-        ListModel model = ListModel.getInstance();
+        //ListModel model = ListModel.getInstance();
 
 
         firestoreManager = new FirestoreManager();
@@ -37,9 +38,11 @@ public class AppStartup extends Application {
 
         List<Location> locations = firestoreManager.loadLocations();
         model.setLocations(locations);
+        //ListModel.getInstance().setLocations(locations);
 
         List<Donation> donations = firestoreManager.loadDonations();
         model.setDonations(donations);
+        //ListModel.getInstance().setLocations(locations);
 
     }
 }
