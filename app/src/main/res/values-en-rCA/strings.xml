@@ -73,5 +73,6 @@
     <string name="addDonationErrorM">All fields except Comments must be filled in.</string>
     <string name="addLocationErrorM">All fields must be filled in.</string>
     <string name="guest">Log in as Guest</string>
+    <string name="lockout">You are locked out for too many tries</string>
 
 </resources>
