@@ -80,6 +80,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
+    public void facebookClick(View view) {
+
+    }
+    public void googleClick(View view) {
+
+    }
 
     /**
      * It will change the page on the screen if the

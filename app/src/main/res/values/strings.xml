@@ -17,6 +17,7 @@
     <string name="log_in">Log In</string>
     <string name="register">Register</string>
     <string name="logo">Logo</string>
+    <string name="altLogin">Log in using Google or Facebook</string>
     <string name="title_activity_maps">Map</string>
     <string name="backButton" translatable="false">&lt;</string>
 
