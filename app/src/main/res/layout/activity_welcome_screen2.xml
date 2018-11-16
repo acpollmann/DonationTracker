@@ -18,10 +18,10 @@
         android:prompt="@string/language_prompt" />
 
     <Button
-        android:id="@+id/skipLogin"
+        android:id="@+id/guestLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/skip" />
+        android:text="@string/guest" />
 
     <ImageView
         android:layout_width="match_parent"

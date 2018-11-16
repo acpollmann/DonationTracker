@@ -86,7 +86,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
      * It sets up the skip button, so if pressed it will redirect to the MAIN page.
      */
     private void configureSkipButton() {
-        Button registerButton = findViewById(R.id.skipLogin);
+        Button registerButton = findViewById(R.id.guestLogin);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

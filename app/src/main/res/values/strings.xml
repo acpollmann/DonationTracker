@@ -9,6 +9,7 @@
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="loginErrorM">Invalid email/password</string>
+    <string name="lockout">You are locked out for too many tries</string>
     <string name="registerErrorM">Email and password are required.</string>
     <string name="registerExistingUserErrorM">User already exists.</string>
     <string name="title_activity_main">MainActivity</string>
@@ -71,7 +72,7 @@
 
     <string name="registerhere">Register Here</string>
     <string name="registertype">Account Type</string>
-    <string name="skip">Skip</string>
+    <string name="guest">Log in as Guest</string>
     <string name="info_location">Location Information</string>
     <string name="header">Header is ::</string>
     <string name="clicked">Clicked on ::</string>
