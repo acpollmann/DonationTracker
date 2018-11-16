@@ -9,6 +9,7 @@
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="loginErrorM">Invalid email/password</string>
+    <string name="lockout">You are locked out for too many tries</string>
     <string name="registerErrorM">Email and password are required.</string>
     <string name="registerExistingUserErrorM">User already exists.</string>
     <string name="title_activity_main">MainActivity</string>

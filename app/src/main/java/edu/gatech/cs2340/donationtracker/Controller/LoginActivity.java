@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import edu.gatech.cs2340.donationtracker.Model.UserModel;
 import edu.gatech.cs2340.donationtracker.R;
@@ -25,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mEmailField;
     private EditText mPasswordField;
     private TextView mErrorMessage;
+    private int attemptsCounter = 3;
 
     private UserModel userModel;
 
@@ -60,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onLoginPressed(View view) {
         String email = mEmailField.getText().toString();
         String password = mPasswordField.getText().toString();
+        Button loginButton = findViewById(R.id.sign_in_button);
         mErrorMessage.setText("");
 
         if (userModel.validUser(email, password)) {
@@ -70,6 +73,11 @@ public class LoginActivity extends AppCompatActivity {
             mEmailField.setText("");
             mPasswordField.setText("");
             mErrorMessage.setText(R.string.loginErrorM);
+            attemptsCounter--;
+            if (attemptsCounter == 0) {
+                loginButton.setEnabled(false);
+                mErrorMessage.setText(R.string.lockout);
+            }
         }
     }
 

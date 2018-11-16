@@ -18,7 +18,7 @@
         android:prompt="@string/language_prompt" />
 
     <Button
-        android:id="@+id/skipLogin"
+        android:id="@+id/guestLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/guest" />
