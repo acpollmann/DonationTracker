@@ -71,7 +71,7 @@
 
     <string name="registerhere">Register Here</string>
     <string name="registertype">Account Type</string>
-    <string name="skip">Skip</string>
+    <string name="guest">Log in as Guest</string>
     <string name="info_location">Location Information</string>
     <string name="header">Header is ::</string>
     <string name="clicked">Clicked on ::</string>

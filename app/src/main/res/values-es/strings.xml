@@ -62,7 +62,6 @@
     <string name="locationphone_location">Número De Teléfono de la Ubicación</string>
     <string name="registerhere">Crear Una Cuenta Aquí</string>
     <string name="registertype">Tipo de Cuenta</string>
-    <string name="skip">Omitir</string>
     <string name="language_prompt">Escoger Una Idioma</string>
     <string name="info_location">Location Info</string>
     <string name="selected_nodonations">Selected filter doesnt have donations.</string>
@@ -73,4 +72,5 @@
     <string name="registerExistingUserErrorM">User already exists.</string>
     <string name="addDonationErrorM">All fields except Comments must be filled in.</string>
     <string name="addLocationErrorM">All fields must be filled in.</string>
+    <string name="guest">Log in as Guest</string>
 </resources>
