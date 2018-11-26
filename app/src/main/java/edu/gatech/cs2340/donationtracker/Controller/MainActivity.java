@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
+import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -56,14 +57,20 @@ public class MainActivity extends AppCompatActivity {
      * @param view the current view of the MAIN page
      */
     public void onLogoutPressed(View view) {
+        LoginManager.getInstance().logOut();
+
         mGoogleSignInClient.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Intent intent = new Intent(getApplicationContext(), WelcomeScreenActivity.class);
+                Intent intent = new Intent(MainActivity.this, WelcomeScreenActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }
         });
+
+        Intent intent = new Intent(this, WelcomeScreenActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 
     /**

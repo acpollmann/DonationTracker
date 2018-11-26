@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">DonationTracker</string>
 
+    <string name="facebook_app_id">2136663699929849</string>
+    <string name="fb_login_protocol_scheme">fb2136663699929849</string>
+
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in_short">Login</string>

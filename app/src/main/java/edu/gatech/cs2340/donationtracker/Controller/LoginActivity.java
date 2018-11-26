@@ -9,12 +9,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+
+import java.util.Arrays;
 
 import edu.gatech.cs2340.donationtracker.Model.UserModel;
 import edu.gatech.cs2340.donationtracker.R;
@@ -28,7 +37,8 @@ import edu.gatech.cs2340.donationtracker.R;
  * @version 1.0
  */
 public class LoginActivity extends AppCompatActivity {
-    static final int RC_SIGN_IN = 1;
+    static final int RC_SIGN_IN = 9000;
+    private static final String EMAIL = "email";
 
     private EditText mEmailField;
     private EditText mPasswordField;
@@ -38,6 +48,8 @@ public class LoginActivity extends AppCompatActivity {
     private UserModel userModel;
 
     private GoogleSignInClient mGoogleSignInClient;
+
+    private CallbackManager mCallbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         setUserModel(UserModel.getInstance());
         configureBackButton();
 
+        /* GOOGLE SIGN-IN */
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso =
@@ -59,6 +72,32 @@ public class LoginActivity extends AppCompatActivity {
 
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        /* FACEBOOK SIGN-IN */
+        mCallbackManager = CallbackManager.Factory.create();
+
+        // Register a callback to respond to the user
+        LoginManager.getInstance()
+                .registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                setResult(RESULT_OK);
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+            }
+
+            @Override
+            public void onCancel() {
+                setResult(RESULT_CANCELED);
+                finish();
+            }
+
+            @Override
+            public void onError(FacebookException e) {
+                // Handle exception
+            }
+        });
     }
 
     /**
@@ -73,11 +112,14 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        // Check for existing Google Sign In account, if the user is already signed in
-        // the GoogleSignInAccount will be non-null.
+        // Check for existing Google Sign In account or Facebook sign in account.
+        // If the user is already signed in, account or access token will be non-null, respectively.
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
 
-        if (account != null) {
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
+
+        if (account != null || isLoggedIn) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
@@ -114,8 +156,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
-    public void facebookClick(View view) {
 
+    /**
+     * Performs Facebook sign-in
+     *
+     * @param view the current view of the LOGIN page
+     */
+    public void facebookClick(View view) {
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
     }
 
     /**
@@ -139,6 +187,8 @@ public class LoginActivity extends AppCompatActivity {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
+
+        mCallbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     /**
