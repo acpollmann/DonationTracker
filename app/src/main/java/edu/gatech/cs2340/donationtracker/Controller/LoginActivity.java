@@ -118,6 +118,11 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Performs Google sign-in
+     *
+     * @param view the current view of the LOGIN page
+     */
     public void googleClick(View view) {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
@@ -136,6 +141,11 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * On successful login, this method starts up the MainActivity.
+     *
+     * @param completedTask the completed task to get the signed in account
+     */
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             // This object contains information about the signed-in user, such as the user's name.
