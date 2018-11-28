@@ -12,9 +12,11 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 public class LocationModelTest {
     private LocationModel testLocationModel;
+    private FirestoreManager mockFirestoreManager;
 
     private final Location location1 = new Location(
             1,
@@ -60,7 +62,19 @@ public class LocationModelTest {
 
     @Before
     public void setup() {
-        testLocationModel = LocationModel.getTestInstance(mock(FirestoreManager.class));
+        mockFirestoreManager = mock(FirestoreManager.class);
+        testLocationModel = LocationModel.getTestInstance(mockFirestoreManager);
+    }
+
+    @Test
+    public void testAddLocation() {
+        testLocationModel.addLocation(location1);
+        assertFalse(testLocationModel.getLocations().isEmpty());
+
+        Location resultLocation = testLocationModel.findLocationById(1);
+        assertEquals(location1, resultLocation);
+
+        verify(mockFirestoreManager).addLocation(location1);
     }
 
     @Test
