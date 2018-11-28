@@ -11,9 +11,11 @@ import edu.gatech.cs2340.donationtracker.Model.UserModel;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 public class UserModelTest {
     private UserModel testUserModel;
+    private FirestoreManager mockFirestoreManager;
 
     private final User user1 = new User("email1", "password1");
     private final User user2 = new User("email2", "password2");
@@ -21,7 +23,16 @@ public class UserModelTest {
 
     @Before
     public void setup() {
-        testUserModel = UserModel.getTestInstance(mock(FirestoreManager.class));
+        mockFirestoreManager = mock(FirestoreManager.class);
+        testUserModel = UserModel.getTestInstance(mockFirestoreManager);
+    }
+
+    @Test
+    public void testAddUser() {
+        testUserModel.addUser(user1.getEmail(), user1.getPassword(), user1.getType());
+        assertFalse(testUserModel.getUsers().isEmpty());
+
+        verify(mockFirestoreManager).add(user1);
     }
 
     @Test
