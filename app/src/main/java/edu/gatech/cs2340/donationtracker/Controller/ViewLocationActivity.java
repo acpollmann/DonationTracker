@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,7 @@ import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -36,12 +36,14 @@ import edu.gatech.cs2340.donationtracker.R;
  * @author Group 71B
  * @version 1.0
  */
+//public class ViewLocationActivity extends AppCompatActivity {
 public class ViewLocationActivity extends AppCompatActivity
         implements SearchView.OnQueryTextListener {
     private final LocationModel model = LocationModel.getInstance();
     private final Map<String, GroupInfo> filteredBy = new LinkedHashMap<>();
     private final ArrayList<GroupInfo> expandableListList = new ArrayList<>();
     private ExpandableListView simpleExpandableListView;
+    private android.widget.SearchView searchNameView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,14 +108,28 @@ public class ViewLocationActivity extends AppCompatActivity
                         return false;
                     }
                 });
+//        searchNameView.setOnQueryTextListener(new android.widget.SearchView.OnQueryTextListener() {
+//            View recyclerView = findViewById(R.id.locationitem_list);
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                setupRecyclerView((RecyclerView) recyclerView);
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                setupRecyclerView((RecyclerView) recyclerView);
+//                return false;
+//            }
+//        });
     }
-    @Override
-    public boolean onQueryTextSubmit(String query) {
 
+    public boolean onQueryTextSubmit (String query){
         return false;
     }
-    @Override
-    public boolean onQueryTextChange(String newText) {
+    //@Override
+    public boolean onQueryTextChange (String newText){
+        //setupRecyclerView((RecyclerView) recyclerView);
         return false;
     }
 
@@ -126,6 +142,20 @@ public class ViewLocationActivity extends AppCompatActivity
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slideright, R.anim.slideleft);
+    }
+
+    private List<Location> searchForLocation(List<Location> locations, String search) {
+        if (search == null) {
+            return locations;
+        }
+
+        List<Location> searchedLocations = new ArrayList<>();
+        for (Location location : locations) {
+            if (location.getLocationName().toLowerCase().contains(search.toLowerCase())) {
+                searchedLocations .add(location);
+            }
+        }
+        return searchedLocations;
     }
 
     /**
@@ -154,7 +184,6 @@ public class ViewLocationActivity extends AppCompatActivity
                 getString(R.string.searchnum_location) );
         addFilter(getString(R.string.locationphone_location),
                 getString(R.string.searcharea_location) );
-
     }
     /**
      *This method will maintain the location filters.
@@ -195,6 +224,10 @@ public class ViewLocationActivity extends AppCompatActivity
      */
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         List<Location> filteredLocations = model.getLocations();
+        filteredLocations = searchForLocation(
+                filteredLocations,
+                searchNameView.getQuery().toString());
+
         if (filteredLocations.isEmpty()) {
             Toast.makeText(ViewLocationActivity.this,
                     getString(R.string.selected_nodonations), Toast.LENGTH_SHORT).show();
