@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import edu.gatech.cs2340.donationtracker.Model.ListModel;
+import edu.gatech.cs2340.donationtracker.Model.LocationModel;
 import edu.gatech.cs2340.donationtracker.R;
 
 /**
@@ -37,7 +37,7 @@ public class AddLocationActivity extends AppCompatActivity {
     private EditText mWebField;
     private EditText mPhoneField;
 
-    private ListModel model;
+    private LocationModel model;
 
     private final String[] states = {
             "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "IA", "ID", "IL",
@@ -76,8 +76,7 @@ public class AddLocationActivity extends AppCompatActivity {
         for (String state: states) {
             Log.d("states spin", state);
         }
-        @SuppressWarnings("unchecked")
-        ArrayAdapter<String> statesAdapter = new ArrayAdapter(this,
+        ArrayAdapter<String> statesAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, states);
         statesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         stateSpinner.setAdapter(statesAdapter);
@@ -85,21 +84,20 @@ public class AddLocationActivity extends AppCompatActivity {
         /*
           Set up the adapter to display the allowable location types in the spinner
          */
-        @SuppressWarnings("unchecked")
-        ArrayAdapter<String> typeAdapter = (ArrayAdapter<String>) new ArrayAdapter(this,
+        ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, locationTypes);
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         typeSpinner.setAdapter(typeAdapter);
 
-        setListModel(ListModel.getInstance());
+        setListModel(LocationModel.getInstance());
     }
 
     /**
-     * Sets the listModel to be used by this activity
-     * @param listModel an instance of ListModel
+     * Sets the locationModel to be used by this activity
+     * @param locationModel an instance of LocationModel
      */
-    public void setListModel(ListModel listModel) {
-        this.model = listModel;
+    public void setListModel(LocationModel locationModel) {
+        this.model = locationModel;
     }
 
     /**

@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 
 import edu.gatech.cs2340.donationtracker.Controller.RegisterActivity;
 import edu.gatech.cs2340.donationtracker.Model.User;
-import edu.gatech.cs2340.donationtracker.Model.UserSet;
+import edu.gatech.cs2340.donationtracker.Model.UserModel;
 
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
@@ -51,9 +51,9 @@ public class RegisterActivityTest {
 
     @Test
     public void testOnRegisterPressed_UserAlreadyExists() {
-        UserSet mockUserSet = mock(UserSet.class);
-        when(mockUserSet.userExists(user1.getEmail())).thenReturn(true);
-        mActivityRule.getActivity().setUserSet(mockUserSet);
+        UserModel mockUserModel = mock(UserModel.class);
+        when(mockUserModel.userExists(user1.getEmail())).thenReturn(true);
+        mActivityRule.getActivity().setUserModel(mockUserModel);
 
         // type email1 into the email field
         onView(withId(R.id.email_field)).perform(typeText(user1.getEmail()), closeSoftKeyboard());
@@ -80,8 +80,8 @@ public class RegisterActivityTest {
 
     @Test
     public void testOnRegisterPressed_SuccessfulRegistration() {
-        UserSet mockUserSet = mock(UserSet.class);
-        mActivityRule.getActivity().setUserSet(mockUserSet);
+        UserModel mockUserModel = mock(UserModel.class);
+        mActivityRule.getActivity().setUserModel(mockUserModel);
 
         // type newEmail into the email field
         onView(withId(R.id.email_field)).perform(typeText("newEmail"), closeSoftKeyboard());
@@ -96,6 +96,6 @@ public class RegisterActivityTest {
         // click the register button
         onView(withId(R.id.saveRegistrationButton)).perform(click());
 
-        verify(mockUserSet).addUser("newEmail", "newPassword", "User");
+        verify(mockUserModel).addUser("newEmail", "newPassword", "User");
     }
 }

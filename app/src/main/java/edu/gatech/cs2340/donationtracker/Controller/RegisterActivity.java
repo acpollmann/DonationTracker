@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import edu.gatech.cs2340.donationtracker.Model.UserSet;
+import edu.gatech.cs2340.donationtracker.Model.UserModel;
 import edu.gatech.cs2340.donationtracker.R;
 
 /**
@@ -29,7 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Spinner spinner;
     private TextView mErrorMessage;
 
-    private UserSet userSet;
+    private UserModel userModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,15 +51,15 @@ public class RegisterActivity extends AppCompatActivity {
         mPasswordField = findViewById(R.id.password_field);
         mErrorMessage = findViewById(R.id.error_message_register);
 
-        setUserSet(UserSet.getInstance());
+        setUserModel(UserModel.getInstance());
     }
 
     /**
-     * Sets the UserSet to be used by this activity
-     * @param userSet an instance of UserSet
+     * Sets the UserModel to be used by this activity
+     * @param userModel an instance of UserModel
      */
-    public void setUserSet(UserSet userSet) {
-        this.userSet = userSet;
+    public void setUserModel(UserModel userModel) {
+        this.userModel = userModel;
     }
 
     /**
@@ -96,12 +96,12 @@ public class RegisterActivity extends AppCompatActivity {
             mEmailField.setText("");
             mPasswordField.setText("");
             mErrorMessage.setText(R.string.registerErrorM);
-        } else if (userSet.userExists(email)) {
+        } else if (userModel.userExists(email)) {
             mEmailField.setText("");
             mPasswordField.setText("");
             mErrorMessage.setText(R.string.registerExistingUserErrorM);
         } else {
-            userSet.addUser(email, password, type);
+            userModel.addUser(email, password, type);
             Intent intent = new Intent(this, WelcomeScreenActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);

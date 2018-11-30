@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import edu.gatech.cs2340.donationtracker.Controller.AddLocationActivity;
-import edu.gatech.cs2340.donationtracker.Model.ListModel;
+import edu.gatech.cs2340.donationtracker.Model.LocationModel;
 
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
@@ -44,8 +44,8 @@ public class AddLocationActivityTest {
 
     @Test
     public void testOnAddLocationButtonPressed_ValidFields() {
-        ListModel mockListModel = mock(ListModel.class);
-        mActivityRule.getActivity().setListModel(mockListModel);
+        LocationModel mockLocationModel = mock(LocationModel.class);
+        mActivityRule.getActivity().setListModel(mockLocationModel);
 
         onView(withId(R.id.typeSpinner)).perform(click());
         onData(allOf(is(instanceOf(String.class)), is("Store"))).perform(click());
@@ -66,7 +66,7 @@ public class AddLocationActivityTest {
         // click the Add a Location button, leaving fields empty
         onView(withId(R.id.addLocationButton)).perform(click());
 
-        verify(mockListModel).addLocation(
+        verify(mockLocationModel).addLocation(
                 "Test Location",
                 "100",
                 "100",

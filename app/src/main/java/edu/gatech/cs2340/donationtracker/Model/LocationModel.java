@@ -4,48 +4,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementation the list for donation and location for app
+ * Implementation for the list of locations known to the app
  *
  * @author Group 71B
  * @version 1.0
  */
-@SuppressWarnings({"ClassWithOnlyPrivateConstructors", "SpellCheckingInspection"})
-public class ListModel {
+public class LocationModel {
 
-    private static class InstanceHolder {
-        private static final ListModel instance = new ListModel(new FirestoreManager());
-    }
+    private static LocationModel instance;
 
     /**
-     * gets the instance of list model for location and donation
+     * Gets an instance of LocationModel. If instance hasn't been initialized yet, a new instance of
+     * LocationModel is created.
      * @return database instance
      */
-    public static ListModel getInstance() {
-
-        return InstanceHolder.instance;
+    public static synchronized LocationModel getInstance() {
+        if (instance == null) {
+            instance = new LocationModel(FirestoreManager.getInstance());
+        }
+        return instance;
     }
 
     /**
-     * Gets an instance of UserSet, used for testing purposes
+     * Gets an instance of LocationModel, used for testing purposes
      * @param firestoreManager an instance of FirestoreManager
-     * @return an instance of UserSet
+     * @return an instance of LocationModel
      */
-    @SuppressWarnings("SpellCheckingInspection")
-    public static ListModel getTestInstance(FirestoreManager firestoreManager) {
-        return new ListModel(firestoreManager);
+    public static LocationModel getTestInstance(FirestoreManager firestoreManager) {
+        return new LocationModel(firestoreManager);
     }
 
     private List<Location> locations;
-
-    private List<Donation> donations;
 
     /** The FirestoreManager responsible for saving Locations to and loading Locations
      * from Firestore. */
     private final FirestoreManager firestoreManager;
 
-    private ListModel(FirestoreManager firestoreManager) {
+    private LocationModel(FirestoreManager firestoreManager) {
         locations = new ArrayList<>();
-        donations = new ArrayList<>();
         this.firestoreManager = firestoreManager;
     }
 
@@ -82,38 +78,12 @@ public class ListModel {
     }
 
     /**
-     * Adds a donation to the donation list for application
-     * @param location what required of a donation
-     * @param timeStamp what required of a donation
-     * @param shortDescription what required of a donation
-     * @param fullDescription what required of a donation
-     * @param value what required of a donation
-     * @param category what required of a donation
-     * @param comment what required of a donation
-     * @param name what required of a donation
-     */
-    public void addDonation(String name, Location location, String timeStamp,
-                            String shortDescription, String fullDescription, String value,
-                            String category, String comment) {
-        Donation newDonation = new Donation(name, location, timeStamp, shortDescription,
-                fullDescription, value, category, comment);
-        donations.add(newDonation);
-        firestoreManager.addDonation(newDonation);
-    }
-
-    /**
      * Gets the list of locations for the the application
      * @return list of locations
      */
     public List<Location> getLocations() {
         return locations;
     }
-
-    /**
-     * Gets the donation list for application
-     * @return list of donations
-     */
-    public List<Donation> getDonations() { return donations; }
 
     /**
      * Sets the location list for application
@@ -124,27 +94,11 @@ public class ListModel {
     }
 
     /**
-     * Sets the donation list for application
-     * @param donations list of donations
-     */
-    public void setDonations(List<Donation> donations) {
-        this.donations = donations;
-    }
-
-    /**
      * Gets the size of location list for application
      * @return size of list of locations
      */
     int getLocationListSize() {
         return locations.size();
-    }
-
-    /**
-     * Gets the size of donation list for application
-     * @return size of list of donations
-     */
-    public int getDonationListSize() {
-        return donations.size();
     }
 
     /**
