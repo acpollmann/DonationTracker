@@ -18,7 +18,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.List;
 import java.util.Objects;
 
-import edu.gatech.cs2340.donationtracker.Model.ListModel;
+import edu.gatech.cs2340.donationtracker.Model.LocationModel;
 import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.R;
 
@@ -72,7 +72,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googleMap.getUiSettings().setZoomControlsEnabled(true);
 
         //get the data to display
-        List<Location> locationList = ListModel.getInstance().getLocations();
+        List<Location> locationList = LocationModel.getInstance().getLocations();
 
         //iterate through the list and add a pin for each element in the model
         for (Location location : locationList) {

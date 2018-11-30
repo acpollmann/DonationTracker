@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import edu.gatech.cs2340.donationtracker.Model.UserSet;
+import edu.gatech.cs2340.donationtracker.Model.UserModel;
 import edu.gatech.cs2340.donationtracker.R;
 
 /**
@@ -25,8 +25,9 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mEmailField;
     private EditText mPasswordField;
     private TextView mErrorMessage;
+    private int attemptsCounter = 3;
 
-    private UserSet userSet;
+    private UserModel userModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +37,16 @@ public class LoginActivity extends AppCompatActivity {
         mPasswordField = findViewById(R.id.password_field);
         mErrorMessage = findViewById(R.id.error_message);
 
-        setUserSet(UserSet.getInstance());
+        setUserModel(UserModel.getInstance());
         configureBackButton();
     }
 
     /**
-     * Sets the UserSet to be used by this activity
-     * @param userSet an instance of UserSet
+     * Sets the UserModel to be used by this activity
+     * @param userModel an instance of UserModel
      */
-    public void setUserSet(UserSet userSet) {
-        this.userSet = userSet;
+    public void setUserModel(UserModel userModel) {
+        this.userModel = userModel;
     }
 
     /**
@@ -60,9 +61,10 @@ public class LoginActivity extends AppCompatActivity {
     public void onLoginPressed(View view) {
         String email = mEmailField.getText().toString();
         String password = mPasswordField.getText().toString();
+        Button loginButton = findViewById(R.id.sign_in_button);
         mErrorMessage.setText("");
 
-        if (userSet.validUser(email, password)) {
+        if (userModel.validUser(email, password)) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
@@ -70,7 +72,18 @@ public class LoginActivity extends AppCompatActivity {
             mEmailField.setText("");
             mPasswordField.setText("");
             mErrorMessage.setText(R.string.loginErrorM);
+            attemptsCounter--;
+            if (attemptsCounter == 0) {
+                loginButton.setEnabled(false);
+                mErrorMessage.setText(R.string.lockout);
+            }
         }
+    }
+    public void facebookClick(View view) {
+
+    }
+    public void googleClick(View view) {
+
     }
 
     /**

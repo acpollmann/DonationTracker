@@ -21,7 +21,8 @@ import java.util.List;
 import java.util.Objects;
 
 import edu.gatech.cs2340.donationtracker.Model.Donation;
-import edu.gatech.cs2340.donationtracker.Model.ListModel;
+import edu.gatech.cs2340.donationtracker.Model.DonationModel;
+import edu.gatech.cs2340.donationtracker.Model.LocationModel;
 import edu.gatech.cs2340.donationtracker.Model.Location;
 import edu.gatech.cs2340.donationtracker.R;
 
@@ -39,13 +40,16 @@ public class ViewDonationsActivity extends AppCompatActivity {
     private Spinner categorySearchSpinner;
     private Spinner locationSearchSpinner;
     private SearchView searchNameView;
-    private ListModel model;
+
+    private DonationModel donationModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_donations);
-        model = ListModel.getInstance();
+
+        donationModel = DonationModel.getInstance();
+        LocationModel locationModel = LocationModel.getInstance();
 
         categorySearchSpinner = findViewById(R.id.categorySpinner);
         locationSearchSpinner = findViewById(R.id.locationSpinner);
@@ -54,9 +58,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
         /*
           Set up the adapter to display the allowable categories in the spinner
          */
-        @SuppressWarnings("unchecked")
-        final ArrayAdapter<Location> categorySearchAdapter =
-                (ArrayAdapter<Location>)new ArrayAdapter(this,
+        final ArrayAdapter<String> categorySearchAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, Donation.searchLegalCategories);
         categorySearchAdapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item
@@ -82,12 +84,10 @@ public class ViewDonationsActivity extends AppCompatActivity {
         List<String> selectableLocations = new ArrayList<>();
         selectableLocations.add("All");
 
-        for (Location location : model.getLocations()) {
+        for (Location location : locationModel.getLocations()) {
             selectableLocations.add(Objects.toString(location));
         }
-        @SuppressWarnings("unchecked")
-        final ArrayAdapter<Location> locationSearchAdapter =
-                (ArrayAdapter<Location>) new ArrayAdapter(this,
+        final ArrayAdapter<String> locationSearchAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, selectableLocations);
         locationSearchAdapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item
@@ -186,8 +186,8 @@ public class ViewDonationsActivity extends AppCompatActivity {
      * @param donations the list of all the donations in the app
      * @param search a string from the user that will be used to filter (DONATION NAME)
      */
-    @SuppressWarnings("SpellCheckingInspection")
-    private List<Donation> searchForDonation(List<Donation> donations, String search) {
+
+    private List<Donation> searchForDonation (List<Donation> donations, String search) {
         if (search == null) {
             return donations;
         }
@@ -208,7 +208,7 @@ public class ViewDonationsActivity extends AppCompatActivity {
      * @param recyclerView the view that needs this adapter
      */
     private void setupRecyclerView(RecyclerView recyclerView) {
-        List<Donation> filteredDonations = model.getDonations();
+        List<Donation> filteredDonations = donationModel.getDonations();
 
         filteredDonations = filterByCategory(
                             filteredDonations,
@@ -279,7 +279,6 @@ public class ViewDonationsActivity extends AppCompatActivity {
             return new ViewHolder(view);
         }
 
-        @SuppressWarnings("SpellCheckingInspection")
         @Override
         public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         /*

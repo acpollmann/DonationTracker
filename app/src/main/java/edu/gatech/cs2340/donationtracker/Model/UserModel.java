@@ -10,28 +10,27 @@ import java.util.Set;
  * @author Group 71B
  * @version 1.0
  */
-@SuppressWarnings({"ClassWithOnlyPrivateConstructors", "SpellCheckingInspection"})
-public class UserSet {
+public class UserModel {
 
-    private static UserSet instance;
+    private static UserModel instance;
     /**
      * Gets instance of user
      * @return instance of user
      */
-    public static synchronized UserSet getInstance() {
+    public static synchronized UserModel getInstance() {
         if (instance == null) {
-            instance = new UserSet(new FirestoreManager());
+            instance = new UserModel(FirestoreManager.getInstance());
         }
         return instance;
     }
 
     /**
-     * Gets an instance of UserSet, used for testing purposes
+     * Gets an instance of UserModel, used for testing purposes
      * @param firestoreManager an instance of FirestoreManager
-     * @return an instance of UserSet
+     * @return an instance of UserModel
      */
-    public static UserSet getTestInstance(FirestoreManager firestoreManager) {
-        return new UserSet(firestoreManager);
+    public static UserModel getTestInstance(FirestoreManager firestoreManager) {
+        return new UserModel(firestoreManager);
     }
 
     /** Set of users known to the application. */
@@ -43,7 +42,7 @@ public class UserSet {
     /**
      * make a new model
      */
-    private UserSet(FirestoreManager firestoreManager) {
+    private UserModel(FirestoreManager firestoreManager) {
         _users = new HashSet<>();
         this.firestoreManager = firestoreManager;
     }

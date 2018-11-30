@@ -23,8 +23,22 @@ import java.util.Set;
  * This class acts as an interface between the application and Firestore. The model gets passed into
  * this class, where objects will be converted into documents to store in Firestore.
  */
-@SuppressWarnings("SpellCheckingInspection")
 public class FirestoreManager {
+
+    private static FirestoreManager instance;
+
+    /**
+     * Gets an instance of FirestoreManager. If the instance hasn't been initialized yet, create a
+     * new instance.
+     * @return an instance of FirestoreManager
+     */
+    public static synchronized FirestoreManager getInstance() {
+        if (instance == null) {
+            instance = new FirestoreManager();
+        }
+
+        return instance;
+    }
 
     /** Provides direct access to the Firestore database. */
     private final FirebaseFirestore db;
@@ -38,7 +52,7 @@ public class FirestoreManager {
     /**
      * create instance of database
      */
-    public FirestoreManager() {
+    private FirestoreManager() {
         db = FirebaseFirestore.getInstance();
         users = new HashSet<>();
         locations = new ArrayList<>();
@@ -222,7 +236,6 @@ public class FirestoreManager {
                                         + document.getData());
 
                                 Map<String, Object> donationDoc = document.getData();
-                                @SuppressWarnings("unchecked")
                                 Map<String, Object> locationMap =
                                         (Map<String, Object>) donationDoc.get("location");
 
@@ -230,7 +243,7 @@ public class FirestoreManager {
                                     long keyl = (long) locationMap.get("key");
                                     int key = (int) keyl;
                                     Location location =
-                                            ListModel.getInstance().findLocationById(key);
+                                            LocationModel.getInstance().findLocationById(key);
 
                                     Donation newDonation =
                                             new Donation((String) donationDoc.get("name"),

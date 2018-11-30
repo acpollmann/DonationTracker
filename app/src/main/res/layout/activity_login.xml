@@ -111,8 +111,34 @@
 
             </android.support.design.widget.TextInputLayout>
 
+            <TextView
+                android:id="@+id/alternativeLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="@string/altLogin" />
+
+            <ImageView
+                android:id="@+id/google"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:clickable="true"
+                android:onClick="googleClick"
+                app:srcCompat="@drawable/if_google_287570"
+                android:contentDescription="@string/image_donation"/>
+
+            <ImageView
+                android:id="@+id/facebook"
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:clickable="true"
+                android:onClick="facebookClick"
+                app:srcCompat="@drawable/if_facebook_circle_294710"
+                android:contentDescription="@string/image_donation"/>
+
             <Button
-                android:id="@+id/email_sign_in_button"
+                android:id="@+id/sign_in_button"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -125,4 +151,5 @@
 
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

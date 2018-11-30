@@ -69,7 +69,7 @@ public class Donation {
      * @return key for next donation
      */
     private int getNext_Key() {
-        return ListModel.getInstance().getDonationListSize() + 1;
+        return DonationModel.getInstance().getDonationListSize() + 1;
     }
 
 
